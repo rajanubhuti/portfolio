@@ -18,13 +18,16 @@
 
   *{ box-sizing:border-box; }
 
-  body{
+  html, body{
     margin:0;
+    padding:0;
+    width:100%;
+  }
+
+  body{
     min-height:100vh;
     font-family:'Segoe UI', Arial, sans-serif;
     background:var(--paper);
-    background-image:
-      linear-gradient(var(--paper) 0%, var(--paper) 100%);
     display:flex;
     justify-content:center;
     align-items:center;
@@ -33,7 +36,6 @@
     position:relative;
   }
 
-  /* caution tape strips top & bottom */
   .tape{
     position:fixed;
     left:0; right:0;
@@ -199,8 +201,8 @@
   <div class="subtitle">Site currently staffed by one (1) tired human</div>
 
   <p>You found my portfolio.</p>
-  <p>Welltechnically you found the empty lot where my portfolio
-    <b>will eventually live.</p>
+  <p>Well &mdash; technically you found the empty lot where my portfolio
+    <b>will eventually stand.</b> Zoning is approved. Vibes are not.</p>
 
   <div class="excuse">
     &gt; status: "almost done"<br>
@@ -222,28 +224,6 @@
     </div>
     <div class="fineprint">*73% has been holding steady since March. It's basically a personality trait now.</div>
   </div>
-</div>
-
-</body>
-</html>Well... technically you found the place where my portfolio
-<b>will eventually live.</b>
-</p>
-
-<p>
-Right now it's somewhere between
-"almost done"
-and
-"I'll finish it after this deadline."
-</p>
-
-<a href="www.linkedin.com/in/anubhutiraj-ux">
-Connect on LinkedIn →
-</a>
-
-<p class="small">
-Portfolio loading... █████░░░░ 73%
-</p>
-
 </div>
 
 </body>
