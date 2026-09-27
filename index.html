@@ -113,6 +113,11 @@
       text-decoration: underline;
     }
   </style>
+  <style>
+    /* Line up the Read Case Study buttons across cards in the same row */
+    .work-grid > div:not([hidden]) { display: flex; flex-direction: column; }
+    .work-grid > div > div.mt-4:not(.flex) { flex-grow: 1; }
+  </style>
 </head>
 
 <body>
@@ -273,7 +278,7 @@
         </div>
 
         <!-- Work cards grid (4 Cards Total) -->
-        <section class="grid grid-cols-2 gap-x-8 gap-y-16 max-lg:grid-cols-1 p-2">
+        <section class="work-grid grid grid-cols-2 gap-x-8 gap-y-16 max-lg:grid-cols-1 p-2">
 
           <!-- ---- CARD 1 ---- -->
           <div>
