@@ -1,0 +1,81 @@
+/* ============================================================
+   Shared header/footer styles.
+   Copied verbatim from the <style> block in indexnew.html —
+   only the rules that the nav/footer partials actually need
+   (left out: hero-photo hover swap and work-status button,
+   which are homepage-only).
+   Link this file on every page that uses partials/header.js
+   and partials/footer.js.
+============================================================ */
+
+/* Footer: written as real CSS because the site's compiled Tailwind
+   stylesheet doesn't include utility classes beyond what the original
+   build used, so new utility classes here have no effect. */
+.site-footer {
+  padding-top: 80px;
+  padding-bottom: 15px;
+}
+.site-footer .tinker-heading {
+  font-size: 1.875rem; /* ~text-3xl */
+}
+@media (max-width: 768px) {
+  .site-footer { padding-top: 140px; }
+  .site-footer .tinker-heading { font-size: 1.5rem; }
+}
+@media (max-width: 640px) {
+  .site-footer { padding-top: 90px; }
+  .site-footer .tinker-heading { font-size: 1.25rem; }
+}
+.footer-top-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.footer-social-buttons {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+@media (max-width: 640px) {
+  .footer-top-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .footer-top-row > div:first-child { margin-bottom: 32px; }
+  .footer-social-buttons { margin-top: 0; justify-content: flex-end; }
+}
+.made-with {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-top: 85px;
+}
+.made-with img {
+  height: 24px;
+  width: auto;
+  display: inline-block;
+}
+@media (max-width: 640px) {
+  .made-with { margin-top: 56px; font-size: 1rem; }
+}
+
+/* Hover grow: nav social buttons, footer social buttons */
+.nav-social-btn,
+.footer-social-buttons button {
+  transition: transform 0.2s ease;
+}
+.nav-social-btn:hover,
+.footer-social-buttons button:hover {
+  transform: scale(1.08);
+}
+
+.footer-email-link {
+  text-decoration: none;
+}
+.footer-email-link:hover {
+  text-decoration: underline;
+}

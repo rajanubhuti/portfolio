@@ -1,213 +1,512 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio Under Construction</title>
-<style>
-  :root{
-    --paper:#fdf6e3;
-    --ink:#1a1a1a;
-    --caution:#ffb400;
-    --caution-dark:#1a1a1a;
-    --cone:#ff5722;
-    --cone-dark:#c73e0e;
-    --steel:#3a4750;
-    --muted:#7a7368;
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Anubhuti Raj | UX Portfolio</title>
+  <link rel="icon" type="image/png" href="./assets/images/browsericon.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Hero photo hover swap: my-photo fades out, childhood-photo fades in */
+    .hero-photo-wrap { cursor: pointer; }
+    .hero-photo-default,
+    .hero-photo-hover {
+      transition: none;
+    }
+    .hero-photo-hover { opacity: 0; }
+    .hero-photo-wrap:hover .hero-photo-default { opacity: 0; }
+    .hero-photo-wrap:hover .hero-photo-hover { opacity: 1; }
 
-  *{ box-sizing:border-box; }
+    /* "Currently working" button: bounce on hover + since-tag reveal */
+    .work-status-btn {
+      transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  background-color 0.2s ease, color 0.2s ease;
+      transform-origin: left center;
+      transform: scale(1);
+    }
+    .work-status-wrap a:hover .work-status-btn {
+      transform: scale(1.08);
+    }
+    .work-status-tag {
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: opacity 0.2s ease 0.05s, transform 0.2s ease 0.05s;
+      pointer-events: none;
+    }
+    .work-status-wrap a:hover + .work-status-tag {
+      opacity: 1;
+      transform: translateX(0);
+    }
 
-  html, body{
-    margin:0;
-    padding:0;
-    width:100%;
-  }
+    /* Footer: written as real CSS because the site's compiled Tailwind
+       stylesheet doesn't include utility classes beyond what the original
+       build used, so new utility classes here have no effect. */
+    .site-footer {
+      padding-top: 150px;
+      padding-bottom: 15px;
+    }
+    .site-footer .tinker-heading {
+      font-size: 1.875rem; /* ~text-3xl */
+    }
+    @media (max-width: 768px) {
+      .site-footer { padding-top: 140px; }
+      .site-footer .tinker-heading { font-size: 1.5rem; }
+    }
+    @media (max-width: 640px) {
+      .site-footer { padding-top: 90px; }
+      .site-footer .tinker-heading { font-size: 1.25rem; }
+    }
+    .footer-top-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .footer-social-buttons {
+      display: flex;
+      align-items: center;
+      margin-top: 8px;
+    }
+    @media (max-width: 640px) {
+      .footer-top-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .footer-top-row > div:first-child { margin-bottom: 32px; }
+      .footer-social-buttons { margin-top: 0; justify-content: flex-end; }
+    }
+    .made-with {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 1.125rem;
+      font-weight: 500;
+      margin-top: 85px;
+    }
+    .made-with img {
+      height: 24px;
+      width: auto;
+      display: inline-block;
+    }
+    @media (max-width: 640px) {
+      .made-with { margin-top: 56px; font-size: 1rem; }
+    }
 
-  body{
-    min-height:100vh;
-    font-family:'Segoe UI', Arial, sans-serif;
-    background:var(--paper);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:var(--ink);
-    overflow-x:hidden;
-    position:relative;
-  }
+    /* Hover grow: nav social buttons, See All button, footer social buttons */
+    .nav-social-btn,
+    .see-all-btn,
+    .footer-social-buttons button {
+      transition: transform 0.2s ease;
+    }
+    .nav-social-btn:hover,
+    .see-all-btn:hover,
+    .footer-social-buttons button:hover {
+      transform: scale(1.08);
+    }
 
-  .tape{
-    position:fixed;
-    left:0; right:0;
-    height:34px;
-    background:repeating-linear-gradient(
-      -45deg,
-      var(--caution),
-      var(--caution) 22px,
-      var(--caution-dark) 22px,
-      var(--caution-dark) 44px
-    );
-    box-shadow:0 0 0 2px var(--caution-dark);
-    z-index:5;
-  }
-  .tape.top{ top:0; }
-  .tape.bottom{ bottom:0; }
-
-  .card{
-    max-width:640px;
-    width:90%;
-    text-align:center;
-    padding:60px 40px;
-    background:#fffdf8;
-    border:3px solid var(--ink);
-    border-radius:14px;
-    box-shadow:8px 8px 0 var(--ink);
-    position:relative;
-    margin:50px 0;
-  }
-
-  .cone{
-    width:60px;
-    margin:0 auto 6px;
-    display:block;
-    animation:wobble 2.4s ease-in-out infinite;
-    transform-origin:bottom center;
-  }
-  @keyframes wobble{
-    0%,100%{ transform:rotate(-4deg); }
-    50%{ transform:rotate(4deg); }
-  }
-
-  h1{
-    font-size:2.6rem;
-    margin:0 0 6px;
-    letter-spacing:-0.5px;
-  }
-
-  .subtitle{
-    font-family:'Courier New', monospace;
-    font-size:0.85rem;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    color:var(--muted);
-    margin-bottom:26px;
-  }
-
-  p{
-    font-size:1.08rem;
-    line-height:1.65;
-    margin:14px 0;
-  }
-
-  a.cta{
-    display:inline-block;
-    margin-top:22px;
-    padding:14px 30px;
-    background:var(--ink);
-    color:var(--paper);
-    text-decoration:none;
-    border-radius:999px;
-    font-weight:600;
-    letter-spacing:0.3px;
-    transition:transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-    box-shadow:4px 4px 0 var(--cone);
-  }
-  a.cta:hover{
-    transform:translate(-2px,-2px);
-    box-shadow:6px 6px 0 var(--cone);
-    background:var(--cone-dark);
-  }
-  a.cta:active{
-    transform:translate(0,0);
-    box-shadow:2px 2px 0 var(--cone);
-  }
-
-  .progress-wrap{
-    margin-top:44px;
-    text-align:left;
-  }
-  .progress-label{
-    display:flex;
-    justify-content:space-between;
-    font-family:'Courier New', monospace;
-    font-size:12px;
-    color:var(--muted);
-    margin-bottom:6px;
-  }
-  .progress-track{
-    height:16px;
-    border-radius:999px;
-    background:#eee6d6;
-    border:2px solid var(--ink);
-    overflow:hidden;
-    position:relative;
-  }
-  .progress-fill{
-    height:100%;
-    width:73%;
-    background:repeating-linear-gradient(
-      45deg,
-      var(--cone),
-      var(--cone) 10px,
-      var(--cone-dark) 10px,
-      var(--cone-dark) 20px
-    );
-    background-size:200% 100%;
-    animation:barber 1.4s linear infinite;
-  }
-  @keyframes barber{
-    from{ background-position:0 0; }
-    to{ background-position:40px 0; }
-  }
-
-  .fineprint{
-    margin-top:16px;
-    color:var(--muted);
-    font-size:12px;
-    font-style:italic;
-  }
-
-  @media (max-width:480px){
-    h1{ font-size:2rem; }
-    .card{ padding:44px 22px; }
-  }
-</style>
+    .footer-email-link {
+      text-decoration: none;
+    }
+    .footer-email-link:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
+
 <body>
+  <div id="__next">
+    <main class="min-h-screen bg-[#F8F8F8] pb-10 __className_9b492f">
 
-<div class="tape top"></div>
-<div class="tape bottom"></div>
+      <!-- ===================== NAV ===================== -->
+      <nav class="flex w-full items-center justify-between px-32 py-12 z-20
+                  max-2xl:px-24 max-xl:px-16 max-lg:px-8 max-md:px-4
+                  max-sm:flex-col max-sm:space-y-4 max-sm:pt-6 max-sm:pb-0">
 
-<div class="card">
-  <svg class="cone" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
-    <rect x="10" y="105" width="80" height="10" rx="2" fill="#c73e0e"/>
-    <polygon points="50,10 75,100 25,100" fill="#ff5722"/>
-    <rect x="30" y="55" width="40" height="12" fill="#fff"/>
-    <rect x="20" y="80" width="60" height="14" fill="#fff"/>
-  </svg>
+        <!-- Logo / Name Text -->
+        <a class="z-20" href="index.html">
+          <img 
+            src="./assets/images/logonew.png" 
+            alt="Anubhuti Raj" 
+            height="70"
+            style="height: 80px !important; width: auto;" 
+          />
+        </a>
 
-  <h1>🚧 Oops.</h1>
-  <div class="subtitle">Site currently staffed by one tired human</div>
+        <!-- Nav links -->
+        <div class="flex items-center space-x-8 z-20 whitespace-nowrap">
+          <a class="font-bold text-lg px-4 py-2 bg-black text-white rounded-full" href="index.html">Home</a>
+          <a class="font-bold text-darkgray text-lg px-4 py-2" href="/my-work/">Play</a>
+          <a class="font-bold text-darkgray text-lg px-4 py-2" href="/about/">About</a>
+          <a class="font-bold text-darkgray text-lg px-4 py-2" href="/my-work/">Resume</a>
+        </div>
 
-  <p>You found my portfolio.</p>
-  <p>Well technically you found the empty lot where my portfolio
-    <b>will eventually stand.</b> </p>
+        <!-- Social buttons -->
+        <div class="flex items-center space-x-4 max-sm:hidden">
 
-  <a class="cta" href="https://www.linkedin.com/in/anubhutiraj-ux" target="_blank" rel="noopener">
-    Find me on LinkedIn till then :) →
-  </a>
+          <a href="https://www.linkedin.com/in/anubhutiraj-ux" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <button class="nav-social-btn flex rounded-full font-bold border border-[#18191F] shadow-bottom-black bg-[#F3F3F3] !p-4 text-black hover:bg-[#F3F3F3]" tabindex="-1" type="button">
+              <svg class="lucide lucide-linkedin" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                   viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect width="4" height="12" x="2" y="9" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </button>
+          </a>
 
-  <div class="progress-wrap">
-    <div class="progress-label">
-      <span>PORTFOLIO.EXE</span>
-      <span>73%</span>
-    </div>
-    <div class="progress-track">
-      <div class="progress-fill"></div>
-    </div>
-    <div class="fineprint">*73% has been holding steady since March lol I AM TRYING </div>
+          <a href="mailto:anubhutiraj.ux@gmail.com" aria-label="Email">
+            <button class="nav-social-btn flex rounded-full font-bold border border-[#18191F] shadow-bottom-black bg-[#F3F3F3] !p-4 text-black hover:bg-[#F3F3F3]" tabindex="-1" type="button">
+              <svg class="lucide lucide-mail" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                   viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+            </button>
+          </a>
+
+        </div>
+      </nav>
+      <!-- =================== END NAV =================== -->
+
+
+      <div class="x-padding">
+
+        <!-- Decorative background blob -->
+        <div class="h-[400px] absolute top-1/4 z-0 w-1/2"></div>
+
+        <!-- ================= HERO SECTION ================= -->
+        <section class="flex relative items-center justify-between space-x-14 my-8
+                        max-sm:flex-col-reverse max-sm:space-x-0 max-sm:space-y-10 max-sm:my-0">
+
+          <!-- Left: intro text -->
+          <div class="flex flex-col w-1/2 font-semibold max-sm:w-full">
+
+            <p class="mb-4 text-lg"><b>Namaste 🙏 , I am</b></p>
+
+            <h1 class="mb-6">
+              <img src="./assets/images/name.png" alt="Anubhuti" class="h-24 w-auto max-lg:h-16" />
+            </h1>
+
+            <p class="mb-14 text-lg max-sm:mb-6">
+              a <span class="text-mandarina font-bold">User Experience Designer</span>
+              fascinated by people, pixels, and peculiarities.
+            </p>
+
+            <div class="work-status-wrap flex items-center gap-8 w-fit">
+              <a class="w-fit" href="#" data-state="closed">
+                <button
+                  class="work-status-btn flex rounded-full pl-8 py-4 font-bold border shadow-bottom-black bg-[#ddf8ff]
+                         hover:text-white text-black hover:bg-[#00ADEF] shadow-none border-gray-200
+                         max-sm:!py-2 max-sm:!px-4 pr-8"
+                  tabindex="0"
+                  type="button"
+                >
+                  🔵 Currently at Tata Motors Limited.
+                </button>
+              </a>
+
+              <span
+                class="work-status-tag rounded-full border border-gray-200 bg-white px-4 py-2
+                       font-bold text-sm max-sm:hidden"
+              >
+                Since July 2026 :)
+              </span>
+            </div>
+
+          </div>
+
+          <!-- Right: portrait (hover: my-photo -> childhood-photo) -->
+          <div class="hero-photo-wrap relative w-[420px] h-[650px]
+                      max-lg:w-[300px] max-lg:h-[434px]
+                      max-md:w-[400px] max-md:h-[590px]
+                      max-sm:w-[300px] max-sm:h-[400px]">
+            <img
+              alt="My portfolio picture"
+              class="hero-photo-default object-contain"
+              decoding="async"
+              loading="lazy"
+              src="./assets/images/my-photo.png"
+              style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;
+                     color:transparent;background-position:50% 50%;background-repeat:no-repeat;"
+            />
+            <img
+              alt="My childhood picture"
+              class="hero-photo-hover object-contain"
+              decoding="async"
+              loading="lazy"
+              src="./assets/images/childhood-photo.png"
+              style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;
+                     color:transparent;background-position:50% 50%;background-repeat:no-repeat;"
+            />
+          </div>
+
+        </section>
+        <!-- =============== END HERO SECTION =============== -->
+
+
+        <!-- ================= WORK SECTION ================= -->
+        <div class="flex justify-between items-center mb-8 mt-24 max-sm:mt-12 max-sm:mb-4">
+          <h2 class="big-title">
+            MY WORK ✨
+            <span class="text-4xl max-sm:hidden">✨</span>
+          </h2>
+          <!-- See All: hidden until there are more projects. Delete the word hidden to show it. -->
+          <a href="/my-work/" hidden>
+            <button
+              class="see-all-btn flex rounded-full pl-8 py-4 text-black font-bold border border-[#18191F]
+                     shadow-bottom-black bg-white hover:bg-white max-sm:!px-4 max-sm:!py-2 pr-8"
+              tabindex="0"
+              type="button"
+            >
+              See All
+            </button>
+          </a>
+        </div>
+
+        <!-- Work cards grid (4 Cards Total) -->
+        <section class="grid grid-cols-2 gap-x-8 gap-y-16 max-lg:grid-cols-1 p-2">
+
+          <!-- ---- CARD 1 ---- -->
+          <div>
+            <a
+              class="h-[650px] max-md:h-[600px] max-sm:h-[520px] max-[470px]:h-[450px] max-2xl:h-[520px]
+                     bg-no-repeat bg-center cursor-pointer block rounded-3xl overflow-hidden
+                     bg-[url('/itscamper-card-bg.png')]"
+              href="my-work/project-1/"
+            >
+              <div class="flex w-full justify-end">
+                <p class="px-4 py-2 bg-[#FAFAFA] font-bold w-fit rounded-full m-4 mb-8">#UXRESEARCH</p>
+              </div>
+            </a>
+
+            <div class="mt-4">
+              <h3 class="font-bold text-xl mb-2">Designing the Return</h3>
+              <p class="font-medium text-gray-640">
+                An in car display for the sixty seconds before a Level 3 car hands control back to its driver.
+                Grounded in takeover research, mentored by engineers at Valeo and Renault.
+              </p>
+            </div>
+
+            <div class="flex space-x-4 mt-4 max-sm:flex-col max-sm:space-x-0 max-sm:space-y-4">
+              <a href="my-work/project-1/">
+                <button
+                  class="flex bg-[#FF8F71] rounded-full pl-8 py-4 text-black font-bold border border-[#18191F]
+                         shadow-bottom-black hover:bg-mandarina max-sm:w-full justify-center"
+                  style="transform:none"
+                  type="button"
+                >
+                  Read Case Study
+                  <span class="transition-all ease-linear duration-300 w-0 opacity-0 mr-8">
+                    <svg class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                         viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </span>
+                </button>
+              </a>
+            </div>
+          </div>
+          <!-- ---- END CARD 1 ---- -->
+
+          <!-- ---- CARD 2 ---- -->
+          <div>
+            <a
+              class="h-[650px] max-md:h-[600px] max-sm:h-[520px] max-[470px]:h-[390px] max-2xl:h-[520px]
+                     bg-no-repeat bg-center cursor-pointer block rounded-3xl overflow-hidden
+                     bg-[url('/webinar-card-bg.png')]"
+              href="my-work/project-2/"
+            >
+              <div class="flex w-full justify-end">
+                <p class="px-4 py-2 bg-[#FAFAFA] font-bold w-fit rounded-full m-4 mb-8">#UIDESIGN</p>
+              </div>
+            </a>
+
+            <div class="mt-4">
+              <h3 class="font-bold text-xl mb-2">Redesigning DPDS TMS</h3>
+              <p class="font-medium text-gray-640">
+                Turning Tata Motors' internal ticketing form into an assistant that helps people find an answer
+                before they need to raise a ticket.
+              </p>
+            </div>
+
+            <div class="flex space-x-4 mt-4 max-sm:flex-col max-sm:space-x-0 max-sm:space-y-4">
+              <a href="my-work/project-2/">
+                <button
+                  class="flex bg-[#FF8F71] rounded-full pl-8 py-4 text-black font-bold border border-[#18191F]
+                         shadow-bottom-black hover:bg-mandarina max-sm:w-full justify-center"
+                  style="transform:none"
+                  type="button"
+                >
+                  Read Case Study
+                  <span class="transition-all ease-linear duration-300 w-0 opacity-0 mr-8">
+                    <svg class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                         viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </span>
+                </button>
+              </a>
+            </div>
+          </div>
+          <!-- ---- END CARD 2 ---- -->
+
+          <!-- ---- CARD 3 ---- (hidden until ready: delete the word hidden to show it) -->
+          <div hidden>
+            <a
+              class="h-[650px] max-2xl:h-[600px] max-md:h-[600px] max-sm:h-[520px] max-[470px]:h-[450px]
+                     bg-no-repeat bg-center cursor-pointer block rounded-3xl overflow-hidden
+                     bg-[url('/wordiest-card-bg.png')]"
+              href="/my-work/project-3/"
+            >
+              <div class="flex w-full justify-end">
+                <p class="px-4 py-2 bg-[#FAFAFA] font-bold w-fit rounded-full m-4 mb-8">#RESEARCH</p>
+              </div>
+            </a>
+
+            <div class="mt-4">
+              <h3 class="font-bold text-xl mb-2">Project Three</h3>
+              <p class="font-medium text-gray-640">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+
+            <div class="flex space-x-4 mt-4 max-sm:flex-col max-sm:space-x-0 max-sm:space-y-4">
+              <a href="/my-work/project-3/">
+                <button
+                  class="flex bg-[#FF8F71] rounded-full pl-8 py-4 text-black font-bold border border-[#18191F]
+                         shadow-bottom-black hover:bg-mandarina max-sm:w-full justify-center"
+                  style="transform:none"
+                  type="button"
+                >
+                  Read Case Study
+                  <span class="transition-all ease-linear duration-300 w-0 opacity-0 mr-8">
+                    <svg class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                         viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </span>
+                </button>
+              </a>
+            </div>
+          </div>
+          <!-- ---- END CARD 3 ---- -->
+
+          <!-- ---- CARD 4 ---- (hidden until ready: delete the word hidden to show it) -->
+          <div hidden>
+            <a
+              class="h-[650px] max-2xl:h-[600px] max-md:h-[600px] max-sm:h-[520px] max-[470px]:h-[450px]
+                     bg-no-repeat bg-center cursor-pointer block rounded-3xl overflow-hidden
+                     bg-[url('/endo-card-bg.png')]"
+              href="/my-work/project-4/"
+            >
+              <div class="flex w-full justify-end">
+                <p class="px-4 py-2 bg-[#FAFAFA] font-bold w-fit rounded-full m-4 mb-8">#INTERFACE</p>
+              </div>
+            </a>
+
+            <div class="mt-4">
+              <h3 class="font-bold text-xl mb-2">Project Four</h3>
+              <p class="font-medium text-gray-640">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+
+            <div class="flex space-x-4 mt-4 max-sm:flex-col max-sm:space-x-0 max-sm:space-y-4">
+              <a href="/my-work/project-4/">
+                <button
+                  class="flex bg-[#FF8F71] rounded-full pl-8 py-4 text-black font-bold border border-[#18191F]
+                         shadow-bottom-black hover:bg-mandarina max-sm:w-full justify-center"
+                  style="transform:none"
+                  type="button"
+                >
+                  Read Case Study
+                  <span class="transition-all ease-linear duration-300 w-0 opacity-0 mr-8">
+                    <svg class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                         viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </span>
+                </button>
+              </a>
+            </div>
+          </div>
+          <!-- ---- END CARD 4 ---- -->
+        </section>
+        <!-- =============== END WORK SECTION =============== -->
+
+
+
+      <!-- =================== FOOTER =================== -->
+      <footer class="site-footer relative flex flex-col font-bold">
+
+        <!-- Top row: heading (left) + social buttons (right) -->
+        <div class="footer-top-row z-20">
+
+          <div>
+            <p class="text-lg font-medium mb-2">Thanks for visiting!</p>
+            <h3 class="tinker-heading font-bold">
+              Let's tinker together.
+              <a
+                class="footer-email-link"
+                href="mailto:anubhutiraj.ux@gmail.com"
+              >anubhutiraj.ux@gmail.com</a>
+            </h3>
+          </div>
+
+          <div class="footer-social-buttons space-x-4">
+            <a href="https://www.linkedin.com/in/anubhutiraj-ux" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <button class="flex rounded-full font-bold border border-[#18191F] shadow-bottom-black !p-4 bg-white hover:bg-white text-black" tabindex="-1" type="button">
+                <svg class="lucide lucide-linkedin" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                   viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect width="4" height="12" x="2" y="9" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+              </button>
+            </a>
+            <a href="mailto:anubhutiraj.ux@gmail.com" aria-label="Email">
+              <button class="flex rounded-full font-bold border border-[#18191F] shadow-bottom-black !p-4 bg-white hover:bg-white text-black" tabindex="-1" type="button">
+                <svg class="lucide lucide-mail" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                   viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              </button>
+            </a>
+          </div>
+        </div>
+
+        <!-- Bottom row: "Made with" credit line -->
+        <div class="made-with z-20">
+          <span>Made with</span>
+          <img src="./assets/images/foot1.png" alt="" />
+          <img src="./assets/images/foot2.png" alt="" />
+          <img src="./assets/images/foot3.png" alt="" />
+          <span>by Anubhuti</span>
+        </div>
+
+        <!-- Decorative background blob -->
+        <div class="h-[400px] absolute right-0 bottom-0 z-0 w-1/2"></div>
+
+      </footer>
+      <!-- ================= END FOOTER ================= -->
+
+    </main>
   </div>
-</div>
+
+  <script id="__NEXT_DATA__" type="application/json" crossorigin="">
+    {"props":{"pageProps":{}},"page":"/","query":{},"buildId":"bwg6kUX3la6jqDscWg2wd","nextExport":true,"autoExport":true,"isFallback":false,"scriptLoader":[]}
+  </script>
 
 </body>
 </html>
