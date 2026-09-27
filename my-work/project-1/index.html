@@ -522,24 +522,24 @@
 /* ---- Next project (end of case study) ---- */
 .cs-next {
   display: flex; align-items: center; justify-content: space-between; gap: 32px;
-  margin: 72px 0 0 0; padding: 32px 36px;
+  margin: 40px 0 0 0; padding: 32px 36px;
   background: #fff; border: 1px solid #18191F; border-radius: 24px;
-  box-shadow: 0 6px 0 #18191F;
+  box-shadow: 0 6px 0 #240C05;
   text-decoration: none; color: #18191F;
   transition: translate .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
 }
-.cs-next:hover { translate: 0 -3px; box-shadow: 0 9px 0 #18191F; }
+.cs-next:hover { translate: 0 -3px; box-shadow: 0 9px 0 #240C05; }
 .cs-next-label { margin: 0 0 8px 0; font-size: 14px; font-weight: 600; letter-spacing: .12em; color: #E87B35; }
 .cs-next-title { margin: 0 0 8px 0; font-size: 28px; font-weight: 700; line-height: 1.15; text-transform: uppercase; }
 .cs-next-desc { margin: 0; font-size: 18px; line-height: 1.45; color: #4B505C; max-width: 560px; }
 .cs-next-desc span { color: #E87B35; font-weight: 700; }
 .cs-next-btn {
-  flex: none; display: inline-flex; align-items: center; gap: 10px;
-  padding: 16px 28px; border-radius: 999px; border: 1px solid #18191F;
-  background: #FF8F71; color: #000; font-size: 17px; font-weight: 700;
-  box-shadow: 0 4px 0 #18191F; transition: background .2s ease, gap .25s ease;
+  flex: none; display: inline-flex; align-items: center;
+  padding: 16px 32px; border-radius: 999px; border: 1px solid #18191F;
+  background: #FF8F71; color: #000; font-size: 18px; font-weight: 700;
+  box-shadow: 0 4px 0 #240C05; transition: background .2s ease;
 }
-.cs-next:hover .cs-next-btn { background: #E87B35; gap: 16px; }
+.cs-next:hover .cs-next-btn { background: #FF5A00; }
 @media (max-width: 760px) {
   .cs-next { flex-direction: column; align-items: flex-start; padding: 24px; }
   .cs-next-title { font-size: 22px; }
@@ -1020,6 +1020,8 @@
             <p style="margin:0 0 0 0;"><a class="cs-paper-link" href="../../assets/docs/designing-the-return.pdf" target="_blank" rel="noopener">All 38 references are in the paper &rarr;</a></p>
 
 
+            <p class="cs-thanks">&#2343;&#2344;&#2381;&#2351;&#2357;&#2366;&#2342;&hellip;</p>
+
             <!-- Next project -->
             <a class="cs-next" href="../project-2/">
               <div>
@@ -1027,10 +1029,8 @@
                 <p class="cs-next-title">Redesigning DPDS TMS</p>
                 <p class="cs-next-desc">Turning Tata Motors' internal ticketing form into an assistant that helps people find an answer before they raise a ticket<span>&hellip;</span></p>
               </div>
-              <span class="cs-next-btn">Read case study <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+              <span class="cs-next-btn">Read Case Study</span>
             </a>
-
-            <p class="cs-thanks">&#2343;&#2344;&#2381;&#2351;&#2357;&#2366;&#2342;&hellip;</p>
           </section>
 
         </article>
