@@ -28,7 +28,7 @@
     '    />\n' +
     '  </a>\n' +
 
-    '  <div class="flex items-center space-x-8 z-20 whitespace-nowrap">\n' +
+    '  <div class="site-nav-links flex items-center space-x-8 z-20 whitespace-nowrap">\n' +
     '    <a class="font-bold text-darkgray text-lg px-4 py-2" href="' + ROOT + 'index.html">Home</a>\n' +
     '    <a class="font-bold text-darkgray text-lg px-4 py-2" href="/my-work/">Play</a>\n' +
     '    <a class="font-bold text-darkgray text-lg px-4 py-2" href="/about/">About</a>\n' +
