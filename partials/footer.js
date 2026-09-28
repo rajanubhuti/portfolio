@@ -56,9 +56,9 @@
 
     '  <div class="made-with z-20">\n' +
     '    <span>Made with</span>\n' +
-    '    <img src="' + ROOT + 'assets/images/foot1.png" alt="" />\n' +
-    '    <img src="' + ROOT + 'assets/images/foot2.png" alt="" />\n' +
-    '    <img src="' + ROOT + 'assets/images/foot3.png" alt="" />\n' +
+    '    <img src="' + ROOT + 'assets/images/foot1.png" alt="" data-play="beat" />\n' +
+    '    <img src="' + ROOT + 'assets/images/foot2.png" alt="" data-play="bob" />\n' +
+    '    <img src="' + ROOT + 'assets/images/foot3.png" alt="" data-play="sip" />\n' +
     '    <span>by Anubhuti</span>\n' +
     '  </div>\n' +
 

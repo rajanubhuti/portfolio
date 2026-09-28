@@ -21,7 +21,7 @@
 
     '  <a class="z-20" href="' + ROOT + 'index.html">\n' +
     '    <img\n' +
-    '      src="' + ROOT + 'assets/images/logonew.png"\n' +
+    '      src="' + ROOT + 'assets/images/logonew.png" data-play="jelly"\n' +
     '      alt="Anubhuti Raj"\n' +
     '      height="70"\n' +
     '      style="height: 80px !important; width: auto;"\n' +

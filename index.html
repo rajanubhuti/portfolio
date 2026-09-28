@@ -124,6 +124,7 @@
       .site-nav-links > a { padding-left: 12px !important; padding-right: 12px !important; font-size: 16px !important; }
     }
   </style>
+  <link rel="stylesheet" href="partials/whimsy.css" />
 </head>
 
 <body>
@@ -138,7 +139,7 @@
         <!-- Logo / Name Text -->
         <a class="z-20" href="index.html">
           <img 
-            src="./assets/images/logonew.png" 
+            src="./assets/images/logonew.png" data-play="jelly" 
             alt="Anubhuti Raj" 
             height="70"
             style="height: 80px !important; width: auto;" 
@@ -201,7 +202,7 @@
           <!-- Left: intro text -->
           <div class="flex flex-col w-1/2 font-semibold max-sm:w-full">
 
-            <p class="mb-4 text-lg"><b>Namaste 🙏 , I am</b></p>
+            <p class="mb-4 text-lg"><b>Namaste <span data-play="bow" data-play-on="load">🙏</span> , I am</b></p>
 
             <h1 class="mb-6">
               <img src="./assets/images/name.png" alt="Anubhuti" class="h-24 w-auto max-lg:h-16" />
@@ -267,8 +268,8 @@
         <!-- ================= WORK SECTION ================= -->
         <div class="flex justify-between items-center mb-8 mt-24 max-sm:mt-12 max-sm:mb-4">
           <h2 class="big-title">
-            MY WORK ✨
-            <span class="text-4xl max-sm:hidden">✨</span>
+            MY WORK <span data-play="twinkle" data-play-on="view">✨</span>
+            <span class="text-4xl max-sm:hidden" data-play="twinkle" data-play-on="view">✨</span>
           </h2>
           <!-- See All: hidden until there are more projects. Delete the word hidden to show it. -->
           <a href="/my-work/" hidden>
@@ -510,9 +511,9 @@
         <!-- Bottom row: "Made with" credit line -->
         <div class="made-with z-20">
           <span>Made with</span>
-          <img src="./assets/images/foot1.png" alt="" />
-          <img src="./assets/images/foot2.png" alt="" />
-          <img src="./assets/images/foot3.png" alt="" />
+          <img src="./assets/images/foot1.png" alt="" data-play="beat" />
+          <img src="./assets/images/foot2.png" alt="" data-play="bob" />
+          <img src="./assets/images/foot3.png" alt="" data-play="sip" />
           <span>by Anubhuti</span>
         </div>
 
@@ -529,5 +530,6 @@
     {"props":{"pageProps":{}},"page":"/","query":{},"buildId":"bwg6kUX3la6jqDscWg2wd","nextExport":true,"autoExport":true,"isFallback":false,"scriptLoader":[]}
   </script>
 
+  <script src="partials/whimsy.js"></script>
 </body>
 </html>
