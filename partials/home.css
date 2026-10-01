@@ -30,33 +30,3 @@
   transition-delay: var(--rv-d, 0s);
 }
 .motion [data-rv].rv-in { opacity: 1; transform: none; }
-
-/* ---------- What I do ---------- */
-.wid { margin-top: 140px; }
-.wid-head { margin: 0 0 40px; }
-.wid-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; padding: 0 8px; }
-.wid-item { min-width: 0; padding-top: 24px; border-top: 1px solid #E5E7EB; }
-.wid-icon {
-  display: grid; place-items: center;
-  width: 56px; height: 56px; border-radius: 18px;
-  color: #18191F;
-  transition: transform .45s cubic-bezier(.34,1.56,.64,1);
-}
-.wid-item:hover .wid-icon { transform: rotate(-8deg) scale(1.08); }
-.wid-icon svg { width: 26px; height: 26px; }
-.wid-i1 { background: linear-gradient(135deg, #FDE7CC, #F9C58E); }
-.wid-i2 { background: linear-gradient(135deg, #ECE6FA, #D5CCF2); }
-.wid-i3 { background: linear-gradient(135deg, #D9F1F4, #B7DCD8); }
-.wid-title { margin: 20px 0 10px; font-size: 24px; font-weight: 800; line-height: 1.15; }
-.wid-text { margin: 0; font-size: 17px; line-height: 1.55; font-weight: 500; color: #4B505C; }
-.wid-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-.wid-tags span { padding: 6px 12px; border-radius: 999px; background: #EDEDED; font-size: 14px; font-weight: 600; color: #18191F; }
-
-@media (max-width: 1023px) {
-  .wid { margin-top: 96px; }
-  .wid-grid { grid-template-columns: 1fr; gap: 28px; }
-}
-@media (max-width: 640px) {
-  .wid { margin-top: 72px; }
-  .wid-head { margin-bottom: 20px; }
-}
