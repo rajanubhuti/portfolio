@@ -32,19 +32,22 @@
     if (!card) return;
     var num = card.querySelector('.pc-cd-num');
     var glow = card.querySelector('.pc-cd-glow');
-    var AMBER = [247, 165, 74], RED = [229, 72, 77];
+    // three soft stops per end of the gradient: light, base and accent
+    var AMBER = [[253, 231, 204], [251, 211, 161], [247, 165, 74]];
+    var RED   = [[255, 214, 204], [246, 160, 150], [229, 72, 77]];
     var BUZZ = 1700, FADE = 500, COUNT = 9000;
     var raf = null, t0 = 0, phase = '';
 
-    function color(k) {
-      var c = AMBER.map(function (v, i) { return Math.round(v + (RED[i] - v) * k); });
-      return 'rgb(' + c.join(',') + ')';
+    function paint(k) {
+      ['--c3', '--c1', '--c2'].forEach(function (name, j) {
+        var c = AMBER[j].map(function (v, i) { return Math.round(v + (RED[j][i] - v) * k); });
+        card.style.setProperty(name, 'rgb(' + c.join(',') + ')');
+      });
     }
     function buzz() {
       phase = 'buzz';
       card.classList.remove('pc-buzz'); void card.offsetWidth; card.classList.add('pc-buzz');
-      card.style.transition = 'background-color .15s ease';
-      card.style.backgroundColor = color(1);
+      paint(1);
       num.textContent = '0';
     }
     function frame(now) {
@@ -52,27 +55,25 @@
       if (t < BUZZ) {
         if (phase !== 'buzz') buzz();
       } else if (t < BUZZ + FADE) {
+        paint(1 - (t - BUZZ) / FADE);
         if (phase !== 'fade') {
           phase = 'fade'; card.classList.remove('pc-buzz');
-          card.style.transition = 'background-color ' + FADE + 'ms ease';
-          card.style.backgroundColor = color(0);
           num.textContent = '60';
         }
       } else if (t < BUZZ + FADE + COUNT) {
         phase = 'count';
         var p = (t - BUZZ - FADE) / COUNT;
-        card.style.transition = 'none';
-        card.style.backgroundColor = color(Math.pow(p, 1.7));   // stays amber longer, reddens near the end
+        paint(Math.pow(p, 1.7));   // stays amber longer, reddens near the end
         num.textContent = String(Math.max(0, Math.ceil(60 * (1 - p))));
-        var b = 0.85 + 0.12 * Math.sin(t / 420);
+        var b = 0.9 + 0.1 * Math.sin(t / 600);
         glow.style.transform = 'scale(' + b.toFixed(3) + ')';
       } else {
         t0 = now; phase = '';                                      // back to the buzz
       }
       raf = requestAnimationFrame(frame);
     }
-    if (still) { card.style.backgroundColor = color(0.35); num.textContent = '60'; return; }
-    card.style.backgroundColor = color(0); num.textContent = '60';
+    if (still) { paint(0.3); num.textContent = '60'; return; }
+    paint(0); num.textContent = '60';
     whenVisible(card,
       function () { t0 = performance.now(); phase = ''; raf = requestAnimationFrame(frame); },
       function () { cancelAnimationFrame(raf); card.classList.remove('pc-buzz'); });
