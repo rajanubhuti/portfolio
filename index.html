@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
+  <script>if (!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) document.documentElement.classList.add("motion");</script>
   <title>Anubhuti Raj | UX Portfolio</title>
   <link rel="icon" type="image/png" href="./assets/images/browsericon.png" />
   <link rel="preload" href="assets/fonts/f9c47219ac0af4ab.p.woff2" as="font" type="font/woff2" crossorigin />
@@ -21,6 +22,7 @@
 
     /* "Currently working" button: bounce on hover + since-tag reveal */
     .work-status-btn {
+      white-space: nowrap;
       transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
                   background-color 0.2s ease, color 0.2s ease;
       transform-origin: left center;
@@ -126,6 +128,7 @@
   <link rel="stylesheet" href="partials/whimsy.css" />
   <link rel="stylesheet" href="partials/mobile-menu.css" />
   <link rel="stylesheet" href="partials/project-cards.css" />
+  <link rel="stylesheet" href="partials/home.css" />
 </head>
 
 <body>
@@ -138,7 +141,7 @@
                   max-sm:flex-col max-sm:space-y-4 max-sm:pt-6 max-sm:pb-0">
 
         <!-- Logo / Name Text -->
-        <a class="z-20" href="index.html">
+        <a class="z-20 ha-nav" href="index.html">
           <img 
             src="./assets/images/logonew.png" 
             alt="Anubhuti Raj" 
@@ -148,7 +151,7 @@
         </a>
 
         <!-- Nav links -->
-        <div class="site-nav-links flex items-center space-x-8 z-20 whitespace-nowrap">
+        <div class="ha-nav site-nav-links flex items-center space-x-8 z-20 whitespace-nowrap">
           <a class="font-bold text-lg px-4 py-2 bg-black text-white rounded-full" href="index.html">Home</a>
           <a class="font-bold text-darkgray text-lg px-4 py-2" href="/my-work/">Play</a>
           <a class="font-bold text-darkgray text-lg px-4 py-2" href="/about/">About</a>
@@ -156,7 +159,7 @@
         </div>
 
         <!-- Social buttons -->
-        <div class="flex items-center space-x-4 max-sm:hidden">
+        <div class="ha-nav flex items-center space-x-4 max-sm:hidden">
 
           <a href="https://www.linkedin.com/in/anubhutiraj-ux" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <button class="nav-social-btn flex rounded-full font-bold border border-[#18191F] shadow-bottom-black bg-[#F3F3F3] !p-4 text-black hover:bg-[#F3F3F3]" tabindex="-1" type="button">
@@ -203,18 +206,18 @@
           <!-- Left: intro text -->
           <div class="flex flex-col w-1/2 font-semibold max-sm:w-full">
 
-            <p class="mb-4 text-lg"><b>Namaste 🙏 , I am</b></p>
+            <p class="ha-hello mb-4 text-lg"><b>Namaste 🙏 , I am</b></p>
 
-            <h1 class="mb-6">
+            <h1 class="ha-name mb-6">
               <img src="./assets/images/name.png" alt="Anubhuti" class="h-24 w-auto max-lg:h-16" />
             </h1>
 
-            <p class="mb-14 text-lg max-sm:mb-6">
+            <p class="ha-tag mb-14 text-lg max-sm:mb-6">
               a <span class="text-mandarina font-bold">User Experience Designer</span>
               fascinated by people, pixels, and peculiarities.
             </p>
 
-            <div class="work-status-wrap flex items-center gap-8 w-fit">
+            <div class="ha-status work-status-wrap flex items-center gap-8 w-fit">
               <a class="w-fit" href="#" data-state="closed">
                 <button
                   class="work-status-btn flex rounded-full pl-8 py-4 font-bold border shadow-bottom-black bg-[#ddf8ff]
@@ -238,7 +241,7 @@
           </div>
 
           <!-- Right: portrait (hover: my-photo -> childhood-photo) -->
-          <div class="hero-photo-wrap relative w-[420px] h-[650px]
+          <div class="ha-photo hero-photo-wrap relative w-[420px] h-[650px]
                       max-lg:w-[300px] max-lg:h-[434px]
                       max-md:w-[400px] max-md:h-[590px]
                       max-sm:w-[300px] max-sm:h-[400px]">
@@ -267,7 +270,7 @@
 
 
         <!-- ================= WORK SECTION ================= -->
-        <div class="flex justify-between items-center mb-8 mt-24 max-sm:mt-12 max-sm:mb-4">
+        <div data-rv class="flex justify-between items-center mb-8 mt-24 max-sm:mt-12 max-sm:mb-4">
           <h2 class="big-title">
             MY WORK <span data-play="twinkle" data-play-on="view">✨</span>
             <span class="text-4xl max-sm:hidden" data-play="twinkle" data-play-on="view">✨</span>
@@ -290,12 +293,12 @@
 
           <!-- ---- PROJECT 1: Designing the Return ---- -->
           <article class="pc-card" id="pc-p1">
-            <a class="pc-media pc-count" href="my-work/project-1/" aria-label="Read Designing the Return">
+            <a data-rv class="pc-media pc-count" href="my-work/project-1/" aria-label="Read Designing the Return">
               <div class="pc-cd-glow" aria-hidden="true"></div>
               <div class="pc-cd-rings" aria-hidden="true"><span></span><span></span><span></span></div>
               <div class="pc-cd-num" aria-hidden="true">60</div>
             </a>
-            <div class="pc-body">
+            <div data-rv style="--rv-d:.12s" class="pc-body">
               <div class="pc-meta"><span class="pc-tag">#UXRESEARCH</span><span>2026</span></div>
               <h3 class="pc-title"><a href="my-work/project-1/">Designing the Return</a></h3>
               <p class="pc-lede">An in car display for the sixty seconds before a Level 3 car hands control back to its driver. Grounded in takeover research, mentored by engineers at Valeo and Renault.</p>
@@ -320,7 +323,7 @@
 
           <!-- ---- PROJECT 2: Redesigning DPDS TMS ---- -->
           <article class="pc-card pc-flip" id="pc-p2">
-            <a class="pc-media pc-tms" href="my-work/project-2/" aria-label="Read Redesigning DPDS TMS">
+            <a data-rv class="pc-media pc-tms" href="my-work/project-2/" aria-label="Read Redesigning DPDS TMS">
               <div class="pc-stage" aria-hidden="true">
                 <img class="pc-base" src="assets/images/project-2/card/base.webp" alt="" decoding="async">
                 <div class="pc-cover"></div>
@@ -332,7 +335,7 @@
                 <img class="pc-piece pc-ticket" src="assets/images/project-2/card/ticket.webp" alt="" decoding="async">
               </div>
             </a>
-            <div class="pc-body">
+            <div data-rv style="--rv-d:.12s" class="pc-body">
               <div class="pc-meta"><span class="pc-tag">#UIDESIGN</span><span>2026</span></div>
               <h3 class="pc-title"><a href="my-work/project-2/">Redesigning DPDS TMS</a></h3>
               <p class="pc-lede">Turning Tata Motors' internal ticketing form into an assistant that helps people find an answer before they need to raise a ticket.</p>
@@ -355,6 +358,39 @@
           </article>
 
         </section>
+
+        <!-- ================= WHAT I DO ================= -->
+        <section class="wid" aria-labelledby="wid-title">
+          <div class="wid-head" data-rv>
+            <h2 class="big-title" id="wid-title">WHAT I DO <span aria-hidden="true">🛠️</span></h2>
+          </div>
+          <div class="wid-grid">
+            <div class="wid-item" data-rv>
+              <div class="wid-icon wid-i1" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              </div>
+              <h3 class="wid-title">Research</h3>
+              <p class="wid-text">Interviews, usability tests and literature reviews that turn how people actually behave into clear design decisions.</p>
+              <div class="wid-tags"><span>Interviews</span><span>Usability testing</span><span>Thematic analysis</span></div>
+            </div>
+            <div class="wid-item" data-rv style="--rv-d:.1s">
+              <div class="wid-icon wid-i2" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+              </div>
+              <h3 class="wid-title">Interaction and UI design</h3>
+              <p class="wid-text">Flows, wireframes and high fidelity screens in Figma, built on design systems that hold up as a product grows.</p>
+              <div class="wid-tags"><span>Figma</span><span>Design systems</span><span>Prototyping</span></div>
+            </div>
+            <div class="wid-item" data-rv style="--rv-d:.2s">
+              <div class="wid-icon wid-i3" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+              </div>
+              <h3 class="wid-title">Prototyping in code</h3>
+              <p class="wid-text">I take ideas past Figma into HTML, CSS and JavaScript, like the takeover display in my Designing the Return case study.</p>
+              <div class="wid-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            </div>
+          </div>
+        </section>
         <!-- =============== END WORK SECTION =============== -->
 
 
@@ -363,7 +399,7 @@
       <footer class="site-footer relative flex flex-col font-bold">
 
         <!-- Top row: heading (left) + social buttons (right) -->
-        <div class="footer-top-row z-20">
+        <div data-rv class="footer-top-row z-20">
 
           <div>
             <p class="text-lg font-medium mb-2">Thanks for visiting!</p>
@@ -431,5 +467,6 @@
   <script src="partials/whimsy.js"></script>
   <script src="partials/mobile-menu.js"></script>
   <script src="partials/project-cards.js"></script>
+  <script src="partials/home.js"></script>
 </body>
 </html>

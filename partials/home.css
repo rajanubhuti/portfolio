@@ -1,0 +1,62 @@
+/* Homepage only: hero entrance, scroll reveals and the "What I do" section.
+   Motion runs only when html has the .motion class, which a small script in <head>
+   adds for people who have not asked for reduced motion. Without it, everything is
+   simply visible. */
+
+/* ---------- Hero entrance ---------- */
+.motion .ha-nav    { animation: ha-down .6s cubic-bezier(.22,1,.36,1) .05s both; }
+.motion .ha-hello  { animation: ha-up .6s cubic-bezier(.22,1,.36,1) .25s both; }
+.motion .ha-name   { animation: ha-land .9s cubic-bezier(.34,1.45,.64,1) .4s both; }
+.motion .ha-tag    { animation: ha-up .6s cubic-bezier(.22,1,.36,1) .7s both; }
+.motion .ha-status { animation: ha-pop .6s cubic-bezier(.34,1.56,.64,1) .9s both; }
+/* the photo grows from its top left corner, like a Figma frame being resized */
+.motion .ha-photo  { transform-origin: 0 0; animation: ha-frame 1.1s cubic-bezier(.34,1.25,.64,1) .3s both; }
+
+@keyframes ha-down  { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: none; } }
+@keyframes ha-up    { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes ha-land  { from { opacity: 0; transform: translateY(36px) scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes ha-pop   { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: none; } }
+@keyframes ha-frame {
+  0%   { opacity: 0; transform: scale(.72, .8); }
+  20%  { opacity: 1; }
+  100% { opacity: 1; transform: none; }
+}
+
+/* ---------- Scroll reveals ---------- */
+.motion [data-rv] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .7s ease, transform .9s cubic-bezier(.22,1,.36,1);
+  transition-delay: var(--rv-d, 0s);
+}
+.motion [data-rv].rv-in { opacity: 1; transform: none; }
+
+/* ---------- What I do ---------- */
+.wid { margin-top: 140px; }
+.wid-head { margin: 0 0 40px; }
+.wid-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; padding: 0 8px; }
+.wid-item { min-width: 0; padding-top: 24px; border-top: 1px solid #E5E7EB; }
+.wid-icon {
+  display: grid; place-items: center;
+  width: 56px; height: 56px; border-radius: 18px;
+  color: #18191F;
+  transition: transform .45s cubic-bezier(.34,1.56,.64,1);
+}
+.wid-item:hover .wid-icon { transform: rotate(-8deg) scale(1.08); }
+.wid-icon svg { width: 26px; height: 26px; }
+.wid-i1 { background: linear-gradient(135deg, #FDE7CC, #F9C58E); }
+.wid-i2 { background: linear-gradient(135deg, #ECE6FA, #D5CCF2); }
+.wid-i3 { background: linear-gradient(135deg, #D9F1F4, #B7DCD8); }
+.wid-title { margin: 20px 0 10px; font-size: 24px; font-weight: 800; line-height: 1.15; }
+.wid-text { margin: 0; font-size: 17px; line-height: 1.55; font-weight: 500; color: #4B505C; }
+.wid-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.wid-tags span { padding: 6px 12px; border-radius: 999px; background: #EDEDED; font-size: 14px; font-weight: 600; color: #18191F; }
+
+@media (max-width: 1023px) {
+  .wid { margin-top: 96px; }
+  .wid-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 640px) {
+  .wid { margin-top: 72px; }
+  .wid-head { margin-bottom: 20px; }
+}
