@@ -116,8 +116,6 @@
   </style>
   <style>
     /* Line up the Read Case Study buttons across cards in the same row */
-    .work-grid > div:not([hidden]) { display: flex; flex-direction: column; }
-    .work-grid > div > div.mt-4:not(.flex) { flex-grow: 1; }
 
     /* Phones: fit the four nav links on screen */
     @media (max-width: 480px) {
@@ -127,6 +125,7 @@
   </style>
   <link rel="stylesheet" href="partials/whimsy.css" />
   <link rel="stylesheet" href="partials/mobile-menu.css" />
+  <link rel="stylesheet" href="partials/project-cards.css" />
 </head>
 
 <body>
@@ -287,177 +286,74 @@
         </div>
 
         <!-- Work cards grid (4 Cards Total) -->
-        <section class="work-grid grid grid-cols-2 gap-x-8 gap-y-16 max-lg:grid-cols-1 p-2">
+        <section class="pc-list">
 
-          <!-- ---- CARD 1 ---- -->
-          <div>
-            <a
-              class="h-[650px] max-md:h-[600px] max-sm:h-[520px] max-[470px]:h-[450px] max-2xl:h-[520px]
-                     bg-no-repeat bg-center cursor-pointer block rounded-3xl overflow-hidden
-                     bg-[url('/itscamper-card-bg.png')]"
-              href="my-work/project-1/"
-            >
-              <div class="flex w-full justify-end">
-                <p class="px-4 py-2 bg-[#FAFAFA] font-bold w-fit rounded-full m-4 mb-8">#UXRESEARCH</p>
+          <!-- ---- PROJECT 1: Designing the Return ---- -->
+          <article class="pc-card" id="pc-p1">
+            <a class="pc-media pc-count" href="my-work/project-1/" aria-label="Read Designing the Return">
+              <div class="pc-cd-glow" aria-hidden="true"></div>
+              <div class="pc-cd-rings" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="pc-cd-num" aria-hidden="true">60</div>
+            </a>
+            <div class="pc-body">
+              <div class="pc-meta"><span class="pc-tag">#UXRESEARCH</span><span>2026</span></div>
+              <h3 class="pc-title"><a href="my-work/project-1/">Designing the Return</a></h3>
+              <p class="pc-lede">An in car display for the sixty seconds before a Level 3 car hands control back to its driver. Grounded in takeover research, mentored by engineers at Valeo and Renault.</p>
+              <div class="pc-actions">
+                <a class="pc-btn pc-read" href="my-work/project-1/">Read Case Study</a>
+                <button class="pc-btn pc-more" type="button" aria-expanded="false" aria-controls="pc-det-p1"><span class="pc-plus" aria-hidden="true"></span><span class="pc-lbl">Quick details</span></button>
+              </div>
+              <div class="pc-details" id="pc-det-p1">
+                <div class="pc-details-inner"><div class="pc-details-pad">
+                  <p class="pc-d-label">FROM THE RESEARCH</p>
+                  <div class="pc-stats">
+                    <div class="pc-stat"><b>6%</b><small>of time spent looking at the road during a screen task</small></div>
+                    <div class="pc-stat"><b>20s</b><small>pre alert that doubled attention to the road</small></div>
+                    <div class="pc-stat"><b>~27s</b><small>how long cognitive distraction lingers</small></div>
+                    <div class="pc-stat"><b>60s</b><small>proposed upper bound for the takeover window</small></div>
+                  </div>
+                  <p class="pc-note">UX Researcher and Interaction Designer · 4 months · Mentored by Valeo and Renault</p>
+                </div></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- ---- PROJECT 2: Redesigning DPDS TMS ---- -->
+          <article class="pc-card pc-flip" id="pc-p2">
+            <a class="pc-media pc-tms" href="my-work/project-2/" aria-label="Read Redesigning DPDS TMS">
+              <div class="pc-stage" aria-hidden="true">
+                <img class="pc-base" src="assets/images/project-2/card/base.webp" alt="" decoding="async">
+                <div class="pc-cover"></div>
+                <div class="pc-typed"></div>
+                <div class="pc-send"></div>
+                <img class="pc-piece pc-bubble" src="assets/images/project-2/card/bubble.webp" alt="" decoding="async">
+                <img class="pc-piece pc-ring" src="assets/images/project-2/card/ring.webp" alt="" decoding="async">
+                <img class="pc-piece pc-ai" src="assets/images/project-2/card/ai.webp" alt="" decoding="async">
+                <img class="pc-piece pc-ticket" src="assets/images/project-2/card/ticket.webp" alt="" decoding="async">
               </div>
             </a>
-
-            <div class="mt-4">
-              <h3 class="font-bold text-xl mb-2">Designing the Return</h3>
-              <p class="font-medium text-gray-640">
-                An in car display for the sixty seconds before a Level 3 car hands control back to its driver.
-                Grounded in takeover research, mentored by engineers at Valeo and Renault.
-              </p>
-            </div>
-
-            <div class="flex space-x-4 mt-4 max-sm:flex-col max-sm:space-x-0 max-sm:space-y-4">
-              <a href="my-work/project-1/">
-                <button
-                  class="flex bg-[#FF8F71] rounded-full pl-8 py-4 text-black font-bold border border-[#18191F]
-                         shadow-bottom-black hover:bg-mandarina max-sm:w-full justify-center"
-                  style="transform:none"
-                  type="button"
-                >
-                  Read Case Study
-                  <span class="transition-all ease-linear duration-300 w-0 opacity-0 mr-8">
-                    <svg class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                         stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
-                    </svg>
-                  </span>
-                </button>
-              </a>
-            </div>
-          </div>
-          <!-- ---- END CARD 1 ---- -->
-
-          <!-- ---- CARD 2 ---- -->
-          <div>
-            <a
-              class="h-[650px] max-md:h-[600px] max-sm:h-[520px] max-[470px]:h-[390px] max-2xl:h-[520px]
-                     bg-no-repeat bg-center cursor-pointer block rounded-3xl overflow-hidden
-                     bg-[url('/webinar-card-bg.png')]"
-              href="my-work/project-2/"
-            >
-              <div class="flex w-full justify-end">
-                <p class="px-4 py-2 bg-[#FAFAFA] font-bold w-fit rounded-full m-4 mb-8">#UIDESIGN</p>
+            <div class="pc-body">
+              <div class="pc-meta"><span class="pc-tag">#UIDESIGN</span><span>2026</span></div>
+              <h3 class="pc-title"><a href="my-work/project-2/">Redesigning DPDS TMS</a></h3>
+              <p class="pc-lede">Turning Tata Motors' internal ticketing form into an assistant that helps people find an answer before they need to raise a ticket.</p>
+              <div class="pc-actions">
+                <a class="pc-btn pc-read" href="my-work/project-2/">Read Case Study</a>
+                <button class="pc-btn pc-more" type="button" aria-expanded="false" aria-controls="pc-det-p2"><span class="pc-plus" aria-hidden="true"></span><span class="pc-lbl">Quick details</span></button>
               </div>
-            </a>
-
-            <div class="mt-4">
-              <h3 class="font-bold text-xl mb-2">Redesigning DPDS TMS</h3>
-              <p class="font-medium text-gray-640">
-                Turning Tata Motors' internal ticketing form into an assistant that helps people find an answer
-                before they need to raise a ticket.
-              </p>
-            </div>
-
-            <div class="flex space-x-4 mt-4 max-sm:flex-col max-sm:space-x-0 max-sm:space-y-4">
-              <a href="my-work/project-2/">
-                <button
-                  class="flex bg-[#FF8F71] rounded-full pl-8 py-4 text-black font-bold border border-[#18191F]
-                         shadow-bottom-black hover:bg-mandarina max-sm:w-full justify-center"
-                  style="transform:none"
-                  type="button"
-                >
-                  Read Case Study
-                  <span class="transition-all ease-linear duration-300 w-0 opacity-0 mr-8">
-                    <svg class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                         stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
-                    </svg>
-                  </span>
-                </button>
-              </a>
-            </div>
-          </div>
-          <!-- ---- END CARD 2 ---- -->
-
-          <!-- ---- CARD 3 ---- (hidden until ready: delete the word hidden to show it) -->
-          <div hidden>
-            <a
-              class="h-[650px] max-2xl:h-[600px] max-md:h-[600px] max-sm:h-[520px] max-[470px]:h-[450px]
-                     bg-no-repeat bg-center cursor-pointer block rounded-3xl overflow-hidden
-                     bg-[url('/wordiest-card-bg.png')]"
-              href="/my-work/project-3/"
-            >
-              <div class="flex w-full justify-end">
-                <p class="px-4 py-2 bg-[#FAFAFA] font-bold w-fit rounded-full m-4 mb-8">#RESEARCH</p>
+              <div class="pc-details" id="pc-det-p2">
+                <div class="pc-details-inner"><div class="pc-details-pad">
+                  <p class="pc-d-label">AT A GLANCE</p>
+                  <div class="pc-stats">
+                    <div class="pc-stat pc-fact"><b>UX Designer</b><small>Role</small></div>
+                    <div class="pc-stat pc-fact"><b>3 months</b><small>Timeline, ongoing</small></div>
+                    <div class="pc-stat pc-fact"><b>DPDS, Tata Motors CV</b><small>Team</small></div>
+                    <div class="pc-stat pc-fact"><b>Assistant + design system</b><small>Delivered, with a WCAG contrast audit</small></div>
+                  </div>
+                </div></div>
               </div>
-            </a>
-
-            <div class="mt-4">
-              <h3 class="font-bold text-xl mb-2">Project Three</h3>
-              <p class="font-medium text-gray-640">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
             </div>
+          </article>
 
-            <div class="flex space-x-4 mt-4 max-sm:flex-col max-sm:space-x-0 max-sm:space-y-4">
-              <a href="/my-work/project-3/">
-                <button
-                  class="flex bg-[#FF8F71] rounded-full pl-8 py-4 text-black font-bold border border-[#18191F]
-                         shadow-bottom-black hover:bg-mandarina max-sm:w-full justify-center"
-                  style="transform:none"
-                  type="button"
-                >
-                  Read Case Study
-                  <span class="transition-all ease-linear duration-300 w-0 opacity-0 mr-8">
-                    <svg class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                         stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
-                    </svg>
-                  </span>
-                </button>
-              </a>
-            </div>
-          </div>
-          <!-- ---- END CARD 3 ---- -->
-
-          <!-- ---- CARD 4 ---- (hidden until ready: delete the word hidden to show it) -->
-          <div hidden>
-            <a
-              class="h-[650px] max-2xl:h-[600px] max-md:h-[600px] max-sm:h-[520px] max-[470px]:h-[450px]
-                     bg-no-repeat bg-center cursor-pointer block rounded-3xl overflow-hidden
-                     bg-[url('/endo-card-bg.png')]"
-              href="/my-work/project-4/"
-            >
-              <div class="flex w-full justify-end">
-                <p class="px-4 py-2 bg-[#FAFAFA] font-bold w-fit rounded-full m-4 mb-8">#INTERFACE</p>
-              </div>
-            </a>
-
-            <div class="mt-4">
-              <h3 class="font-bold text-xl mb-2">Project Four</h3>
-              <p class="font-medium text-gray-640">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-            </div>
-
-            <div class="flex space-x-4 mt-4 max-sm:flex-col max-sm:space-x-0 max-sm:space-y-4">
-              <a href="/my-work/project-4/">
-                <button
-                  class="flex bg-[#FF8F71] rounded-full pl-8 py-4 text-black font-bold border border-[#18191F]
-                         shadow-bottom-black hover:bg-mandarina max-sm:w-full justify-center"
-                  style="transform:none"
-                  type="button"
-                >
-                  Read Case Study
-                  <span class="transition-all ease-linear duration-300 w-0 opacity-0 mr-8">
-                    <svg class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                         stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
-                    </svg>
-                  </span>
-                </button>
-              </a>
-            </div>
-          </div>
-          <!-- ---- END CARD 4 ---- -->
         </section>
         <!-- =============== END WORK SECTION =============== -->
 
@@ -534,5 +430,6 @@
 
   <script src="partials/whimsy.js"></script>
   <script src="partials/mobile-menu.js"></script>
+  <script src="partials/project-cards.js"></script>
 </body>
 </html>
