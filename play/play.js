@@ -59,37 +59,105 @@
     return fig;
   });
 
-  /* ---- Justified rows ---- */
+  /* ---- Layout ----
+     The page is a sequence of blocks:
+       chunk  : a few photos split into columns whose widths are worked out so every column
+                ends on the same line (taller photos stay taller, nothing is cropped)
+       feature: a wide photo stretched across most of the row, next to one tall photo
+     Order of blocks below; numbers are positions in PHOTOS. */
+  var BLOCKS = [
+    { type: 'chunk',   items: [0, 1, 3, 4, 5, 6] },
+    { type: 'feature', wide: 2, tall: 7, wideFirst: true },
+    { type: 'chunk',   items: [8, 10, 11, 12, 13, 14] },
+    { type: 'feature', wide: 9, tall: 18, wideFirst: false },
+    { type: 'chunk',   items: [15, 16, 17, 19] }
+  ];
+
+  function ratio(i) { return PHOTOS[i][3] / PHOTOS[i][2]; }   // height per unit of width
+
+  // try every way of splitting the photos into k columns and keep the one whose
+  // column widths are most even, so no column ends up a sliver
+  function split(items, k) {
+    var best = null, n = items.length, total = Math.pow(k, n);
+    for (var code = 0; code < total; code++) {
+      var cols = []; for (var c = 0; c < k; c++) cols.push([]);
+      var x = code;
+      for (var j = 0; j < n; j++) { cols[x % k].push(items[j]); x = Math.floor(x / k); }
+      if (cols.some(function (c) { return !c.length; })) continue;
+      var S = cols.map(function (c) { return c.reduce(function (a, i) { return a + ratio(i); }, 0); });
+      var spread = Math.max.apply(null, S) / Math.min.apply(null, S);
+      // small nudge towards keeping the original order left to right
+      var order = cols.reduce(function (a, c, ci) { return a + c[0] * ci; }, 0) * 1e-4;
+      var score = spread - order;
+      if (!best || score < best.score) best = { score: score, cols: cols, S: S };
+    }
+    return best;
+  }
+
+  function place(fig, i, w, h) {
+    fig.style.width = w.toFixed(2) + 'px';
+    fig.style.height = h.toFixed(2) + 'px';
+    fig.querySelector('img').sizes = Math.ceil(w) + 'px';
+  }
+
+  function chunk(items, k, W, gap) {
+    k = Math.min(k, items.length);
+    var res = split(items, k);
+    var cols = res.cols, S = res.S;
+    // equal column heights: width_c = (H - gap*(n_c - 1)) / S_c, and the widths fill the row
+    var inner = W - gap * (k - 1), sumInv = 0, extra = 0;
+    cols.forEach(function (c, ci) { sumInv += 1 / S[ci]; extra += gap * (c.length - 1) / S[ci]; });
+    var H = (inner + extra) / sumInv;
+    var wrap = document.createElement('div');
+    wrap.className = 'pl-chunk';
+    cols.forEach(function (c, ci) {
+      var w = (H - gap * (c.length - 1)) / S[ci];
+      var col = document.createElement('div');
+      col.className = 'pl-col';
+      col.style.width = w.toFixed(2) + 'px';
+      c.slice().sort(function (a, b) { return a - b; }).forEach(function (i) {
+        place(figs[i], i, w, w * ratio(i));
+        col.appendChild(figs[i]);
+      });
+      wrap.appendChild(col);
+    });
+    return wrap;
+  }
+
+  function feature(b, W, gap, narrow) {
+    var row = document.createElement('div');
+    row.className = 'pl-row';
+    if (narrow) {                                   // phones: the wide photo gets the full width
+      place(figs[b.wide], b.wide, W, W * ratio(b.wide));
+      row.appendChild(figs[b.wide]);
+      return row;
+    }
+    var aw = 1 / ratio(b.wide), at = 1 / ratio(b.tall);
+    var h = (W - gap) / (aw + at);
+    var order = b.wideFirst ? [b.wide, b.tall] : [b.tall, b.wide];
+    order.forEach(function (i) { place(figs[i], i, h / ratio(i), h); row.appendChild(figs[i]); });
+    return row;
+  }
+
   function layout() {
     var W = gallery.clientWidth;
     if (!W) return;
-    var target = W < 520 ? 150 : W < 900 ? 220 : 300;   // row height to aim for
-    var gap = W < 520 ? 6 : 12;
+    var narrow = W < 700;
+    var gap = W < 520 ? 8 : 14;
     gallery.style.setProperty('--gap', gap + 'px');
     gallery.innerHTML = '';
-    var row = [], sum = 0;
-    function flush(last) {
-      if (!row.length) return;
-      var free = W - gap * (row.length - 1);
-      var h = last ? Math.min(target, free / sum) : free / sum;   // the last row keeps its natural height
-      var div = document.createElement('div');
-      div.className = 'pl-row';
-      row.forEach(function (i) {
-        var p = PHOTOS[i], f = figs[i];
-        var w = Math.floor(h * p[2] / p[3]);
-        f.style.width = w + 'px';
-        f.style.height = Math.round(h) + 'px';
-        f.querySelector('img').sizes = w + 'px';
-        div.appendChild(f);
-      });
-      gallery.appendChild(div);
-      row = []; sum = 0;
-    }
-    PHOTOS.forEach(function (p, i) {
-      row.push(i); sum += p[2] / p[3];
-      if (sum * target + gap * (row.length - 1) >= W) flush(false);
+    var carry = [];                                 // on phones the tall photo from a feature joins the next chunk
+    BLOCKS.forEach(function (b) {
+      if (b.type === 'feature') {
+        gallery.appendChild(feature(b, W, gap, narrow));
+        if (narrow) carry.push(b.tall);
+      } else {
+        var items = b.items.concat(carry); carry = [];
+        var k = narrow ? 2 : (items.length <= 4 ? 4 : 3);
+        gallery.appendChild(chunk(items, k, W, gap));
+      }
     });
-    flush(true);
+    if (carry.length) gallery.appendChild(chunk(carry, Math.min(2, carry.length), W, gap));
   }
 
   /* ---- Rise in on scroll ---- */
@@ -101,8 +169,8 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) {
-          var row = e.target.parentNode, k = Array.prototype.indexOf.call(row.children, e.target);
-          e.target.style.transitionDelay = (k * 0.06) + 's';
+          var k = figs.indexOf(e.target) % 3;
+          e.target.style.transitionDelay = (k * 0.07) + 's';
           e.target.classList.add('pl-in'); io.unobserve(e.target);
         }
       });

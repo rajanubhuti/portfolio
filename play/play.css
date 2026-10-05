@@ -1,11 +1,12 @@
-/* Play page: a justified photo gallery. Every photo in a row shares one height and keeps
-   its own shape, so wide and tall shots both get room. Layout is calculated in play.js. */
+/* Play page: a dynamic photo gallery. Photos sit in columns whose widths are worked out
+   so every column ends on the same line, with wide shots in feature rows. Layout is in play.js. */
 
 .pl-head { margin-top: 32px; }
 .pl-intro { margin: 16px 0 0; font-size: 18px; font-weight: 500; color: #4B505C; }
 
 .pl-gallery { margin: 40px 0 24px; }
-.pl-row { display: flex; gap: var(--gap, 12px); margin-bottom: var(--gap, 12px); }
+.pl-row, .pl-chunk { display: flex; align-items: flex-start; gap: var(--gap, 12px); margin-bottom: var(--gap, 12px); }
+.pl-col { flex: none; display: flex; flex-direction: column; gap: var(--gap, 12px); }
 
 .pl-photo {
   position: relative;
