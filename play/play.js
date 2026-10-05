@@ -31,10 +31,10 @@
   var boxText = box.querySelector('.pl-box-text');
   var openIndex = -1;
 
-  // pixel widths of the two saved sizes (small: 640px on the long side, large: 1800px)
+  // pixel widths of the saved sizes (long side: small 640px, medium 1200px, large 1800px)
   function widths(p) {
-    var land = p[2] >= p[3];
-    return land ? [640, 1800] : [Math.round(640 * p[2] / p[3]), Math.round(1800 * p[2] / p[3])];
+    var k = p[2] >= p[3] ? 1 : p[2] / p[3];
+    return [Math.round(640 * k), Math.round(1200 * k), Math.round(1800 * k)];
   }
 
   /* ---- Build the photos once ---- */
@@ -44,13 +44,11 @@
     fig.tabIndex = 0;
     fig.setAttribute('role', 'button');
     fig.setAttribute('aria-label', 'Open photo: ' + p[1]);
-    var w = widths(p);
+    // no src yet: load() gives it one when the photo comes near the screen
     var img = document.createElement('img');
-    img.src = 'img/' + p[0] + '-s.webp';
-    img.srcset = 'img/' + p[0] + '-s.webp ' + w[0] + 'w, img/' + p[0] + '-l.webp ' + w[1] + 'w';
     img.alt = p[1];
-    img.loading = i < 6 ? 'eager' : 'lazy';
     img.decoding = 'async';
+    if (i < 3) img.fetchPriority = 'high';
     var cap = document.createElement('figcaption');
     cap.textContent = p[1];
     fig.appendChild(img); fig.appendChild(cap);
@@ -97,7 +95,28 @@
   function place(fig, i, w, h) {
     fig.style.width = w.toFixed(2) + 'px';
     fig.style.height = h.toFixed(2) + 'px';
-    fig.querySelector('img').sizes = Math.ceil(w) + 'px';
+    var dpr = window.devicePixelRatio || 1;
+    fig.querySelector('img').sizes = Math.ceil(w * Math.min(1, 1.5 / dpr)) + 'px';
+  }
+
+  // photos get their files only when they come near the screen (the browser's own lazy
+  // loading reaches too far ahead on a page this short, so we do it here)
+  function give(i) {
+    var img = figs[i].querySelector('img');
+    if (img.getAttribute('src')) return;
+    var p = PHOTOS[i], ws = widths(p), base = 'img/' + p[0];
+    img.srcset = base + '-s.webp ' + ws[0] + 'w, ' + base + '-m.webp ' + ws[1] + 'w, ' + base + '-l.webp ' + ws[2] + 'w';
+    img.src = base + '-s.webp';
+  }
+  var near = 'IntersectionObserver' in window ? new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { give(figs.indexOf(e.target)); near.unobserve(e.target); }
+    });
+  }, { rootMargin: '600px 0px' }) : null;
+  function load() {
+    figs.forEach(function (fig, i) {
+      if (!near || i < 6) give(i); else near.observe(fig);
+    });
   }
 
   function chunk(items, k, W, gap) {
@@ -158,6 +177,7 @@
       }
     });
     if (carry.length) gallery.appendChild(chunk(carry, Math.min(2, carry.length), W, gap));
+    load();
   }
 
   /* ---- Rise in on scroll ---- */
