@@ -38,7 +38,7 @@
 
 /* note, her and arrow above the photo */
 .ab-callout { position: absolute; top: 0; left: 2%; z-index: 2; }
-.ab-note { margin: 0; max-width: 12ch; font-size: 18px; font-weight: 700; line-height: 1.2; color: #18191F; transform: rotate(-4deg); }
+.ab-note { margin: 0; max-width: 12ch; font-size: 18px; font-weight: 700; line-height: 1.2; color: #18191F; transform: rotate(-8deg); transform-origin: center; margin-top: 10px; }
 .ab-her {
   margin: 4px 0 0 18px;
   font-size: clamp(40px, 4.4vw, 60px); font-weight: 800; line-height: 1; letter-spacing: -.02em;
@@ -148,7 +148,6 @@
 /* ---------- Sign off ---------- */
 .ab-bye { max-width: 900px; margin: 0 auto 40px; text-align: center; }
 .ab-bye-hi { margin: 0; font-size: clamp(44px, 6vw, 80px); font-weight: 800; line-height: 1.2; color: #05173B; text-shadow: .04em .04em 0 #FF6D30; }
-.ab-bye-en { margin: 8px 0 0; font-size: 17px; font-weight: 600; color: #6C727F; }
 
 /* ---------- Entrance ---------- */
 .motion .ab-pol    { animation: ab-pol .8s cubic-bezier(.22,1,.36,1) .15s both; }
