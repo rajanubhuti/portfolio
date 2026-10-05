@@ -1,38 +1,32 @@
-/* About page hero, in the homepage's own language: navy type with an orange offset shadow
-   (like the अनु logo and the name on the homepage), black outlines with a chunky bottom shadow,
-   and line doodles like the ones in the footer. */
+/* About page intro. Left: plain lead line, "HI, I'M ANUBHUTI" in orange and a few lines about me.
+   Right: the Polaroid with a small "Who am I trying to impress?" note and a doodled arrow. */
 
-.ab-hero {
-  position: relative;
+.ab-intro {
   max-width: 1100px;
-  margin: 40px auto 0;
+  margin: 48px auto 40px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-  grid-template-areas: "q stage" "pill stage";
-  align-items: center;
-  column-gap: 40px;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  grid-template-areas:
+    "lead  stage"
+    "hi    stage"
+    "text  stage";
+  grid-template-rows: auto auto 1fr;
+  column-gap: 64px;
+  align-items: start;
 }
 
-/* ---- The question ---- */
-.ab-q {
-  grid-area: q;
-  margin: 0;
-  font-size: clamp(50px, 7vw, 100px);
-  font-weight: 800;
-  line-height: .92;
-  letter-spacing: -.03em;
-  color: #05173B;
-  text-shadow: .045em .045em 0 #FF6D30;
-}
-.ab-line { display: block; }
+.ab-lead { grid-area: lead; margin: 0 0 14px; font-size: 20px; font-weight: 600; color: #4B505C; }
+.ab-hi { grid-area: hi; white-space: normal; margin: 0; }
+.ab-text { grid-area: text; margin-top: 28px; max-width: 58ch; }
+.ab-text p { margin: 0 0 18px; font-size: 19px; line-height: 1.65; font-weight: 500; color: #3A3D45; }
 
 /* ---- Polaroid ---- */
-.ab-stage { grid-area: stage; position: relative; padding: 110px 0 30px; }
-.ab-polwrap { position: relative; width: min(440px, 84%); }
+.ab-stage { grid-area: stage; position: relative; padding: 92px 0 20px; }
 .ab-pol {
   position: relative;
-  margin: 0;
-  padding: 14px 14px 60px;
+  width: min(440px, 100%);
+  margin: 0 0 0 auto;
+  padding: 14px 14px 58px;
   background: #FFFDF8;
   border: 1px solid #18191F;
   border-radius: 6px;
@@ -45,67 +39,48 @@
 .ab-photo { aspect-ratio: 808 / 618; overflow: hidden; border-radius: 2px; border: 1px solid rgba(24,25,31,.15); }
 .ab-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
-/* ---- HER and the arrow ---- */
-.ab-her {
-  position: absolute; right: -14%; top: -96px;
-  display: flex; flex-direction: column; align-items: flex-start;
-  pointer-events: none;
+/* ---- Small note and arrow ---- */
+.ab-callout { position: absolute; top: 0; left: 0; display: flex; align-items: flex-start; gap: 4px; }
+.ab-note {
+  margin: 0; max-width: 11ch;
+  font-size: 20px; font-weight: 700; line-height: 1.2; color: #18191F;
+  transform: rotate(-4deg);
 }
-.ab-her span {
-  font-size: clamp(44px, 5.4vw, 76px); font-weight: 800; line-height: .9; letter-spacing: -.02em;
-  color: #05173B; text-shadow: .05em .05em 0 #FF6D30;
-}
-.ab-arrow { width: clamp(70px, 7vw, 96px); margin: 2px 0 0 -36px; }
+.ab-arrow { flex: none; width: 78px; margin-top: 4px; }
 
-/* ---- Re-introduce pill (same look as the "Currently at Tata Motors" pill) ---- */
-.ab-pill {
-  grid-area: pill;
-  justify-self: start;
-  margin: 36px 0 0;
-  padding: 14px 28px;
-  font-size: clamp(17px, 1.5vw, 20px);
-  font-weight: 700;
-  color: #18191F;
-  background: #DDF8FF;
-  border: 1px solid #E5E7EB;
-  border-radius: 999px;
-}
-
-/* ---- Hello ---- */
-.ab-hello { max-width: 1100px; margin: 120px auto 40px; }
-.ab-hi { white-space: normal; }
-.ab-body { max-width: 60ch; margin: 20px 0 0; font-size: 19px; line-height: 1.6; font-weight: 500; color: #4B505C; }
-
-/* ---- Entrance: same gentle rise as the homepage hero ---- */
-.motion .ab-line { animation: ab-up .7s cubic-bezier(.22,1,.36,1) both; }
-.motion .ab-line:nth-child(1) { animation-delay: .1s; }
-.motion .ab-line:nth-child(2) { animation-delay: .2s; }
-.motion .ab-line:nth-child(3) { animation-delay: .3s; }
-.motion .ab-polwrap { animation: ab-up .8s cubic-bezier(.22,1,.36,1) .35s both; }
-.motion .ab-her { animation: ab-fade .5s ease .9s both; }
+/* ---- Entrance ---- */
+.motion .ab-lead { animation: ab-up .6s cubic-bezier(.22,1,.36,1) .05s both; }
+.motion .ab-hi   { animation: ab-up .7s cubic-bezier(.22,1,.36,1) .15s both; }
+.motion .ab-text { animation: ab-up .7s cubic-bezier(.22,1,.36,1) .3s both; }
+.motion .ab-pol  { animation: ab-up .8s cubic-bezier(.22,1,.36,1) .25s both; }
+.motion .ab-note { animation: ab-fade .5s ease .8s both; }
 .motion .ab-arrow-line { stroke-dasharray: 160; stroke-dashoffset: 160; animation: ab-draw .6s ease-out 1s forwards; }
 .motion .ab-arrow-head { stroke-dasharray: 60; stroke-dashoffset: 60; animation: ab-draw .25s ease-out 1.55s forwards; }
-.motion .ab-pill { animation: ab-up .6s cubic-bezier(.22,1,.36,1) .55s both; }
 @keyframes ab-up   { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
 @keyframes ab-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes ab-draw { to { stroke-dashoffset: 0; } }
+/* keep the Polaroid's tilt after it rises in */
+.motion .ab-pol { --tilt: -3deg; }
+@keyframes ab-up-pol { from { opacity: 0; transform: translateY(22px) rotate(-3deg); } to { opacity: 1; transform: rotate(-3deg); } }
+.motion .ab-pol { animation-name: ab-up-pol; }
 
 .motion [data-rv] { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .9s cubic-bezier(.22,1,.36,1); }
 .motion [data-rv].rv-in { opacity: 1; transform: none; }
 
 /* ---- Phones and small tablets ---- */
 @media (max-width: 860px) {
-  .ab-hero { grid-template-columns: 1fr; grid-template-areas: "q" "stage" "pill"; margin-top: 24px; }
-  .ab-stage { padding: 104px 0 24px; }
-  .ab-polwrap { width: min(440px, 82%); }
-  .ab-her { right: -6%; top: -86px; }
-  .ab-pill { margin-top: 20px; }
-  .ab-hello { margin-top: 80px; }
-}
-@media (max-width: 420px) {
-  .ab-pol { padding: 10px 10px 44px; }
-  .ab-clip { width: 50px; margin-left: -25px; top: -32px; }
-  .ab-her { right: -4%; top: -70px; }
-  .ab-arrow { width: 62px; margin-left: -28px; }
+  .ab-intro {
+    grid-template-columns: 1fr;
+    grid-template-areas: "lead" "hi" "stage" "text";
+    grid-template-rows: auto;
+    margin-top: 24px;
+  }
+  .ab-stage { padding: 96px 0 8px; }
+  .ab-pol { width: min(440px, 86%); margin: 0 auto; }
+  .ab-callout { left: 2%; }
+  .ab-note { font-size: 18px; }
+  .ab-arrow { width: 66px; }
+  .ab-text { margin-top: 36px; }
+  .ab-text p { font-size: 17px; }
 }
 @media (prefers-reduced-motion: reduce) { .ab-pol { transition: none; } }
