@@ -17,7 +17,7 @@
 
     '  <div class="footer-top-row z-20">\n' +
     '    <div>\n' +
-    '      <p class="text-lg font-medium mb-2">Thanks for visiting!</p>\n' +
+    '      <p class="footer-thanks text-lg font-medium mb-2">Thanks for visiting!</p>\n' +
     '      <h3 class="tinker-heading font-bold">\n' +
     '        Let\'s tinker together.\n' +
     '        <a class="footer-email-link" href="mailto:anubhutiraj.ux@gmail.com">anubhutiraj.ux@gmail.com</a>\n' +
