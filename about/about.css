@@ -1,150 +1,111 @@
-/* About page: "Who am I trying to impress? HER", an old clipped Polaroid of me as a kid,
-   then "Allow me to re-introduce myself." */
+/* About page hero, in the homepage's own language: navy type with an orange offset shadow
+   (like the अनु logo and the name on the homepage), black outlines with a chunky bottom shadow,
+   and line doodles like the ones in the footer. */
 
 .ab-hero {
   position: relative;
   max-width: 1100px;
   margin: 40px auto 0;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
   grid-template-areas: "q stage" "pill stage";
   align-items: center;
-  column-gap: 48px;
+  column-gap: 40px;
 }
 
 /* ---- The question ---- */
 .ab-q {
   grid-area: q;
   margin: 0;
-  font-size: clamp(52px, 7.4vw, 104px);
+  font-size: clamp(50px, 7vw, 100px);
   font-weight: 800;
-  line-height: .9;
-  letter-spacing: -.035em;
-  color: #18191F;
+  line-height: .92;
+  letter-spacing: -.03em;
+  color: #05173B;
+  text-shadow: .045em .045em 0 #FF6D30;
 }
 .ab-line { display: block; }
-.ab-q em {
-  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: 1.12em;
-  letter-spacing: -.01em;
-  color: #FF5A00;
-}
 
 /* ---- Polaroid ---- */
-.ab-stage { grid-area: stage; position: relative; display: flex; justify-content: flex-start; padding: 56px 0 24px; }
+.ab-stage { grid-area: stage; position: relative; padding: 110px 0 30px; }
+.ab-polwrap { position: relative; width: min(440px, 84%); }
 .ab-pol {
   position: relative;
-  width: min(330px, 70vw);
   margin: 0;
-  padding: 16px 16px 0;
-  background:
-    radial-gradient(120% 90% at 50% 40%, rgba(255,255,255,0) 60%, rgba(160,130,80,.12) 100%),
-    linear-gradient(170deg, #F6F1E4, #EDE5D2);
-  border-radius: 3px;
-  box-shadow: 0 2px 3px rgba(60,40,10,.10), 0 22px 44px rgba(60,40,10,.18);
-  transform: rotate(-4deg);
-  transform-origin: 62% -20px;                /* hangs from the clip */
-  transition: transform .9s cubic-bezier(.34,1.4,.64,1);
+  padding: 14px 14px 60px;
+  background: #FFFDF8;
+  border: 1px solid #18191F;
+  border-radius: 6px;
+  box-shadow: 0 6px 0 #240C05;
+  transform: rotate(-3deg);
+  transition: transform .5s cubic-bezier(.34,1.56,.64,1);
 }
-.ab-pol:hover { transform: rotate(1.5deg); }
-.ab-clip { position: absolute; top: -50px; left: 58%; width: 74px; z-index: 2; filter: drop-shadow(0 3px 3px rgba(0,0,0,.25)); }
-.ab-photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #CFC7B5; }
-.ab-photo img {
-  display: block; width: 100%; height: 100%; object-fit: cover;
-  filter: grayscale(1) sepia(.38) contrast(.92) brightness(1.04);
-}
-/* film grain and a soft vignette so it reads as an old print */
-.ab-photo::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background:
-    radial-gradient(110% 90% at 50% 45%, transparent 55%, rgba(40,25,5,.32) 100%),
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
-  mix-blend-mode: multiply;
-  opacity: .55;
-}
-.ab-pol-cap {
-  padding: 14px 4px 22px;
-  font-family: "Instrument Serif", Georgia, serif; font-style: italic;
-  font-size: 24px; color: #2C3E8F;
-}
+.ab-pol:hover { transform: rotate(0deg) scale(1.02); }
+.ab-clip { position: absolute; top: -40px; left: 50%; width: 64px; margin-left: -32px; z-index: 2; }
+.ab-photo { aspect-ratio: 808 / 618; overflow: hidden; border-radius: 2px; border: 1px solid rgba(24,25,31,.15); }
+.ab-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 /* ---- HER and the arrow ---- */
 .ab-her {
-  position: absolute; left: calc(min(330px, 70vw) + 18px); top: 34%;
-  display: flex; flex-direction: column; align-items: flex-end;
-  color: #FF5A00;
+  position: absolute; right: -14%; top: -96px;
+  display: flex; flex-direction: column; align-items: flex-start;
   pointer-events: none;
 }
-.ab-her span { font-size: clamp(48px, 6vw, 84px); font-weight: 800; line-height: .9; letter-spacing: -.03em; }
-.ab-arrow { width: clamp(110px, 11vw, 150px); margin: 6px 55% 0 0; }
+.ab-her span {
+  font-size: clamp(44px, 5.4vw, 76px); font-weight: 800; line-height: .9; letter-spacing: -.02em;
+  color: #05173B; text-shadow: .05em .05em 0 #FF6D30;
+}
+.ab-arrow { width: clamp(70px, 7vw, 96px); margin: 2px 0 0 -36px; }
 
-/* ---- Re-introduce pill ---- */
+/* ---- Re-introduce pill (same look as the "Currently at Tata Motors" pill) ---- */
 .ab-pill {
   grid-area: pill;
   justify-self: start;
-  margin: 32px 0 0;
-  padding: 14px 26px;
-  font-family: "Instrument Serif", Georgia, serif;
-  font-size: clamp(22px, 2.2vw, 28px);
-  line-height: 1.2;
-  color: #fff;
-  background: #1E5BD8;
-  border-radius: 14px;
-  box-shadow: 0 4px 0 #0F2F78;
+  margin: 36px 0 0;
+  padding: 14px 28px;
+  font-size: clamp(17px, 1.5vw, 20px);
+  font-weight: 700;
+  color: #18191F;
+  background: #DDF8FF;
+  border: 1px solid #E5E7EB;
+  border-radius: 999px;
 }
 
 /* ---- Hello ---- */
 .ab-hello { max-width: 1100px; margin: 120px auto 40px; }
-.ab-hi { margin: 0; font-size: clamp(40px, 5vw, 64px); font-weight: 800; letter-spacing: -.02em; line-height: 1; }
+.ab-hi { white-space: normal; }
 .ab-body { max-width: 60ch; margin: 20px 0 0; font-size: 19px; line-height: 1.6; font-weight: 500; color: #4B505C; }
 
-/* ---- Entrance ---- */
-.motion .ab-line { animation: ab-up .8s cubic-bezier(.22,1,.36,1) both; }
+/* ---- Entrance: same gentle rise as the homepage hero ---- */
+.motion .ab-line { animation: ab-up .7s cubic-bezier(.22,1,.36,1) both; }
 .motion .ab-line:nth-child(1) { animation-delay: .1s; }
-.motion .ab-line:nth-child(2) { animation-delay: .22s; }
-.motion .ab-line:nth-child(3) { animation-delay: .38s; }
-.motion .ab-pol { animation: ab-drop 1.6s cubic-bezier(.22,1,.36,1) .3s both; }
-.motion .ab-her span { animation: ab-pop .6s cubic-bezier(.34,1.56,.64,1) 1.3s both; }
-.motion .ab-arrow-line { stroke-dasharray: 340; stroke-dashoffset: 340; animation: ab-draw .9s ease-out 1.55s forwards; }
-.motion .ab-arrow-head { stroke-dasharray: 80; stroke-dashoffset: 80; animation: ab-draw .3s ease-out 2.4s forwards; }
-.motion .ab-pill { animation: ab-up .7s cubic-bezier(.22,1,.36,1) 2.2s both; }
-
-@keyframes ab-up   { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
-@keyframes ab-pop  { from { opacity: 0; transform: scale(.6) rotate(-8deg); } to { opacity: 1; transform: none; } }
+.motion .ab-line:nth-child(2) { animation-delay: .2s; }
+.motion .ab-line:nth-child(3) { animation-delay: .3s; }
+.motion .ab-polwrap { animation: ab-up .8s cubic-bezier(.22,1,.36,1) .35s both; }
+.motion .ab-her { animation: ab-fade .5s ease .9s both; }
+.motion .ab-arrow-line { stroke-dasharray: 160; stroke-dashoffset: 160; animation: ab-draw .6s ease-out 1s forwards; }
+.motion .ab-arrow-head { stroke-dasharray: 60; stroke-dashoffset: 60; animation: ab-draw .25s ease-out 1.55s forwards; }
+.motion .ab-pill { animation: ab-up .6s cubic-bezier(.22,1,.36,1) .55s both; }
+@keyframes ab-up   { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes ab-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes ab-draw { to { stroke-dashoffset: 0; } }
-/* drops in from above, then swings on its clip and settles */
-@keyframes ab-drop {
-  0%   { opacity: 0; transform: translateY(-120px) rotate(10deg); }
-  30%  { opacity: 1; transform: translateY(0) rotate(-12deg); }
-  50%  { transform: rotate(5deg); }
-  68%  { transform: rotate(-7deg); }
-  84%  { transform: rotate(-2.5deg); }
-  100% { transform: rotate(-4deg); }
-}
 
-/* scroll reveal for the hello section */
 .motion [data-rv] { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .9s cubic-bezier(.22,1,.36,1); }
 .motion [data-rv].rv-in { opacity: 1; transform: none; }
 
-/* ---- Phones and small tablets: stack it like the poster ---- */
+/* ---- Phones and small tablets ---- */
 @media (max-width: 860px) {
   .ab-hero { grid-template-columns: 1fr; grid-template-areas: "q" "stage" "pill"; margin-top: 24px; }
-  .ab-stage { justify-content: flex-start; padding: 64px 0 8px 2%; }
-  .ab-her { left: auto; right: 0; top: 52%; }
-  .ab-arrow { margin-right: 30%; }
-  .ab-pill { justify-self: center; text-align: center; margin-top: 28px; }
+  .ab-stage { padding: 104px 0 24px; }
+  .ab-polwrap { width: min(440px, 82%); }
+  .ab-her { right: -6%; top: -86px; }
+  .ab-pill { margin-top: 20px; }
   .ab-hello { margin-top: 80px; }
 }
 @media (max-width: 420px) {
-  .ab-pol { width: 62vw; padding: 11px 11px 0; }
-  .ab-clip { width: 56px; top: -38px; }
-  .ab-pol-cap { font-size: 19px; padding: 10px 2px 16px; }
-  .ab-her { top: 48%; }
-  .ab-arrow { width: 92px; margin-right: 26%; }
+  .ab-pol { padding: 10px 10px 44px; }
+  .ab-clip { width: 50px; margin-left: -25px; top: -32px; }
+  .ab-her { right: -4%; top: -70px; }
+  .ab-arrow { width: 62px; margin-left: -28px; }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .ab-pol { transition: none; }
-}
+@media (prefers-reduced-motion: reduce) { .ab-pol { transition: none; } }

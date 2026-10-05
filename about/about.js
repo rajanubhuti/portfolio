@@ -10,12 +10,3 @@
   }, { threshold: 0.15 });
   els.forEach(function (el) { io.observe(el); });
 })();
-
-/* Once the Polaroid has dropped in and settled, hand control back to the hover swing. */
-(function () {
-  var pol = document.querySelector('.ab-pol');
-  if (!pol) return;
-  pol.addEventListener('animationend', function (e) {
-    if (e.animationName === 'ab-drop') pol.style.animation = 'none';
-  });
-})();
