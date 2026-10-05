@@ -41,16 +41,3 @@
   });
 })();
 
-/* Polaroid: wiggles when you reach for it and shows my nickname. Tap toggles it on phones. */
-(function () {
-  var pol = document.querySelector('.ab-pol');
-  if (!pol) return;
-  pol.addEventListener('animationend', function (e) {
-    if (e.animationName === 'ab-pol') pol.classList.add('ab-done');
-    if (e.animationName === 'ab-wiggle') pol.classList.remove('ab-wig');
-  });
-  function wiggle() { pol.classList.remove('ab-wig'); void pol.offsetWidth; pol.classList.add('ab-wig'); }
-  pol.addEventListener('mouseenter', wiggle);
-  pol.addEventListener('click', function () { if (!pol.classList.contains('ab-open')) wiggle(); pol.classList.toggle('ab-open'); });
-  pol.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pol.click(); } });
-})();
