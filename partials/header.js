@@ -31,7 +31,7 @@
     '  <div class="site-nav-links flex items-center space-x-8 z-20 whitespace-nowrap">\n' +
     '    <a class="font-bold text-darkgray text-lg px-4 py-2" href="' + ROOT + 'index.html">Home</a>\n' +
     '    <a class="font-bold text-darkgray text-lg px-4 py-2" href="' + ROOT + 'play/">Gallery</a>\n' +
-    '    <a class="font-bold text-darkgray text-lg px-4 py-2" href="/about/">About</a>\n' +
+    '    <a class="font-bold text-darkgray text-lg px-4 py-2" href="' + ROOT + 'about/">About</a>\n' +
     '    <a class="font-bold text-darkgray text-lg px-4 py-2" href="' + ROOT + 'assets/docs/anubhuti-raj-resume.pdf" target="_blank" rel="noopener">Resume</a>\n' +
     '  </div>\n' +
 
