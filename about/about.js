@@ -33,3 +33,10 @@
     });
   });
 })();
+
+/* Skills: number the chips in each row so they can pop in one after another. */
+(function () {
+  document.querySelectorAll('.ab-chips').forEach(function (ul) {
+    Array.prototype.forEach.call(ul.children, function (li, i) { li.style.setProperty('--i', i); });
+  });
+})();

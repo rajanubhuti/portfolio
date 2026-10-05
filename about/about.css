@@ -1,6 +1,6 @@
 /* About page, as a scrolling journey: intro (taped Polaroid with "Who am I trying to impress? her",
    then hello and two short paragraphs), where I've been, how I work (tabs), UX + storytelling,
-   toolbox and a closing quote. Uses the homepage's colours, type and outlines. */
+   skills and tools, and a closing quote. Uses the homepage's colours, type and outlines. */
 
 .ab {
   max-width: 1120px;
@@ -47,14 +47,6 @@
 }
 .ab-arrow { display: block; width: 92px; margin: 0 0 0 30px; }
 
-/* handles under the photo */
-.ab-links { position: relative; z-index: 1; list-style: none; margin: 40px 0 0 8%; padding: 0; display: grid; gap: 12px; }
-.ab-links a { display: inline-flex; align-items: center; gap: 12px; color: #18191F; text-decoration: none; font-size: 16px; font-weight: 600; }
-.ab-links a:hover span { text-decoration: underline; text-decoration-color: #FF8F71; text-decoration-thickness: 2px; text-underline-offset: 4px; }
-.ab-links svg, .ab-be {
-  flex: none; width: 40px; height: 40px; padding: 9px; box-sizing: border-box;
-  border: 1px solid #18191F; border-radius: 999px; background: #fff; box-shadow: 0 3px 0 #240C05;
-}
 .ab-be { display: grid; place-items: center; padding: 0; font-size: 15px; font-weight: 800; }
 
 /* ---------- Info ---------- */
@@ -64,13 +56,6 @@
 .ab-text p { margin: 0 0 18px; font-size: 18px; line-height: 1.7; font-weight: 500; color: #3A3D45; }
 .ab-info { padding-top: 40px; }
 
-.ab-h { margin: 32px 0 10px; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #E87B35; }
-
-.ab-dots { margin: 0; padding-left: 18px; list-style: disc; font-size: 16px; line-height: 1.8; font-weight: 500; color: #3A3D45; }
-.ab-dots li::marker { color: #FF8F71; }
-
-.ab-tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.ab-tags li { padding: 7px 14px; border-radius: 999px; background: #EDEDED; font-size: 14px; font-weight: 600; color: #18191F; }
 
 
 /* ---------- Journey sections ---------- */
@@ -110,7 +95,6 @@
 .ab-panels { margin-top: 32px; max-width: 760px; min-height: 230px; }
 .ab-panel h3 { margin: 0 0 14px; font-size: clamp(26px, 3vw, 36px); font-weight: 800; line-height: 1.15; letter-spacing: -.01em; color: #18191F; }
 .ab-panel p { margin: 0 0 14px; font-size: 18px; line-height: 1.65; font-weight: 500; color: #3A3D45; }
-.ab-panel .ab-seen { font-size: 15px; color: #6C727F; }
 .ab-panel:not([hidden]) { animation: ab-up .45s cubic-bezier(.22,1,.36,1); }
 
 /* UX + storytelling */
@@ -118,9 +102,39 @@
 .ab-big { margin: 0; font-size: clamp(32px, 4vw, 52px); font-weight: 800; line-height: 1.05; letter-spacing: -.02em; color: #05173B; text-wrap: balance; }
 .ab-story-text p { margin: 0 0 18px; font-size: 18px; line-height: 1.7; font-weight: 500; color: #3A3D45; }
 
-/* toolbox */
-.ab-box { display: grid; grid-template-columns: 1fr 1.3fr 1fr; gap: 40px; }
-.ab-box .ab-h { margin-top: 0; }
+
+/* skills and tools: one row per group, chips you can poke */
+.ab-rows { border-top: 1px solid #E5E7EB; }
+.ab-row {
+  display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: start;
+  padding: 26px 0; border-bottom: 1px solid #E5E7EB;
+}
+.ab-row-label {
+  margin: 8px 0 0; font-size: 14px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #E87B35;
+  transition: color .25s ease, transform .35s cubic-bezier(.34,1.56,.64,1);
+}
+.ab-row:hover .ab-row-label { color: #FF5A00; transform: translateX(6px); }
+.ab-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.ab-chips li {
+  padding: 9px 16px;
+  font-size: 16px; font-weight: 600; line-height: 1.2; color: #18191F;
+  background: #fff; border: 1px solid #DADCE0; border-radius: 999px;
+  cursor: default;
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease, transform .35s cubic-bezier(.34,1.56,.64,1);
+}
+.ab-chips li:hover {
+  background: #FF8F71; border-color: #18191F; box-shadow: 0 3px 0 #240C05;
+  transform: translateY(-3px) rotate(var(--tilt, -2deg));
+}
+.ab-chips li:nth-child(even) { --tilt: 2deg; }
+/* chips pop in one after another when their row scrolls into view */
+.motion .ab-row .ab-chips li { opacity: 0; transform: translateY(10px) scale(.92); }
+.motion .ab-row.rv-in .ab-chips li {
+  opacity: 1; transform: none;
+  transition: opacity .35s ease calc(var(--i, 0) * 40ms), transform .5s cubic-bezier(.34,1.56,.64,1) calc(var(--i, 0) * 40ms),
+              background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.motion .ab-row.rv-in .ab-chips li:hover { transform: translateY(-3px) rotate(var(--tilt, -2deg)); transition-delay: 0s; }
 
 /* ---------- Quote ---------- */
 .ab-quote { max-width: 900px; margin: 170px auto 60px; text-align: center; }
@@ -144,18 +158,18 @@
 
 .motion [data-rv] { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .9s cubic-bezier(.22,1,.36,1); }
 .motion [data-rv].rv-in { opacity: 1; transform: none; }
+.motion .ab-row[data-rv] { opacity: 1; transform: none; }
 
 /* ---------- Phones and small tablets ---------- */
 @media (max-width: 900px) {
   .ab { grid-template-columns: 1fr; row-gap: 48px; margin-top: 24px; }
   .ab-collage { padding: 120px 0 0 4%; max-width: 520px; }
-  .ab-links { margin-left: 4%; }
   .ab-info { padding-top: 0; }
   .ab-sec { margin-top: 110px; }
   .ab-sec-title { margin-bottom: 32px; }
   .ab-story-grid { grid-template-columns: 1fr; gap: 20px; }
-  .ab-box { grid-template-columns: 1fr 1fr; }
-  .ab-box > div:nth-child(2) { grid-column: 1 / -1; order: 3; }
+  .ab-row { grid-template-columns: 1fr; gap: 12px; padding: 22px 0; }
+  .ab-row-label { margin-top: 0; }
 }
 @media (max-width: 480px) {
   .ab-collage { padding-top: 112px; }
@@ -167,6 +181,7 @@
   .ab-tabs button { flex: none; padding: 12px 16px; font-size: 15px; }
   .ab-time h3 { font-size: 19px; }
   .ab-time p, .ab-text p, .ab-story-text p, .ab-panel p { font-size: 16px; }
+  .ab-chips li { font-size: 14px; padding: 8px 13px; }
   .ab-quote { margin-top: 80px; }
 }
 @media (prefers-reduced-motion: reduce) { .ab-pol { transition: none; } }
