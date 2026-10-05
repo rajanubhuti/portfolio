@@ -128,3 +128,17 @@
 @media (max-width: 767px) and (prefers-reduced-motion: reduce) {
   .mm-overlay, .mm-open .mm-overlay, .mm-links a, .mm-social, .mm-hello, .mm-burger span { transition: none !important; }
 }
+
+/* Nav: links sit at the true centre of the screen, logo and buttons pinned to the edges */
+@media (min-width: 1100px) {
+  nav:has(> .site-nav-links) { display: grid !important; grid-template-columns: minmax(max-content, 1fr) auto minmax(max-content, 1fr); column-gap: 24px; }
+  nav:has(> .site-nav-links) > :first-child { justify-self: start; }
+  nav:has(> .site-nav-links) > .site-nav-links { justify-self: center; }
+  nav:has(> .site-nav-links) > .site-nav-links ~ div { justify-self: end; }
+}
+/* never squash the logo; the links tighten up instead on narrow laptops */
+nav > a:first-child:has(+ .site-nav-links) { flex-shrink: 0; }
+@media (min-width: 768px) and (max-width: 1000px) {
+  .site-nav-links > * + * { margin-left: 4px !important; }
+  .site-nav-links > a { padding-left: 12px !important; padding-right: 12px !important; }
+}
