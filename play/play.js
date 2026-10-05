@@ -212,6 +212,15 @@
     if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
   });
 
+  /* ---- Camera emoji: flash on hover or tap ---- */
+  var cam = document.querySelector('.pl-cam');
+  if (cam) {
+    var snap = function () { cam.classList.remove('pl-snap'); void cam.offsetWidth; cam.classList.add('pl-snap'); };
+    cam.addEventListener('mouseenter', snap);
+    cam.addEventListener('touchstart', snap, { passive: true });
+    cam.addEventListener('animationend', function (e) { if (e.animationName === 'pl-click') cam.classList.remove('pl-snap'); });
+  }
+
   /* ---- Start ---- */
   layout();
   watch();
