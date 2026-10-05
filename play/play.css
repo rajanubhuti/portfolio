@@ -1,0 +1,150 @@
+/* Play page: a photo board of Polaroids. Photos keep their own shape inside a white frame. */
+
+.pl-head { margin-top: 32px; }
+.pl-intro { margin: 16px 0 0; font-size: 18px; font-weight: 500; color: #4B505C; }
+
+.pl-tools {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;
+  margin: 36px 0 20px;
+}
+.pl-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.pl-tab, .pl-shuffle {
+  padding: 10px 18px; font: inherit; font-size: 15px; font-weight: 700; line-height: 1;
+  color: #18191F; background: #fff; border: 1px solid #E5E7EB; border-radius: 12px;
+  cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.pl-tab:hover, .pl-shuffle:hover { border-color: #18191F; }
+.pl-tab[aria-pressed="true"] { background: #18191F; color: #fff; border-color: #18191F; }
+.pl-actions { display: flex; align-items: center; gap: 14px; }
+.pl-hint { font-family: "Courier Prime", "Courier New", monospace; font-size: 14px; color: #6C727F; }
+
+/* ---- Board ---- */
+.pl-board {
+  position: relative;
+  min-height: 600px;
+  border: 1px solid #ECECEC;
+  border-radius: 24px;
+  background-color: #FBFBFB;
+  background-image: radial-gradient(#E3E3E3 1px, transparent 1.2px);
+  background-size: 22px 22px;
+  overflow: hidden;
+  transition: height .6s cubic-bezier(.22,1,.36,1);
+}
+
+/* ---- Polaroid ---- */
+.pl-card {
+  position: absolute; left: 0; top: 0;
+  width: var(--w, 200px);
+  padding: 10px 10px 0;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(24,25,31,.06), 0 10px 24px rgba(24,25,31,.10);
+  cursor: grab;
+  touch-action: none;
+  user-select: none; -webkit-user-select: none;
+  transform: translate(var(--x, 0px), var(--y, 0px)) rotate(var(--r, 0deg));
+  transition: transform .7s cubic-bezier(.22,1,.36,1), box-shadow .25s ease, opacity .4s ease;
+  will-change: transform;
+}
+.pl-card:hover { box-shadow: 0 2px 4px rgba(24,25,31,.08), 0 18px 36px rgba(24,25,31,.16); }
+.pl-card.pl-drag {
+  cursor: grabbing;
+  transition: box-shadow .25s ease;
+  transform: translate(var(--x, 0px), var(--y, 0px)) rotate(0deg) scale(1.05);
+  box-shadow: 0 4px 8px rgba(24,25,31,.10), 0 28px 50px rgba(24,25,31,.22);
+}
+.pl-card.pl-out { opacity: 0; pointer-events: none; }
+.pl-card img {
+  display: block; width: 100%; height: auto;
+  aspect-ratio: var(--ar);
+  background: #EFEFEF;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+.pl-card figcaption {
+  padding: 12px 4px 16px;
+  font-family: "Courier Prime", "Courier New", monospace;
+  font-size: 14px; line-height: 1.35; color: #3A3D45;
+}
+.pl-card figcaption small { display: block; margin-top: 2px; font-size: 12px; color: #8A8F99; }
+
+/* Photos land on the board one by one */
+.motion .pl-card.pl-land { animation: pl-land .7s cubic-bezier(.34,1.3,.64,1) both; animation-delay: var(--d, 0s); }
+@keyframes pl-land {
+  from { opacity: 0; transform: translate(var(--x), calc(var(--y) - 40px)) rotate(calc(var(--r) * 2.5)) scale(1.12); }
+  to   { opacity: 1; transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(1); }
+}
+
+/* ---- Phones and small tablets: two tilted columns, no dragging ---- */
+@media (max-width: 899px) {
+  .pl-hint, .pl-shuffle { display: none; }
+  .pl-board {
+    height: auto !important; min-height: 0;
+    padding: 18px 14px 8px;
+    columns: 2; column-gap: 14px;
+  }
+  .pl-card {
+    position: relative; width: auto !important;
+    display: block; margin: 0 0 18px; padding: 7px 7px 0;
+    break-inside: avoid;
+    cursor: pointer; touch-action: auto;
+    transform: rotate(var(--r, 0deg));
+  }
+  .pl-card.pl-out { display: none; }
+  .pl-card figcaption { font-size: 12px; padding: 9px 2px 12px; }
+  .pl-card figcaption small { font-size: 11px; }
+  .motion .pl-card.pl-land { animation-name: pl-land-m; }
+  @keyframes pl-land-m {
+    from { opacity: 0; transform: translateY(-24px) rotate(calc(var(--r) * 2.5)) scale(1.08); }
+    to   { opacity: 1; transform: rotate(var(--r)); }
+  }
+}
+
+/* ---- Opened photo ---- */
+.pl-box {
+  position: fixed; inset: 0; z-index: 1200;
+  display: flex; align-items: center; justify-content: center; gap: 18px;
+  padding: 24px;
+  background: rgba(20, 18, 24, .82);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.pl-box[hidden] { display: none; }
+.pl-box-card {
+  margin: 0; padding: 14px 14px 0; background: #fff; border-radius: 6px;
+  max-width: min(92vw, 1100px);
+  box-shadow: 0 30px 80px rgba(0,0,0,.35);
+  animation: pl-pop .45s cubic-bezier(.34,1.3,.64,1);
+}
+@keyframes pl-pop { from { opacity: 0; transform: scale(.92) rotate(-2deg); } to { opacity: 1; transform: none; } }
+.pl-box-img { display: block; max-width: 100%; max-height: calc(100vh - 170px); width: auto; height: auto; margin: 0 auto; }
+.pl-box-cap {
+  display: flex; justify-content: space-between; gap: 16px;
+  padding: 14px 4px 18px;
+  font-family: "Courier Prime", "Courier New", monospace; font-size: 16px; color: #3A3D45;
+}
+.pl-box-date { color: #8A8F99; white-space: nowrap; }
+.pl-box-close {
+  position: absolute; top: 16px; right: 20px;
+  width: 48px; height: 48px; border: 0; border-radius: 999px;
+  font-size: 30px; line-height: 1; color: #fff; background: rgba(255,255,255,.12); cursor: pointer;
+}
+.pl-box-nav {
+  flex: none; width: 52px; height: 52px; border: 0; border-radius: 999px;
+  font-size: 34px; line-height: 1; color: #fff; background: rgba(255,255,255,.12); cursor: pointer;
+}
+.pl-box-close:hover, .pl-box-nav:hover { background: rgba(255,255,255,.24); }
+@media (max-width: 640px) {
+  .pl-box { padding: 12px; gap: 0; }
+  .pl-box-nav { position: absolute; bottom: 18px; width: 48px; height: 48px; }
+  .pl-prev { left: calc(50% - 60px); }
+  .pl-next { right: calc(50% - 60px); }
+  .pl-box-img { max-height: calc(100vh - 230px); }
+  .pl-box-cap { font-size: 14px; }
+}
+
+.pl-tab:focus-visible, .pl-shuffle:focus-visible, .pl-card:focus-visible,
+.pl-box button:focus-visible { outline: 3px solid #FF5A00; outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pl-card, .pl-board, .pl-box-card { transition: none !important; animation: none !important; }
+}
