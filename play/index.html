@@ -9,17 +9,13 @@
   <script>if (!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) document.documentElement.classList.add("motion");</script>
 
   <link rel="preload" href="../assets/fonts/f9c47219ac0af4ab.p.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="../css/style.css?v=20261005b" />
-  <link rel="stylesheet" href="../partials/shared.css?v=20261005b" />
-  <!-- Typewriter face for the photo captions -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" />
-  <link rel="stylesheet" href="play.css?v=20261005b" />
+  <link rel="stylesheet" href="../css/style.css?v=20261005c" />
+  <link rel="stylesheet" href="../partials/shared.css?v=20261005c" />
+  <link rel="stylesheet" href="play.css?v=20261005c" />
 
   <script>window.SITE_ROOT = "../";</script>
-  <link rel="stylesheet" href="../partials/whimsy.css?v=20261005b" />
-  <link rel="stylesheet" href="../partials/mobile-menu.css?v=20261005b" />
+  <link rel="stylesheet" href="../partials/whimsy.css?v=20261005c" />
+  <link rel="stylesheet" href="../partials/mobile-menu.css?v=20261005c" />
 </head>
 
 <body>
@@ -27,33 +23,20 @@
     <main class="min-h-screen bg-[#F8F8F8] pb-10 __className_9b492f">
 
       <!-- ===================== NAV (shared partial) ===================== -->
-      <script src="../partials/header.js?v=20261005b"></script>
+      <script src="../partials/header.js?v=20261005c"></script>
 
       <div class="x-padding">
         <section class="pl-head">
           <h1 class="big-title">PLAY <span data-play="twinkle" data-play-on="view" aria-hidden="true">📸</span></h1>
-          <p class="pl-intro">Photos from my semester in France and the trips around it.</p>
+          <p class="pl-intro">I also like to click photos.</p>
         </section>
 
-        <div class="pl-tools">
-          <div class="pl-tabs" role="group" aria-label="Filter photos by country">
-            <button type="button" class="pl-tab" data-country="All" aria-pressed="true">All</button>
-            <button type="button" class="pl-tab" data-country="France" aria-pressed="false">France</button>
-            <button type="button" class="pl-tab" data-country="Spain" aria-pressed="false">Spain</button>
-            <button type="button" class="pl-tab" data-country="Belgium" aria-pressed="false">Belgium</button>
-          </div>
-          <div class="pl-actions">
-            <span class="pl-hint">Drag the photos around</span>
-            <button type="button" class="pl-shuffle">Shuffle</button>
-          </div>
-        </div>
-
-        <div class="pl-board" id="pl-board" aria-label="Photo board"></div>
+        <div class="pl-gallery" id="pl-gallery" aria-label="Photos"></div>
       </div>
 
       <!-- =================== FOOTER (shared partial) =================== -->
       <div class="x-padding">
-        <script src="../partials/footer.js?v=20261005b"></script>
+        <script src="../partials/footer.js?v=20261005c"></script>
       </div>
 
     </main>
@@ -65,13 +48,13 @@
     <button type="button" class="pl-box-nav pl-prev" aria-label="Previous photo">&#8249;</button>
     <figure class="pl-box-card">
       <img class="pl-box-img" alt="">
-      <figcaption class="pl-box-cap"><span class="pl-box-text"></span><span class="pl-box-date"></span></figcaption>
+      <figcaption class="pl-box-cap"><span class="pl-box-text"></span></figcaption>
     </figure>
     <button type="button" class="pl-box-nav pl-next" aria-label="Next photo">&#8250;</button>
   </div>
 
-  <script src="play.js?v=20261005b"></script>
-  <script src="../partials/whimsy.js?v=20261005b"></script>
-  <script src="../partials/mobile-menu.js?v=20261005b"></script>
+  <script src="play.js?v=20261005c"></script>
+  <script src="../partials/whimsy.js?v=20261005c"></script>
+  <script src="../partials/mobile-menu.js?v=20261005c"></script>
 </body>
 </html>
