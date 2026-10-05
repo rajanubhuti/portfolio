@@ -1,86 +1,134 @@
-/* About page intro. Left: plain lead line, "HI, I'M ANUBHUTI" in orange and a few lines about me.
-   Right: the Polaroid with a small "Who am I trying to impress?" note and a doodled arrow. */
+/* About page. Left: a collage (torn grid paper, taped Polaroid, "Who am I trying to impress? HER"
+   and handles). Right: short labelled facts, a few lines of story and small lists, so it scans
+   rather than reads like an essay. Uses the homepage's colours, type and outlines. */
 
-.ab-intro {
-  max-width: 1100px;
-  margin: 48px auto 40px;
+.ab {
+  max-width: 1120px;
+  margin: 48px auto 0;
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  grid-template-areas:
-    "lead  stage"
-    "hi    stage"
-    "text  stage";
-  grid-template-rows: auto auto 1fr;
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
   column-gap: 64px;
   align-items: start;
 }
 
-.ab-lead { grid-area: lead; margin: 0 0 14px; font-size: 20px; font-weight: 600; color: #4B505C; }
-.ab-hi { grid-area: hi; white-space: normal; margin: 0; }
-.ab-text { grid-area: text; margin-top: 28px; max-width: 58ch; }
-.ab-text p { margin: 0 0 18px; font-size: 19px; line-height: 1.65; font-weight: 500; color: #3A3D45; }
+/* ---------- Collage ---------- */
+.ab-collage { position: relative; padding: 130px 0 0 8%; }
+.ab-paper {
+  position: absolute; left: 0; top: 70px; width: 62%; height: 560px; z-index: 0;
+  background-color: #F4F1EA;
+  background-image:
+    linear-gradient(rgba(120,140,170,.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120,140,170,.18) 1px, transparent 1px);
+  background-size: 18px 18px;
+  box-shadow: 0 8px 22px rgba(60,40,10,.10);
+  transform: rotate(-2deg);
+  /* torn left edge */
+  clip-path: polygon(3% 0, 100% 0, 100% 100%, 2% 100%, 4% 94%, 1% 88%, 4% 81%, 2% 74%, 5% 66%, 1% 58%, 4% 50%, 2% 42%, 5% 34%, 1% 26%, 4% 18%, 2% 10%, 4% 4%);
+}
 
-/* ---- Polaroid ---- */
-.ab-stage { grid-area: stage; position: relative; padding: 92px 0 20px; }
 .ab-pol {
-  position: relative;
-  width: min(440px, 100%);
+  position: relative; z-index: 1;
+  width: min(440px, 92%);
   margin: 0 0 0 auto;
-  padding: 14px 14px 58px;
+  padding: 14px 14px 52px;
   background: #FFFDF8;
   border: 1px solid #18191F;
   border-radius: 6px;
   box-shadow: 0 6px 0 #240C05;
-  transform: rotate(-3deg);
+  transform: rotate(2.5deg);
   transition: transform .5s cubic-bezier(.34,1.56,.64,1);
 }
 .ab-pol:hover { transform: rotate(0deg) scale(1.02); }
-.ab-clip { position: absolute; top: -40px; left: 50%; width: 64px; margin-left: -32px; z-index: 2; }
 .ab-photo { aspect-ratio: 808 / 618; overflow: hidden; border-radius: 2px; border: 1px solid rgba(24,25,31,.15); }
 .ab-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ab-tape {
+  position: absolute; top: -18px; left: 50%; width: 120px; height: 34px; margin-left: -60px; z-index: 2;
+  background: rgba(236, 226, 200, .82);
+  box-shadow: 0 1px 2px rgba(0,0,0,.08);
+  transform: rotate(-4deg);
+  clip-path: polygon(2% 8%, 98% 0, 100% 92%, 0 100%);
+}
 
-/* ---- Small note and arrow ---- */
-.ab-callout { position: absolute; top: 0; left: 0; display: flex; align-items: flex-start; gap: 4px; }
-.ab-note {
-  margin: 0; max-width: 11ch;
-  font-size: 20px; font-weight: 700; line-height: 1.2; color: #18191F;
+/* note, HER and arrow on the paper */
+.ab-callout { position: absolute; top: 0; left: 2%; z-index: 2; }
+.ab-note { margin: 0; max-width: 12ch; font-size: 18px; font-weight: 700; line-height: 1.2; color: #18191F; transform: rotate(-4deg); }
+.ab-her {
+  margin: 4px 0 0 18px;
+  font-size: clamp(40px, 4.4vw, 60px); font-weight: 800; line-height: 1; letter-spacing: -.02em;
+  color: #05173B; text-shadow: .05em .05em 0 #FF6D30;
   transform: rotate(-4deg);
 }
-.ab-arrow { flex: none; width: 78px; margin-top: 4px; }
+.ab-arrow { display: block; width: 92px; margin: 0 0 0 30px; }
 
-/* ---- Entrance ---- */
-.motion .ab-lead { animation: ab-up .6s cubic-bezier(.22,1,.36,1) .05s both; }
-.motion .ab-hi   { animation: ab-up .7s cubic-bezier(.22,1,.36,1) .15s both; }
-.motion .ab-text { animation: ab-up .7s cubic-bezier(.22,1,.36,1) .3s both; }
-.motion .ab-pol  { animation: ab-up .8s cubic-bezier(.22,1,.36,1) .25s both; }
-.motion .ab-note { animation: ab-fade .5s ease .8s both; }
-.motion .ab-arrow-line { stroke-dasharray: 160; stroke-dashoffset: 160; animation: ab-draw .6s ease-out 1s forwards; }
-.motion .ab-arrow-head { stroke-dasharray: 60; stroke-dashoffset: 60; animation: ab-draw .25s ease-out 1.55s forwards; }
-@keyframes ab-up   { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+/* handles under the photo */
+.ab-links { position: relative; z-index: 1; list-style: none; margin: 40px 0 0 8%; padding: 0; display: grid; gap: 12px; }
+.ab-links a { display: inline-flex; align-items: center; gap: 12px; color: #18191F; text-decoration: none; font-size: 16px; font-weight: 600; }
+.ab-links a:hover span { text-decoration: underline; text-decoration-color: #FF8F71; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.ab-links svg, .ab-be {
+  flex: none; width: 40px; height: 40px; padding: 9px; box-sizing: border-box;
+  border: 1px solid #18191F; border-radius: 999px; background: #fff; box-shadow: 0 3px 0 #240C05;
+}
+.ab-be { display: grid; place-items: center; padding: 0; font-size: 15px; font-weight: 800; }
+
+/* ---------- Info ---------- */
+.ab-lead { margin: 0 0 12px; font-size: 18px; font-weight: 600; color: #4B505C; }
+.ab-hi { white-space: normal; margin: 0; }
+
+.ab-facts { margin: 28px 0 0; display: grid; gap: 0; border-top: 1px solid #E5E7EB; }
+.ab-facts > div { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid #E5E7EB; }
+.ab-facts dt { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #E87B35; padding-top: 3px; }
+.ab-facts dd { margin: 0; font-size: 17px; font-weight: 600; color: #18191F; }
+
+.ab-h { margin: 32px 0 10px; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #E87B35; }
+.ab-story { margin: 0; max-width: 58ch; font-size: 17px; line-height: 1.65; font-weight: 500; color: #3A3D45; }
+
+.ab-lists { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.ab-dots { margin: 0; padding-left: 18px; list-style: disc; font-size: 16px; line-height: 1.8; font-weight: 500; color: #3A3D45; }
+.ab-dots li::marker { color: #FF8F71; }
+
+.ab-tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ab-tags li { padding: 7px 14px; border-radius: 999px; background: #EDEDED; font-size: 14px; font-weight: 600; color: #18191F; }
+
+/* ---------- Quote ---------- */
+.ab-quote { max-width: 900px; margin: 120px auto 40px; text-align: center; }
+.ab-quote p {
+  margin: 0; font-size: clamp(24px, 3vw, 36px); font-weight: 700; line-height: 1.3; letter-spacing: -.01em; color: #18191F;
+  text-wrap: balance;
+}
+
+/* ---------- Entrance ---------- */
+.motion .ab-paper  { animation: ab-fade .6s ease .05s both; }
+.motion .ab-pol    { animation: ab-pol .8s cubic-bezier(.22,1,.36,1) .15s both; }
+.motion .ab-callout{ animation: ab-fade .5s ease .6s both; }
+.motion .ab-arrow-line { stroke-dasharray: 190; stroke-dashoffset: 190; animation: ab-draw .6s ease-out .8s forwards; }
+.motion .ab-arrow-head { stroke-dasharray: 60; stroke-dashoffset: 60; animation: ab-draw .25s ease-out 1.35s forwards; }
+.motion .ab-info > * { animation: ab-up .6s cubic-bezier(.22,1,.36,1) both; }
+.motion .ab-info > *:nth-child(2) { animation-delay: .08s; }
+.motion .ab-info > *:nth-child(n+3) { animation-delay: .16s; }
+@keyframes ab-up   { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 @keyframes ab-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes ab-draw { to { stroke-dashoffset: 0; } }
-/* keep the Polaroid's tilt after it rises in */
-.motion .ab-pol { --tilt: -3deg; }
-@keyframes ab-up-pol { from { opacity: 0; transform: translateY(22px) rotate(-3deg); } to { opacity: 1; transform: rotate(-3deg); } }
-.motion .ab-pol { animation-name: ab-up-pol; }
+@keyframes ab-pol  { from { opacity: 0; transform: translateY(22px) rotate(2.5deg); } to { opacity: 1; transform: rotate(2.5deg); } }
 
 .motion [data-rv] { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .9s cubic-bezier(.22,1,.36,1); }
 .motion [data-rv].rv-in { opacity: 1; transform: none; }
 
-/* ---- Phones and small tablets ---- */
-@media (max-width: 860px) {
-  .ab-intro {
-    grid-template-columns: 1fr;
-    grid-template-areas: "lead" "hi" "stage" "text";
-    grid-template-rows: auto;
-    margin-top: 24px;
-  }
-  .ab-stage { padding: 96px 0 8px; }
-  .ab-pol { width: min(440px, 86%); margin: 0 auto; }
-  .ab-callout { left: 2%; }
-  .ab-note { font-size: 18px; }
-  .ab-arrow { width: 66px; }
-  .ab-text { margin-top: 36px; }
-  .ab-text p { font-size: 17px; }
+/* ---------- Phones and small tablets ---------- */
+@media (max-width: 900px) {
+  .ab { grid-template-columns: 1fr; row-gap: 48px; margin-top: 24px; }
+  .ab-collage { padding: 120px 0 0 4%; max-width: 520px; }
+  .ab-paper { height: 440px; width: 66%; }
+  .ab-links { margin-left: 4%; }
+}
+@media (max-width: 480px) {
+  .ab-collage { padding-top: 112px; }
+  .ab-paper { height: 340px; top: 60px; }
+  .ab-pol { padding: 10px 10px 40px; width: 84%; margin-right: 4%; }
+  .ab-her { font-size: 38px; margin-left: 10px; }
+  .ab-arrow { width: 70px; margin-left: 22px; }
+  .ab-note { font-size: 16px; }
+  .ab-facts > div { grid-template-columns: 92px 1fr; }
+  .ab-lists { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .ab-quote { margin-top: 80px; }
 }
 @media (prefers-reduced-motion: reduce) { .ab-pol { transition: none; } }
