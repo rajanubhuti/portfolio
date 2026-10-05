@@ -2,7 +2,8 @@
    so every column ends on the same line, with wide shots in feature rows. Layout is in play.js. */
 
 .pl-head { margin-top: 32px; }
-.pl-intro { margin: 16px 0 0; font-size: 18px; font-weight: 500; color: #4B505C; }
+.pl-title { white-space: normal; }
+.pl-intro { max-width: 60ch; line-height: 1.5; margin: 16px 0 0; font-size: 18px; font-weight: 500; color: #4B505C; }
 
 .pl-gallery { margin: 40px 0 24px; }
 .pl-row, .pl-chunk { display: flex; align-items: flex-start; gap: var(--gap, 12px); margin-bottom: var(--gap, 12px); }

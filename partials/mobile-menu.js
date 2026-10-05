@@ -78,7 +78,7 @@
     btn.addEventListener('click', function () { setOpen(!isOpen()); });
     list.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen()) { setOpen(false); btn.focus(); } });
-    window.addEventListener('resize', function () { if (window.innerWidth > 640 && isOpen()) setOpen(false); });
+    window.addEventListener('resize', function () { if (window.innerWidth > 767 && isOpen()) setOpen(false); });
     // Coming back with the browser's back button should show the page, not the open menu
     window.addEventListener('pageshow', function () { if (isOpen()) setOpen(false); });
   }

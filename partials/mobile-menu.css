@@ -1,7 +1,7 @@
 /* Mobile menu (phones only). Built by partials/mobile-menu.js from the nav links. */
 .mm-burger, .mm-overlay { display: none; }
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   /* Nav becomes one row: logo left, burger right */
   nav.mm-ready {
     flex-direction: row !important;
@@ -125,6 +125,6 @@
   body.mm-lock { overflow: hidden; }
 }
 
-@media (max-width: 640px) and (prefers-reduced-motion: reduce) {
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
   .mm-overlay, .mm-open .mm-overlay, .mm-links a, .mm-social, .mm-hello, .mm-burger span { transition: none !important; }
 }
