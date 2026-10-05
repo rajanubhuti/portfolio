@@ -483,7 +483,6 @@
   flex: 0 0 163px;
   aspect-ratio: 163 / 296;
 }
-.cs-persona-flank-figure.cs-flip img { transform: scaleX(-1); }
 
 /* ---- Comparison table (vendor columns with check/dash marks) ---- */
 .cs-compare-table {
