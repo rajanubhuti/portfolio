@@ -625,6 +625,7 @@
 .v2-ph { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin: 24px 0 0; min-height: 260px; padding: 24px; border: 2px dashed #E87B35; border-radius: 16px; background: rgba(255,143,113,.06); text-align: center; }
 .v2-ph b { font-size: 13px; font-weight: 700; letter-spacing: .14em; color: #E87B35; }
 .v2-ph span { max-width: 52ch; font-size: 16px; line-height: 1.5; color: #4B505C; }
+.v2-ph + .cs-callout, .v2-ph + .cs-tried-row { margin-top: 48px !important; }
 .v2-todo { background: rgba(255,143,113,.22); border-radius: 4px; padding: 1px 6px; font-weight: 600; }
 
 /* design system */
@@ -740,8 +741,7 @@
           <section class="cs-section" id="problem">
             <p class="cs-eyebrow">02 &middot; THE GAP</p>
             <h2 class="cs-heading" data-reveal>The car drives. You're allowed to look away.</h2>
-            <p class="cs-body">At Level 3, the law lets the driver stop watching the road. Mercedes even unlocks films and games on the centre screen. When the car reaches the end of what it can handle, it asks for the driver back, and research gives them four to ten seconds to take over<span class="cs-cite">Gold et al., 2013</span>.</p>
-            <p class="cs-body">In every production system I reviewed, the first thing the car says about the handover is the alarm itself. Nothing comes before it.</p>
+            <p class="cs-body">At Level 3, the driver is allowed to look away, and Mercedes even unlocks films on the centre screen. When the car needs her back, the first thing it says is the alarm itself.</p>
 
             <p class="cs-body cs-mb-32">A takeover request, as it works in production cars today.</p>
 
@@ -842,7 +842,7 @@
                 <p class="v2-step-num">STEP 1</p>
                 <div>
                   <h3>Reading 38 papers and sources</h3>
-                  <p class="cs-body">Human factors, automotive HCI and cognitive psychology. I sorted every finding by what it told me about the driver: what she does in autonomous mode, what happens to her body, how time changes her, how alerts land, what triggers a handover, and the ethics of reading her state.</p>
+                  <p class="cs-body">Human factors, automotive HCI and cognitive psychology, sorted by what each told me about the driver.</p>
                   <div class="v2-ph"><b>PHOTO TO ADD</b><span>Literature map on sticky notes: one colour per theme, paper titles and key numbers written on each note.</span></div>
                 </div>
               </div>
@@ -851,7 +851,7 @@
                 <p class="v2-step-num">STEP 2</p>
                 <div>
                   <h3>Taking apart four systems</h3>
-                  <p class="cs-body cs-mb-32">For each one, I asked the same two questions: what does it tell the driver before a handover, and what does it do at the moment of handover?</p>
+                  <p class="cs-body cs-mb-32">What does each one tell the driver before a handover, and during it?</p>
                   <div class="cs-table">
                     <div>System</div><div>Level</div><div>Before the alert</div><div>Alert</div>
                     <div>Mercedes DRIVE PILOT</div><div>L3</div><div>Nothing designed</div><div>Visual + acoustic + haptic</div>
@@ -860,7 +860,6 @@
                     <div>Waymo</div><div>L4</div><div>n/a, no driver seat</div><div>None required</div>
                   </div>
                   <div class="v2-ph"><b>PHOTO TO ADD</b><span>Printed screenshots of each system's screens on A4, annotated with pen, highlighter and sticky notes.</span></div>
-                  <p class="v2-note">While I was working on this, BMW announced it was stepping back from Level 3 for its next lineup. The problem stays for every Level 3 car already on the road.</p>
                 </div>
               </div>
 
@@ -868,7 +867,7 @@
                 <p class="v2-step-num">STEP 3</p>
                 <div>
                   <h3>Checking it with people who build cars</h3>
-                  <p class="cs-body">I took my findings to engineers at Valeo and Renault, who told me what was realistic and what wasn't. <span class="v2-todo">ADD: one real thing a mentor told you or pushed back on.</span></p>
+                  <p class="cs-body">Engineers at Valeo and Renault told me what was realistic and what wasn't. <span class="v2-todo">ADD: one real thing a mentor told you or pushed back on.</span></p>
                 </div>
               </div>
             </div>
@@ -881,7 +880,7 @@
               <li data-reveal><b>27s</b>is how long distraction can linger after the task ends.<small>Strayer et al., 2015</small></li>
             </ul>
 
-            <p class="cs-body cs-mb-32">And the one that changed the project. Time spent looking at the road during a screen task<span class="cs-cite">van der Heiden et al., CHI 2017</span></p>
+            <p class="cs-body cs-mb-32">The finding that changed the project: time spent looking at the road<span class="cs-cite">van der Heiden et al., CHI 2017</span></p>
             <div class="cs-stat-row" data-reveal>
               <div class="cs-stat-label">Without a pre alert</div>
               <div class="cs-stat-track"><div class="cs-stat-fill cs-stat-fill-pink"></div></div>
@@ -892,7 +891,6 @@
               <div class="cs-stat-track"><div class="cs-stat-fill cs-stat-fill-yellow"></div></div>
               <div class="cs-stat-value">49-54%</div>
             </div>
-            <p class="cs-body">A single quiet cue, twenty seconds early, more than doubled that figure and lowered heart rate when the real alert arrived.</p>
 
             <div class="cs-callout" data-reveal><p>I expected the answer to be a stronger alarm. The research kept pointing earlier.</p></div>
             <p class="v2-bridge">so I sorted it all out</p>
@@ -902,7 +900,7 @@
           <section class="cs-section" id="gaps">
             <p class="cs-eyebrow">05 &middot; MAKING SENSE OF IT</p>
             <h2 class="cs-heading" data-reveal>Not a broken component. A broken assumption.</h2>
-            <p class="cs-body">I wrote every finding on its own note and moved them around until they grouped. Three clusters kept coming back.</p>
+            <p class="cs-body">Every finding on its own note, moved around until three clusters kept coming back.</p>
             <div class="v2-ph" style="margin-bottom:56px;"><b>PHOTO TO ADD</b><span>Findings on sticky notes, clustered into three groups, with the gap written above each group.</span></div>
 
             <div class="cs-gap-card" data-reveal>
@@ -944,34 +942,28 @@
           <section class="cs-section" id="question">
             <p class="cs-eyebrow">06 &middot; THE QUESTION</p>
             <h2 class="cs-heading" data-reveal>How do you design <span style="color:#E87B35;">sixty seconds?</span></h2>
-            <p class="cs-body">So the driver arrives ready instead of startled. Sixty seconds is the most warning a planned handover can give, like the end of a mapped highway. Sudden events give less, so the design has to shrink to fit. It's a ceiling, not a rule. The reasoning is in <a href="#why-these-numbers" style="color:#18191F;">Why these numbers</a>.</p>
+            <p class="cs-body">So the driver arrives ready instead of startled. Sixty seconds is a ceiling, not a rule. <a href="#why-these-numbers" style="color:#18191F;">Why sixty?</a></p>
           </section>
 
           <!-- ================= WHAT I TRIED ================= -->
           <section class="cs-section" id="tried">
-            <p class="cs-eyebrow">07 &middot; WHAT I TRIED, AND KILLED</p>
-            <h2 class="cs-heading" data-reveal>Two ideas died before the right one stuck</h2>
+            <p class="cs-eyebrow">07 &middot; FROM INSIGHT TO SYSTEM</p>
+            <h2 class="cs-heading" data-reveal>What I tried first, and killed</h2>
 
-            <div class="v2-killed">
-              <div class="v2-kill" data-reveal>
-                <div><p class="v2-kill-tag">KILLED</p><h3>A louder alert</h3></div>
-                <div>
-                  <p>My first instinct. If drivers miss the alarm, make it impossible to miss.</p>
-                  <p><b>Why it died:</b> it's still one shock, just a bigger one. The research said drivers needed preparation, not volume.</p>
-                </div>
+            <div class="cs-tried-row">
+              <div class="cs-tried-card" data-reveal>
+                <p class="cs-tried-title">Louder alert</p>
+                <p class="cs-tried-body">Still one shock, just a bigger one. Drivers needed preparation, not volume.</p>
               </div>
-              <div class="v2-kill" data-reveal>
-                <div><p class="v2-kill-tag">KILLED</p><h3>A permanent confidence dashboard</h3></div>
-                <div>
-                  <p>Always show how sure the car is, so the handover never comes as a surprise.</p>
-                  <p><b>Why it died:</b> it competed with the film Level 3 promises. And research shows that when a system looks unsure, people get more anxious, not more careful.</p>
-                </div>
+              <div class="cs-tried-arrow">&rarr;</div>
+              <div class="cs-tried-card" data-reveal>
+                <p class="cs-tried-title">Permanent dashboard</p>
+                <p class="cs-tried-body">A live confidence score competed with the film, and an unsure car makes people anxious.</p>
               </div>
-              <div class="v2-kill is-kept" data-reveal>
-                <div><p class="v2-kill-tag">KEPT</p><h3>Five states in a sequence</h3></div>
-                <div>
-                  <p>Instead of one moment, a slow return. Each state has a single job, from a quiet cue to confirming the takeover.</p>
-                </div>
+              <div class="cs-tried-arrow">&rarr;</div>
+              <div class="cs-tried-card cs-tried-kept" data-reveal>
+                <p class="cs-tried-title">Five states in sequence</p>
+                <p class="cs-tried-body">Each state has one job, from an ambient cue to confirming the takeover.</p>
               </div>
             </div>
             <div class="v2-ph"><b>PHOTO TO ADD</b><span>Rough traced sketches of the two killed ideas and the five state sequence, crossed out where they died.</span></div>
@@ -1060,31 +1052,33 @@
           <section class="cs-section" id="system">
             <p class="cs-eyebrow">09 &middot; THE DESIGN SYSTEM</p>
             <h2 class="cs-heading" data-reveal>Three colours, each with one job</h2>
-            <p class="cs-body cs-mb-48">A car screen has a vocabulary drivers already know. I didn't want to invent a new one. I wanted to use the one they have more carefully.</p>
+            <p class="cs-body cs-mb-48">Drivers already know a colour language from their dashboards. I used it, more carefully.</p>
 
-            <div class="cs-gap-card" data-reveal>
-              <div class="cs-gap-text">
-                <p class="cs-gap-label">TEAL &middot; STATES 01 AND 05</p>
-                <p class="cs-gap-heading">The car has it</p>
-                <p class="cs-gap-body">Calm and present, never loud. It tells her the car is in control, and later that she is. I avoided green because in a car it already means "go" or "system on".</p>
+            <div class="v2-swatches">
+              <div class="v2-sw" data-reveal>
+                <div class="v2-sw-chip" style="background:#2FD8C3; color:#07080f;">TEAL &middot; #2FD8C3</div>
+                <div class="v2-sw-body">
+                  <p class="v2-sw-name">The car has it</p>
+                  <p class="v2-sw-when">States 01 and 05</p>
+                  <p class="v2-sw-why">Calm, never loud. Not green, because green already means "go".</p>
+                </div>
               </div>
-              <div class="cs-gap-visual"><div style="width:100%; max-width:320px; height:100%; border-radius:12px; background:#2FD8C3;"></div></div>
-            </div>
-            <div class="cs-gap-card" data-reveal>
-              <div class="cs-gap-text">
-                <p class="cs-gap-label">AMBER &middot; STATES 02 AND 03</p>
-                <p class="cs-gap-heading">Start coming back</p>
-                <p class="cs-gap-body">Drivers already read amber as "pay attention" from the instrument cluster. It asks for attention without saying danger, and it holds its contrast in daylight better than yellow.</p>
+              <div class="v2-sw" data-reveal>
+                <div class="v2-sw-chip" style="background:#F5A624; color:#07080f;">AMBER &middot; #F5A624</div>
+                <div class="v2-sw-body">
+                  <p class="v2-sw-name">Start coming back</p>
+                  <p class="v2-sw-when">States 02 and 03</p>
+                  <p class="v2-sw-why">Drivers already read it as "pay attention". It holds up in daylight better than yellow.</p>
+                </div>
               </div>
-              <div class="cs-gap-visual"><div style="width:100%; max-width:320px; height:100%; border-radius:12px; background:#F5A624;"></div></div>
-            </div>
-            <div class="cs-gap-card" data-reveal>
-              <div class="cs-gap-text">
-                <p class="cs-gap-label">RED &middot; STATE 04 ONLY</p>
-                <p class="cs-gap-heading">Take over now</p>
-                <p class="cs-gap-body">Red appears in the last ten seconds and nowhere else. If it showed up earlier, the real alarm would stop feeling different.</p>
+              <div class="v2-sw" data-reveal>
+                <div class="v2-sw-chip" style="background:#FF3B30; color:#fff;">RED &middot; #FF3B30</div>
+                <div class="v2-sw-body">
+                  <p class="v2-sw-name">Take over now</p>
+                  <p class="v2-sw-when">State 04 only</p>
+                  <p class="v2-sw-why">Saved for the last ten seconds, so the alarm still feels different.</p>
+                </div>
               </div>
-              <div class="cs-gap-visual"><div style="width:100%; max-width:320px; height:100%; border-radius:12px; background:#FF3B30;"></div></div>
             </div>
 
             <div class="cs-solve-card" data-reveal>
