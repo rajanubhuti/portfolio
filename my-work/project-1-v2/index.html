@@ -626,6 +626,11 @@
 .v2-ph b { font-size: 13px; font-weight: 700; letter-spacing: .14em; color: #E87B35; }
 .v2-ph span { max-width: 52ch; font-size: 16px; line-height: 1.5; color: #4B505C; }
 .v2-ph + .cs-callout, .v2-ph + .cs-tried-row { margin-top: 48px !important; }
+.v2-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0 0; align-items: start; }
+.v2-photos a { display: block; border-radius: 12px; overflow: hidden; border: 1px solid #E5E7EB; background: #fff; cursor: zoom-in; }
+.v2-photos img { display: block; width: 100%; height: auto; transition: transform .6s cubic-bezier(.22,1,.36,1); }
+.v2-photos a:hover img { transform: scale(1.02); }
+@media (max-width: 900px) { .v2-photos { grid-template-columns: 1fr; } }
 .v2-todo { background: rgba(255,143,113,.22); border-radius: 4px; padding: 1px 6px; font-weight: 600; }
 
 /* design system */
@@ -843,7 +848,10 @@
                 <div>
                   <h3>Reading 38 papers and sources</h3>
                   <p class="cs-body">Human factors, automotive HCI and cognitive psychology, sorted by what each told me about the driver.</p>
-                  <div class="v2-ph"><b>PHOTO TO ADD</b><span>Literature map on sticky notes: one colour per theme, paper titles and key numbers written on each note.</span></div>
+                  <div class="v2-photos">
+                    <a href="../../assets/images/project-1/v2-litmap-wide.webp" target="_blank" rel="noopener"><img src="../../assets/images/project-1/v2-litmap-wide.webp" srcset="../../assets/images/project-1/v2-litmap-wide-s.webp 800w, ../../assets/images/project-1/v2-litmap-wide.webp 1600w" sizes="(max-width: 900px) 100vw, 540px" loading="lazy" alt="Literature map on sticky notes: eight orange theme headers, findings in yellow and green below each, starred key findings and pink question notes."></a>
+                    <a href="../../assets/images/project-1/v2-litmap-close.webp" target="_blank" rel="noopener"><img src="../../assets/images/project-1/v2-litmap-close.webp" srcset="../../assets/images/project-1/v2-litmap-close-s.webp 800w, ../../assets/images/project-1/v2-litmap-close.webp 1600w" sizes="(max-width: 900px) 100vw, 540px" loading="lazy" alt="Close up of the starred findings: feet off pedals means slowest braking, distraction stays 27 seconds, only 6% eyes on the road, and a 20 second warning raised road looks from 23% to 49 to 54%, next to a pink note asking what happens before the alarm."></a>
+                  </div>
                 </div>
               </div>
 
