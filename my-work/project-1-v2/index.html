@@ -581,7 +581,7 @@
 .v2-oneliner { margin: -12px 0 28px; max-width: 40ch; font-size: clamp(21px, 2.3vw, 28px); line-height: 1.35; font-weight: 600; color: #E87B35; }
 
 /* spark */
-.v2-spark p.cs-body { font-size: 20px; line-height: 1.65; max-width: 62ch; }
+
 
 /* the big question */
 .v2-question { text-align: center; padding: 40px 0; }
@@ -727,12 +727,12 @@
           <div class="v2-part"><span><b>PART 1</b> &middot; THE STORY AND THE RESEARCH</span></div>
 
           <!-- ================= THE SPARK ================= -->
-          <section class="cs-section v2-spark" id="spark">
+          <section class="cs-section" id="spark">
             <p class="cs-eyebrow">01 &middot; THE SPARK</p>
             <h2 class="cs-heading" data-reveal>When I'm deep in a film, I don't hear my mom.</h2>
-            <p class="cs-body">I grew up loving cars, trucks, anything with wheels. But I still didn't have a single automotive project. So when my exchange at ESAD Orl&eacute;ans let me pick any personal project, with engineers at Valeo and Renault as mentors, I knew what I wanted to do.</p>
-            <p class="cs-body">I'd watched a video of a Level 3 car handing control back to its driver. Calm road, alert driver, hands ready. It looked easy. But that's not how I watch films. When I'm really into something, my mom can sit right next to me and talk, and I won't hear a word until she switches the TV off.</p>
-            <p class="v2-hl" data-reveal>If a car pulled me out of that and gave me ten seconds, <mark>I'd panic.</mark></p>
+            <p class="cs-body">I grew up loving cars, but I didn't have a single automotive project. When my exchange at ESAD Orl&eacute;ans let me pick any personal project, with engineers at Valeo and Renault as mentors, I chose this one.</p>
+            <p class="cs-body cs-mb-32">I'd seen a Level 3 car hand control back to a calm, ready driver. But when I'm really into a film, my mom can talk right next to me and I won't hear her until she switches the TV off.</p>
+            <div class="cs-callout" data-reveal><p>If a car pulled me out of that and gave me ten seconds, I'd panic.</p></div>
             <p class="v2-bridge">so I looked at how it works today</p>
           </section>
 
@@ -741,7 +741,30 @@
             <p class="cs-eyebrow">02 &middot; THE GAP</p>
             <h2 class="cs-heading" data-reveal>The car drives. You're allowed to look away.</h2>
             <p class="cs-body">At Level 3, the law lets the driver stop watching the road. Mercedes even unlocks films and games on the centre screen. When the car reaches the end of what it can handle, it asks for the driver back, and research gives them four to ten seconds to take over<span class="cs-cite">Gold et al., 2013</span>.</p>
-            <p class="cs-body cs-mb-48">In every production system I reviewed, the first thing the car says about the handover is the alarm itself. Nothing comes before it.</p>
+            <p class="cs-body">In every production system I reviewed, the first thing the car says about the handover is the alarm itself. Nothing comes before it.</p>
+
+            <p class="cs-body cs-mb-32">A takeover request, as it works in production cars today.</p>
+
+            <div class="cs-storyboard">
+              <figure class="cs-sb-panel" data-reveal>
+                <div class="cs-sb-image"><img src="../../assets/images/project-1/10-storyboard-a1.webp" loading="lazy" alt="Driver reclined in her seat, chin on hand, watching a film on the center screen. Empty highway ahead."></div>
+                <figcaption><span class="cs-sb-num">1</span>Forty minutes in. The car said she didn't have to watch.</figcaption>
+              </figure>
+              <figure class="cs-sb-panel" data-reveal>
+                <div class="cs-sb-image"><img src="../../assets/images/project-1/11-storyboard-a2.webp" loading="lazy" alt="Same scene. Construction barriers appear ahead, but she is still watching the screen."></div>
+                <figcaption><span class="cs-sb-num">2</span>The road ends ahead. Nothing tells her.</figcaption>
+              </figure>
+              <figure class="cs-sb-panel" data-reveal>
+                <div class="cs-sb-image"><img src="../../assets/images/project-1/12-storyboard-a3.webp" loading="lazy" alt="The screen and cabin flash red. She jolts upright, hands raised, startled."></div>
+                <figcaption><span class="cs-sb-num">3</span>T-10s. The first signal of the whole trip is the alarm.</figcaption>
+              </figure>
+              <figure class="cs-sb-panel" data-reveal>
+                <div class="cs-sb-image"><img src="../../assets/images/project-1/13-storyboard-a4.webp" loading="lazy" alt="Cabin still red. She grabs the wheel awkwardly while her feet search for the pedals."></div>
+                <figcaption><span class="cs-sb-num">4</span>Feet off the pedals, eyes off the road. Ten seconds to fix both.</figcaption>
+              </figure>
+            </div>
+            <p class="cs-ai-credit">Illustrations generated with ChatGPT, then edited by me.</p>
+
 
             <div class="cs-timeline" data-reveal>
               <div class="cs-timeline-segment cs-timeline-autonomous">
@@ -763,25 +786,9 @@
               <span>T 0</span>
             </div>
 
-            <div class="v2-curve" data-reveal>
-              <p class="v2-curve-title">How alert the driver is, today</p>
-              <p class="v2-curve-note">Nothing changes for her until the alarm. Then everything changes at once.</p>
-              <svg viewBox="0 0 1000 300" role="img" aria-label="Driver readiness stays low and flat until ten seconds before the handover, then spikes sharply.">
-                <line class="ax" x1="40" y1="250" x2="980" y2="250"/>
-                <line class="ax" x1="40" y1="30" x2="40" y2="250"/>
-                <line class="ax" x1="600" y1="30" x2="600" y2="250" stroke-dasharray="4 6"/>
-                <line class="ax" x1="860" y1="30" x2="860" y2="250" stroke-dasharray="4 6"/>
-                <text class="lbl" x="600" y="276" text-anchor="middle">T-60s</text>
-                <text class="lbl" x="860" y="276" text-anchor="middle">T-10s</text>
-                <text class="lbl" x="980" y="276" text-anchor="end">T0</text>
-                <text class="lbl" x="48" y="44">fully alert</text>
-                <text class="lbl" x="48" y="240">absorbed in the film</text>
-                <path class="ln ln-bad" d="M40 225 L600 225 L860 225 C 880 225, 885 60, 905 55 L980 70"/>
-                <text class="tag" x="912" y="46" fill="#E5484D">startled</text>
-              </svg>
-            </div>
 
-            <p class="v2-hl" data-reveal>The alarm isn't the problem. <mark>The silence before it is.</mark></p>
+
+            <div class="cs-callout" data-reveal><p>The alarm isn't the problem. The silence before it is.</p></div>
             <p class="v2-bridge">but who is she, really?</p>
           </section>
 
@@ -887,7 +894,7 @@
             </div>
             <p class="cs-body">A single quiet cue, twenty seconds early, more than doubled that figure and lowered heart rate when the real alert arrived.</p>
 
-            <p class="v2-hl" data-reveal>I expected the answer to be a stronger alarm. <mark>The research kept pointing earlier.</mark></p>
+            <div class="cs-callout" data-reveal><p>I expected the answer to be a stronger alarm. The research kept pointing earlier.</p></div>
             <p class="v2-bridge">so I sorted it all out</p>
           </section>
 
@@ -934,11 +941,10 @@
           </section>
 
           <!-- ================= THE QUESTION ================= -->
-          <section class="cs-section v2-question" id="question">
+          <section class="cs-section" id="question">
             <p class="cs-eyebrow">06 &middot; THE QUESTION</p>
-            <h2 data-reveal>How do you design <span>sixty seconds?</span></h2>
-            <p class="v2-q-sub" data-reveal>So the driver arrives ready, instead of startled.</p>
-            <p class="cs-body">Sixty seconds is the most warning a planned handover can give, like the end of a mapped highway. Sudden events give less, so the design has to shrink to fit. It's a ceiling, not a rule. The reasoning is in <a href="#why-these-numbers" style="color:#18191F;">Why these numbers</a>.</p>
+            <h2 class="cs-heading" data-reveal>How do you design <span style="color:#E87B35;">sixty seconds?</span></h2>
+            <p class="cs-body">So the driver arrives ready instead of startled. Sixty seconds is the most warning a planned handover can give, like the end of a mapped highway. Sudden events give less, so the design has to shrink to fit. It's a ceiling, not a rule. The reasoning is in <a href="#why-these-numbers" style="color:#18191F;">Why these numbers</a>.</p>
           </section>
 
           <!-- ================= WHAT I TRIED ================= -->
@@ -970,7 +976,7 @@
             </div>
             <div class="v2-ph"><b>PHOTO TO ADD</b><span>Rough traced sketches of the two killed ideas and the five state sequence, crossed out where they died.</span></div>
 
-            <p class="v2-hl" data-reveal>Every idea I killed taught me the same thing: <mark>the driver needed time, not volume.</mark></p>
+            <div class="cs-callout" data-reveal><p>Every idea I killed taught me the same thing: the driver needed time, not volume.</p></div>
           </section>
 
           <div class="v2-part"><span><b>PART 2</b> &middot; THE DESIGN</span></div>
@@ -979,29 +985,27 @@
           <section class="cs-section" id="states">
             <p class="cs-eyebrow">08 &middot; THE FIVE STATES</p>
             <h2 class="cs-heading" data-reveal>A sequence, not a switch</h2>
-            <p class="cs-body cs-mb-32">The same drive, with the proposed sequence. From sixty seconds out, the car starts bringing her back, one small step at a time.</p>
+            <p class="cs-body cs-mb-32">The same drive with the proposed sequence. State 01, Autonomous Mode, is the moment in the first panel above. From there, the car begins communicating sixty seconds before the handover.</p>
 
-<div class="v2-curve cs-mb-48" data-reveal>
-              <p class="v2-curve-title">How alert the driver is, with the five states</p>
-              <p class="v2-curve-note">She starts coming back a minute early, so the alarm finds her ready.</p>
-              <svg viewBox="0 0 1000 300" role="img" aria-label="With the five states, driver readiness rises gently from sixty seconds before the handover and reaches ready before the alert.">
-                <line class="ax" x1="40" y1="250" x2="980" y2="250"/>
-                <line class="ax" x1="40" y1="30" x2="40" y2="250"/>
-                <line class="ax" x1="600" y1="30" x2="600" y2="250" stroke-dasharray="4 6"/>
-                <line class="ax" x1="750" y1="30" x2="750" y2="250" stroke-dasharray="4 6"/>
-                <line class="ax" x1="860" y1="30" x2="860" y2="250" stroke-dasharray="4 6"/>
-                <text class="lbl" x="600" y="276" text-anchor="middle">T-60s ramp</text>
-                <text class="lbl" x="750" y="276" text-anchor="middle">T-30s</text>
-                <text class="lbl" x="860" y="276" text-anchor="middle">T-10s</text>
-                <text class="lbl" x="980" y="276" text-anchor="end">T0</text>
-                <text class="lbl" x="48" y="44">fully alert</text>
-                <text class="lbl" x="48" y="240">absorbed in the film</text>
-                <path class="ln ln-ghost" d="M40 225 L860 225 C 880 225, 885 60, 905 55 L980 70"/>
-                <path class="ln ln-good" d="M40 225 L600 225 C 680 222, 720 160, 760 120 C 800 85, 840 72, 980 66"/>
-                <text class="tag" x="905" y="52" fill="#E87B35">calmly ready</text>
-                <text class="tag" x="640" y="214" fill="#E5484D" opacity=".55">today</text>
-              </svg>
+            <div class="cs-storyboard">
+              <figure class="cs-sb-panel" data-reveal>
+                <div class="cs-sb-image"><img src="../../assets/images/project-1/14-storyboard-b2.webp" loading="lazy" alt="Driver still reclined. A thin amber glow appears along the bottom of the center screen."></div>
+                <figcaption><span class="cs-sb-num">02</span><span><strong>Awareness Ramp.</strong> T-60s. A quiet amber edge. Not yet a warning.</span></figcaption>
+              </figure>
+              <figure class="cs-sb-panel" data-reveal>
+                <div class="cs-sb-image"><img src="../../assets/images/project-1/15-storyboard-b3.webp" loading="lazy" alt="The whole screen is amber and the film has faded. She sits upright with feet on the pedals, looking at the road."></div>
+                <figcaption><span class="cs-sb-num">03</span><span><strong>Reengagement.</strong> T-30s. The film fades. She sits up and finds the road.</span></figcaption>
+              </figure>
+              <figure class="cs-sb-panel" data-reveal>
+                <div class="cs-sb-image"><img src="../../assets/images/project-1/16-storyboard-b4.webp" loading="lazy" alt="The screen turns red, but she is already upright with hands on the wheel, calm."></div>
+                <figcaption><span class="cs-sb-num">04</span><span><strong>Handover Alert.</strong> T-10s. Same alarm, different driver.</span></figcaption>
+              </figure>
+              <figure class="cs-sb-panel" data-reveal>
+                <div class="cs-sb-image"><img src="../../assets/images/project-1/17-storyboard-b5.webp" loading="lazy" alt="Calm cabin light. She drives steadily with the road map on screen."></div>
+                <figcaption><span class="cs-sb-num">05</span><span><strong>Takeover Confirm.</strong> T+0. Calm returns. The loop closes.</span></figcaption>
+              </figure>
             </div>
+            <p class="cs-ai-credit cs-mb-48">Illustrations generated with ChatGPT, then edited by me.</p>
 
             <p class="cs-body cs-mb-48">The center display at each state. Keep scrolling to move through the sequence.</p>
 
@@ -1055,43 +1059,45 @@
           <!-- ================= DESIGN SYSTEM ================= -->
           <section class="cs-section" id="system">
             <p class="cs-eyebrow">09 &middot; THE DESIGN SYSTEM</p>
-            <h2 class="cs-heading" data-reveal>Three colours, and each one has a single job</h2>
+            <h2 class="cs-heading" data-reveal>Three colours, each with one job</h2>
             <p class="cs-body cs-mb-48">A car screen has a vocabulary drivers already know. I didn't want to invent a new one. I wanted to use the one they have more carefully.</p>
 
-            <div class="v2-swatches">
-              <div class="v2-sw" data-reveal>
-                <div class="v2-sw-chip" style="background:#2FD8C3;">TEAL &middot; #2FD8C3</div>
-                <div class="v2-sw-body">
-                  <p class="v2-sw-name">The car has it</p>
-                  <p class="v2-sw-when">States 01 and 05</p>
-                  <p class="v2-sw-why">Calm and present, never loud. It tells her the car is in control, and later that she is.</p>
-                  <p class="v2-sw-not"><b>Why not green?</b> In a car, green already means "go" or "system on". Teal reads as calm without saying anything else.</p>
-                </div>
+            <div class="cs-gap-card" data-reveal>
+              <div class="cs-gap-text">
+                <p class="cs-gap-label">TEAL &middot; STATES 01 AND 05</p>
+                <p class="cs-gap-heading">The car has it</p>
+                <p class="cs-gap-body">Calm and present, never loud. It tells her the car is in control, and later that she is. I avoided green because in a car it already means "go" or "system on".</p>
               </div>
-              <div class="v2-sw" data-reveal>
-                <div class="v2-sw-chip" style="background:#F5A624;">AMBER &middot; #F5A624</div>
-                <div class="v2-sw-body">
-                  <p class="v2-sw-name">Start coming back</p>
-                  <p class="v2-sw-when">States 02 and 03</p>
-                  <p class="v2-sw-why">Drivers already read amber as "pay attention" from the instrument cluster. It asks for attention without saying danger.</p>
-                  <p class="v2-sw-not"><b>Why not yellow?</b> Yellow loses contrast on a bright dashboard in daylight. Amber holds up.</p>
-                </div>
+              <div class="cs-gap-visual"><div style="width:100%; max-width:320px; height:100%; border-radius:12px; background:#2FD8C3;"></div></div>
+            </div>
+            <div class="cs-gap-card" data-reveal>
+              <div class="cs-gap-text">
+                <p class="cs-gap-label">AMBER &middot; STATES 02 AND 03</p>
+                <p class="cs-gap-heading">Start coming back</p>
+                <p class="cs-gap-body">Drivers already read amber as "pay attention" from the instrument cluster. It asks for attention without saying danger, and it holds its contrast in daylight better than yellow.</p>
               </div>
-              <div class="v2-sw" data-reveal>
-                <div class="v2-sw-chip" style="background:#FF3B30; color:#fff;">RED &middot; #FF3B30</div>
-                <div class="v2-sw-body">
-                  <p class="v2-sw-name">Take over now</p>
-                  <p class="v2-sw-when">State 04 only</p>
-                  <p class="v2-sw-why">Red appears in the last ten seconds and nowhere else, so it never loses its meaning.</p>
-                  <p class="v2-sw-not"><b>Why save it?</b> If red shows up early, the real alarm stops feeling different.</p>
-                </div>
+              <div class="cs-gap-visual"><div style="width:100%; max-width:320px; height:100%; border-radius:12px; background:#F5A624;"></div></div>
+            </div>
+            <div class="cs-gap-card" data-reveal>
+              <div class="cs-gap-text">
+                <p class="cs-gap-label">RED &middot; STATE 04 ONLY</p>
+                <p class="cs-gap-heading">Take over now</p>
+                <p class="cs-gap-body">Red appears in the last ten seconds and nowhere else. If it showed up earlier, the real alarm would stop feeling different.</p>
               </div>
+              <div class="cs-gap-visual"><div style="width:100%; max-width:320px; height:100%; border-radius:12px; background:#FF3B30;"></div></div>
             </div>
 
-            <div class="v2-rules">
-              <div class="v2-rule" data-reveal><p>MOTION</p><p>Slow fades from T-60s, never a flash. The film dims instead of cutting out.</p></div>
-              <div class="v2-rule" data-reveal><p>TYPE</p><p>One clear instruction per state, large enough to read in a glance from a reclined seat.</p></div>
-              <div class="v2-rule" data-reveal><p>CONTRAST</p><p>Every text and colour pair checked against WCAG AA on the dark screen. <span class="v2-todo">ADD: results once the new screens are done.</span></p></div>
+            <div class="cs-solve-card" data-reveal>
+              <p class="cs-solve-label">MOTION</p>
+              <p class="cs-solve-body">Slow fades from T-60s, never a flash. The film dims instead of cutting out.</p>
+            </div>
+            <div class="cs-solve-card" data-reveal>
+              <p class="cs-solve-label">TYPE</p>
+              <p class="cs-solve-body">One clear instruction per state, large enough to read in a glance from a reclined seat.</p>
+            </div>
+            <div class="cs-solve-card" data-reveal>
+              <p class="cs-solve-label">CONTRAST</p>
+              <p class="cs-solve-body">Every text and colour pair checked against WCAG AA on the dark screen. <span class="v2-todo">ADD: results once the new screens are done.</span></p>
             </div>
           </section>
 
