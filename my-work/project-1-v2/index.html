@@ -578,6 +578,8 @@
 .v2-part span { font-size: 15px; font-weight: 700; letter-spacing: .16em; color: #18191F; }
 .v2-part b { color: #E87B35; font-weight: 700; }
 
+.v2-oneliner { margin: -12px 0 28px; max-width: 40ch; font-size: clamp(21px, 2.3vw, 28px); line-height: 1.35; font-weight: 600; color: #E87B35; }
+
 /* spark */
 .v2-spark p.cs-body { font-size: 20px; line-height: 1.65; max-width: 62ch; }
 
@@ -678,12 +680,6 @@
           <!-- ================= OPENING ================= -->
           <section class="cs-section" id="overview">
 
-            <div class="v2-hook">
-              <p class="cs-eyebrow">CASE STUDY &middot; LEVEL 3 AUTONOMOUS DRIVING &middot; HMI</p>
-              <h1 class="cs-heading">The car drove for forty minutes. <span class="v2-o">Then it gave her ten seconds.</span></h1>
-              <p class="v2-sub"><b>Designing the Return:</b> how a self driving car should hand control back to a driver who wasn't watching.</p>
-            </div>
-
             <div class="cs-hero-image">
               <img src="../../assets/images/project-1/01-hero-bg.webp" fetchpriority="high" alt="Hero image" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
             </div>
@@ -710,6 +706,16 @@
                 <p class="cs-meta-value">Renault SA, France</p>
               </div>
             </div>
+
+            <p class="cs-eyebrow">OVERVIEW</p>
+            <h1 class="cs-heading">Designing the Return</h1>
+            <p class="v2-oneliner">How a self driving car should hand control back to a driver who wasn't watching.</p>
+            <p class="cs-body">
+              At SAE Level 3, the car drives and the driver is free to watch a film. When conditions change, the car
+              needs the driver back, and research typically allows four to ten seconds for
+              it<span class="cs-cite">Gold et al., 2013</span>. The production systems I reviewed ask with a single
+              alarm. This project designs the minute before it.
+            </p>
 
             <div class="cs-paper-links">
               <a class="cs-paper-link" href="../../assets/docs/designing-the-return.pdf" target="_blank" rel="noopener">Read the research paper &rarr;</a>
