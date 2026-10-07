@@ -629,7 +629,17 @@
 .v2-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0 0; align-items: start; }
 .v2-photos a { display: block; border-radius: 12px; overflow: hidden; border: 1px solid #E5E7EB; background: #fff; cursor: zoom-in; }
 .v2-photos img { display: block; width: 100%; height: auto; transition: transform .6s cubic-bezier(.22,1,.36,1); }
-.v2-photos a:hover img { transform: scale(1.02); }
+.v2-photos a { aspect-ratio: 5 / 4; }
+.v2-photos img { height: 100%; object-fit: cover; }
+.v2-photos a:not(.v2-zoom):hover img { transform: scale(1.02); }
+/* hover magnifier on the full wall */
+.v2-zoom { position: relative; }
+.v2-lens { position: absolute; z-index: 2; width: 190px; height: 190px; border-radius: 50%; pointer-events: none;
+  border: 3px solid #fff; box-shadow: 0 10px 30px rgba(24,25,31,.35), 0 0 0 1px rgba(24,25,31,.15);
+  background-repeat: no-repeat; background-color: #d9cdb8; opacity: 0; transform: scale(.8); transition: opacity .2s ease, transform .2s ease; }
+.v2-zoom.is-zooming { cursor: none; }
+.v2-zoom.is-zooming .v2-lens { opacity: 1; transform: none; }
+@media (hover: none) { .v2-lens { display: none; } }
 @media (max-width: 900px) { .v2-photos { grid-template-columns: 1fr; } }
 .v2-todo { background: rgba(255,143,113,.22); border-radius: 4px; padding: 1px 6px; font-weight: 600; }
 
@@ -849,7 +859,7 @@
                   <h3>Reading 38 papers and sources</h3>
                   <p class="cs-body">Human factors, automotive HCI and cognitive psychology, sorted by what each told me about the driver.</p>
                   <div class="v2-photos">
-                    <a href="../../assets/images/project-1/v2-litmap-wide.webp" target="_blank" rel="noopener"><img src="../../assets/images/project-1/v2-litmap-wide.webp" srcset="../../assets/images/project-1/v2-litmap-wide-s.webp 800w, ../../assets/images/project-1/v2-litmap-wide.webp 1600w" sizes="(max-width: 900px) 100vw, 540px" loading="lazy" alt="Literature map on sticky notes: eight orange theme headers, findings in yellow and green below each, starred key findings and pink question notes."></a>
+                    <a class="v2-zoom" data-zoom="../../assets/images/project-1/v2-litmap-wide-xl.webp" href="../../assets/images/project-1/v2-litmap-wide-xl.webp" target="_blank" rel="noopener"><span class="v2-lens" aria-hidden="true"></span><img src="../../assets/images/project-1/v2-litmap-wide.webp" srcset="../../assets/images/project-1/v2-litmap-wide-s.webp 800w, ../../assets/images/project-1/v2-litmap-wide.webp 1600w" sizes="(max-width: 900px) 100vw, 540px" loading="lazy" alt="Literature map on sticky notes: eight orange theme headers, findings in yellow and green below each, starred key findings and pink question notes."></a>
                     <a href="../../assets/images/project-1/v2-litmap-close.webp" target="_blank" rel="noopener"><img src="../../assets/images/project-1/v2-litmap-close.webp" srcset="../../assets/images/project-1/v2-litmap-close-s.webp 800w, ../../assets/images/project-1/v2-litmap-close.webp 1600w" sizes="(max-width: 900px) 100vw, 540px" loading="lazy" alt="Close up of the starred findings: feet off pedals means slowest braking, distraction stays 27 seconds, only 6% eyes on the road, and a 20 second warning raised road looks from 23% to 49 to 54%, next to a pink note asking what happens before the alarm."></a>
                   </div>
                 </div>
@@ -1312,6 +1322,28 @@
               });
             });
             update();
+          })();
+        </script>
+
+        <script>
+          /* Hover magnifier: a round lens follows the cursor over the sticky note wall. */
+          (function () {
+            var box = document.querySelector('.v2-zoom');
+            if (!box || !window.matchMedia('(hover: hover)').matches) return;
+            var lens = box.querySelector('.v2-lens'), img = box.querySelector('img'), Z = 3;
+            var big = new Image(); big.src = box.getAttribute('data-zoom');
+            lens.style.backgroundImage = 'url(' + box.getAttribute('data-zoom') + ')';
+            function move(e) {
+              var r = img.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+              if (x < 0 || y < 0 || x > r.width || y > r.height) { box.classList.remove('is-zooming'); return; }
+              box.classList.add('is-zooming');
+              var L = lens.offsetWidth / 2;
+              lens.style.left = (x - L) + 'px'; lens.style.top = (y - L) + 'px';
+              lens.style.backgroundSize = (r.width * Z) + 'px ' + (r.height * Z) + 'px';
+              lens.style.backgroundPosition = (L - x * Z) + 'px ' + (L - y * Z) + 'px';
+            }
+            box.addEventListener('mousemove', move);
+            box.addEventListener('mouseleave', function () { box.classList.remove('is-zooming'); });
           })();
         </script>
         <!-- Section navigation: small dot rail on the left, wide screens only -->
