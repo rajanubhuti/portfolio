@@ -860,7 +860,7 @@
                   <p class="cs-body">Human factors, automotive HCI and cognitive psychology, sorted by what each told me about the driver.</p>
                   <div class="v2-photos">
                     <a class="v2-zoom" data-zoom="../../assets/images/project-1/v2-litmap-wide-xl.webp" href="../../assets/images/project-1/v2-litmap-wide-xl.webp" target="_blank" rel="noopener"><span class="v2-lens" aria-hidden="true"></span><img src="../../assets/images/project-1/v2-litmap-wide.webp" srcset="../../assets/images/project-1/v2-litmap-wide-s.webp 800w, ../../assets/images/project-1/v2-litmap-wide.webp 1600w" sizes="(max-width: 900px) 100vw, 540px" loading="lazy" alt="Literature map on sticky notes: eight orange theme headers, findings in yellow and green below each, starred key findings and pink question notes."></a>
-                    <a href="../../assets/images/project-1/v2-litmap-close.webp" target="_blank" rel="noopener"><img src="../../assets/images/project-1/v2-litmap-close.webp" srcset="../../assets/images/project-1/v2-litmap-close-s.webp 800w, ../../assets/images/project-1/v2-litmap-close.webp 1600w" sizes="(max-width: 900px) 100vw, 540px" loading="lazy" alt="Close up of the starred findings: feet off pedals means slowest braking, distraction stays 27 seconds, only 6% eyes on the road, and a 20 second warning raised road looks from 23% to 49 to 54%, next to a pink note asking what happens before the alarm."></a>
+                    <a class="v2-zoom" data-z="2" data-zoom="../../assets/images/project-1/v2-litmap-close-xl.webp" href="../../assets/images/project-1/v2-litmap-close-xl.webp" target="_blank" rel="noopener"><span class="v2-lens" aria-hidden="true"></span><img src="../../assets/images/project-1/v2-litmap-close.webp" srcset="../../assets/images/project-1/v2-litmap-close-s.webp 800w, ../../assets/images/project-1/v2-litmap-close.webp 1600w" sizes="(max-width: 900px) 100vw, 540px" loading="lazy" alt="Close up of the starred findings: feet off pedals means slowest braking, distraction stays 27 seconds, only 6% eyes on the road, and a 20 second warning raised road looks from 23% to 49 to 54%, next to a pink note asking what happens before the alarm."></a>
                   </div>
                 </div>
               </div>
@@ -1328,22 +1328,22 @@
         <script>
           /* Hover magnifier: a round lens follows the cursor over the sticky note wall. */
           (function () {
-            var box = document.querySelector('.v2-zoom');
-            if (!box || !window.matchMedia('(hover: hover)').matches) return;
-            var lens = box.querySelector('.v2-lens'), img = box.querySelector('img'), Z = 3;
-            var big = new Image(); big.src = box.getAttribute('data-zoom');
-            lens.style.backgroundImage = 'url(' + box.getAttribute('data-zoom') + ')';
-            function move(e) {
-              var r = img.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
-              if (x < 0 || y < 0 || x > r.width || y > r.height) { box.classList.remove('is-zooming'); return; }
-              box.classList.add('is-zooming');
-              var L = lens.offsetWidth / 2;
-              lens.style.left = (x - L) + 'px'; lens.style.top = (y - L) + 'px';
-              lens.style.backgroundSize = (r.width * Z) + 'px ' + (r.height * Z) + 'px';
-              lens.style.backgroundPosition = (L - x * Z) + 'px ' + (L - y * Z) + 'px';
-            }
-            box.addEventListener('mousemove', move);
-            box.addEventListener('mouseleave', function () { box.classList.remove('is-zooming'); });
+            if (!window.matchMedia('(hover: hover)').matches) return;
+            document.querySelectorAll('.v2-zoom').forEach(function (box) {
+              var lens = box.querySelector('.v2-lens'), img = box.querySelector('img'), Z = +(box.getAttribute('data-z') || 3);
+              var src = box.getAttribute('data-zoom'); new Image().src = src;
+              lens.style.backgroundImage = 'url(' + src + ')';
+              box.addEventListener('mousemove', function (e) {
+                var r = img.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+                if (x < 0 || y < 0 || x > r.width || y > r.height) { box.classList.remove('is-zooming'); return; }
+                box.classList.add('is-zooming');
+                var L = lens.offsetWidth / 2;
+                lens.style.left = (x - L) + 'px'; lens.style.top = (y - L) + 'px';
+                lens.style.backgroundSize = (r.width * Z) + 'px ' + (r.height * Z) + 'px';
+                lens.style.backgroundPosition = (L - x * Z) + 'px ' + (L - y * Z) + 'px';
+              });
+              box.addEventListener('mouseleave', function () { box.classList.remove('is-zooming'); });
+            });
           })();
         </script>
         <!-- Section navigation: small dot rail on the left, wide screens only -->
