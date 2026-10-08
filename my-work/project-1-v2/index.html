@@ -641,16 +641,17 @@
 .v2-zoom.is-zooming .v2-lens { opacity: 1; transform: none; }
 @media (hover: none) { .v2-lens { display: none; } }
 .v2-photos-one { grid-template-columns: 1fr; margin: 0; }
-.v2-gaps-split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 24px; align-items: stretch; margin: 24px 0 0; }
+.v2-gaps-split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 24px; align-items: start; margin: 24px 0 0; }
+.v2-gaps-split > .v2-photos { will-change: transform; }
 .v2-gaps-cards { display: flex; flex-direction: column; gap: 16px; }
-.v2-gaps-cards .cs-gap-card { flex: 1; margin: 0 !important; min-height: 0; }
-.v2-gaps-cards .cs-gap-text { max-width: none; flex: 1 1 auto; min-width: 0; flex-shrink: 1; }
-.v2-gaps-cards .cs-gap-card { padding: 24px 28px; }
+.v2-gaps-cards .cs-gap-card { margin: 0 !important; min-height: 0; flex-direction: column; align-items: stretch; gap: 20px; padding: 26px 28px; }
+.v2-gaps-cards .cs-gap-text { max-width: none; }
 .v2-gaps-cards .cs-gap-body { font-size: 18px; }
 .v2-gaps-cards .cs-gap-heading { margin-bottom: 10px; }
 .v2-gaps-cards .cs-gap-label { margin-bottom: 8px; }
-.v2-gaps-cards .cs-gap-visual { display: none; }
-@media (max-width: 900px) { .v2-gaps-split { grid-template-columns: 1fr; } .v2-gaps-cards .cs-gap-visual { display: none; } }
+.v2-gaps-cards .cs-gap-visual { flex: none; height: auto; justify-content: flex-start; }
+.v2-gaps-cards .cs-gap-visual img { width: 100%; height: auto !important; max-height: none !important; }
+@media (max-width: 900px) { .v2-gaps-split { grid-template-columns: 1fr; } .v2-gaps-split > .v2-photos { transform: none !important; } }
 .v2-photos-one a { aspect-ratio: auto; }
 @media (max-width: 900px) { .v2-photos { grid-template-columns: 1fr; } }
 .v2-todo { background: rgba(255,143,113,.22); border-radius: 4px; padding: 1px 6px; font-weight: 600; }
@@ -1369,6 +1370,27 @@
               });
               box.addEventListener('mouseleave', function () { box.classList.remove('is-zooming'); });
             });
+          })();
+        </script>
+
+        <script>
+          /* Gaps: keep the sticky note photo in view while the three gap cards scroll past.
+             (CSS sticky is blocked by the site's layout, so this moves it with a transform.) */
+          (function () {
+            var wrap = document.querySelector('.v2-gaps-split');
+            if (!wrap) return;
+            var photo = wrap.querySelector('.v2-photos'), TOP = 40, ticking = false;
+            function update() {
+              ticking = false;
+              if (window.innerWidth <= 900) { photo.style.transform = ''; return; }
+              var r = wrap.getBoundingClientRect();
+              var max = wrap.offsetHeight - photo.offsetHeight;
+              var y = Math.min(Math.max(TOP - r.top, 0), Math.max(max, 0));
+              photo.style.transform = 'translateY(' + y + 'px)';
+            }
+            window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+            window.addEventListener('resize', update);
+            update();
           })();
         </script>
         <!-- Section navigation: small dot rail on the left, wide screens only -->
