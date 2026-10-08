@@ -1031,7 +1031,7 @@
                   <!-- The five state screens; scrolling crossfades between them -->
                   
                   <img class="cs-pin-img is-active" src="../../assets/images/project-1/v2-state-01-autonomous.webp" srcset="../../assets/images/project-1/v2-state-01-autonomous-s.webp 960w, ../../assets/images/project-1/v2-state-01-autonomous.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 01, Autonomous Mode: a film plays full screen, with speed and automated driving status in the corner">
-                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-02-ramp.webp" srcset="../../assets/images/project-1/v2-state-02-ramp-s.webp 960w, ../../assets/images/project-1/v2-state-02-ramp.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 02, Awareness Ramp: the film blurs and dims, an amber glow rises, and a line says handover in about one minute">
+                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-02-ramp.webp" srcset="../../assets/images/project-1/v2-state-02-ramp-s.webp 960w, ../../assets/images/project-1/v2-state-02-ramp.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 02, Awareness Ramp: the film blurs and dims, an amber glow rises, and a line says handover in about one minute" loading="lazy">
                   <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-03-reengage.webp" srcset="../../assets/images/project-1/v2-state-03-reengage-s.webp 960w, ../../assets/images/project-1/v2-state-03-reengage.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 03, Reengagement: the road ahead in amber, a 28 second countdown, and the prompt sit up, feet on the pedals" loading="lazy">
                   <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-04-alert.webp" srcset="../../assets/images/project-1/v2-state-04-alert-s.webp 960w, ../../assets/images/project-1/v2-state-04-alert.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 04, Handover Alert: red, a 7 second countdown, take over now, lane closed ahead, hands on the wheel" loading="lazy">
                   <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-05-confirm.webp" srcset="../../assets/images/project-1/v2-state-05-confirm-s.webp 960w, ../../assets/images/project-1/v2-state-05-confirm.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 05, Takeover Confirm: teal, you have control, film paused, navigation to exit 14" loading="lazy">
@@ -1340,8 +1340,11 @@
             if (!window.matchMedia('(hover: hover)').matches) return;
             document.querySelectorAll('.v2-zoom').forEach(function (box) {
               var lens = box.querySelector('.v2-lens'), img = box.querySelector('img'), Z = +(box.getAttribute('data-z') || 3);
-              var src = box.getAttribute('data-zoom'); new Image().src = src;
-              lens.style.backgroundImage = 'url(' + src + ')';
+              var src = box.getAttribute('data-zoom');
+              // load the large image only when someone first reaches for the photo
+              box.addEventListener('mouseenter', function () {
+                if (!lens.style.backgroundImage) lens.style.backgroundImage = 'url(' + src + ')';
+              });
               box.addEventListener('mousemove', function (e) {
                 var r = img.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
                 if (x < 0 || y < 0 || x > r.width || y > r.height) { box.classList.remove('is-zooming'); return; }
