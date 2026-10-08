@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
-  <title>Designing the Return | Anubhuti Raj</title>
+  <title>Designing the Return (v1) | Anubhuti Raj</title>
+  <meta name="robots" content="noindex, nofollow" />
   <link rel="icon" type="image/png" href="../../assets/images/browsericon.png" />
 
   <!-- Site-wide styles (same file the homepage uses) -->
@@ -434,8 +435,8 @@
 }
 .cs-pin-screen {
   position: relative;
-  width: min(100%, 1100px, calc((100vh - 240px) * 1920 / 720));
-  aspect-ratio: 1920 / 720;
+  width: min(100%, 1100px, calc((100vh - 240px) * 1300 / 760));
+  aspect-ratio: 1300 / 760;
   border-radius: 24px;
   overflow: hidden;
   background: #07080f;
@@ -462,7 +463,7 @@
 }
 .cs-pin-img.is-active { opacity: 1; transform: none; }
 .cs-pin-info {
-  width: min(100%, 1100px, calc((100vh - 240px) * 1920 / 720));
+  width: min(100%, 1100px, calc((100vh - 240px) * 1300 / 760));
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -547,147 +548,6 @@
   .cs-next-btn { width: 100%; justify-content: center; box-sizing: border-box; }
 }
 
-
-/* ============================================================
-   v2 additions: hook, highlights, bridges, big question,
-   part dividers, readiness curves, research steps, design system,
-   placeholders for photos still to come.
-============================================================ */
-.v2-hook { margin: 24px 0 56px; }
-.v2-hook .cs-eyebrow { letter-spacing: .14em; }
-.v2-hook h1.cs-heading { font-size: clamp(40px, 6.4vw, 84px) !important; line-height: 1.02 !important; letter-spacing: -.02em; max-width: 15ch; margin-bottom: 28px !important; }
-.v2-hook h1 .v2-o { color: #E87B35; }
-.v2-hook .v2-sub { margin: 0; max-width: 46ch; font-size: clamp(19px, 2vw, 24px); line-height: 1.45; font-weight: 500; color: #4B505C; }
-.v2-hook .v2-sub b { color: #18191F; font-weight: 700; }
-
-/* highlight line: the one sentence a skimmer should take away */
-.v2-hl { position: relative; margin: 48px 0 0; padding: 4px 0 4px 28px; font-size: clamp(24px, 2.8vw, 34px); line-height: 1.25; font-weight: 700; letter-spacing: -.01em; color: #18191F; max-width: 26ch; }
-.v2-hl::before { content: ""; position: absolute; left: 0; top: 6px; bottom: 6px; width: 6px; border-radius: 6px; background: #FF8F71; }
-.v2-hl mark { background: linear-gradient(transparent 58%, rgba(255,143,113,.45) 58%); color: inherit; padding: 0 2px; }
-
-/* bridge into the next chapter */
-.v2-bridge { display: inline-flex; align-items: center; gap: 10px; margin: 56px 0 0; font-size: 17px; font-weight: 600; color: #E87B35; }
-.v2-bridge::before { content: "\2193"; font-size: 20px; }
-.motion .v2-bridge::before, .cs-reveal-on .v2-bridge::before { animation: v2-nudge 1.8s ease-in-out infinite; }
-@keyframes v2-nudge { 0%,100% { transform: none; } 50% { transform: translateY(4px); } }
-
-/* part divider */
-.v2-part { display: flex; align-items: center; gap: 20px; margin: 0 0 90px; }
-.v2-part::after { content: ""; flex: 1; height: 1px; background: #18191F; opacity: .2; }
-.v2-part span { font-size: 15px; font-weight: 700; letter-spacing: .16em; color: #18191F; }
-.v2-part b { color: #E87B35; font-weight: 700; }
-
-.v2-oneliner { margin: -12px 0 28px; font-size: clamp(21px, 2.3vw, 28px); line-height: 1.35; font-weight: 600; color: #E87B35; }
-
-/* spark */
-
-
-/* the big question */
-.v2-question { text-align: center; padding: 40px 0; }
-.v2-question .cs-eyebrow { justify-content: center; }
-.v2-question h2 { margin: 0 auto 24px; font-size: clamp(48px, 8.5vw, 120px); line-height: .98; font-weight: 800; letter-spacing: -.03em; color: #18191F; max-width: 12ch; }
-.v2-question h2 span { color: #E87B35; }
-.v2-question .v2-q-sub { margin: 0 auto 40px; max-width: 34ch; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.4; font-weight: 600; color: #4B505C; }
-.v2-question .cs-body { max-width: 60ch; margin-left: auto; margin-right: auto; }
-
-/* readiness curve */
-.v2-curve { margin: 48px 0 0; padding: 28px 28px 20px; background: #fff; border: 1px solid #E5E7EB; border-radius: 16px; }
-.v2-curve-title { margin: 0 0 4px; font-size: 18px; font-weight: 700; color: #18191F; }
-.v2-curve-note { margin: 0 0 18px; font-size: 15px; color: #6C727F; }
-.v2-curve svg { display: block; width: 100%; height: auto; overflow: visible; }
-.v2-curve .ax { stroke: #D9DBE0; stroke-width: 1; }
-.v2-curve .lbl { font-size: 13px; font-weight: 600; fill: #6C727F; font-family: inherit; }
-.v2-curve .ln { fill: none; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
-.v2-curve .ln-bad { stroke: #E5484D; }
-.v2-curve .ln-good { stroke: #E87B35; }
-.v2-curve .ln-ghost { stroke: #E5484D; opacity: .25; stroke-dasharray: 6 6; }
-.v2-curve .tag { font-size: 14px; font-weight: 700; font-family: inherit; }
-.cs-reveal-on .v2-curve .ln { stroke-dasharray: 1400; stroke-dashoffset: 1400; transition: stroke-dashoffset 2s cubic-bezier(.22,1,.36,1) .2s; }
-.cs-reveal-on .v2-curve.is-in .ln { stroke-dashoffset: 0; }
-.cs-reveal-on .v2-curve .ln-ghost { stroke-dasharray: 6 6; stroke-dashoffset: 0; transition: none; }
-
-/* research steps */
-.v2-steps { display: grid; gap: 64px; margin: 8px 0 0; }
-.v2-step { display: grid; grid-template-columns: 120px 1fr; gap: 24px; }
-.v2-step-num { font-size: 15px; font-weight: 700; letter-spacing: .14em; color: #E87B35; padding-top: 6px; }
-.v2-step h3 { margin: 0 0 12px; font-size: 26px; font-weight: 700; line-height: 1.2; color: #18191F; }
-.v2-step .cs-body { margin-bottom: 0; }
-.v2-note { margin: 20px 0 0; padding: 16px 20px; border-left: 4px solid #E5E7EB; font-size: 16px; line-height: 1.55; color: #4B505C; background: #fff; border-radius: 0 10px 10px 0; }
-
-/* findings list */
-.v2-findings { list-style: none; margin: 0 0 48px; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.v2-findings li { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px 22px; font-size: 17px; line-height: 1.45; color: #18191F; }
-.v2-findings b { display: block; margin-bottom: 4px; font-size: 26px; font-weight: 700; color: #E87B35; line-height: 1.1; }
-.v2-findings small { display: block; margin-top: 10px; font-size: 13px; color: #6C727F; }
-
-/* photo still to come */
-.v2-ph { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin: 24px 0 0; min-height: 260px; padding: 24px; border: 2px dashed #E87B35; border-radius: 16px; background: rgba(255,143,113,.06); text-align: center; }
-.v2-ph b { font-size: 13px; font-weight: 700; letter-spacing: .14em; color: #E87B35; }
-.v2-ph span { max-width: 52ch; font-size: 16px; line-height: 1.5; color: #4B505C; }
-.v2-ph + .cs-callout, .v2-ph + .cs-tried-row { margin-top: 48px !important; }
-.v2-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0 0; align-items: start; }
-.v2-photos a { display: block; border-radius: 12px; overflow: hidden; border: 1px solid #E5E7EB; background: #fff; cursor: zoom-in; }
-.v2-photos img { display: block; width: 100%; height: auto; transition: transform .6s cubic-bezier(.22,1,.36,1); }
-.v2-photos a { aspect-ratio: 5 / 4; }
-.v2-photos img { height: 100%; object-fit: cover; }
-.v2-photos a:not(.v2-zoom):hover img { transform: scale(1.02); }
-/* hover magnifier on the full wall */
-.v2-zoom { position: relative; }
-.v2-lens { position: absolute; z-index: 2; width: 190px; height: 190px; border-radius: 50%; pointer-events: none;
-  border: 3px solid #fff; box-shadow: 0 10px 30px rgba(24,25,31,.35), 0 0 0 1px rgba(24,25,31,.15);
-  background-repeat: no-repeat; background-color: #d9cdb8; opacity: 0; transform: scale(.8); transition: opacity .2s ease, transform .2s ease; }
-.v2-zoom.is-zooming { cursor: none; }
-.v2-zoom.is-zooming .v2-lens { opacity: 1; transform: none; }
-@media (hover: none) { .v2-lens { display: none; } }
-.v2-photos-one { grid-template-columns: 1fr; margin: 0; }
-.v2-gaps-split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 24px; align-items: start; margin: 24px 0 0; }
-.v2-gaps-split > .v2-photos { will-change: transform; }
-.v2-gaps-cards { display: flex; flex-direction: column; gap: 16px; }
-.v2-gaps-cards .cs-gap-card { margin: 0 !important; min-height: 0; flex-direction: column; align-items: stretch; gap: 20px; padding: 26px 28px; }
-.v2-gaps-cards .cs-gap-text { max-width: none; }
-.v2-gaps-cards .cs-gap-body { font-size: 18px; }
-.v2-gaps-cards .cs-gap-heading { margin-bottom: 10px; }
-.v2-gaps-cards .cs-gap-label { margin-bottom: 8px; }
-.v2-gaps-cards .cs-gap-visual { flex: none; height: auto; justify-content: flex-start; }
-.v2-gaps-cards .cs-gap-visual img { width: 100%; height: auto !important; max-height: none !important; }
-@media (max-width: 900px) { .v2-gaps-split { grid-template-columns: 1fr; } .v2-gaps-split > .v2-photos { transform: none !important; } }
-.v2-photos-one a { aspect-ratio: auto; }
-@media (max-width: 900px) { .v2-photos { grid-template-columns: 1fr; } }
-#driver .cs-illustration-image { aspect-ratio: 1672 / 941; }
-.v2-ph[hidden] { display: none !important; }
-.v2-todo { background: rgba(255,143,113,.22); border-radius: 4px; padding: 1px 6px; font-weight: 600; }
-
-/* design system */
-.v2-swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 0 0 48px; }
-.v2-sw { border-radius: 16px; overflow: hidden; background: #fff; border: 1px solid #E5E7EB; }
-.v2-sw-chip { height: 120px; display: flex; align-items: flex-end; padding: 14px 18px; font-size: 14px; font-weight: 700; letter-spacing: .08em; color: #07080f; }
-.v2-sw-body { padding: 18px 20px 22px; }
-.v2-sw-name { margin: 0 0 2px; font-size: 20px; font-weight: 700; color: #18191F; }
-.v2-sw-when { margin: 0 0 12px; font-size: 14px; font-weight: 600; color: #6C727F; }
-.v2-sw-why { margin: 0; font-size: 16px; line-height: 1.5; color: #2A2B31; }
-.v2-sw-not { margin: 12px 0 0; font-size: 15px; line-height: 1.45; color: #6C727F; }
-.v2-sw-not b { color: #18191F; }
-.v2-rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 0 0 8px; }
-.v2-rule { padding: 22px; background: #fff; border: 1px solid #E5E7EB; border-radius: 14px; }
-.v2-rule p:first-child { margin: 0 0 8px; font-size: 13px; font-weight: 700; letter-spacing: .12em; color: #E87B35; }
-.v2-rule p:last-child { margin: 0; font-size: 16px; line-height: 1.5; color: #18191F; }
-
-/* killed ideas, expanded */
-.v2-killed { display: grid; gap: 20px; }
-.v2-kill { display: grid; grid-template-columns: 180px 1fr; gap: 24px; padding: 26px 28px; background: #fff; border: 1px solid #E5E7EB; border-radius: 16px; }
-.v2-kill.is-kept { border-color: #18191F; box-shadow: 0 6px 0 #240C05; }
-.v2-kill-tag { font-size: 13px; font-weight: 700; letter-spacing: .14em; color: #E5484D; }
-.v2-kill.is-kept .v2-kill-tag { color: #1F9D6B; }
-.v2-kill h3 { margin: 6px 0 0; font-size: 22px; font-weight: 700; line-height: 1.2; color: #18191F; }
-.v2-kill p { margin: 0 0 10px; font-size: 17px; line-height: 1.55; color: #2A2B31; }
-.v2-kill p:last-child { margin-bottom: 0; }
-.v2-kill p b { color: #18191F; }
-
-@media (max-width: 900px) {
-  .v2-findings, .v2-swatches, .v2-rules { grid-template-columns: 1fr; }
-  .v2-step, .v2-kill { grid-template-columns: 1fr; gap: 10px; }
-  .v2-part { margin-bottom: 64px; }
-}
   </style>
 
   <!-- Tells the shared header/footer partials how far back up to the project root -->
@@ -707,11 +567,11 @@
       <div class="x-padding">
         <article class="cs-article cs-v2">
 
-          <!-- ================= OPENING ================= -->
+          <!-- ================= SECTION 1: HERO / OVERVIEW ================= -->
           <section class="cs-section" id="overview">
 
             <div class="cs-hero-image">
-              <img src="../../assets/images/project-1/v2-hero.webp" srcset="../../assets/images/project-1/v2-hero-s.webp 1000w, ../../assets/images/project-1/v2-hero.webp 2000w" sizes="(max-width: 900px) 100vw, 1200px" fetchpriority="high" alt="Illustration from behind the driver of a car on an empty desert highway at sunset, with the handover screen glowing on the centre display" style="width:100%; height:100%; object-fit:cover; object-position:55% 50%; display:block; border-radius:4px;">
+              <img src="../../assets/images/project-1/01-hero-bg.webp" fetchpriority="high" alt="Hero image" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
             </div>
 
             <div class="cs-meta-grid">
@@ -739,7 +599,6 @@
 
             <p class="cs-eyebrow">OVERVIEW</p>
             <h1 class="cs-heading">Designing the Return</h1>
-            <p class="v2-oneliner">How a self driving car should hand control back to a driver who wasn't watching.</p>
             <p class="cs-body">
               At SAE Level 3, the car drives and the driver is free to watch a film. When conditions change, the car
               needs the driver back, and research typically allows four to ten seconds for
@@ -751,27 +610,12 @@
               <a class="cs-paper-link" href="../../assets/docs/designing-the-return.pdf" target="_blank" rel="noopener">Read the research paper &rarr;</a>
             </div>
 
-            <p class="v2-bridge">how I got here</p>
           </section>
 
-          <div class="v2-part"><span><b>PART 1</b> &middot; THE STORY AND THE RESEARCH</span></div>
-
-          <!-- ================= THE SPARK ================= -->
-          <section class="cs-section" id="spark">
-            <p class="cs-eyebrow">01 &middot; THE SPARK</p>
-            <h2 class="cs-heading" data-reveal>When I'm deep in a film, I don't hear my mom.</h2>
-            <p class="cs-body">I grew up loving cars, but I didn't have a single automotive project. When my exchange at ESAD Orl&eacute;ans let me pick any personal project, with engineers at Valeo and Renault as mentors, I chose this one.</p>
-            <p class="cs-body cs-mb-32">I'd seen a Level 3 car hand control back to a calm, ready driver. But when I'm really into a film, my mom can talk right next to me and I won't hear her until she switches the TV off.</p>
-            <div class="cs-callout" data-reveal><p>If a car pulled me out of that and gave me ten seconds, I'd panic.</p></div>
-            <p class="v2-bridge">so I looked at how it works today</p>
-          </section>
-
-          <!-- ================= THE GAP ================= -->
+          <!-- ================= SECTION 2: THE PROBLEM ================= -->
           <section class="cs-section" id="problem">
-            <p class="cs-eyebrow">02 &middot; THE GAP</p>
-            <h2 class="cs-heading" data-reveal>The car drives. You're allowed to look away.</h2>
-            <p class="cs-body">At Level 3, the driver is allowed to look away, and Mercedes even unlocks films on the centre screen. When the car needs her back, the first thing it says is the alarm itself.</p>
-
+            <p class="cs-eyebrow">THE PROBLEM</p>
+            <h2 class="cs-heading" data-reveal>The alarm isn't the problem. The silence before it is.</h2>
             <p class="cs-body cs-mb-32">A takeover request, as it works in production cars today.</p>
 
             <div class="cs-storyboard">
@@ -794,7 +638,6 @@
             </div>
             <p class="cs-ai-credit">Illustrations generated with ChatGPT, then edited by me.</p>
 
-
             <div class="cs-timeline" data-reveal>
               <div class="cs-timeline-segment cs-timeline-autonomous">
                 <div><strong>AUTONOMOUS</strong><span>entertainment on</span></div>
@@ -815,15 +658,24 @@
               <span>T 0</span>
             </div>
 
+            <p class="cs-body cs-mb-48">
+              None of the four production systems I compared designs this window, even though the screens to do so
+              already exist. It is a design space current systems leave largely unexplored.
+            </p>
 
-
-            <div class="cs-callout" data-reveal><p>The alarm isn't the problem. The silence before it is.</p></div>
-            <p class="v2-bridge">but who is she, really?</p>
+            <div class="cs-callout" data-reveal>
+              <p class="cs-callout-italic">How do you design the sixty seconds before a handover, so the driver arrives ready instead of startled?</p>
+            </div>
+            <p class="cs-body">
+              Sixty seconds is a working hypothesis, based on the most warning a planned handover can give, such as
+              the end of a mapped highway. Sudden events give far less, and the sequence compresses to fit. The reasoning is
+              in <a href="#why-these-numbers" style="color:#18191F;">Why these numbers</a>.
+            </p>
           </section>
 
           <!-- ================= SECTION 3: MEET THE DRIVER ================= -->
           <section class="cs-section" id="driver">
-            <p class="cs-eyebrow">03 &middot; MEET THE DRIVER</p>
+            <p class="cs-eyebrow">MEET THE DRIVER</p>
             <h2 class="cs-heading" data-reveal>She isn't careless. The system is working as designed.</h2>
             <p class="cs-body cs-mb-32">
               She is forty minutes into her commute in a certified L3 zone, reclined, feet off the pedals and absorbed
@@ -832,7 +684,7 @@
 
             <div class="cs-illustration" data-reveal>
               <div class="cs-illustration-image">
-                <img src="../../assets/images/project-1/v2-driver.webp" srcset="../../assets/images/project-1/v2-driver-s.webp 900w, ../../assets/images/project-1/v2-driver.webp 1672w" sizes="(max-width: 900px) 100vw, 1100px" loading="lazy" alt="Side view of the driver, labelled: seat reclined, chin resting on hand, feet off the pedals" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:12px;">
+                <img src="../../assets/images/project-1/02-driver-illustration.webp" loading="lazy" alt="Illustration of a driver reclined in an L3 vehicle, chin resting on hand, feet off the pedal area" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
               </div>
             </div>
 
@@ -858,62 +710,16 @@
               <div class="cs-insight-icon"><img src="../../assets/images/project-1/bell.png" loading="lazy" alt="" style="width:100%; height:100%; object-fit:contain; display:block;"></div>
               <p class="cs-insight-text">In the systems I reviewed, the alert is the same whether the driver is ninety seconds or thirty minutes into autonomous mode. The research suggests these are different recovery problems.</p>
             </div>
-            <p class="v2-bridge">so how did I find all this?</p>
           </section>
 
-          <!-- ================= THE RESEARCH ================= -->
+          <!-- ================= SECTION 4: WHAT I FOUND ================= -->
           <section class="cs-section" id="found">
-            <p class="cs-eyebrow">04 &middot; HOW I RESEARCHED IT</p>
-            <h2 class="cs-heading" data-reveal>I didn't have a car or a simulator. So I read everything.</h2>
+            <p class="cs-eyebrow">WHAT I FOUND</p>
+            <h2 class="cs-heading" data-reveal>A decade of takeover research, and four production systems</h2>
+            <p class="cs-body cs-mb-32">
+              Time spent looking at the road during a screen task<span class="cs-cite">van der Heiden et al., CHI 2017</span>
+            </p>
 
-            <div class="v2-steps">
-              <div class="v2-step" data-reveal>
-                <p class="v2-step-num">STEP 1</p>
-                <div>
-                  <h3>Reading 38 papers and sources</h3>
-                  <p class="cs-body">Human factors, automotive HCI and cognitive psychology, sorted by what each told me about the driver.</p>
-                  <div class="v2-photos">
-                    <a class="v2-zoom" data-zoom="../../assets/images/project-1/v2-litmap-wide-xl.webp" href="../../assets/images/project-1/v2-litmap-wide-xl.webp" target="_blank" rel="noopener"><span class="v2-lens" aria-hidden="true"></span><img src="../../assets/images/project-1/v2-litmap-wide.webp" srcset="../../assets/images/project-1/v2-litmap-wide-s.webp 800w, ../../assets/images/project-1/v2-litmap-wide.webp 1600w" sizes="(max-width: 900px) 100vw, 540px" loading="lazy" alt="Literature map on sticky notes: eight orange theme headers, findings in yellow and green below each, starred key findings and pink question notes."></a>
-                    <a class="v2-zoom" data-z="2" data-zoom="../../assets/images/project-1/v2-litmap-close-xl.webp" href="../../assets/images/project-1/v2-litmap-close-xl.webp" target="_blank" rel="noopener"><span class="v2-lens" aria-hidden="true"></span><img src="../../assets/images/project-1/v2-litmap-close.webp" srcset="../../assets/images/project-1/v2-litmap-close-s.webp 800w, ../../assets/images/project-1/v2-litmap-close.webp 1600w" sizes="(max-width: 900px) 100vw, 540px" loading="lazy" alt="Close up of the starred findings: feet off pedals means slowest braking, distraction stays 27 seconds, only 6% eyes on the road, and a 20 second warning raised road looks from 23% to 49 to 54%, next to a pink note asking what happens before the alarm."></a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="v2-step" data-reveal>
-                <p class="v2-step-num">STEP 2</p>
-                <div>
-                  <h3>Taking apart four systems</h3>
-                  <p class="cs-body cs-mb-32">What does each one tell the driver before a handover, and during it?</p>
-                  <div class="cs-table">
-                    <div>System</div><div>Level</div><div>Before the alert</div><div>Alert</div>
-                    <div>Mercedes DRIVE PILOT</div><div>L3</div><div>Nothing designed</div><div>Visual + acoustic + haptic</div>
-                    <div>BMW Personal Pilot</div><div>L2++</div><div>Gradual braking only</div><div>Audible + visual</div>
-                    <div>Tesla FSD</div><div>L2</div><div>n/a, always supervised</div><div>Torque check + visual</div>
-                    <div>Waymo</div><div>L4</div><div>n/a, no driver seat</div><div>None required</div>
-                  </div>
-                  <div class="v2-ph" hidden><b>PHOTO TO ADD</b><span>Printed screenshots of each system's screens on A4, annotated with pen, highlighter and sticky notes.</span></div>
-                  <p class="v2-note">While I was working on this, BMW announced it was stepping back from Level 3 for its next lineup. The problem stays for every Level 3 car already on the road.</p>
-                </div>
-              </div>
-
-              <div class="v2-step" data-reveal>
-                <p class="v2-step-num">STEP 3</p>
-                <div>
-                  <h3>Checking it with people who build cars</h3>
-                  <p class="cs-body">Engineers at Valeo and Renault kept pulling me from ideal solutions back to what a car can actually do. One question from my Valeo mentor changed the design: would a driver really trust a car that tells her it is "less sure"? That is why I dropped the permanent confidence dashboard.</p>
-                </div>
-              </div>
-            </div>
-
-            <h3 class="cs-heading" style="font-size:30px; margin:96px 0 28px;" data-reveal>What the research told me</h3>
-            <ul class="v2-findings">
-              <li data-reveal><b>6%</b>of the time on the road, with a film on the screen.<small>van der Heiden et al., CHI 2017</small></li>
-              <li data-reveal><b>Feet</b>away from the pedals slowed braking more than anything else.<small>Zhao et al., 2024</small></li>
-              <li data-reveal><b>Longer</b>in autonomous mode meant a worse takeover.<small>Heliyon, 2024</small></li>
-              <li data-reveal><b>27s</b>is how long distraction can linger after the task ends.<small>Strayer et al., 2015</small></li>
-            </ul>
-
-            <p class="cs-body cs-mb-32">The finding that changed the project: time spent looking at the road<span class="cs-cite">van der Heiden et al., CHI 2017</span></p>
             <div class="cs-stat-row" data-reveal>
               <div class="cs-stat-label">Without a pre alert</div>
               <div class="cs-stat-track"><div class="cs-stat-fill cs-stat-fill-pink"></div></div>
@@ -925,20 +731,34 @@
               <div class="cs-stat-value">49-54%</div>
             </div>
 
-            <div class="cs-callout" data-reveal><p>I expected the answer to be a stronger alarm. The research kept pointing earlier.</p></div>
-            <p class="v2-bridge">so I sorted it all out</p>
+            <p class="cs-body cs-mb-32">
+              A single quiet cue, twenty seconds early, doubled that figure and lowered heart rate when the real
+              alert arrived. This finding became the foundation of the project.
+            </p>
+
+            <div class="cs-table" data-reveal>
+              <div>System</div><div>Level</div><div>Before the alert</div><div>Alert</div>
+              <div>Mercedes DRIVE PILOT</div><div>L3</div><div>Nothing designed</div><div>Visual + acoustic + haptic</div>
+              <div>BMW Personal Pilot</div><div>L2++</div><div>Gradual braking only</div><div>Audible + visual</div>
+              <div>Tesla FSD</div><div>L2</div><div>n/a, always supervised</div><div>Torque check + visual</div>
+              <div>Waymo</div><div>L4</div><div>n/a, no driver seat</div><div>None required</div>
+            </div>
+
+            <div class="cs-callout" data-reveal>
+              <p class="cs-callout-label">WHY THIS MATTERED</p>
+              <p class="cs-callout-body">
+                I expected the answer to be a stronger alarm. The research kept pointing earlier. The alert may be
+                doing its job, but it only covers the last few seconds of a process that could start a minute
+                before.
+              </p>
+            </div>
           </section>
 
           <!-- ================= SECTION 5: THREE GAPS ================= -->
           <section class="cs-section" id="gaps">
-            <p class="cs-eyebrow">05 &middot; MAKING SENSE OF IT</p>
+            <p class="cs-eyebrow">THREE GAPS</p>
             <h2 class="cs-heading" data-reveal>Not a broken component. A broken assumption.</h2>
-            <p class="cs-body">Every finding on its own note, moved around until three clusters kept coming back.</p>
-            <div class="v2-gaps-split">
-              <div class="v2-photos v2-photos-one">
-              <a class="v2-zoom" data-z="2.5" data-zoom="../../assets/images/project-1/v2-gaps-xl.webp" href="../../assets/images/project-1/v2-gaps-xl.webp" target="_blank" rel="noopener"><span class="v2-lens" aria-hidden="true"></span><img src="../../assets/images/project-1/v2-gaps.webp" srcset="../../assets/images/project-1/v2-gaps-s.webp 700w, ../../assets/images/project-1/v2-gaps.webp 1400w" sizes="(max-width: 900px) 100vw, 720px" loading="lazy" alt="Findings regrouped on sticky notes under three gap headers: the silent system, no way to say less sure, and the empty 60 seconds, each with a pink insight note at the bottom."></a>
-            </div>
-              <div class="v2-gaps-cards">
+
             <div class="cs-gap-card" data-reveal>
               <div class="cs-gap-text">
                 <p class="cs-gap-label">GAP 01</p>
@@ -971,32 +791,22 @@
                 <img src="../../assets/images/project-1/04-gap03-sequence-icon.webp" loading="lazy" alt="Four-person recovery sequence icon" style="max-width:100%; max-height:100%; object-fit:contain; display:block;">
               </div>
             </div>
-              </div>
-            </div>
-            <p class="v2-bridge">which left one question</p>
           </section>
 
-          <!-- ================= THE QUESTION ================= -->
-          <section class="cs-section" id="question">
-            <p class="cs-eyebrow">06 &middot; THE QUESTION</p>
-            <h2 class="cs-heading" data-reveal>How do you design <span style="color:#E87B35;">sixty seconds?</span></h2>
-            <p class="cs-body">So the driver arrives ready instead of startled. Sixty seconds is a ceiling, not a rule. <a href="#why-these-numbers" style="color:#18191F;">Why sixty?</a></p>
-          </section>
-
-          <!-- ================= WHAT I TRIED ================= -->
+          <!-- ================= SECTION 6: WHAT I TRIED FIRST, AND KILLED ================= -->
           <section class="cs-section" id="tried">
-            <p class="cs-eyebrow">07 &middot; FROM INSIGHT TO SYSTEM</p>
+            <p class="cs-eyebrow">FROM INSIGHT TO SYSTEM</p>
             <h2 class="cs-heading" data-reveal>What I tried first, and killed</h2>
 
             <div class="cs-tried-row">
               <div class="cs-tried-card" data-reveal>
                 <p class="cs-tried-title">Louder alert</p>
-                <p class="cs-tried-body">Still one shock, just a bigger one. Drivers needed preparation, not volume.</p>
+                <p class="cs-tried-body">Still one shock, still no warning.</p>
               </div>
               <div class="cs-tried-arrow">&rarr;</div>
               <div class="cs-tried-card" data-reveal>
                 <p class="cs-tried-title">Permanent dashboard</p>
-                <p class="cs-tried-body">A live confidence score competed with the film, and an unsure car makes people anxious.</p>
+                <p class="cs-tried-body">A live confidence score competed with the entertainment L3 is meant to allow.</p>
               </div>
               <div class="cs-tried-arrow">&rarr;</div>
               <div class="cs-tried-card cs-tried-kept" data-reveal>
@@ -1004,23 +814,18 @@
                 <p class="cs-tried-body">Each state has one job, from an ambient cue to confirming the takeover.</p>
               </div>
             </div>
-            <div class="v2-ph" hidden><b>PHOTO TO ADD</b><span>Rough traced sketches of the two killed ideas and the five state sequence, crossed out where they died.</span></div>
-
-            <div class="cs-callout" data-reveal><p>Every idea I killed taught me the same thing: the driver needed time, not volume.</p></div>
           </section>
-
-          <div class="v2-part"><span><b>PART 2</b> &middot; THE DESIGN</span></div>
 
           <!-- ================= SECTION 7: THE FIVE STATES ================= -->
           <section class="cs-section" id="states">
-            <p class="cs-eyebrow">08 &middot; THE FIVE STATES</p>
+            <p class="cs-eyebrow">THE FIVE STATES</p>
             <h2 class="cs-heading" data-reveal>A sequence, not a switch</h2>
             <p class="cs-body cs-mb-32">The same drive with the proposed sequence. State 01, Autonomous Mode, is the moment in the first panel above. From there, the car begins communicating sixty seconds before the handover.</p>
 
             <div class="cs-storyboard">
               <figure class="cs-sb-panel" data-reveal>
                 <div class="cs-sb-image"><img src="../../assets/images/project-1/14-storyboard-b2.webp" loading="lazy" alt="Driver still reclined. A thin amber glow appears along the bottom of the center screen."></div>
-                <figcaption><span class="cs-sb-num">02</span><span><strong>Awareness Ramp.</strong> T-60s. The film dims and an amber glow rises. Not yet a warning.</span></figcaption>
+                <figcaption><span class="cs-sb-num">02</span><span><strong>Awareness Ramp.</strong> T-60s. A quiet amber edge. Not yet a warning.</span></figcaption>
               </figure>
               <figure class="cs-sb-panel" data-reveal>
                 <div class="cs-sb-image"><img src="../../assets/images/project-1/15-storyboard-b3.webp" loading="lazy" alt="The whole screen is amber and the film has faded. She sits upright with feet on the pedals, looking at the road."></div>
@@ -1043,40 +848,35 @@
             <div class="cs-pin" data-state="neutral">
               <div class="cs-pin-sticky">
                 <div class="cs-pin-screen">
-                  <!-- The five state screens; scrolling crossfades between them -->
-                  
-                  <img class="cs-pin-img is-active" src="../../assets/images/project-1/v2-state-01-autonomous.webp" srcset="../../assets/images/project-1/v2-state-01-autonomous-s.webp 960w, ../../assets/images/project-1/v2-state-01-autonomous.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 01, Autonomous Mode: a film plays full screen, with speed and automated driving status in the corner">
-                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-02-ramp.webp" srcset="../../assets/images/project-1/v2-state-02-ramp-s.webp 960w, ../../assets/images/project-1/v2-state-02-ramp.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 02, Awareness Ramp: the film blurs and dims, an amber glow rises, and a line says handover in about one minute" loading="lazy">
-                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-03-reengage.webp" srcset="../../assets/images/project-1/v2-state-03-reengage-s.webp 960w, ../../assets/images/project-1/v2-state-03-reengage.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 03, Reengagement: the road ahead in amber, a 28 second countdown, and the prompt sit up, feet on the pedals" loading="lazy">
-                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-04-alert.webp" srcset="../../assets/images/project-1/v2-state-04-alert-s.webp 960w, ../../assets/images/project-1/v2-state-04-alert.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 04, Handover Alert: red, a 7 second countdown, take over now, lane closed ahead, hands on the wheel" loading="lazy">
-                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-05-confirm.webp" srcset="../../assets/images/project-1/v2-state-05-confirm-s.webp 960w, ../../assets/images/project-1/v2-state-05-confirm.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 05, Takeover Confirm: teal, you have control, film paused, navigation to exit 14" loading="lazy">
+                  <!-- Live handover prototype; scrolling tells it which state to show -->
+                  <iframe class="cs-pin-frame" src="../project-1/handover.html" title="Handover sequence, center display" tabindex="-1" loading="eager"></iframe>
                 </div>
                 <div class="cs-pin-info">
                   <div class="cs-pin-caps">
                   <div class="cs-pin-cap is-active">
                     <p class="cs-pin-time">T-&infin; to T-60s</p>
                     <p class="cs-pin-name"><span>01</span>Autonomous Mode</p>
-                    <p class="cs-pin-desc">The film plays full screen. Speed and automated driving sit quietly in the corners. No warning cue.</p>
+                    <p class="cs-pin-desc">The full dashboard: map, music and car status. A calm teal accent, no warning cue.</p>
                   </div>
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T-60s to T-30s</p>
                     <p class="cs-pin-name"><span>02</span>Awareness Ramp</p>
-                    <p class="cs-pin-desc">The film blurs and dims, an amber glow rises from below, and one line asks her to glance at the road.</p>
+                    <p class="cs-pin-desc">The lower cards give way to a live road view, with a soft amber glow on the horizon. Music keeps playing.</p>
                   </div>
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T-30s to T-10s</p>
                     <p class="cs-pin-name"><span>03</span>Reengagement</p>
-                    <p class="cs-pin-desc">The film gives way to the road ahead in amber. A countdown and one instruction: sit up, feet on the pedals.</p>
+                    <p class="cs-pin-desc">Map and music step back. The road view fills the screen in amber, and a countdown begins.</p>
                   </div>
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T-10s to T0</p>
                     <p class="cs-pin-name"><span>04</span>Handover Alert</p>
-                    <p class="cs-pin-desc">Red, large and high on the screen: "Take over now", the seconds left, why, and hands on the wheel.</p>
+                    <p class="cs-pin-desc">Only the road remains, framed in red, with "Take over now" and the last few seconds.</p>
                   </div>
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T+0 onward</p>
                     <p class="cs-pin-name"><span>05</span>Takeover Confirm</p>
-                    <p class="cs-pin-desc">Back to teal. "You have control", the film is paused, and navigation picks up where it left off.</p>
+                    <p class="cs-pin-desc">A teal frame and "You have control". The dashboard returns, dimmed, behind the road.</p>
                   </div>
                   </div>
                   <div class="cs-pin-steps">
@@ -1091,53 +891,9 @@
             </div>
           </section>
 
-          <!-- ================= DESIGN SYSTEM ================= -->
-          <section class="cs-section" id="system">
-            <p class="cs-eyebrow">09 &middot; THE DESIGN SYSTEM</p>
-            <h2 class="cs-heading" data-reveal>Three colours, each with one job</h2>
-            <p class="cs-body cs-mb-48">Drivers already know a colour language from their dashboards. I used it, more carefully. State 01 has no accent colour at all, because that screen belongs to the film.</p>
-
-            <div class="v2-swatches">
-              <div class="v2-sw" data-reveal>
-                <div class="v2-sw-chip" style="background:#2FD8C3; color:#07080f;">TEAL &middot; #2FD8C3</div>
-                <div class="v2-sw-body">
-                  <p class="v2-sw-name">You have control</p>
-                  <p class="v2-sw-when">State 05 only</p>
-                  <p class="v2-sw-why">Teal returns only once she is driving, so calm means the handover is done. Not green, because green already means "go".</p>
-                </div>
-              </div>
-              <div class="v2-sw" data-reveal>
-                <div class="v2-sw-chip" style="background:#F5A624; color:#07080f;">AMBER &middot; #F5A624</div>
-                <div class="v2-sw-body">
-                  <p class="v2-sw-name">Start coming back</p>
-                  <p class="v2-sw-when">States 02 and 03</p>
-                  <p class="v2-sw-why">Drivers already read it as "pay attention". It holds up in daylight better than yellow.</p>
-                </div>
-              </div>
-              <div class="v2-sw" data-reveal>
-                <div class="v2-sw-chip" style="background:#FF3B30; color:#fff;">RED &middot; #FF3B30</div>
-                <div class="v2-sw-body">
-                  <p class="v2-sw-name">Take over now</p>
-                  <p class="v2-sw-when">State 04 only</p>
-                  <p class="v2-sw-why">Saved for the last ten seconds, so the alarm still feels different.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="cs-solve-card" data-reveal>
-              <p class="cs-solve-label">MOTION</p>
-              <p class="cs-solve-body">Slow fades from T-60s, never a flash. The film blurs and dims instead of cutting out.</p>
-            </div>
-            <div class="cs-solve-card" data-reveal>
-              <p class="cs-solve-label">TYPE</p>
-              <p class="cs-solve-body">One clear instruction per state, large enough to read in a glance from a reclined seat.</p>
-            </div>
-
-          </section>
-
           <!-- ================= SECTION 8: WHY THESE NUMBERS ================= -->
           <section class="cs-section" id="why-these-numbers">
-            <p class="cs-eyebrow">10 &middot; WHY THESE NUMBERS</p>
+            <p class="cs-eyebrow">WHY THESE NUMBERS</p>
             <h2 class="cs-heading" data-reveal>Sixty seconds is a ceiling, not a rule</h2>
             <p class="cs-body cs-mb-32">The warning a car can give depends on what ends autonomy, so the sequence adapts to each trigger.</p>
 
@@ -1205,7 +961,7 @@
 
           <!-- ================= SECTION 9: WHAT I DIDN'T SOLVE ================= -->
           <section class="cs-section" id="unsolved">
-            <p class="cs-eyebrow">11 &middot; WHAT I DIDN'T SOLVE</p>
+            <p class="cs-eyebrow">WHAT I DIDN'T SOLVE</p>
             <h2 class="cs-heading" data-reveal>A clean win would be a lie</h2>
 
             <div class="cs-solve-card" data-reveal>
@@ -1224,7 +980,7 @@
 
           <!-- ================= SECTION 10: REFLECTION & NEXT ================= -->
           <section class="cs-section" id="reflection">
-            <p class="cs-eyebrow">12 &middot; REFLECTION &amp; NEXT</p>
+            <p class="cs-eyebrow">REFLECTION &amp; NEXT</p>
             <h2 class="cs-heading" data-reveal>Where this stands</h2>
             <p class="cs-body cs-mb-32">This proposal is grounded in published research, mostly from driving simulators. It has not yet been tested with drivers.</p>
 
@@ -1290,14 +1046,14 @@
             var pin = document.querySelector('.cs-pin');
             if (!pin) return;
             var panel = pin.querySelector('.cs-pin-sticky');
-            var imgs = pin.querySelectorAll('.cs-pin-img');
+            var frame = pin.querySelector('.cs-pin-frame');
             var caps = pin.querySelectorAll('.cs-pin-cap');
             var steps = pin.querySelectorAll('.cs-pin-step');
             var names = ['neutral', 'ramp', 'reengage', 'alert', 'calm'];
             var n = caps.length, current = -1, mode = '';
 
             function send(i, force) {
-              imgs.forEach(function (im, k) { im.classList.toggle('is-active', k === i); });
+              if (frame && frame.contentWindow) frame.contentWindow.postMessage({ handoverState: i, force: !!force }, '*');
             }
             function show(i) {
               if (i === current) return;
@@ -1348,65 +1104,16 @@
             update();
           })();
         </script>
-
-        <script>
-          /* Hover magnifier: a round lens follows the cursor over the sticky note wall. */
-          (function () {
-            if (!window.matchMedia('(hover: hover)').matches) return;
-            document.querySelectorAll('.v2-zoom').forEach(function (box) {
-              var lens = box.querySelector('.v2-lens'), img = box.querySelector('img'), Z = +(box.getAttribute('data-z') || 3);
-              var src = box.getAttribute('data-zoom');
-              // load the large image only when someone first reaches for the photo
-              box.addEventListener('mouseenter', function () {
-                if (!lens.style.backgroundImage) lens.style.backgroundImage = 'url(' + src + ')';
-              });
-              box.addEventListener('mousemove', function (e) {
-                var r = img.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
-                if (x < 0 || y < 0 || x > r.width || y > r.height) { box.classList.remove('is-zooming'); return; }
-                box.classList.add('is-zooming');
-                var L = lens.offsetWidth / 2;
-                lens.style.left = (x - L) + 'px'; lens.style.top = (y - L) + 'px';
-                lens.style.backgroundSize = (r.width * Z) + 'px ' + (r.height * Z) + 'px';
-                lens.style.backgroundPosition = (L - x * Z) + 'px ' + (L - y * Z) + 'px';
-              });
-              box.addEventListener('mouseleave', function () { box.classList.remove('is-zooming'); });
-            });
-          })();
-        </script>
-
-        <script>
-          /* Gaps: keep the sticky note photo in view while the three gap cards scroll past.
-             (CSS sticky is blocked by the site's layout, so this moves it with a transform.) */
-          (function () {
-            var wrap = document.querySelector('.v2-gaps-split');
-            if (!wrap) return;
-            var photo = wrap.querySelector('.v2-photos'), TOP = 40, ticking = false;
-            function update() {
-              ticking = false;
-              if (window.innerWidth <= 900) { photo.style.transform = ''; return; }
-              var r = wrap.getBoundingClientRect();
-              var max = wrap.offsetHeight - photo.offsetHeight;
-              var y = Math.min(Math.max(TOP - r.top, 0), Math.max(max, 0));
-              photo.style.transform = 'translateY(' + y + 'px)';
-            }
-            window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-            window.addEventListener('resize', update);
-            update();
-          })();
-        </script>
         <!-- Section navigation: small dot rail on the left, wide screens only -->
         <nav class="cs-toc" aria-label="Case study sections">
           <ol>
-            <li><a href="#overview" data-target="overview"><span class="cs-toc-label">Opening</span></a></li>
-            <li><a href="#spark" data-target="spark"><span class="cs-toc-label">The Spark</span></a></li>
-            <li><a href="#problem" data-target="problem"><span class="cs-toc-label">The Gap</span></a></li>
+            <li><a href="#overview" data-target="overview"><span class="cs-toc-label">Overview</span></a></li>
+            <li><a href="#problem" data-target="problem"><span class="cs-toc-label">The Problem</span></a></li>
             <li><a href="#driver" data-target="driver"><span class="cs-toc-label">Meet the Driver</span></a></li>
-            <li><a href="#found" data-target="found"><span class="cs-toc-label">How I Researched It</span></a></li>
-            <li><a href="#gaps" data-target="gaps"><span class="cs-toc-label">Making Sense of It</span></a></li>
-            <li><a href="#question" data-target="question"><span class="cs-toc-label">The Question</span></a></li>
+            <li><a href="#found" data-target="found"><span class="cs-toc-label">What I Found</span></a></li>
+            <li><a href="#gaps" data-target="gaps"><span class="cs-toc-label">Three Gaps</span></a></li>
             <li><a href="#tried" data-target="tried"><span class="cs-toc-label">What I Tried</span></a></li>
             <li><a href="#states" data-target="states"><span class="cs-toc-label">The Five States</span></a></li>
-            <li><a href="#system" data-target="system"><span class="cs-toc-label">Design System</span></a></li>
             <li><a href="#why-these-numbers" data-target="why-these-numbers"><span class="cs-toc-label">Why These Numbers</span></a></li>
             <li><a href="#unsolved" data-target="unsolved"><span class="cs-toc-label">What I Didn't Solve</span></a></li>
             <li><a href="#reflection" data-target="reflection"><span class="cs-toc-label">Reflection</span></a></li>
