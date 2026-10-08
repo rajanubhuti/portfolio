@@ -435,8 +435,8 @@
 }
 .cs-pin-screen {
   position: relative;
-  width: min(100%, 1100px, calc((100vh - 240px) * 1300 / 760));
-  aspect-ratio: 1300 / 760;
+  width: min(100%, 1100px, calc((100vh - 240px) * 1920 / 720));
+  aspect-ratio: 1920 / 720;
   border-radius: 24px;
   overflow: hidden;
   background: #07080f;
@@ -463,7 +463,7 @@
 }
 .cs-pin-img.is-active { opacity: 1; transform: none; }
 .cs-pin-info {
-  width: min(100%, 1100px, calc((100vh - 240px) * 1300 / 760));
+  width: min(100%, 1100px, calc((100vh - 240px) * 1920 / 720));
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -1028,35 +1028,40 @@
             <div class="cs-pin" data-state="neutral">
               <div class="cs-pin-sticky">
                 <div class="cs-pin-screen">
-                  <!-- Live handover prototype; scrolling tells it which state to show -->
-                  <iframe class="cs-pin-frame" src="../project-1/handover.html" title="Handover sequence, center display" tabindex="-1" loading="eager"></iframe>
+                  <!-- The five state screens; scrolling crossfades between them -->
+                  
+                  <img class="cs-pin-img is-active" src="../../assets/images/project-1/v2-state-01-autonomous.webp" srcset="../../assets/images/project-1/v2-state-01-autonomous-s.webp 960w, ../../assets/images/project-1/v2-state-01-autonomous.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 01, Autonomous Mode: a film plays full screen, with speed and automated driving status in the corner">
+                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-02-ramp.webp" srcset="../../assets/images/project-1/v2-state-02-ramp-s.webp 960w, ../../assets/images/project-1/v2-state-02-ramp.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 02, Awareness Ramp: the film blurs and dims, an amber glow rises, and a line says handover in about one minute">
+                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-03-reengage.webp" srcset="../../assets/images/project-1/v2-state-03-reengage-s.webp 960w, ../../assets/images/project-1/v2-state-03-reengage.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 03, Reengagement: the road ahead in amber, a 28 second countdown, and the prompt sit up, feet on the pedals" loading="lazy">
+                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-04-alert.webp" srcset="../../assets/images/project-1/v2-state-04-alert-s.webp 960w, ../../assets/images/project-1/v2-state-04-alert.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 04, Handover Alert: red, a 7 second countdown, take over now, lane closed ahead, hands on the wheel" loading="lazy">
+                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-05-confirm.webp" srcset="../../assets/images/project-1/v2-state-05-confirm-s.webp 960w, ../../assets/images/project-1/v2-state-05-confirm.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 05, Takeover Confirm: teal, you have control, film paused, navigation to exit 14" loading="lazy">
                 </div>
                 <div class="cs-pin-info">
                   <div class="cs-pin-caps">
                   <div class="cs-pin-cap is-active">
                     <p class="cs-pin-time">T-&infin; to T-60s</p>
                     <p class="cs-pin-name"><span>01</span>Autonomous Mode</p>
-                    <p class="cs-pin-desc">The full dashboard: map, music and car status. A calm teal accent, no warning cue.</p>
+                    <p class="cs-pin-desc">The film plays full screen. Speed and automated driving sit quietly in the corners. No warning cue.</p>
                   </div>
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T-60s to T-30s</p>
                     <p class="cs-pin-name"><span>02</span>Awareness Ramp</p>
-                    <p class="cs-pin-desc">The lower cards give way to a live road view, with a soft amber glow on the horizon. Music keeps playing.</p>
+                    <p class="cs-pin-desc">The film blurs and dims, an amber glow rises from below, and one line asks her to glance at the road.</p>
                   </div>
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T-30s to T-10s</p>
                     <p class="cs-pin-name"><span>03</span>Reengagement</p>
-                    <p class="cs-pin-desc">Map and music step back. The road view fills the screen in amber, and a countdown begins.</p>
+                    <p class="cs-pin-desc">The film gives way to the road ahead in amber. A countdown and one instruction: sit up, feet on the pedals.</p>
                   </div>
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T-10s to T0</p>
                     <p class="cs-pin-name"><span>04</span>Handover Alert</p>
-                    <p class="cs-pin-desc">Only the road remains, framed in red, with "Take over now" and the last few seconds.</p>
+                    <p class="cs-pin-desc">Red, large and high on the screen: "Take over now", the seconds left, why, and hands on the wheel.</p>
                   </div>
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T+0 onward</p>
                     <p class="cs-pin-name"><span>05</span>Takeover Confirm</p>
-                    <p class="cs-pin-desc">A teal frame and "You have control". The dashboard returns, dimmed, behind the road.</p>
+                    <p class="cs-pin-desc">Back to teal. "You have control", the film is paused, and navigation picks up where it left off.</p>
                   </div>
                   </div>
                   <div class="cs-pin-steps">
@@ -1270,14 +1275,14 @@
             var pin = document.querySelector('.cs-pin');
             if (!pin) return;
             var panel = pin.querySelector('.cs-pin-sticky');
-            var frame = pin.querySelector('.cs-pin-frame');
+            var imgs = pin.querySelectorAll('.cs-pin-img');
             var caps = pin.querySelectorAll('.cs-pin-cap');
             var steps = pin.querySelectorAll('.cs-pin-step');
             var names = ['neutral', 'ramp', 'reengage', 'alert', 'calm'];
             var n = caps.length, current = -1, mode = '';
 
             function send(i, force) {
-              if (frame && frame.contentWindow) frame.contentWindow.postMessage({ handoverState: i, force: !!force }, '*');
+              imgs.forEach(function (im, k) { im.classList.toggle('is-active', k === i); });
             }
             function show(i) {
               if (i === current) return;
