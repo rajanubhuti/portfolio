@@ -640,6 +640,8 @@
 .v2-zoom.is-zooming { cursor: none; }
 .v2-zoom.is-zooming .v2-lens { opacity: 1; transform: none; }
 @media (hover: none) { .v2-lens { display: none; } }
+.v2-photos-one { grid-template-columns: minmax(0, 720px); }
+.v2-photos-one a { aspect-ratio: auto; }
 @media (max-width: 900px) { .v2-photos { grid-template-columns: 1fr; } }
 .v2-todo { background: rgba(255,143,113,.22); border-radius: 4px; padding: 1px 6px; font-weight: 600; }
 
@@ -920,7 +922,9 @@
             <p class="cs-eyebrow">05 &middot; MAKING SENSE OF IT</p>
             <h2 class="cs-heading" data-reveal>Not a broken component. A broken assumption.</h2>
             <p class="cs-body">Every finding on its own note, moved around until three clusters kept coming back.</p>
-            <div class="v2-ph" style="margin-bottom:56px;"><b>PHOTO TO ADD</b><span>Findings on sticky notes, clustered into three groups, with the gap written above each group.</span></div>
+            <div class="v2-photos v2-photos-one" style="margin-bottom:56px;">
+              <a class="v2-zoom" data-z="2.5" data-zoom="../../assets/images/project-1/v2-gaps-xl.webp" href="../../assets/images/project-1/v2-gaps-xl.webp" target="_blank" rel="noopener"><span class="v2-lens" aria-hidden="true"></span><img src="../../assets/images/project-1/v2-gaps.webp" srcset="../../assets/images/project-1/v2-gaps-s.webp 700w, ../../assets/images/project-1/v2-gaps.webp 1400w" sizes="(max-width: 900px) 100vw, 720px" loading="lazy" alt="Findings regrouped on sticky notes under three gap headers: the silent system, no way to say less sure, and the empty 60 seconds, each with a pink insight note at the bottom."></a>
+            </div>
 
             <div class="cs-gap-card" data-reveal>
               <div class="cs-gap-text">
