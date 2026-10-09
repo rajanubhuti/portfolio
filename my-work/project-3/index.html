@@ -697,6 +697,69 @@
 @media (max-width: 900px) { .lt-quotes { grid-template-columns: 1fr; } }
 .lt-chips { list-style: none; margin: 0 0 32px; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
 .lt-chips li { padding: 10px 16px; border-radius: 999px; background: #fff; border: 1px solid #E5E7EB; font-size: 16px; color: #18191F; }
+.tms-annot { position: relative; margin: 0 0 24px; }
+.tms-annot img { display: block; width: 100%; height: auto; border-radius: 4px; }
+.tms-dot { position: absolute; width: 32px; height: 32px; margin: -16px 0 0 -16px; padding: 0; border: 0; border-radius: 50%; background: #E87B35; color: #fff; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; box-shadow: 0 0 0 3px #fff; z-index: 2; transition: transform .2s ease; }
+.tms-num { display: grid; place-items: center; width: 100%; height: 100%; border-radius: 50%; }
+.tms-dot::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #E87B35; opacity: .4; animation: tms-ping 2.4s ease-out infinite; z-index: -1; }
+.tms-dot:hover, .tms-dot:focus-visible, .tms-dot.is-open { z-index: 5; transform: scale(1.1); outline: none; }
+.tms-dot:hover::before, .tms-dot:focus-visible::before, .tms-dot.is-open::before { animation: none; opacity: 0; }
+@keyframes tms-ping { 0% { transform: scale(1); opacity: .4; } 70%, 100% { transform: scale(1.9); opacity: 0; } }
+.tms-tip { position: absolute; left: 50%; bottom: calc(100% + 12px); width: 260px; padding: 16px 18px; background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; color: #2A2B31; font-size: 15px; font-weight: 400; line-height: 1.45; text-align: left; box-shadow: 0 10px 30px -12px rgba(24,25,31,.2); opacity: 0; visibility: hidden; transform: translate(-50%, 6px) scale(.909); transform-origin: center bottom; transition: opacity .2s ease, transform .2s ease, visibility .2s; pointer-events: none; }
+.tms-tip b { display: block; margin-bottom: 4px; font-size: 16px; font-weight: 700; color: #18191F; }
+.tms-dot:hover .tms-tip, .tms-dot:focus-visible .tms-tip, .tms-dot.is-open .tms-tip { opacity: 1; visibility: visible; transform: translate(-50%, 0) scale(.909); }
+.tms-dot.tip-down .tms-tip { bottom: auto; top: calc(100% + 12px); transform-origin: center top; }
+.tms-dot.tip-left .tms-tip { left: -6px; transform: translate(0, 6px) scale(.909); transform-origin: left bottom; }
+.tms-dot.tip-left:hover .tms-tip, .tms-dot.tip-left:focus-visible .tms-tip, .tms-dot.tip-left.is-open .tms-tip { transform: scale(.909); }
+.tms-dot.tip-right .tms-tip { left: auto; right: -6px; transform: translate(0, 6px) scale(.909); transform-origin: right bottom; }
+.tms-dot.tip-right:hover .tms-tip, .tms-dot.tip-right:focus-visible .tms-tip, .tms-dot.tip-right.is-open .tms-tip { transform: scale(.909); }
+@media (max-width: 700px) { .tms-dot { width: 22px; height: 22px; margin: -11px 0 0 -11px; font-size: 12px; box-shadow: 0 0 0 2px #fff; } .tms-tip { width: 200px; font-size: 14px; padding: 12px 14px; } .tms-tip b { font-size: 15px; } }
+@media (prefers-reduced-motion: reduce) { .tms-dot::before { animation: none; } }
+
+.lt-problem { max-width: none !important; }
+.lt-people { display: grid !important; grid-template-columns: 1fr 1fr 1.4fr 1.4fr; gap: 16px; }
+.lt-people div { flex-direction: column; align-items: flex-start !important; gap: 6px !important; }
+.lt-people .lt-method { justify-content: center; font-size: 18px; line-height: 1.4; font-weight: 600; color: #18191F; }
+.lt-people .lt-method span { font-size: 13px !important; font-weight: 700; letter-spacing: .1em; color: #E87B35 !important; }
+@media (max-width: 900px) { .lt-people { grid-template-columns: 1fr 1fr; } }
+.lt-findings li { font-size: 16px !important; }
+.lt-tl { list-style: none; margin: 8px 0 48px; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0 16px; position: relative; }
+.lt-tl::before { content: ""; position: absolute; left: 0; right: 0; top: 41px; height: 2px; background: #E5E7EB; }
+.lt-tl li { position: relative; display: flex; flex-direction: column; align-items: flex-start; }
+.lt-tl-stage { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #6C727F; height: 28px; }
+.lt-tl i { position: relative; z-index: 1; width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 3px solid #D9DBE0; margin: 3px 0 18px; }
+.lt-tl li.is-low i { border-color: #FF8F71; background: #FF8F71; }
+.lt-tl q { position: relative; display: block; background: #fff; border: 1px solid #E5E7EB; border-radius: 14px; padding: 14px 16px; font-size: 16px; line-height: 1.45; font-weight: 600; color: #18191F; quotes: "\201C" "\201D"; }
+.lt-tl q::before { content: open-quote; } .lt-tl q::after { content: close-quote; }
+.lt-tl li.is-low q { border-color: #F6C9A8; background: #FEF7EE; }
+@media (max-width: 900px) {
+  .lt-tl { grid-template-columns: 1fr; gap: 20px; padding-left: 30px; }
+  .lt-tl::before { left: 8px; right: auto; top: 6px; bottom: 6px; width: 2px; height: auto; }
+  .lt-tl i { position: absolute; left: -30px; top: 0; margin: 0; }
+  .lt-tl-stage { height: auto; margin-bottom: 8px; }
+}
+.lt-strategy { margin: 0 0 24px; }
+.lt-strat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.lt-strat-card { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 22px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.lt-strat-card img { width: 56px; height: 56px; object-fit: contain; margin-bottom: 12px; }
+.lt-strat-card b { font-size: 19px; font-weight: 700; color: #18191F; }
+.lt-strat-card span { margin-top: 4px; font-size: 16px; color: #6C727F; }
+.lt-strat-lines { display: block; width: 100%; height: 70px; overflow: visible; }
+.lt-strat-lines path { fill: none; stroke: #E87B35; stroke-width: 2; vector-effect: non-scaling-stroke; stroke-dasharray: 5 5; }
+.lt-strat-result { width: min(100%, 560px); margin: 0 auto; background: #FEF7EE; border: 1px solid #F6C9A8; border-radius: 16px; padding: 20px 26px; display: flex; align-items: center; gap: 18px; }
+.lt-strat-result img { width: 52px; height: 48px; object-fit: contain; flex: none; }
+.lt-strat-result p { margin: 0; font-size: 18px; color: #4B505C; }
+.lt-strat-result b { display: block; font-size: 24px; font-weight: 700; color: #18191F; }
+.lt-strat-result em { font-style: normal; font-weight: 700; color: #E87B35; }
+.lt-strat-note { margin: 16px auto 0; text-align: center; font-size: 16px; color: #6C727F; }
+@media (max-width: 700px) { .lt-strat-row { grid-template-columns: 1fr; } .lt-strat-lines { height: 40px; } }
+.lt-whatifs { list-style: none; margin: 0; padding: 0; display: grid !important; grid-template-columns: repeat(5, 1fr); gap: 12px !important; counter-reset: w; flex-direction: row !important; }
+.lt-whatifs li { counter-increment: w; background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 16px 18px; font-size: 16px; line-height: 1.4; font-weight: 600; color: #18191F; }
+.lt-whatifs li::before { content: "0" counter(w); display: block; margin-bottom: 8px; font-size: 22px; font-weight: 700; color: #E87B35; }
+@media (max-width: 1100px) { .lt-whatifs { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .lt-whatifs { grid-template-columns: 1fr; } }
+.lt-list { margin: 0 0 24px; padding-left: 22px; font-size: 18px; line-height: 1.7; color: #18191F; }
+.lt-list li::marker { color: #E87B35; }
 </style>
 
   <!-- Tells the shared header/footer partials how far back up to the project root -->
@@ -718,7 +781,7 @@
 
           <!-- ================= OVERVIEW ================= -->
           <section class="cs-section" id="overview">
-            <div class="cs-hero-image" style="aspect-ratio:2400/1350;">
+            <div class="cs-hero-image">
               <img src="../../assets/images/project-3/hero.webp" srcset="../../assets/images/project-3/hero-s.webp 960w, ../../assets/images/project-3/hero.webp 2400w" sizes="(max-width: 900px) 100vw, 1200px" fetchpriority="high" alt="LumiTrack cover: tilted screens of the faculty dashboard, courses, calendar and assignments" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
             </div>
 
@@ -726,21 +789,19 @@
               <div>
                 <p class="cs-meta-label">Role</p>
                 <p class="cs-meta-value">UX Designer</p>
+                <p class="cs-meta-value">Research and UI</p>
               </div>
               <div>
-                <p class="cs-meta-label">Project</p>
-                <p class="cs-meta-value">Interaction Design course</p>
+                <p class="cs-meta-label">Duration</p>
+                <p class="cs-meta-value">4 weeks</p>
               </div>
               <div>
                 <p class="cs-meta-label">Tools</p>
                 <p class="cs-meta-value">Figma</p>
               </div>
               <div>
-                <p class="cs-meta-label">Team</p>
-                <p class="cs-meta-value">Anubhuti Raj</p>
-                <p class="cs-meta-value">Gayatri Bhide</p>
-                <p class="cs-meta-value">Latika Satapathi</p>
-                <p class="cs-meta-value">Utkarsh Kale</p>
+                <p class="cs-meta-label">Context</p>
+                <p class="cs-meta-value">Semester 5, Interaction Design</p>
               </div>
             </div>
 
@@ -750,67 +811,44 @@
             <p class="cs-body">Grading design is subjective, feedback is qualitative and progress isn't a straight line. Yet the faculty at our college were running all of it on tools built for something else. LumiTrack is a learning management system made for design colleges, starting with the people who teach in them.</p>
           </section>
 
-          <div class="v2-part"><span><b>PART 1</b> &middot; THE PROBLEM AND THE RESEARCH</span></div>
-
           <!-- ================= THE QUESTION ================= -->
           <section class="cs-section" id="question">
             <p class="cs-eyebrow">02 &middot; WHERE IT STARTED</p>
             <h2 class="cs-heading" data-reveal>Our college already uses so many platforms. <span style="color:#E87B35;">Does any of it help?</span></h2>
-            <p class="cs-body cs-mb-32">Count what one faculty member opens in a week.</p>
-
-            <ul class="lt-tools" data-reveal>
-              <li><b>Google Classroom</b><span>submissions</span></li>
-              <li><b>Excel</b><span>grading</span></li>
-              <li><b>WhatsApp</b><span>mentoring</span></li>
-              <li><b>Teams</b><span>schedules</span></li>
-              <li><b>TCS iON</b><span>attendance</span></li>
-              <li><b>Outlook</b><span>admin mail</span></li>
-            </ul>
-
+            <p class="cs-body cs-mb-32">Classroom for submissions, Excel for grading, WhatsApp for mentoring, Teams for schedules, TCS iON for attendance. And still,</p>
             <p class="lt-problem" data-reveal>Feedback is <mark>inconsistent</mark>, expectations are <mark>unclear</mark>, guidance is <mark>rarely personal</mark>, group work <mark>hides individual effort</mark>, and faculty are <mark>drowning in admin</mark>.</p>
-
-            <div class="cs-callout" data-reveal><p>Six tools, and still no one place to see how a student is growing.</p></div>
             <p class="v2-bridge">so we went and asked</p>
           </section>
 
           <!-- ================= HOW WE LISTENED ================= -->
           <section class="cs-section" id="listened">
             <p class="cs-eyebrow">03 &middot; HOW WE LISTENED</p>
-            <h2 class="cs-heading" data-reveal>We talked to the people on both sides of the feedback</h2>
+            <h2 class="cs-heading" data-reveal>Both sides of the feedback</h2>
 
             <div class="lt-people" data-reveal>
-              <div><b>12</b><span>faculty members</span></div>
+              <div><b>12</b><span>faculty</span></div>
               <div><b>9</b><span>students</span></div>
+              <div class="lt-method"><span>SEMI STRUCTURED INTERVIEWS</span>Open questions, then follow the thread</div>
+              <div class="lt-method"><span>SENTENCE COMPLETION</span>Half finished sentences, finished in their own words</div>
             </div>
-
-            <div class="v2-logic" data-reveal>
-              <div class="cs-solve-card">
-                <p class="cs-solve-label">SEMI STRUCTURED INTERVIEWS</p>
-                <p class="cs-solve-body">The same few open questions for everyone, about giving feedback, grading and keeping track of students. Then we followed wherever the conversation went.</p>
-              </div>
-              <div class="cs-solve-card">
-                <p class="cs-solve-label">SENTENCE COMPLETION</p>
-                <p class="cs-solve-body">People finished half written sentences in their own words. It brought out feelings that a direct question usually doesn't.</p>
-              </div>
-            </div>
-            <p class="v2-bridge">and this is what kept coming up</p>
+            <p class="v2-bridge">and this kept coming up</p>
           </section>
 
           <!-- ================= WHAT THEY TOLD US ================= -->
           <section class="cs-section" id="heard">
             <p class="cs-eyebrow">04 &middot; WHAT THEY TOLD US</p>
-            <h2 class="cs-heading" data-reveal>Most of what hurt students started on the faculty side</h2>
+            <h2 class="cs-heading" data-reveal>It all traced back to the faculty side</h2>
 
             <ul class="lt-findings">
-              <li data-reveal><b>100 to 300</b>students per faculty member, with progress tracked from memory.</li>
-              <li data-reveal><b>40 to 50</b>submissions a week. By the end, tired eyes write vague feedback.</li>
-              <li data-reveal><b>20 times</b>the same comment, typed out for every group.</li>
-              <li data-reveal><b>Weeks</b>before marks come back, against criteria students never saw.</li>
-              <li data-reveal><b>Who did what?</b>Group work hides each person's part, so grading runs on observation.</li>
-              <li data-reveal><b>Mixed signals</b>Mentors give conflicting instructions, and approvals get reversed or forgotten.</li>
+              <li data-reveal><b>100 to 300</b>students each, tracked from memory</li>
+              <li data-reveal><b>40 to 50</b>submissions to review every week</li>
+              <li data-reveal><b>20 times</b>the same comment, typed again</li>
+              <li data-reveal><b>Weeks</b>before marks come back</li>
+              <li data-reveal><b>Who did what?</b>Group work buries each person's part</li>
+              <li data-reveal><b>No faces</b>Work can't be matched to the student who asked</li>
             </ul>
 
-            <div class="cs-callout" data-reveal><p>So we chose to design for faculty first. Fix their week, and students get clearer, faster feedback too.</p></div>
+            <div class="cs-callout" data-reveal><p>Students said it best. Even when they asked for help, there were too many of them for one faculty member to remember who was working on what. So we designed for faculty first.</p></div>
             <p class="v2-bridge">then we followed one through a semester</p>
           </section>
 
@@ -818,14 +856,13 @@
           <section class="cs-section" id="journey">
             <p class="cs-eyebrow">05 &middot; A SEMESTER THROUGH THEIR EYES</p>
             <h2 class="cs-heading" data-reveal>The low points weren't about teaching</h2>
-            <p class="cs-body cs-mb-32">We mapped a faculty member's semester from the brief to the jury, using their own words at each stage.</p>
 
-            <ol class="lt-journey">
-              <li data-reveal><span>PRE COURSE</span><q>Okay, let me organise this course.</q></li>
-              <li class="is-low" data-reveal><span>WHILE TEACHING</span><q>Why do I have to repeat the same thing 20 times?</q></li>
-              <li class="is-low" data-reveal><span>MIDCOURSE</span><q>I don't remember what the student had done before!</q></li>
-              <li class="is-low" data-reveal><span>FINAL SUBMISSION</span><q>The process isn't shown, this is difficult for me.</q></li>
-              <li class="is-low" data-reveal><span>JURY</span><q>There is no way to track their progress across courses, sadly.</q></li>
+            <ol class="lt-tl" data-reveal>
+              <li><span class="lt-tl-stage">Pre course</span><i></i><q>Okay, let me organise this course.</q></li>
+              <li class="is-low"><span class="lt-tl-stage">While teaching</span><i></i><q>Why do I have to repeat the same thing 20 times?</q></li>
+              <li class="is-low"><span class="lt-tl-stage">Midcourse</span><i></i><q>I don't remember what the student had done before!</q></li>
+              <li class="is-low"><span class="lt-tl-stage">Final submission</span><i></i><q>The process isn't shown, this is difficult for me.</q></li>
+              <li class="is-low"><span class="lt-tl-stage">Jury</span><i></i><q>There is no way to track their progress across courses.</q></li>
             </ol>
 
             <div class="cs-callout" data-reveal><p>They were about repeating, remembering and tracking. That's the part a system can take off their hands.</p></div>
@@ -834,17 +871,22 @@
           <!-- ================= BORROWING ================= -->
           <section class="cs-section" id="borrow">
             <p class="cs-eyebrow">06 &middot; WHAT ALREADY WORKED</p>
-            <h2 class="cs-heading" data-reveal>Every tool did one thing well</h2>
-            <p class="cs-body cs-mb-32">We compared Google Classroom, Microsoft Teams, TCS iON and Excel feature by feature. Instead of starting from zero, we kept what each did best.</p>
+            <h2 class="cs-heading" data-reveal>Borrowing what works. Adding what's missing.</h2>
 
-            <div class="lt-borrow" data-reveal>
-              <div><b>Google Classroom</b><span>its evaluation flow</span></div>
-              <i>+</i>
-              <div><b>Teams</b><span>its calendar clarity</span></div>
-              <i>+</i>
-              <div><b>Excel</b><span>its tracking</span></div>
-              <i>+</i>
-              <div class="is-new"><b>Worth</b><span>transparency, consistency, mentoring</span></div>
+            <div class="lt-strategy" data-reveal>
+              <div class="lt-strat-row">
+                <div class="lt-strat-card"><img src="../../assets/images/project-3/logo-classroom.png" alt=""><b>Google Classroom</b><span>its evaluation flow</span></div>
+                <div class="lt-strat-card"><img src="../../assets/images/project-3/logo-teams.png" alt=""><b>Teams</b><span>its calendar clarity</span></div>
+                <div class="lt-strat-card"><img src="../../assets/images/project-3/logo-excel.png" alt=""><b>Excel</b><span>its tracking</span></div>
+              </div>
+              <svg class="lt-strat-lines" viewBox="0 0 900 90" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M150 0 C150 50 450 40 450 88" /><path d="M450 0 L450 88" /><path d="M750 0 C750 50 450 40 450 88" />
+              </svg>
+              <div class="lt-strat-result">
+                <img src="../../assets/images/project-3/logo-lumitrack.png" alt="">
+                <p><b>LumiTrack</b>Structure + tracking + clarity + <em>worth</em></p>
+              </div>
+              <p class="lt-strat-note">Worth is what none of them had. Transparency, consistency and room to mentor.</p>
             </div>
 
             <details class="lt-more">
@@ -867,128 +909,92 @@
             </details>
           </section>
 
-          <!-- ================= IDEATION ================= -->
-          <section class="cs-section" id="ideas">
-            <p class="cs-eyebrow">07 &middot; FROM QUESTIONS TO SKETCHES</p>
-            <h2 class="cs-heading" data-reveal>A prettier LMS wouldn't fix this</h2>
-            <p class="cs-body cs-mb-48">If the problem is inconsistency, overload and nothing being visible, the answer has to change how feedback feels for both sides. We started with what ifs, and sketched each one.</p>
-
-            <div class="lt-split">
-              <ol class="lt-whatifs">
-                <li data-reveal><b>What if faculty could see progress at a glance?</b><span>A timeline and progress cards for every student, across subjects.</span></li>
-                <li data-reveal><b>What if process mattered as much as output?</b><span>Students upload their steps, not just the final work.</span></li>
-                <li data-reveal><b>What if submission, feedback and review lived in one place?</b><span>One review space, with each person's part marked.</span></li>
-                <li data-reveal><b>What if faculty had a helper?</b><span>Pending evaluations, submission alerts and a clean calendar, handled.</span></li>
-                <li data-reveal><b>What if grading was transparent?</b><span>Visible criteria, so everyone knows why a score is a score.</span></li>
-              </ol>
-              <div class="v2-photos v2-photos-one" data-reveal>
-                <a class="v2-zoom" data-z="2.2" data-zoom="../../assets/images/project-3/sketches.webp" href="../../assets/images/project-3/sketches.webp" target="_blank" rel="noopener"><span class="v2-lens" aria-hidden="true"></span><img src="../../assets/images/project-3/sketches.webp" loading="lazy" alt="Pen sketches on dotted paper: the faculty home, a course page, the students section by semester, and a list of everything a course holds"></a>
-              </div>
-            </div>
-
-            <p class="cs-body cs-mb-32" style="margin-top:56px;">Then we mapped where everything lives, so every course, student and deadline has one obvious home.</p>
-            <div class="v2-photos v2-photos-one" data-reveal>
-              <a class="v2-zoom" data-z="2" data-zoom="../../assets/images/project-3/ia.webp" href="../../assets/images/project-3/ia.webp" target="_blank" rel="noopener"><span class="v2-lens" aria-hidden="true"></span><img src="../../assets/images/project-3/ia.webp" srcset="../../assets/images/project-3/ia-s.webp 960w, ../../assets/images/project-3/ia.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Faculty information architecture: the landing page splits into main area, left panel and right panel, with courses, calendar, students, messages, admin and settings branching out"></a>
-            </div>
-            <p class="cs-img-caption">Faculty information architecture. Hover to zoom.</p>
-          </section>
-
-          <div class="v2-part"><span><b>PART 2</b> &middot; THE DESIGN</span></div>
-
           <!-- ================= SCREENS ================= -->
           <section class="cs-section" id="screens">
-            <p class="cs-eyebrow">08 &middot; A WEEK WITH LUMITRACK</p>
+            <p class="cs-eyebrow">07 &middot; THE DESIGN</p>
             <h2 class="cs-heading" data-reveal>Every screen answers something we heard</h2>
-            <div class="lt-proto" data-reveal>
-              <a class="lt-proto-btn" href="https://www.figma.com/proto/iod24jrfhtsG9TocVFtr1L/Interaction-design?page-id=807%3A19854&amp;node-id=807-27928&amp;p=f&amp;viewport=-1352%2C286%2C0.04&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=807%3A27928&amp;hide-ui=1" target="_blank" rel="noopener">View the prototype <span aria-hidden="true">&#8599;</span></a>
-              <p>Or follow one faculty member through her week below.</p>
+            <p class="cs-body cs-mb-24">A prettier LMS wouldn't fix this. We started from five what ifs.</p>
+            <ol class="lt-whatifs" data-reveal>
+              <li>What if faculty could see progress at a glance?</li>
+              <li>What if process mattered as much as output?</li>
+              <li>What if submission, feedback and review lived in one place?</li>
+              <li>What if faculty had a helper?</li>
+              <li>What if grading was transparent?</li>
+            </ol>
+            <p class="cs-body" style="margin-top:32px;">Each became part of the screens below. Hover or tap the numbers.</p>
+            <div class="cs-paper-links" style="margin:0 0 64px;">
+              <a class="cs-paper-link" href="https://www.figma.com/proto/iod24jrfhtsG9TocVFtr1L/Interaction-design?page-id=807%3A19854&amp;node-id=807-27928&amp;p=f&amp;viewport=-1352%2C286%2C0.04&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=807%3A27928&amp;hide-ui=1" target="_blank" rel="noopener">View the prototype &rarr;</a>
             </div>
 
             <p class="cs-eyebrow">01 &middot; HOME</p>
-            <p class="cs-body" style="margin-bottom:6px;">Today's classes, the day's schedule and what needs attention, on one screen.</p>
+            <p class="cs-body" style="margin-bottom:6px;">Today's classes, schedule and what needs attention, on one screen.</p>
             <p class="cs-pin-why cs-mb-24">Why? Faculty were piecing their day together from Teams, Excel and WhatsApp.</p>
-            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1080;">
-              <img src="../../assets/images/project-3/s01-home.webp" srcset="../../assets/images/project-3/s01-home-s.webp 960w, ../../assets/images/project-3/s01-home.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Faculty home: ongoing courses as coloured cards with progress, a month calendar and the day's schedule" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
-            </div>
-            <div style="height:56px;"></div>
+            <figure class="tms-annot" data-reveal>
+              <img src="../../assets/images/project-3/s01-home.webp" srcset="../../assets/images/project-3/s01-home-s.webp 960w, ../../assets/images/project-3/s01-home.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" width="1920" height="1080" loading="lazy" alt="Faculty home: ongoing courses as coloured cards with progress, a month calendar and the day's schedule">
+              <button type="button" class="tms-dot " style="left:38%; top:22%;" aria-label="Note 1, Every course, at a glance"><span class="tms-num">1</span><span class="tms-tip" role="tooltip"><b>Every course, at a glance</b>Today's lecture, the next presentation and how far the class has got.</span></button>
+              <button type="button" class="tms-dot tip-right" style="left:96%; top:60%;" aria-label="Note 2, The day, in order"><span class="tms-num">2</span><span class="tms-tip" role="tooltip"><b>The day, in order</b>Meetings and lectures without opening another app.</span></button>
+            </figure>
+            <div style="height:72px;"></div>
 
-            <p class="cs-eyebrow">02 &middot; CALENDAR</p>
-            <p class="cs-body" style="margin-bottom:6px;">Lectures, juries and events, colour coded by type. Students see it too.</p>
-            <p class="cs-pin-why cs-mb-24">Why? Students were guessing when faculty were free.</p>
-            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1080;">
-              <img src="../../assets/images/project-3/s02-calendar.webp" srcset="../../assets/images/project-3/s02-calendar-s.webp 960w, ../../assets/images/project-3/s02-calendar.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Month calendar with colour coded lectures, events and a jury break" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
-            </div>
-            <div style="height:56px;"></div>
-
-            <p class="cs-eyebrow">03 &middot; THE ASSIGNMENT</p>
+            <p class="cs-eyebrow">02 &middot; THE ASSIGNMENT</p>
             <p class="cs-body" style="margin-bottom:6px;">Deliverables and evaluation criteria sit on the assignment itself.</p>
             <p class="cs-pin-why cs-mb-24">Why? Criteria were unclear, or invisible to students, until the marks came back.</p>
-            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1080;">
-              <img src="../../assets/images/project-3/s03-assignment.webp" srcset="../../assets/images/project-3/s03-assignment-s.webp 960w, ../../assets/images/project-3/s03-assignment.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Assignment page with deliverables as tags and an evaluation criteria table" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
-            </div>
-            <div style="height:56px;"></div>
+            <figure class="tms-annot" data-reveal>
+              <img src="../../assets/images/project-3/s03-assignment.webp" srcset="../../assets/images/project-3/s03-assignment-s.webp 960w, ../../assets/images/project-3/s03-assignment.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" width="1920" height="1080" loading="lazy" alt="Assignment page with deliverables as tags and an evaluation criteria table">
+              <button type="button" class="tms-dot " style="left:42%; top:47%;" aria-label="Note 1, One brief for everyone"><span class="tms-num">1</span><span class="tms-tip" role="tooltip"><b>One brief for everyone</b>Posted once by the course leader, so every mentor asks for the same thing.</span></button>
+              <button type="button" class="tms-dot tip-left" style="left:21.5%; top:77%;" aria-label="Note 2, Criteria up front"><span class="tms-num">2</span><span class="tms-tip" role="tooltip"><b>Criteria up front</b>Students see how they'll be marked before they start, not after.</span></button>
+            </figure>
+            <div style="height:72px;"></div>
 
-            <p class="cs-eyebrow">04 &middot; REVIEWING A SUBMISSION</p>
-            <p class="cs-body" style="margin-bottom:6px;">Draw on the work, keep the rubric beside it, and see who in the group did what.</p>
-            <p class="cs-pin-why cs-mb-24">Why? Group work hid each person's part, and faculty had to hold every criterion in their head.</p>
-            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1817;">
-              <img src="../../assets/images/project-3/s04-evaluation.webp" srcset="../../assets/images/project-3/s04-evaluation-s.webp 960w, ../../assets/images/project-3/s04-evaluation.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Review screen: a group's PDF with drawing tools, member chips showing contribution, AI suggested feedback and a rubric panel adding up marks" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
-            </div>
-            <div style="height:56px;"></div>
+            <p class="cs-eyebrow">03 &middot; REVIEWING A GROUP'S WORK</p>
+            <p class="cs-body" style="margin-bottom:6px;">Draw on the work, keep the rubric beside it, and see who did what.</p>
+            <p class="cs-pin-why cs-mb-24">Why? &ldquo;Group work hides individual contribution.&rdquo;</p>
+            <figure class="tms-annot" data-reveal>
+              <img src="../../assets/images/project-3/s04-evaluation.webp" srcset="../../assets/images/project-3/s04-evaluation-s.webp 960w, ../../assets/images/project-3/s04-evaluation.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" width="1920" height="1817" loading="lazy" alt="Review screen: a group's PDF with drawing tools, member chips showing contribution, AI suggested feedback and a rubric panel adding up marks">
+              <button type="button" class="tms-dot tip-down" style="left:59.5%; top:11%;" aria-label="Note 1, Feedback you can draw"><span class="tms-num">1</span><span class="tms-tip" role="tooltip"><b>Feedback you can draw</b>Mark up the slide itself, the way you would on paper.</span></button>
+              <button type="button" class="tms-dot tip-right" style="left:97%; top:20%;" aria-label="Note 2, Who worked on this slide"><span class="tms-num">2</span><span class="tms-tip" role="tooltip"><b>Who worked on this slide</b>As you scroll, the members who made each slide light up. Nobody's effort gets buried.</span></button>
+              <button type="button" class="tms-dot tip-right" style="left:97%; top:39%;" aria-label="Note 3, A head start on feedback"><span class="tms-num">3</span><span class="tms-tip" role="tooltip"><b>A head start on feedback</b>AI suggests a comment she can use, edit or ignore.</span></button>
+              <button type="button" class="tms-dot tip-right" style="left:97%; top:55%;" aria-label="Note 4, The rubric stays in view"><span class="tms-num">4</span><span class="tms-tip" role="tooltip"><b>The rubric stays in view</b>Each criterion scored on its own, and the total adds itself up.</span></button>
+            </figure>
+            <div style="height:72px;"></div>
 
-            <p class="cs-eyebrow">05 &middot; THE COMMENT YOU'D TYPE TWENTY TIMES</p>
+            <p class="cs-eyebrow">04 &middot; THE COMMENT YOU'D TYPE TWENTY TIMES</p>
             <p class="cs-body" style="margin-bottom:6px;">LumiTrack notices the same feedback across groups and offers to send it once.</p>
             <p class="cs-pin-why cs-mb-24">Why? &ldquo;Why do I have to repeat the same thing 20 times?&rdquo;</p>
-            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1080;">
-              <img src="../../assets/images/project-3/s05-nudge.webp" srcset="../../assets/images/project-3/s05-nudge-s.webp 960w, ../../assets/images/project-3/s05-nudge.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Submissions grid with a prompt: a common feedback was noticed regarding clarity in ergonomic sketches, send class comment?" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
-            </div>
-            <div style="height:56px;"></div>
+            <figure class="tms-annot" data-reveal>
+              <img src="../../assets/images/project-3/s05-nudge.webp" srcset="../../assets/images/project-3/s05-nudge-s.webp 960w, ../../assets/images/project-3/s05-nudge.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" width="1920" height="1080" loading="lazy" alt="Submissions grid with a prompt: a common feedback was noticed regarding clarity in ergonomic sketches, send class comment?">
+              <button type="button" class="tms-dot tip-right" style="left:68%; top:16%;" aria-label="Note 1, Spotted across groups"><span class="tms-num">1</span><span class="tms-tip" role="tooltip"><b>Spotted across groups</b>Unclear ergonomic sketches came up again and again. One tap sends it as a class comment.</span></button>
+              <button type="button" class="tms-dot " style="left:43%; top:28%;" aria-label="Note 2, Who's still waiting"><span class="tms-num">2</span><span class="tms-tip" role="tooltip"><b>Who's still waiting</b>Submitted, evaluated and pending, all on one screen.</span></button>
+            </figure>
+            <div style="height:72px;"></div>
 
-            <p class="cs-eyebrow">06 &middot; ONE CLASS COMMENT</p>
-            <p class="cs-body" style="margin-bottom:6px;">One message to the whole class instead of twenty private ones, and replies stay in one thread.</p>
-            <p class="cs-pin-why cs-mb-24">Why? Repeated questions were eating the time meant for real mentoring.</p>
-            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1080;">
-              <img src="../../assets/images/project-3/s06-classcomment.webp" srcset="../../assets/images/project-3/s06-classcomment-s.webp 960w, ../../assets/images/project-3/s06-classcomment.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Class comments with the faculty member's note to all students and a student reply" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
-            </div>
-            <div style="height:56px;"></div>
+            <p class="cs-eyebrow">05 &middot; A STUDENT, ACROSS SEMESTERS</p>
+            <p class="cs-body" style="margin-bottom:6px;">A face, attendance, a progress graph and every project, semester by semester.</p>
+            <p class="cs-pin-why cs-mb-24">Why? With so many students, faculty couldn't match work to the person who had asked about it.</p>
+            <figure class="tms-annot" data-reveal>
+              <img src="../../assets/images/project-3/s07-student.webp" srcset="../../assets/images/project-3/s07-student-s.webp 960w, ../../assets/images/project-3/s07-student.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" width="1920" height="1080" loading="lazy" alt="Student profile with photo, attendance bar, progress graph and projects filtered by semester">
+              <button type="button" class="tms-dot tip-left" style="left:30.6%; top:16%;" aria-label="Note 1, A face with every name"><span class="tms-num">1</span><span class="tms-tip" role="tooltip"><b>A face with every name</b>So the work and the student who asked about it finally connect.</span></button>
+              <button type="button" class="tms-dot tip-right" style="left:82%; top:25%;" aria-label="Note 2, Growth you can see"><span class="tms-num">2</span><span class="tms-tip" role="tooltip"><b>Growth you can see</b>Progress across semesters, not just this course.</span></button>
+              <button type="button" class="tms-dot " style="left:27%; top:44%;" aria-label="Note 3, Every project, by semester"><span class="tms-num">3</span><span class="tms-tip" role="tooltip"><b>Every project, by semester</b>Their whole body of work, one click away.</span></button>
+            </figure>
+            <div style="height:72px;"></div>
 
-            <p class="cs-eyebrow">07 &middot; A STUDENT, ACROSS SEMESTERS</p>
-            <p class="cs-body" style="margin-bottom:6px;">Attendance, a progress graph and every project, semester by semester.</p>
-            <p class="cs-pin-why cs-mb-24">Why? With 100 to 300 students, progress lived in memory.</p>
-            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1080;">
-              <img src="../../assets/images/project-3/s07-student.webp" srcset="../../assets/images/project-3/s07-student-s.webp 960w, ../../assets/images/project-3/s07-student.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Student profile with attendance bar, progress graph and projects filtered by semester" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
-            </div>
-            <div style="height:56px;"></div>
-
-            <p class="cs-eyebrow">08 &middot; COURSE STATISTICS</p>
-            <p class="cs-body" style="margin-bottom:6px;">Attendance, marks and the questions students keep asking.</p>
-            <p class="cs-pin-why cs-mb-24">Why? A repeated question becomes a topic for the next lecture, not twenty replies.</p>
-            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1080;">
-              <img src="../../assets/images/project-3/s08-stats.webp" srcset="../../assets/images/project-3/s08-stats-s.webp 960w, ../../assets/images/project-3/s08-stats.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Course statistics: weekly attendance gauges, average marks graph, repeated queries and feedback quality" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
-            </div>
-            <div style="height:56px;"></div>
-
-            <p class="cs-eyebrow">09 &middot; ATTENDANCE</p>
+            <p class="cs-eyebrow">06 &middot; ATTENDANCE</p>
             <p class="cs-body" style="margin-bottom:6px;">Mark everyone at once, link TCS iON or Sheets, or snap the paper register.</p>
-            <p class="cs-pin-why cs-mb-24">Why? Attendance was a daily manual chore, done twice.</p>
-            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1080;">
-              <img src="../../assets/images/project-3/s09-attendance.webp" srcset="../../assets/images/project-3/s09-attendance-s.webp 960w, ../../assets/images/project-3/s09-attendance.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Attendance list with mark all, links to TCS iON and Sheets, a camera upload and low attendance nudges" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
-            </div>
-            <div style="height:56px;"></div>
-
-            <p class="cs-eyebrow">10 &middot; ADMIN</p>
-            <p class="cs-body" style="margin-bottom:6px;">NAAC and monthly reports built from data already in the system.</p>
-            <p class="cs-pin-why cs-mb-24">Why? Admin work was eating into mentoring time.</p>
-            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1080;">
-              <img src="../../assets/images/project-3/s10-admin.webp" srcset="../../assets/images/project-3/s10-admin-s.webp 960w, ../../assets/images/project-3/s10-admin.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Admin page with NAAC and monthly report cards and jury details" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
-            </div>
-            <div style="height:56px;"></div>
+            <p class="cs-pin-why cs-mb-24">Why? Attendance was a daily chore, entered twice.</p>
+            <figure class="tms-annot" data-reveal>
+              <img src="../../assets/images/project-3/s09-attendance.webp" srcset="../../assets/images/project-3/s09-attendance-s.webp 960w, ../../assets/images/project-3/s09-attendance.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" width="1920" height="1080" loading="lazy" alt="Attendance list with mark all, links to TCS iON and Sheets, a camera upload and low attendance nudges">
+              <button type="button" class="tms-dot tip-right" style="left:84.5%; top:28%;" aria-label="Note 1, Snap the register"><span class="tms-num">1</span><span class="tms-tip" role="tooltip"><b>Snap the register</b>Photograph the paper sheet and the list fills itself.</span></button>
+              <button type="button" class="tms-dot tip-right" style="left:65.5%; top:35%;" aria-label="Note 2, Entered once"><span class="tms-num">2</span><span class="tms-tip" role="tooltip"><b>Entered once</b>Linked to TCS iON or Sheets, so nothing is typed twice.</span></button>
+              <button type="button" class="tms-dot tip-right" style="left:72%; top:75%;" aria-label="Note 3, Low attendance, flagged"><span class="tms-num">3</span><span class="tms-tip" role="tooltip"><b>Low attendance, flagged</b>One tap to nudge the student.</span></button>
+            </figure>
+            <div style="height:72px;"></div>
 
           </section>
 
           <!-- ================= VALIDATED ================= -->
           <section class="cs-section" id="validated">
-            <p class="cs-eyebrow">09 &middot; WHAT FACULTY SAID</p>
+            <p class="cs-eyebrow">08 &middot; WHAT FACULTY SAID</p>
             <h2 class="cs-heading" data-reveal>We put it in front of faculty again</h2>
             <div class="lt-quotes">
               <figure class="cs-solve-card" data-reveal><p class="cs-solve-label">ON SIMPLICITY</p><blockquote>&ldquo;TCS iON is very complex. This is not complex at all, it's very easy to use.&rdquo;</blockquote></figure>
@@ -999,17 +1005,17 @@
 
           <!-- ================= FUTURE ================= -->
           <section class="cs-section" id="future">
-            <p class="cs-eyebrow">10 &middot; FUTURE SCOPE</p>
+            <p class="cs-eyebrow">09 &middot; FUTURE SCOPE</p>
             <h2 class="cs-heading" data-reveal>Today a focused LMS. <span style="color:#E87B35;">Tomorrow the whole institute.</span></h2>
-            <p class="cs-body cs-mb-32">LumiTrack starts with feedback, evaluation and mentoring. It could grow into an education resource management system for a whole institute, a modern alternative to tools like TCS iON.</p>
-            <ul class="lt-chips" data-reveal>
+            <p class="cs-body">LumiTrack starts with feedback, evaluation and mentoring. It could grow into an education resource management system for a whole institute, a modern alternative to tools like TCS iON, with</p>
+            <ul class="lt-list">
               <li>NAAC documentation</li>
-              <li>Faculty workload and time</li>
+              <li>Faculty workload and time allocation</li>
               <li>Payroll, HR and leave</li>
-              <li>Event approvals and room booking</li>
-              <li>Central student records</li>
+              <li>Event approvals, room booking and notices</li>
+              <li>Central student records, from attendance to portfolios</li>
               <li>Department insights for curriculum planning</li>
-              <li>Analytics for accreditation</li>
+              <li>Analytics for academic quality and accreditation</li>
             </ul>
             <p class="cs-body">We built it with design colleges in mind, and we'd like to take it to other courses next.</p>
 
@@ -1026,6 +1032,21 @@
           </section>
 
         </article>
+        <script>
+          /* Annotated screenshot: tap a number to open its note on touch screens, tap elsewhere to close. */
+          (function () {
+            var dots = document.querySelectorAll('.tms-dot');
+            dots.forEach(function (d) {
+              d.addEventListener('click', function (e) {
+                e.stopPropagation();
+                var open = d.classList.contains('is-open');
+                dots.forEach(function (x) { x.classList.remove('is-open'); });
+                if (!open) d.classList.add('is-open');
+              });
+            });
+            document.addEventListener('click', function () { dots.forEach(function (x) { x.classList.remove('is-open'); }); });
+          })();
+        </script>
         <script>
           /* Hover magnifier: a round lens follows the cursor over the sticky note wall. */
           (function () {
@@ -1075,8 +1096,7 @@
             <li><a href="#heard" data-target="heard"><span class="cs-toc-label">What They Told Us</span></a></li>
             <li><a href="#journey" data-target="journey"><span class="cs-toc-label">A Semester</span></a></li>
             <li><a href="#borrow" data-target="borrow"><span class="cs-toc-label">What Already Worked</span></a></li>
-            <li><a href="#ideas" data-target="ideas"><span class="cs-toc-label">Sketches</span></a></li>
-            <li><a href="#screens" data-target="screens"><span class="cs-toc-label">The Screens</span></a></li>
+            <li><a href="#screens" data-target="screens"><span class="cs-toc-label">The Design</span></a></li>
             <li><a href="#validated" data-target="validated"><span class="cs-toc-label">What Faculty Said</span></a></li>
             <li><a href="#future" data-target="future"><span class="cs-toc-label">Future Scope</span></a></li>
           </ol>
