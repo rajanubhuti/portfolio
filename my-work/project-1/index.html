@@ -656,6 +656,13 @@
 #driver .cs-illustration-image { aspect-ratio: 1672 / 941; }
 .v2-ph[hidden] { display: none !important; }
 .cs-v2 .cs-callout p { color: #18191F; }
+.v2-chain { display: grid; grid-template-columns: 1.2fr 1fr 1fr; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; background: #fff; margin: 0 0 56px; }
+.v2-chain > div { padding: 16px 20px; border-top: 1px solid #E5E7EB; font-size: 16px; line-height: 1.45; color: #18191F; }
+.v2-chain > div.h { border-top: 0; background: #FEF7EE; font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #E87B35; }
+.v2-chain > div:nth-child(3n) { font-weight: 600; }
+.v2-chain b { color: #E87B35; }
+.v2-chain small { display: block; margin-top: 6px; font-size: 13px; color: #6C727F; }
+@media (max-width: 760px) { .v2-chain { grid-template-columns: 1fr; } .v2-chain > div.h { display: none; } .v2-chain > div:nth-child(3n+1) { border-top: 2px solid #E87B35; } .v2-chain > div:not(:nth-child(3n+1)) { border-top: 0; padding-top: 4px; } }
 .v2-todo { background: rgba(255,143,113,.22); border-radius: 4px; padding: 1px 6px; font-weight: 600; }
 
 /* design system */
@@ -742,15 +749,14 @@
             <h1 class="cs-heading">Designing the Return</h1>
             <p class="v2-oneliner">How a self driving car should hand control back to a driver who wasn't watching.</p>
             <p class="cs-body">
-              At Level 3 the car drives and the driver can watch a film. When it needs her back, today's cars give one
-              alarm and four to ten seconds<span class="cs-cite">Gold et al., 2013</span>. This project designs the minute before it.
+              At Level 3 the car drives and the driver can watch a film. When it needs her back, today's cars give her one
+              alarm, and research gives her four to ten seconds<span class="cs-cite">Gold et al., 2013</span>. This project designs the minute before it.
             </p>
 
             <div class="cs-paper-links">
               <a class="cs-paper-link" href="../../assets/docs/designing-the-return.pdf" target="_blank" rel="noopener">Read the research paper &rarr;</a>
             </div>
 
-            <p class="v2-bridge">how I got here</p>
           </section>
 
           <div class="v2-part"><span><b>PART 1</b> &middot; THE STORY AND THE RESEARCH</span></div>
@@ -817,7 +823,6 @@
 
 
             <div class="cs-callout" data-reveal><p>The alarm isn't the problem. The silence before it is.</p></div>
-            <p class="v2-bridge">but who is she, really?</p>
           </section>
 
           <!-- ================= SECTION 3: MEET THE DRIVER ================= -->
@@ -836,7 +841,6 @@
               <div class="cs-insight-icon"><img src="../../assets/images/project-1/bell.png" loading="lazy" alt="" style="width:100%; height:100%; object-fit:contain; display:block;"></div>
               <p class="cs-insight-text">Today the alert is the same at minute two or minute forty. The research says those are very different drivers to bring back.</p>
             </div>
-            <p class="v2-bridge">so how did I find all this?</p>
           </section>
 
           <!-- ================= THE RESEARCH ================= -->
@@ -883,13 +887,16 @@
               </div>
             </div>
 
-            <h3 class="cs-heading" style="font-size:30px; margin:96px 0 28px;" data-reveal>What the research told me</h3>
-            <ul class="v2-findings">
-              <li data-reveal><b>6%</b>of the time on the road, with a film on the screen.<small>van der Heiden et al., CHI 2017</small></li>
-              <li data-reveal><b>Feet</b>away from the pedals slowed braking more than anything else.<small>Zhao et al., 2024</small></li>
-              <li data-reveal><b>Longer</b>in autonomous mode meant a worse takeover.<small>Heliyon, 2024</small></li>
-              <li data-reveal><b>27s</b>is how long distraction can linger after the task ends.<small>Strayer et al., 2015</small></li>
-            </ul>
+            <h3 class="cs-heading" style="font-size:30px; margin:96px 0 12px;" data-reveal>From finding to design</h3>
+            <p class="cs-body cs-mb-32">The first two columns come from the research. The last column is my design hypothesis, which still needs testing.</p>
+            <div class="v2-chain" data-reveal>
+              <div class="h">What research found</div><div class="h">What it means for her</div><div class="h">What I designed</div>
+              <div><b>6%</b> of the time on the road during a screen task<small>van der Heiden et al., 2017</small></div><div>Her eyes need a reason to leave the film</div><div>State 02 puts the live road on screen at T-60s</div>
+              <div><b>A 20s</b> pre alert doubled glances at the road<small>van der Heiden et al., 2017</small></div><div>An early, quiet cue works better than a loud late one</div><div>The ramp starts even earlier and stays quiet</div>
+              <div><b>27s</b> is how long distraction can linger<small>Strayer et al., 2015</small></div><div>Her mind needs more than 27 seconds to come back</div><div>Reengagement starts at T-30s, not T-10s</div>
+              <div><b>Feet</b> off the pedals slowed braking the most<small>Zhao et al., 2024</small></div><div>Her body needs time too, not just her eyes</div><div>State 03 asks her to sit up and find the pedals before the alarm</div>
+              <div><b>Longer</b> in autonomy meant a worse takeover<small>Heliyon, 2024</small></div><div>Someone forty minutes in needs longer than someone two minutes in</div><div>Next step, not yet designed: stretch the window for longer drives</div>
+            </div>
 
             <p class="cs-body cs-mb-32">The finding that changed the project, time spent looking at the road<span class="cs-cite">van der Heiden et al., CHI 2017</span></p>
             <div class="cs-stat-row" data-reveal>
@@ -904,7 +911,6 @@
             </div>
 
             <div class="cs-callout" data-reveal><p>I expected the answer to be a stronger alarm. The research kept pointing earlier.</p></div>
-            <p class="v2-bridge">so I sorted it all out</p>
           </section>
 
           <!-- ================= SECTION 5: THREE GAPS ================= -->
@@ -932,7 +938,7 @@
               <div class="cs-gap-text">
                 <p class="cs-gap-label">GAP 02</p>
                 <p class="cs-gap-heading">No vocabulary for "less sure"</p>
-                <p class="cs-gap-body">Cars can say danger. None can say "70% sure, not 95%".</p>
+                <p class="cs-gap-body">Cars can say danger. None of the four I reviewed can say "70% sure, not 95%".</p>
               </div>
               <div class="cs-gap-visual">
                 <img src="../../assets/images/project-1/gap02-confidence-slider.png" loading="lazy" alt="Confidence gradient slider from 70% to 95%" style="max-width:100%; max-height:100%; object-fit:contain; display:block;">
@@ -1163,6 +1169,7 @@
             </div>
 
             <p class="cs-body">Sixty is the most warning a planned exit can give. It still needs testing with real drivers.</p>
+            <p class="cs-body">And if she doesn't respond at all? The car does what certified systems already do, it slows down and stops safely in its lane. My sequence never replaces that fallback. It only comes before it.</p>
           </section>
 
           <!-- ================= SECTION 9: WHAT I DIDN'T SOLVE ================= -->
@@ -1177,6 +1184,10 @@
             <div class="cs-solve-card" data-reveal>
               <p class="cs-solve-label">STILL A NUDGE WITHOUT CONSENT</p>
               <p class="cs-solve-body">Dimming someone's film without asking isn't neutral. Drivers deserve a say in the pacing.</p>
+            </div>
+            <div class="cs-solve-card" data-reveal>
+              <p class="cs-solve-label">WILL SHE LEARN TO IGNORE IT?</p>
+              <p class="cs-solve-body">If the amber glow appears on every commute, it could become background noise. That needs testing over weeks, not one session.</p>
             </div>
             <div class="cs-solve-card" data-reveal>
               <p class="cs-solve-label">READING SOMEONE'S STATE IS NOT SMALL</p>
