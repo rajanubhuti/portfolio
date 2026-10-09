@@ -2,7 +2,7 @@
    Animations live in partials/project-cards.js. Every class starts with pc- so
    nothing here collides with the compiled Tailwind in css/style.css. */
 
-.pc-list { display: flex; flex-direction: column; gap: 150px; padding: 8px 8px 0; }
+.pc-list { display: flex; flex-direction: column; gap: 120px; padding: 8px 8px 0; }
 
 .pc-card {
   display: grid;
