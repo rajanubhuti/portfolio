@@ -760,6 +760,46 @@
 @media (max-width: 600px) { .lt-whatifs { grid-template-columns: 1fr; } }
 .lt-list { margin: 0 0 24px; padding-left: 22px; font-size: 18px; line-height: 1.7; color: #18191F; }
 .lt-list li::marker { color: #E87B35; }
+/* ---- Paper link button ---- */
+.cs-paper-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+.cs-paper-link {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #18191F;
+  text-decoration: none;
+  border: 1px solid #18191F;
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.cs-paper-link:hover {
+  background: #18191F;
+  color: #F8F8F8;
+}
+
+
+.lt-map { list-style: none; margin: 0; padding: 0; border-top: 1px solid #E5E7EB; }
+.lt-map li { display: grid; grid-template-columns: 1.3fr 40px 1fr; align-items: center; gap: 12px; padding: 18px 0; border-bottom: 1px solid #E5E7EB; }
+.lt-map b { font-size: 19px; font-weight: 700; color: #18191F; }
+.lt-map i { font-style: normal; font-size: 22px; color: #E87B35; text-align: center; }
+.lt-map span { justify-self: start; padding: 6px 14px; border-radius: 999px; background: #FEF7EE; border: 1px solid #F6C9A8; font-size: 15px; font-weight: 600; color: #18191F; }
+@media (max-width: 700px) { .lt-map li { grid-template-columns: 1fr; gap: 8px; } .lt-map i { display: none; } }
+.lt-chat { max-width: 760px; background: #fff; border: 1px solid #E5E7EB; border-radius: 20px; padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 14px; }
+.lt-chat-head { margin: 0 0 6px; padding-bottom: 14px; border-bottom: 1px solid #F0F1F3; text-align: center; font-size: 14px; font-weight: 600; color: #6C727F; }
+.lt-msg { align-self: flex-start; max-width: 82%; }
+.lt-msg span { display: block; margin: 0 0 4px 14px; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #E87B35; }
+.lt-msg p { margin: 0; background: #F1F2F4; border-radius: 20px 20px 20px 6px; padding: 14px 18px; font-size: 18px; line-height: 1.45; color: #18191F; }
+.cs-reveal-on .lt-chat .lt-msg { opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
+.cs-reveal-on .lt-chat.is-in .lt-msg { opacity: 1; transform: none; }
+.cs-reveal-on .lt-chat.is-in .lt-msg:nth-of-type(2) { transition-delay: .5s; }
+.cs-reveal-on .lt-chat.is-in .lt-msg:nth-of-type(3) { transition-delay: 1s; }
+.cs-reveal-on .lt-chat.is-in .lt-msg:nth-of-type(4) { transition-delay: 1.5s; }
 </style>
 
   <!-- Tells the shared header/footer partials how far back up to the project root -->
@@ -883,7 +923,6 @@
                 <path d="M150 0 C150 50 450 40 450 88" /><path d="M450 0 L450 88" /><path d="M750 0 C750 50 450 40 450 88" />
               </svg>
               <div class="lt-strat-result">
-                <img src="../../assets/images/project-3/logo-lumitrack.png" alt="">
                 <p><b>LumiTrack</b>Structure + tracking + clarity + <em>worth</em></p>
               </div>
               <p class="lt-strat-note">Worth is what none of them had. Transparency, consistency and room to mentor.</p>
@@ -913,15 +952,15 @@
           <section class="cs-section" id="screens">
             <p class="cs-eyebrow">07 &middot; THE DESIGN</p>
             <h2 class="cs-heading" data-reveal>Every screen answers something we heard</h2>
-            <p class="cs-body cs-mb-24">A prettier LMS wouldn't fix this. We started from five what ifs.</p>
-            <ol class="lt-whatifs" data-reveal>
-              <li>What if faculty could see progress at a glance?</li>
-              <li>What if process mattered as much as output?</li>
-              <li>What if submission, feedback and review lived in one place?</li>
-              <li>What if faculty had a helper?</li>
-              <li>What if grading was transparent?</li>
+            <p class="cs-body cs-mb-24">A prettier LMS wouldn't fix this. We started from five what ifs, and each one became a screen.</p>
+            <ol class="lt-map">
+              <li data-reveal><b>What if faculty could see progress at a glance?</b><i aria-hidden="true">&rarr;</i><span>01 Home, 05 Student profile</span></li>
+              <li data-reveal><b>What if process mattered as much as output?</b><i aria-hidden="true">&rarr;</i><span>03 Reviewing a group's work</span></li>
+              <li data-reveal><b>What if submission, feedback and review lived in one place?</b><i aria-hidden="true">&rarr;</i><span>03 Reviewing, 04 The repeated comment</span></li>
+              <li data-reveal><b>What if faculty had a helper?</b><i aria-hidden="true">&rarr;</i><span>04 The repeated comment, 06 Attendance</span></li>
+              <li data-reveal><b>What if grading was transparent?</b><i aria-hidden="true">&rarr;</i><span>02 The assignment, 03 The rubric</span></li>
             </ol>
-            <p class="cs-body" style="margin-top:32px;">Each became part of the screens below. Hover or tap the numbers.</p>
+            <p class="cs-body" style="margin-top:32px;">Hover or tap the numbers on each screen.</p>
             <div class="cs-paper-links" style="margin:0 0 64px;">
               <a class="cs-paper-link" href="https://www.figma.com/proto/iod24jrfhtsG9TocVFtr1L/Interaction-design?page-id=807%3A19854&amp;node-id=807-27928&amp;p=f&amp;viewport=-1352%2C286%2C0.04&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=807%3A27928&amp;hide-ui=1" target="_blank" rel="noopener">View the prototype &rarr;</a>
             </div>
@@ -996,10 +1035,11 @@
           <section class="cs-section" id="validated">
             <p class="cs-eyebrow">08 &middot; WHAT FACULTY SAID</p>
             <h2 class="cs-heading" data-reveal>We put it in front of faculty again</h2>
-            <div class="lt-quotes">
-              <figure class="cs-solve-card" data-reveal><p class="cs-solve-label">ON SIMPLICITY</p><blockquote>&ldquo;TCS iON is very complex. This is not complex at all, it's very easy to use.&rdquo;</blockquote></figure>
-              <figure class="cs-solve-card" data-reveal><p class="cs-solve-label">ON VISIBILITY</p><blockquote>&ldquo;Solves a major Google Classroom problem. Right now, we don't know if people are even opening the classroom unless they submit something.&rdquo;</blockquote></figure>
-              <figure class="cs-solve-card" data-reveal><p class="cs-solve-label">ON TIME</p><blockquote>&ldquo;It is at least streamlining everything into one place. This is good, it saves time.&rdquo;</blockquote></figure>
+            <div class="lt-chat" data-reveal>
+              <p class="lt-chat-head">Testing session &middot; faculty</p>
+              <div class="lt-msg"><span>On simplicity</span><p>TCS iON is very complex. This is not complex at all, it's very easy to use.</p></div>
+              <div class="lt-msg"><span>On visibility</span><p>Solves a major Google Classroom problem. Right now, we don't know if people are even opening the classroom unless they submit something.</p></div>
+              <div class="lt-msg"><span>On time</span><p>It is at least streamlining everything into one place. This is good, it saves time.</p></div>
             </div>
           </section>
 
@@ -1007,16 +1047,35 @@
           <section class="cs-section" id="future">
             <p class="cs-eyebrow">09 &middot; FUTURE SCOPE</p>
             <h2 class="cs-heading" data-reveal>Today a focused LMS. <span style="color:#E87B35;">Tomorrow the whole institute.</span></h2>
-            <p class="cs-body">LumiTrack starts with feedback, evaluation and mentoring. It could grow into an education resource management system for a whole institute, a modern alternative to tools like TCS iON, with</p>
-            <ul class="lt-list">
-              <li>NAAC documentation</li>
-              <li>Faculty workload and time allocation</li>
-              <li>Payroll, HR and leave</li>
-              <li>Event approvals, room booking and notices</li>
-              <li>Central student records, from attendance to portfolios</li>
-              <li>Department insights for curriculum planning</li>
-              <li>Analytics for academic quality and accreditation</li>
-            </ul>
+            <p class="cs-body">LumiTrack starts with feedback, evaluation and mentoring. It could grow into an education resource management system for a whole institute, a modern alternative to tools like TCS iON.</p>
+            <div class="cs-reflection-item" data-reveal>
+              <span class="cs-reflection-num">01</span>
+              <div class="cs-reflection-text">
+                <p class="cs-reflection-title">Admin and accreditation</p>
+                <p class="cs-reflection-body">NAAC documentation and analytics for academic quality.</p>
+              </div>
+            </div>
+            <div class="cs-reflection-item" data-reveal>
+              <span class="cs-reflection-num">02</span>
+              <div class="cs-reflection-text">
+                <p class="cs-reflection-title">Faculty workload</p>
+                <p class="cs-reflection-body">Time allocation, payroll, HR and leave.</p>
+              </div>
+            </div>
+            <div class="cs-reflection-item" data-reveal>
+              <span class="cs-reflection-num">03</span>
+              <div class="cs-reflection-text">
+                <p class="cs-reflection-title">Campus operations</p>
+                <p class="cs-reflection-body">Event approvals, room booking and notices.</p>
+              </div>
+            </div>
+            <div class="cs-reflection-item" data-reveal>
+              <span class="cs-reflection-num">04</span>
+              <div class="cs-reflection-text">
+                <p class="cs-reflection-title">One record per student</p>
+                <p class="cs-reflection-body">Attendance, grades, work and portfolios, feeding curriculum planning.</p>
+              </div>
+            </div>
             <p class="cs-body">We built it with design colleges in mind, and we'd like to take it to other courses next.</p>
 
             <p class="cs-thanks">&#2343;&#2344;&#2381;&#2351;&#2357;&#2366;&#2342;&hellip;</p>
