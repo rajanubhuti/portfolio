@@ -25,15 +25,19 @@
     .hero-photo-wrap.is-flipped .hero-photo-default { opacity: 0; }
     .hero-photo-wrap.is-flipped .hero-photo-hover { opacity: 1; }
     .hero-photo-wrap { -webkit-tap-highlight-color: transparent; }
-    .work-status-wrap a, .work-status-btn { -webkit-tap-highlight-color: transparent; }
-    .work-status-btn .ws-arrow { display: inline-block; margin-left: 8px; transition: transform .25s ease; }
-    .work-status-wrap a:hover .ws-arrow { transform: translateX(4px); }
-    .work-status-btn:active { transform: scale(.97) !important; }
+    .work-status-wrap .ws-toggle { display: inline-block; }
+    .work-status-wrap .ws-toggle, .work-status-btn { -webkit-tap-highlight-color: transparent; cursor: default; }
+    /* tap or click the pill: the "Since July 2026" note pops in */
+    .work-status-wrap { position: relative; z-index: 10; }
+    .work-status-tag { white-space: nowrap; }
+    .work-status-wrap.is-open .work-status-tag { opacity: 1; transform: none; }
     @media (max-width: 640px) {
-      .hero-home { flex-direction: column !important; }
+      .hero-home { flex-direction: column !important; margin-top: 36px !important; }
+      .hero-home .work-status-tag { display: block !important; position: absolute; left: 50%; top: calc(100% + 12px); transform: translate(-50%, -6px) !important; z-index: 5; box-shadow: 0 8px 20px -10px rgba(24,25,31,.35); }
+      .hero-home .work-status-wrap.is-open .work-status-tag { transform: translate(-50%, 0) !important; }
       .hero-home > :first-child { width: 100% !important; }
       .hero-home .ha-photo { width: 240px !important; height: 372px !important; margin: 8px auto 0 !important; }
-      .hero-home .ha-status, .hero-home .ha-status > a { width: 100% !important; }
+      .hero-home .ha-status, .hero-home .ha-status > .ws-toggle { width: 100% !important; }
       .hero-home .work-status-btn { width: 100%; justify-content: center; padding: 16px 20px !important; font-size: 16px; transform-origin: center; }
     }
 
@@ -45,8 +49,10 @@
       transform-origin: left center;
       transform: scale(1);
     }
-    .work-status-wrap a:hover .work-status-btn {
+    @media (hover: hover) {
+    .work-status-wrap .ws-toggle:hover .work-status-btn {
       transform: scale(1.08);
+    }
     }
     .work-status-tag {
       opacity: 0;
@@ -54,9 +60,11 @@
       transition: opacity 0.2s ease 0.05s, transform 0.2s ease 0.05s;
       pointer-events: none;
     }
-    .work-status-wrap a:hover + .work-status-tag {
+    @media (hover: hover) {
+    .work-status-wrap .ws-toggle:hover + .work-status-tag {
       opacity: 1;
       transform: translateX(0);
+    }
     }
 
     /* Footer: written as real CSS because the site's compiled Tailwind
@@ -235,7 +243,7 @@
             </p>
 
             <div class="ha-status work-status-wrap flex items-center gap-8 w-fit">
-              <a class="w-fit" href="my-work/project-2/" aria-label="Currently at Tata Motors Limited. See my work there">
+              <span class="w-fit ws-toggle">
                 <button
                   class="work-status-btn flex rounded-full pl-8 py-4 font-bold border shadow-bottom-black bg-[#ddf8ff]
                          hover:text-white text-black hover:bg-[#00ADEF] shadow-none border-gray-200
@@ -243,9 +251,9 @@
                   tabindex="-1"
                   type="button"
                 >
-                  🔵 Currently at Tata Motors Limited.<span class="ws-arrow" aria-hidden="true">&rarr;</span>
+                  🔵 Currently at Tata Motors Limited.
                 </button>
-              </a>
+              </span>
 
               <span
                 class="work-status-tag rounded-full border border-gray-200 bg-white px-4 py-2
@@ -494,6 +502,16 @@
     (function () {
       var w = document.querySelector('.hero-photo-wrap');
       if (w && !(window.matchMedia && matchMedia('(hover: hover)').matches)) w.addEventListener('click', function () { w.classList.toggle('is-flipped'); });
+    })();
+  </script>
+  <script>
+    /* "Currently at Tata Motors" pill: on phones (no hover), a tap shows the "Since July 2026" note, like hovering does on desktop */
+    (function () {
+      if (window.matchMedia && matchMedia('(hover: hover)').matches) return;
+      var wrap = document.querySelector('.work-status-wrap'), t = wrap && wrap.querySelector('.ws-toggle');
+      if (!t) return;
+      t.addEventListener('click', function () { wrap.classList.toggle('is-open'); });
+      document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) wrap.classList.remove('is-open'); });
     })();
   </script>
 </body>
