@@ -17,8 +17,25 @@
       transition: none;
     }
     .hero-photo-hover { opacity: 0; }
-    .hero-photo-wrap:hover .hero-photo-default { opacity: 0; }
-    .hero-photo-wrap:hover .hero-photo-hover { opacity: 1; }
+    @media (hover: hover) {
+      .hero-photo-wrap:hover .hero-photo-default { opacity: 0; }
+      .hero-photo-wrap:hover .hero-photo-hover { opacity: 1; }
+    }
+    /* touch screens: tap the photo to flip between now and then, tap again to flip back */
+    .hero-photo-wrap.is-flipped .hero-photo-default { opacity: 0; }
+    .hero-photo-wrap.is-flipped .hero-photo-hover { opacity: 1; }
+    .hero-photo-wrap { -webkit-tap-highlight-color: transparent; }
+    .work-status-wrap a, .work-status-btn { -webkit-tap-highlight-color: transparent; }
+    .work-status-btn .ws-arrow { display: inline-block; margin-left: 8px; transition: transform .25s ease; }
+    .work-status-wrap a:hover .ws-arrow { transform: translateX(4px); }
+    .work-status-btn:active { transform: scale(.97) !important; }
+    @media (max-width: 640px) {
+      .hero-home { flex-direction: column !important; }
+      .hero-home > :first-child { width: 100% !important; }
+      .hero-home .ha-photo { width: 240px !important; height: 372px !important; margin: 8px auto 0 !important; }
+      .hero-home .ha-status, .hero-home .ha-status > a { width: 100% !important; }
+      .hero-home .work-status-btn { width: 100%; justify-content: center; padding: 16px 20px !important; font-size: 16px; transform-origin: center; }
+    }
 
     /* "Currently working" button: bounce on hover + since-tag reveal */
     .work-status-btn {
@@ -200,7 +217,7 @@
         <div class="h-[400px] absolute top-1/4 z-0 w-1/2"></div>
 
         <!-- ================= HERO SECTION ================= -->
-        <section class="flex relative items-center justify-between space-x-14 my-8
+        <section class="hero-home flex relative items-center justify-between space-x-14 my-8
                         max-sm:flex-col-reverse max-sm:space-x-0 max-sm:space-y-10 max-sm:my-0">
 
           <!-- Left: intro text -->
@@ -218,15 +235,15 @@
             </p>
 
             <div class="ha-status work-status-wrap flex items-center gap-8 w-fit">
-              <a class="w-fit" href="#" data-state="closed">
+              <a class="w-fit" href="my-work/project-2/" aria-label="Currently at Tata Motors Limited. See my work there">
                 <button
                   class="work-status-btn flex rounded-full pl-8 py-4 font-bold border shadow-bottom-black bg-[#ddf8ff]
                          hover:text-white text-black hover:bg-[#00ADEF] shadow-none border-gray-200
                          max-sm:!py-2 max-sm:!px-4 pr-8"
-                  tabindex="0"
+                  tabindex="-1"
                   type="button"
                 >
-                  🔵 Currently at Tata Motors Limited.
+                  🔵 Currently at Tata Motors Limited.<span class="ws-arrow" aria-hidden="true">&rarr;</span>
                 </button>
               </a>
 
@@ -472,5 +489,12 @@
   <script src="partials/project-cards.js?v=20261009b"></script>
   <script src="partials/home.js?v=20261005g"></script>
   <script src="partials/sticky-nav.js?v=20261009a"></script>
+  <script>
+    /* Tap the hero photo to flip between now and childhood; tap again to flip back. */
+    (function () {
+      var w = document.querySelector('.hero-photo-wrap');
+      if (w && !(window.matchMedia && matchMedia('(hover: hover)').matches)) w.addEventListener('click', function () { w.classList.toggle('is-flipped'); });
+    })();
+  </script>
 </body>
 </html>
