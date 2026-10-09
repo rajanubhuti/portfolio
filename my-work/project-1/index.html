@@ -669,6 +669,9 @@
 .cs-pin-why { margin: 8px 0 0; font-size: 15px; font-weight: 600; color: #E87B35; max-width: 640px; }
 .cs-pin-caps { min-height: 130px !important; }
 @media (max-width: 900px) { .cs-pin-caps { min-height: 175px !important; } .cs-pin-why { font-size: 14px; } }
+.v2-logic { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
+.v2-logic .cs-solve-card { margin: 0 !important; }
+@media (max-width: 900px) { .v2-logic { grid-template-columns: 1fr; } }
 .v2-todo { background: rgba(255,143,113,.22); border-radius: 4px; padding: 1px 6px; font-weight: 600; }
 
 /* design system */
@@ -895,13 +898,14 @@
 
             <h3 class="cs-heading" style="font-size:30px; margin:96px 0 28px;" data-reveal>Here's what surprised me</h3>
             <ul class="v2-findings v2-findings-4">
-              <li data-reveal><b>6%</b>of the time on the road, with a film on the screen.<em>So her eyes need a reason to look up.</em><small>van der Heiden et al., 2017</small></li>
-              <li data-reveal><b>27s</b>is how long distraction lingers after the task ends.<em>So her mind needs more than ten seconds.</em><small>Strayer et al., 2015</small></li>
-              <li data-reveal><b>Feet</b>off the pedals slowed braking the most.<em>So her body needs time too.</em><small>Zhao et al., 2024</small></li>
-              <li data-reveal><b>Longer</b>in autonomy meant a worse takeover.<em>So minute forty is harder than minute two.</em><small>Heliyon, 2024</small></li>
+              <li data-reveal><b>6%</b> of the time on the road, with a film on the screen.<em>So her eyes need a reason to look up.</em><small>van der Heiden et al., 2017</small></li>
+              <li data-reveal><b>27s</b> is how long distraction lingers after the task ends.<em>So her mind needs more than ten seconds.</em><small>Strayer et al., 2015</small></li>
+              <li data-reveal><b>Feet</b> off the pedals slowed braking the most.<em>So her body needs time too.</em><small>Zhao et al., 2024</small></li>
+              <li data-reveal><b>Longer</b> in autonomy meant a worse takeover.<em>So minute forty is harder than minute two.</em><small>Heliyon, 2024</small></li>
             </ul>
 
-            <p class="cs-body cs-mb-32">The finding that changed the project, time spent looking at the road<span class="cs-cite">van der Heiden et al., CHI 2017</span></p>
+            <h3 class="cs-heading" style="font-size:26px; margin:0 0 10px;" data-reveal>The finding that changed the project</h3>
+            <p class="cs-body cs-mb-32">Share of time drivers looked at the road in the 20 seconds before a handover, while busy with a screen task. Simulator study, 24 drivers<span class="cs-cite">van der Heiden et al., CHI 2017</span></p>
             <div class="cs-stat-row" data-reveal>
               <div class="cs-stat-label">Without a pre alert</div>
               <div class="cs-stat-track"><div class="cs-stat-fill cs-stat-fill-pink"></div></div>
@@ -1080,6 +1084,16 @@
                 </div>
               </div>
             </div>
+            <div class="v2-logic" data-reveal>
+              <div class="cs-solve-card">
+                <p class="cs-solve-label">IF SHE HASN'T RESPONDED BY T-10s</p>
+                <p class="cs-solve-body">The alert doesn't wait for her. State 04 starts at T-10s no matter what, adding sound and a buzz in the wheel. If she still hasn't taken over at T0, the car slows down and stops safely in its lane.</p>
+              </div>
+              <div class="cs-solve-card">
+                <p class="cs-solve-label">WHICH COUNTDOWN IS THIS?</p>
+                <p class="cs-solve-body">These screens show a planned handover, the end of a mapped highway, where the car knows a minute ahead. For a sudden problem the countdown starts from whatever time is left, and the car can skip straight to State 04.</p>
+              </div>
+            </div>
           </section>
 
           <!-- ================= DESIGN SYSTEM ================= -->
@@ -1176,7 +1190,6 @@
             </div>
 
             <p class="cs-body">Sixty is the most warning a planned exit can give. It still needs testing with real drivers.</p>
-            <p class="cs-body">And if she doesn't respond at all? The car does what certified systems already do, it slows down and stops safely in its lane. My sequence never replaces that fallback. It only comes before it.</p>
           </section>
 
           <!-- ================= SECTION 9: WHAT I DIDN'T SOLVE ================= -->
