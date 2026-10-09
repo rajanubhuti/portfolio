@@ -434,7 +434,7 @@
 }
 .cs-pin-screen {
   position: relative;
-  width: min(100%, 1100px, calc((100vh - 240px) * 1920 / 720));
+  width: min(100%, calc((100vh - 200px) * 1920 / 720));
   aspect-ratio: 1920 / 720;
   border-radius: 24px;
   overflow: hidden;
@@ -462,7 +462,7 @@
 }
 .cs-pin-img.is-active { opacity: 1; transform: none; }
 .cs-pin-info {
-  width: min(100%, 1100px, calc((100vh - 240px) * 1920 / 720));
+  width: min(100%, calc((100vh - 200px) * 1920 / 720));
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -1023,11 +1023,11 @@
                 <div class="cs-pin-screen">
                   <!-- The five state screens; scrolling crossfades between them -->
                   
-                  <img class="cs-pin-img is-active" src="../../assets/images/project-1/v2-state-01-autonomous.webp" srcset="../../assets/images/project-1/v2-state-01-autonomous-s.webp 960w, ../../assets/images/project-1/v2-state-01-autonomous.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 01, Autonomous Mode: a film plays full screen, with speed and automated driving status in the corner">
-                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-02-ramp.webp" srcset="../../assets/images/project-1/v2-state-02-ramp-s.webp 960w, ../../assets/images/project-1/v2-state-02-ramp.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 02, Awareness Ramp: the film blurs and dims, an amber glow rises, and a line says handover in about one minute" loading="lazy">
-                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-03-reengage.webp" srcset="../../assets/images/project-1/v2-state-03-reengage-s.webp 960w, ../../assets/images/project-1/v2-state-03-reengage.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 03, Reengagement: the road ahead in amber, a 28 second countdown, and the prompt sit up, feet on the pedals" loading="lazy">
-                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-04-alert.webp" srcset="../../assets/images/project-1/v2-state-04-alert-s.webp 960w, ../../assets/images/project-1/v2-state-04-alert.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 04, Handover Alert: red, a 7 second countdown, take over now, lane closed ahead, hands on the wheel" loading="lazy">
-                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-05-confirm.webp" srcset="../../assets/images/project-1/v2-state-05-confirm-s.webp 960w, ../../assets/images/project-1/v2-state-05-confirm.webp 1920w" sizes="(max-width: 900px) 100vw, 1100px" alt="State 05, Takeover Confirm: teal, you have control, film paused, navigation to exit 14" loading="lazy">
+                  <img class="cs-pin-img is-active" src="../../assets/images/project-1/v2-state-01-autonomous.webp" srcset="../../assets/images/project-1/v2-state-01-autonomous-s.webp 960w, ../../assets/images/project-1/v2-state-01-autonomous.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" alt="State 01, Autonomous Mode: a film plays full screen, with speed and automated driving status in the corner">
+                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-02-ramp.webp" srcset="../../assets/images/project-1/v2-state-02-ramp-s.webp 960w, ../../assets/images/project-1/v2-state-02-ramp.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" alt="State 02, Awareness Ramp: the film blurs and dims, an amber glow rises, and a line says handover in about one minute" loading="lazy">
+                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-03-reengage.webp" srcset="../../assets/images/project-1/v2-state-03-reengage-s.webp 960w, ../../assets/images/project-1/v2-state-03-reengage.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" alt="State 03, Reengagement: the road ahead in amber, a 28 second countdown, and the prompt sit up, feet on the pedals" loading="lazy">
+                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-04-alert.webp" srcset="../../assets/images/project-1/v2-state-04-alert-s.webp 960w, ../../assets/images/project-1/v2-state-04-alert.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" alt="State 04, Handover Alert: red, a 7 second countdown, take over now, lane closed ahead, hands on the wheel" loading="lazy">
+                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-05-confirm.webp" srcset="../../assets/images/project-1/v2-state-05-confirm-s.webp 960w, ../../assets/images/project-1/v2-state-05-confirm.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" alt="State 05, Takeover Confirm: teal, you have control, film paused, navigation to exit 14" loading="lazy">
                 </div>
                 <div class="cs-pin-info">
                   <div class="cs-pin-caps">
@@ -1212,7 +1212,7 @@
               </div>
             </div>
 
-            <p class="cs-body">Working with engineers taught me that constraints don't make design less creative. They make it matter more.</p>
+            <p class="cs-body">Working with people who actually build cars taught me that constraints don't make design less creative. They make it matter more.</p>
 
             <details class="cs-sources">
               <summary class="cs-sources-label">Key sources (5)</summary>
