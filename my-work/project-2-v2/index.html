@@ -584,111 +584,9 @@
 .ds-a11y-sum span { font-size: 16px; color: #18191F; }
 .ds-a11y-more summary { cursor: pointer; margin: 8px 0 16px; font-size: 16px; font-weight: 600; color: #E87B35; }
 @media (max-width: 640px) { .ds-a11y-sum { grid-template-columns: 1fr; } }
-/* ---- Pinned screens (borrowed from Designing the Return) ---- */
-.cs-pin { position: relative; height: 380vh; margin-bottom: 24px; }
-.cs-pin-sticky {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-}
-.cs-pin-screen {
-  position: relative;
-  width: min(100%, calc((100vh - 280px) * 2396 / 1654));
-  aspect-ratio: 2396 / 1654;
-  border-radius: 24px;
-  overflow: hidden;
-  background: #07080f;
-  box-shadow: 0 30px 80px -20px var(--pin-glow, rgba(24,25,31,.35)), 0 2px 6px rgba(24,25,31,.08);
-  transition: box-shadow .8s ease;
-}
-.cs-pin-sticky.is-fixed { position: fixed; top: 0; right: auto; z-index: 30; }
-.cs-pin-sticky.is-after { top: auto; bottom: 0; }
-.cs-pin-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; pointer-events: none; background: transparent; }
-.cs-pin[data-state="neutral"]  { --pin-glow: rgba(60, 70, 90, .45); }
-.cs-pin[data-state="ramp"]     { --pin-glow: rgba(242, 169, 78, .45); }
-.cs-pin[data-state="reengage"] { --pin-glow: rgba(242, 150, 40, .65); }
-.cs-pin[data-state="alert"]    { --pin-glow: rgba(229, 72, 77, .7); }
-.cs-pin[data-state="calm"]     { --pin-glow: rgba(120, 200, 140, .45); }
-.cs-pin-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transform: scale(1.02);
-  transition: opacity .6s ease, transform .8s cubic-bezier(.22,1,.36,1);
-}
-.cs-pin-img.is-active { opacity: 1; transform: none; }
-.cs-pin-info {
-  width: min(100%, calc((100vh - 280px) * 2396 / 1654));
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 32px;
-}
-.cs-pin-caps { position: relative; flex: 1; min-height: 96px; }
-.cs-pin-cap {
-  position: absolute;
-  inset: 0 0 auto 0;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity .45s ease, transform .45s ease;
-}
-.cs-pin-cap.is-active { opacity: 1; transform: none; }
-.cs-pin-time { margin: 0 0 6px 0; font-size: 15px; font-weight: 600; color: #6C727F; }
-.cs-pin-name { margin: 0 0 6px 0; font-size: 26px; font-weight: 700; color: #18191F; }
-.cs-pin-name span { color: #E87B35; margin-right: 10px; }
-.cs-pin-desc { margin: 0; font-size: 18px; line-height: 1.45; color: #2A2B31; max-width: 560px; }
-.cs-pin-steps { display: flex; gap: 8px; flex-shrink: 0; padding-bottom: 8px; }
-.cs-pin-step {
-  width: 44px;
-  height: 20px;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-.cs-pin-step span {
-  display: block;
-  width: 100%;
-  height: 4px;
-  border-radius: 4px;
-  background: #D9DBE0;
-  transition: background .4s ease, height .3s ease;
-}
-.cs-pin-step:hover span { height: 6px; }
-.cs-pin-step:focus-visible { outline: 2px solid #E87B35; outline-offset: 2px; border-radius: 4px; }
-.cs-pin-step-neutral.is-active span  { background: #6C727F; }
-.cs-pin-step-ramp.is-active span     { background: #F7C58A; }
-.cs-pin-step-reengage.is-active span { background: #F2A94E; }
-.cs-pin-step-alert.is-active span    { background: #E5484D; }
-.cs-pin-step-calm.is-active span     { background: #6FBF73; }
-
-@media (max-width: 900px) {
-  .cs-pin { height: 320vh; }
-  .cs-pin-info { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .cs-pin-screen { border-radius: 16px; }
-  .cs-pin-name { font-size: 22px; }
-  .cs-pin-desc { font-size: 16px; }
-  .cs-pin-caps { width: 100%; min-height: 110px; }
-}
-@media (prefers-reduced-motion: reduce) { .cs-pin-img, .cs-pin-cap, .cs-pin-screen { transition: none; } }
-.tms-pin { --pin-glow: rgba(57, 91, 192, .35); height: 300vh; }
-.tms-pin .cs-pin-screen { border-radius: 14px; background: #F5F7FA; }
-.tms-pin .cs-pin-step.is-active span { background: #395BC0; }
-.cs-pin-why { margin: 8px 0 0; font-size: 15px; font-weight: 600; color: #E87B35; max-width: 640px; }
+.cs-pin-why { margin: 0; font-size: 15px; font-weight: 600; color: #E87B35; max-width: 640px; }
 .tms-pin .cs-pin-caps { min-height: 118px; }
-@media (max-width: 900px) { .tms-pin { height: 260vh; } .tms-pin .cs-pin-caps { min-height: 150px; } .cs-pin-why { font-size: 14px; } }
+@media (max-width: 900px) { .cs-pin-why { font-size: 14px; } }
 .v2-logic { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
 .v2-logic .cs-solve-card { margin: 0 !important; }
 @media (max-width: 900px) { .v2-logic { grid-template-columns: 1fr; } }
@@ -701,23 +599,23 @@
 .v2-part::after { content: ""; flex: 1; height: 1px; background: #18191F; opacity: .2; }
 .v2-part span { font-size: 15px; font-weight: 700; letter-spacing: .16em; color: #18191F; }
 .v2-part b { color: #E87B35; font-weight: 700; }
-.tms-annot { position: relative; margin: 0; }
-.tms-annot img { display: block; width: 100%; height: auto; border-radius: 6px; box-shadow: 0 1px 0 #E5E7EB, 0 20px 50px -24px rgba(24,25,31,.25); }
-.tms-dot { position: absolute; width: 32px; height: 32px; margin: -16px 0 0 -16px; padding: 0; border: 0; border-radius: 50%; background: #E87B35; color: #fff; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; box-shadow: 0 0 0 4px rgba(255,255,255,.9), 0 4px 12px rgba(24,25,31,.25); z-index: 2; }
+.tms-annot { position: relative; margin: 0 0 24px; }
+.tms-annot img { display: block; width: 100%; height: auto; border-radius: 4px; }
+.tms-dot { position: absolute; width: 32px; height: 32px; margin: -16px 0 0 -16px; padding: 0; border: 0; border-radius: 50%; background: #E87B35; color: #fff; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; box-shadow: 0 0 0 3px #fff; z-index: 2; transition: transform .2s ease; }
 .tms-num { display: grid; place-items: center; width: 100%; height: 100%; border-radius: 50%; }
-.tms-dot::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #E87B35; opacity: .45; animation: tms-ping 2.4s ease-out infinite; z-index: -1; }
-.tms-dot:hover, .tms-dot:focus-visible, .tms-dot.is-open { z-index: 5; background: #18191F; outline: none; }
+.tms-dot::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #E87B35; opacity: .4; animation: tms-ping 2.4s ease-out infinite; z-index: -1; }
+.tms-dot:hover, .tms-dot:focus-visible, .tms-dot.is-open { z-index: 5; transform: scale(1.1); outline: none; }
 .tms-dot:hover::before, .tms-dot:focus-visible::before, .tms-dot.is-open::before { animation: none; opacity: 0; }
-@keyframes tms-ping { 0% { transform: scale(1); opacity: .45; } 70%, 100% { transform: scale(2); opacity: 0; } }
-.tms-tip { position: absolute; left: 50%; bottom: calc(100% + 14px); width: 260px; padding: 14px 16px; background: #18191F; color: #E9EAED; border-radius: 12px; font-size: 15px; font-weight: 400; line-height: 1.45; text-align: left; box-shadow: 0 16px 40px -12px rgba(24,25,31,.5); opacity: 0; visibility: hidden; transform: translate(-50%, 6px); transition: opacity .2s ease, transform .2s ease, visibility .2s; pointer-events: none; }
-.tms-tip b { display: block; margin-bottom: 4px; font-size: 16px; font-weight: 700; color: #FF8F71; }
-.tms-dot:hover .tms-tip, .tms-dot:focus-visible .tms-tip, .tms-dot.is-open .tms-tip { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
-.tms-dot.tip-down .tms-tip { bottom: auto; top: calc(100% + 14px); }
-.tms-dot.tip-left .tms-tip { left: -6px; transform: translate(0, 6px); }
-.tms-dot.tip-left:hover .tms-tip, .tms-dot.tip-left:focus-visible .tms-tip, .tms-dot.tip-left.is-open .tms-tip { transform: none; }
-.tms-dot.tip-right .tms-tip { left: auto; right: -6px; transform: translate(0, 6px); }
-.tms-dot.tip-right:hover .tms-tip, .tms-dot.tip-right:focus-visible .tms-tip, .tms-dot.tip-right.is-open .tms-tip { transform: none; }
-@media (max-width: 700px) { .tms-dot { width: 22px; height: 22px; margin: -11px 0 0 -11px; font-size: 12px; box-shadow: 0 0 0 2px rgba(255,255,255,.9); } .tms-tip { width: 200px; font-size: 14px; padding: 12px 14px; } .tms-tip b { font-size: 15px; } }
+@keyframes tms-ping { 0% { transform: scale(1); opacity: .4; } 70%, 100% { transform: scale(1.9); opacity: 0; } }
+.tms-tip { position: absolute; left: 50%; bottom: calc(100% + 12px); width: 260px; padding: 16px 18px; background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; color: #2A2B31; font-size: 15px; font-weight: 400; line-height: 1.45; text-align: left; box-shadow: 0 10px 30px -12px rgba(24,25,31,.2); opacity: 0; visibility: hidden; transform: translate(-50%, 6px) scale(.909); transform-origin: center bottom; transition: opacity .2s ease, transform .2s ease, visibility .2s; pointer-events: none; }
+.tms-tip b { display: block; margin-bottom: 4px; font-size: 16px; font-weight: 700; color: #18191F; }
+.tms-dot:hover .tms-tip, .tms-dot:focus-visible .tms-tip, .tms-dot.is-open .tms-tip { opacity: 1; visibility: visible; transform: translate(-50%, 0) scale(.909); }
+.tms-dot.tip-down .tms-tip { bottom: auto; top: calc(100% + 12px); transform-origin: center top; }
+.tms-dot.tip-left .tms-tip { left: -6px; transform: translate(0, 6px) scale(.909); transform-origin: left bottom; }
+.tms-dot.tip-left:hover .tms-tip, .tms-dot.tip-left:focus-visible .tms-tip, .tms-dot.tip-left.is-open .tms-tip { transform: scale(.909); }
+.tms-dot.tip-right .tms-tip { left: auto; right: -6px; transform: translate(0, 6px) scale(.909); transform-origin: right bottom; }
+.tms-dot.tip-right:hover .tms-tip, .tms-dot.tip-right:focus-visible .tms-tip, .tms-dot.tip-right.is-open .tms-tip { transform: scale(.909); }
+@media (max-width: 700px) { .tms-dot { width: 22px; height: 22px; margin: -11px 0 0 -11px; font-size: 12px; box-shadow: 0 0 0 2px #fff; } .tms-tip { width: 200px; font-size: 14px; padding: 12px 14px; } .tms-tip b { font-size: 15px; } }
 @media (prefers-reduced-motion: reduce) { .tms-dot::before { animation: none; } }
 .tms-note { margin: 0; font-size: 15px; line-height: 1.5; color: #6C727F; max-width: 640px; }
 .v2-logic + .tms-note { margin-top: 20px; }
@@ -797,7 +695,7 @@
               <button type="button" class="tms-dot tip-right" style="left:76.8%; top:70%;" aria-label="Finding 4, Colour does all the talking"><span class="tms-num">4</span><span class="tms-tip" role="tooltip"><b>Colour does all the talking</b>Status is red, yellow or green, and nothing else. Hard to read if you can't tell them apart.</span></button>
               <button type="button" class="tms-dot tip-down" style="left:46.2%; top:3.4%;" aria-label="Finding 5, Nothing tries to help first"><span class="tms-num">5</span><span class="tms-tip" role="tooltip"><b>Nothing tries to help first</b>Help is one more link in the row. The only way forward is raising a ticket.</span></button>
             </figure>
-            <p class="cs-img-caption cs-mb-48">The current TMS user page. Hover or tap a number to see what I found.</p>
+            <p class="cs-img-caption cs-mb-32">The current TMS user page. Hover or tap a number to see what I found.</p>
 
             <div class="cs-callout" data-reveal><p>The veteran knew where to click. The intern had nothing on the page to tell them.</p></div>
             <p class="tms-note">I also audited the full navigation and information architecture. The structure itself stays under Tata Motors' NDA.</p>
@@ -935,41 +833,31 @@
             <p class="cs-eyebrow">06 &middot; THE PIVOT</p>
             <h2 class="cs-heading" data-reveal>What if TMS started by <span style="color:#E87B35;">listening?</span></h2>
             <p class="cs-body">People already explain problems to a colleague in plain words, not in categories and dropdowns. So the new front door is a question.</p>
-            <p class="cs-body cs-mb-48">Engineering asked me to keep it simple enough to build. And someone who has been at Tata Motors for thirty years shouldn't have to relearn anything. So every screen has as few elements as I could get away with. Follow Priya, whose VPN keeps dropping at the plant. Keep scrolling.</p>
+            <p class="cs-body cs-mb-48">Engineering asked me to keep it simple enough to build. And someone who has been at Tata Motors for thirty years shouldn't have to relearn anything. So every screen has as few elements as I could get away with. Follow Priya, whose VPN keeps dropping at the plant.</p>
 
-            <div class="cs-pin tms-pin">
-              <div class="cs-pin-sticky">
-                <div class="cs-pin-screen">
-                  <img class="cs-pin-img is-active" src="../../assets/images/project-2/06-chatfirst.webp" alt="First load: a greeting, Hi Priya, how can I help, one input and four suggested starting points">
-                  <img class="cs-pin-img" src="../../assets/images/project-2/07-chatsecond-describing.webp" loading="lazy" alt="Priya types that her VPN keeps disconnecting on the plant network. The assistant suggests a reset guide with That fixed it and Still not working buttons, then offers a pre filled ticket">
-                  <img class="cs-pin-img" src="../../assets/images/project-2/08-chatsecond-lands.webp" loading="lazy" alt="My Tickets: a confirmation that TKT-4822 was raised from chat, and the new ticket at the top of the list, marked Raised from Assistant, showing what Priya already tried">
-                </div>
-                <div class="cs-pin-info">
-                  <div class="cs-pin-caps">
-                    <div class="cs-pin-cap is-active">
-                      <p class="cs-pin-name"><span>01</span>First load</p>
-                      <p class="cs-pin-desc">No form, no category picker. One question and a few likely starting points.</p>
-                      <p class="cs-pin-why">Why? The old page asked for an ID before it showed anything. This one asks what's wrong.</p>
-                    </div>
-                    <div class="cs-pin-cap">
-                      <p class="cs-pin-name"><span>02</span>Describing the issue</p>
-                      <p class="cs-pin-desc">She types it in her own words. A known fix comes first, the ticket second.</p>
-                      <p class="cs-pin-why">Why? If a two minute guide fixes it, the best ticket is the one never raised.</p>
-                    </div>
-                    <div class="cs-pin-cap">
-                      <p class="cs-pin-name"><span>03</span>Where it lands</p>
-                      <p class="cs-pin-desc">The ticket arrives already filled in, with what she tried and what happened.</p>
-                      <p class="cs-pin-why">Why? Support staff still get the detail they need. It comes from the chat, not from Priya filling in fields.</p>
-                    </div>
-                  </div>
-                  <div class="cs-pin-steps">
-                    <button type="button" class="cs-pin-step is-active" data-step="0" aria-label="Show screen 01, First load"><span></span></button>
-                    <button type="button" class="cs-pin-step" data-step="1" aria-label="Show screen 02, Describing the issue"><span></span></button>
-                    <button type="button" class="cs-pin-step" data-step="2" aria-label="Show screen 03, Where it lands"><span></span></button>
-                  </div>
-                </div>
-              </div>
+            <p class="cs-eyebrow">01 &middot; FIRST LOAD</p>
+            <p class="cs-body" style="margin-bottom:6px;">No form, no category picker. One question and a few likely starting points.</p>
+            <p class="cs-pin-why cs-mb-24">Why? The old page asked for an ID before it showed anything. This one asks what's wrong.</p>
+            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:2394/1654;">
+              <img src="../../assets/images/project-2/06-chatfirst.webp" loading="lazy" alt="First load: a greeting, Hi Priya, how can I help, one input and four suggested starting points" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
             </div>
+            <div style="height:56px;"></div>
+
+            <p class="cs-eyebrow">02 &middot; DESCRIBING THE ISSUE</p>
+            <p class="cs-body" style="margin-bottom:6px;">She types it in her own words. A known fix comes first, the ticket second.</p>
+            <p class="cs-pin-why cs-mb-24">Why? If a two minute guide fixes it, the best ticket is the one never raised.</p>
+            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:2396/1654;">
+              <img src="../../assets/images/project-2/07-chatsecond-describing.webp" loading="lazy" alt="Priya types that her VPN keeps disconnecting on the plant network. The assistant suggests a reset guide with That fixed it and Still not working buttons, then offers a pre filled ticket" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            </div>
+            <div style="height:56px;"></div>
+
+            <p class="cs-eyebrow">03 &middot; WHERE IT LANDS</p>
+            <p class="cs-body" style="margin-bottom:6px;">The ticket arrives already filled in, with what she tried and what happened.</p>
+            <p class="cs-pin-why cs-mb-24">Why? Support staff still get the detail they need. It comes from the chat, not from Priya filling in fields.</p>
+            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:2396/1654;">
+              <img src="../../assets/images/project-2/08-chatsecond-lands.webp" loading="lazy" alt="My Tickets: a confirmation that TKT-4822 was raised from chat, and the new ticket at the top of the list, marked Raised from Assistant, showing what Priya already tried" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            </div>
+            <div style="height:56px;"></div>
 
             <div class="v2-logic" data-reveal>
               <div class="cs-solve-card">
@@ -1577,55 +1465,6 @@
               });
             });
             document.addEventListener('click', function () { dots.forEach(function (x) { x.classList.remove('is-open'); }); });
-          })();
-        </script>
-        <script>
-          /* Pinned screens: the panel is held with position:fixed while you scroll through the section,
-             and each third of the scroll shows the next screen. */
-          (function () {
-            var pin = document.querySelector('.cs-pin');
-            if (!pin) return;
-            var panel = pin.querySelector('.cs-pin-sticky');
-            var imgs = pin.querySelectorAll('.cs-pin-img');
-            var caps = pin.querySelectorAll('.cs-pin-cap');
-            var steps = pin.querySelectorAll('.cs-pin-step');
-            var n = caps.length, current = -1, mode = '';
-            function show(i) {
-              if (i === current) return;
-              current = i;
-              [caps, steps, imgs].forEach(function (list) {
-                list.forEach(function (el, k) { el.classList.toggle('is-active', k === i); });
-              });
-            }
-            function setMode(m, r) {
-              if (m === 'fixed') { panel.style.left = r.left + 'px'; panel.style.width = r.width + 'px'; }
-              if (m === mode) return;
-              mode = m;
-              panel.classList.toggle('is-fixed', m === 'fixed');
-              panel.classList.toggle('is-after', m === 'after');
-              if (m !== 'fixed') { panel.style.left = ''; panel.style.width = ''; }
-            }
-            function update() {
-              var r = pin.getBoundingClientRect(), vh = window.innerHeight, total = pin.offsetHeight - vh;
-              if (r.top > 0) setMode('before', r);
-              else if (r.bottom <= vh) setMode('after', r);
-              else setMode('fixed', r);
-              var p = total > 0 ? Math.min(Math.max(-r.top / total, 0), 0.9999) : 0;
-              show(Math.floor(p * n));
-            }
-            var ticking = false;
-            window.addEventListener('scroll', function () {
-              if (!ticking) { ticking = true; requestAnimationFrame(function () { update(); ticking = false; }); }
-            }, { passive: true });
-            window.addEventListener('resize', update);
-            steps.forEach(function (btn) {
-              btn.addEventListener('click', function () {
-                var i = +btn.getAttribute('data-step'), total = pin.offsetHeight - window.innerHeight;
-                var top = pin.getBoundingClientRect().top + window.pageYOffset;
-                window.scrollTo({ top: top + total * (i + 0.5) / n, behavior: 'smooth' });
-              });
-            });
-            update();
           })();
         </script>
         <script>
