@@ -790,9 +790,10 @@
 .lt-map i { font-style: normal; font-size: 22px; color: #E87B35; text-align: center; }
 .lt-map span { justify-self: start; padding: 6px 14px; border-radius: 999px; background: #FEF7EE; border: 1px solid #F6C9A8; font-size: 15px; font-weight: 600; color: #18191F; }
 @media (max-width: 700px) { .lt-map li { grid-template-columns: 1fr; gap: 8px; } .lt-map i { display: none; } }
-.lt-chat { max-width: 760px; background: #fff; border: 1px solid #E5E7EB; border-radius: 20px; padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 14px; }
+.lt-chat { background: #fff; border: 1px solid #E5E7EB; border-radius: 20px; padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 14px; }
 .lt-chat-head { margin: 0 0 6px; padding-bottom: 14px; border-bottom: 1px solid #F0F1F3; text-align: center; font-size: 14px; font-weight: 600; color: #6C727F; }
-.lt-msg { align-self: flex-start; max-width: 82%; }
+.lt-msg { align-self: flex-start; max-width: 70%; }
+@media (max-width: 700px) { .lt-msg { max-width: 92%; } }
 .lt-msg span { display: block; margin: 0 0 4px 14px; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #E87B35; }
 .lt-msg p { margin: 0; background: #F1F2F4; border-radius: 20px 20px 20px 6px; padding: 14px 18px; font-size: 18px; line-height: 1.45; color: #18191F; }
 .cs-reveal-on .lt-chat .lt-msg { opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
@@ -960,8 +961,7 @@
               <li data-reveal><b>What if faculty had a helper?</b><i aria-hidden="true">&rarr;</i><span>04 The repeated comment, 06 Attendance</span></li>
               <li data-reveal><b>What if grading was transparent?</b><i aria-hidden="true">&rarr;</i><span>02 The assignment, 03 The rubric</span></li>
             </ol>
-            <p class="cs-body" style="margin-top:32px;">Hover or tap the numbers on each screen.</p>
-            <div class="cs-paper-links" style="margin:0 0 64px;">
+            <div class="cs-paper-links" style="margin:32px 0 64px;">
               <a class="cs-paper-link" href="https://www.figma.com/proto/iod24jrfhtsG9TocVFtr1L/Interaction-design?page-id=807%3A19854&amp;node-id=807-27928&amp;p=f&amp;viewport=-1352%2C286%2C0.04&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=807%3A27928&amp;hide-ui=1" target="_blank" rel="noopener">View the prototype &rarr;</a>
             </div>
 
@@ -973,6 +973,7 @@
               <button type="button" class="tms-dot " style="left:38%; top:22%;" aria-label="Note 1, Every course, at a glance"><span class="tms-num">1</span><span class="tms-tip" role="tooltip"><b>Every course, at a glance</b>Today's lecture, the next presentation and how far the class has got.</span></button>
               <button type="button" class="tms-dot tip-right" style="left:96%; top:60%;" aria-label="Note 2, The day, in order"><span class="tms-num">2</span><span class="tms-tip" role="tooltip"><b>The day, in order</b>Meetings and lectures without opening another app.</span></button>
             </figure>
+            <p class="cs-img-caption">Hover or tap the numbers.</p>
             <div style="height:72px;"></div>
 
             <p class="cs-eyebrow">02 &middot; THE ASSIGNMENT</p>
@@ -1027,8 +1028,6 @@
               <button type="button" class="tms-dot tip-right" style="left:65.5%; top:35%;" aria-label="Note 2, Entered once"><span class="tms-num">2</span><span class="tms-tip" role="tooltip"><b>Entered once</b>Linked to TCS iON or Sheets, so nothing is typed twice.</span></button>
               <button type="button" class="tms-dot tip-right" style="left:72%; top:75%;" aria-label="Note 3, Low attendance, flagged"><span class="tms-num">3</span><span class="tms-tip" role="tooltip"><b>Low attendance, flagged</b>One tap to nudge the student.</span></button>
             </figure>
-            <div style="height:72px;"></div>
-
           </section>
 
           <!-- ================= VALIDATED ================= -->
