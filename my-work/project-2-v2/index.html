@@ -584,6 +584,143 @@
 .ds-a11y-sum span { font-size: 16px; color: #18191F; }
 .ds-a11y-more summary { cursor: pointer; margin: 8px 0 16px; font-size: 16px; font-weight: 600; color: #E87B35; }
 @media (max-width: 640px) { .ds-a11y-sum { grid-template-columns: 1fr; } }
+/* ---- Pinned screens (borrowed from Designing the Return) ---- */
+.cs-pin { position: relative; height: 380vh; margin-bottom: 24px; }
+.cs-pin-sticky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.cs-pin-screen {
+  position: relative;
+  width: min(100%, calc((100vh - 280px) * 2396 / 1654));
+  aspect-ratio: 2396 / 1654;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #07080f;
+  box-shadow: 0 30px 80px -20px var(--pin-glow, rgba(24,25,31,.35)), 0 2px 6px rgba(24,25,31,.08);
+  transition: box-shadow .8s ease;
+}
+.cs-pin-sticky.is-fixed { position: fixed; top: 0; right: auto; z-index: 30; }
+.cs-pin-sticky.is-after { top: auto; bottom: 0; }
+.cs-pin-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; pointer-events: none; background: transparent; }
+.cs-pin[data-state="neutral"]  { --pin-glow: rgba(60, 70, 90, .45); }
+.cs-pin[data-state="ramp"]     { --pin-glow: rgba(242, 169, 78, .45); }
+.cs-pin[data-state="reengage"] { --pin-glow: rgba(242, 150, 40, .65); }
+.cs-pin[data-state="alert"]    { --pin-glow: rgba(229, 72, 77, .7); }
+.cs-pin[data-state="calm"]     { --pin-glow: rgba(120, 200, 140, .45); }
+.cs-pin-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity .6s ease, transform .8s cubic-bezier(.22,1,.36,1);
+}
+.cs-pin-img.is-active { opacity: 1; transform: none; }
+.cs-pin-info {
+  width: min(100%, calc((100vh - 280px) * 2396 / 1654));
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+}
+.cs-pin-caps { position: relative; flex: 1; min-height: 96px; }
+.cs-pin-cap {
+  position: absolute;
+  inset: 0 0 auto 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+.cs-pin-cap.is-active { opacity: 1; transform: none; }
+.cs-pin-time { margin: 0 0 6px 0; font-size: 15px; font-weight: 600; color: #6C727F; }
+.cs-pin-name { margin: 0 0 6px 0; font-size: 26px; font-weight: 700; color: #18191F; }
+.cs-pin-name span { color: #E87B35; margin-right: 10px; }
+.cs-pin-desc { margin: 0; font-size: 18px; line-height: 1.45; color: #2A2B31; max-width: 560px; }
+.cs-pin-steps { display: flex; gap: 8px; flex-shrink: 0; padding-bottom: 8px; }
+.cs-pin-step {
+  width: 44px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.cs-pin-step span {
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background: #D9DBE0;
+  transition: background .4s ease, height .3s ease;
+}
+.cs-pin-step:hover span { height: 6px; }
+.cs-pin-step:focus-visible { outline: 2px solid #E87B35; outline-offset: 2px; border-radius: 4px; }
+.cs-pin-step-neutral.is-active span  { background: #6C727F; }
+.cs-pin-step-ramp.is-active span     { background: #F7C58A; }
+.cs-pin-step-reengage.is-active span { background: #F2A94E; }
+.cs-pin-step-alert.is-active span    { background: #E5484D; }
+.cs-pin-step-calm.is-active span     { background: #6FBF73; }
+
+@media (max-width: 900px) {
+  .cs-pin { height: 320vh; }
+  .cs-pin-info { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .cs-pin-screen { border-radius: 16px; }
+  .cs-pin-name { font-size: 22px; }
+  .cs-pin-desc { font-size: 16px; }
+  .cs-pin-caps { width: 100%; min-height: 110px; }
+}
+@media (prefers-reduced-motion: reduce) { .cs-pin-img, .cs-pin-cap, .cs-pin-screen { transition: none; } }
+.tms-pin { --pin-glow: rgba(57, 91, 192, .35); height: 300vh; }
+.tms-pin .cs-pin-screen { border-radius: 14px; background: #F5F7FA; }
+.tms-pin .cs-pin-step.is-active span { background: #395BC0; }
+.cs-pin-why { margin: 8px 0 0; font-size: 15px; font-weight: 600; color: #E87B35; max-width: 640px; }
+.tms-pin .cs-pin-caps { min-height: 118px; }
+@media (max-width: 900px) { .tms-pin { height: 260vh; } .tms-pin .cs-pin-caps { min-height: 150px; } .cs-pin-why { font-size: 14px; } }
+.v2-logic { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
+.v2-logic .cs-solve-card { margin: 0 !important; }
+@media (max-width: 900px) { .v2-logic { grid-template-columns: 1fr; } }
+.cs-v2 .cs-callout p { color: #18191F; }
+.v2-bridge { display: inline-flex; align-items: center; gap: 10px; margin: 56px 0 0; font-size: 17px; font-weight: 600; color: #E87B35; }
+.v2-bridge::before { content: "\2193"; font-size: 20px; }
+.cs-reveal-on .v2-bridge::before { animation: v2-nudge 1.8s ease-in-out infinite; }
+@keyframes v2-nudge { 0%,100% { transform: none; } 50% { transform: translateY(4px); } }
+.v2-part { display: flex; align-items: center; gap: 20px; margin: 0 0 90px; }
+.v2-part::after { content: ""; flex: 1; height: 1px; background: #18191F; opacity: .2; }
+.v2-part span { font-size: 15px; font-weight: 700; letter-spacing: .16em; color: #18191F; }
+.v2-part b { color: #E87B35; font-weight: 700; }
+.v2-findings { list-style: none; margin: 0 0 48px; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.v2-findings li { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px 22px; font-size: 17px; line-height: 1.45; color: #18191F; }
+.v2-findings b { display: block; margin-bottom: 4px; font-size: 26px; font-weight: 700; color: #E87B35; line-height: 1.1; }
+.tms-notes { grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.tms-notes li { font-size: 16px; padding: 18px; }
+@media (max-width: 1100px) { .tms-notes { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .tms-notes, .v2-findings { grid-template-columns: 1fr; } }
+.tms-annot { position: relative; margin: 0; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 0 #E5E7EB, 0 20px 50px -24px rgba(24,25,31,.25); }
+.tms-annot img { display: block; width: 100%; height: auto; }
+.tms-dot { position: absolute; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; background: #E87B35; color: #fff; font-size: 15px; font-weight: 700; display: grid; place-items: center; box-shadow: 0 0 0 4px rgba(255,255,255,.9), 0 4px 12px rgba(24,25,31,.25); }
+.cs-reveal-on .tms-annot.is-in .tms-dot { animation: tms-pop .5s cubic-bezier(.22,1.6,.36,1) both; }
+.cs-reveal-on .tms-annot.is-in .tms-dot:nth-of-type(2) { animation-delay: .15s; }
+.cs-reveal-on .tms-annot.is-in .tms-dot:nth-of-type(3) { animation-delay: .3s; }
+.cs-reveal-on .tms-annot.is-in .tms-dot:nth-of-type(4) { animation-delay: .45s; }
+.cs-reveal-on .tms-annot.is-in .tms-dot:nth-of-type(5) { animation-delay: .6s; }
+.cs-reveal-on .tms-annot.is-in .tms-dot:nth-of-type(6) { animation-delay: .75s; }
+@keyframes tms-pop { from { transform: scale(0); } to { transform: none; } }
+@media (max-width: 700px) { .tms-dot { width: 20px; height: 20px; margin: -10px 0 0 -10px; font-size: 11px; box-shadow: 0 0 0 2px rgba(255,255,255,.9); } }
+.tms-note { margin: 0; font-size: 15px; line-height: 1.5; color: #6C727F; max-width: 640px; }
+.v2-logic + .tms-note { margin-top: 20px; }
 </style>
 
   <!-- Tells the shared header/footer partials how far back up to the project root -->
@@ -631,7 +768,7 @@
               </div>
             </div>
 
-            <p class="cs-eyebrow">OVERVIEW</p>
+            <p class="cs-eyebrow">01 &middot; OVERVIEW</p>
             <h1 class="cs-heading">Redesigning DPDS TMS</h1>
             <p class="tms-oneliner">An internal helpdesk that answers your problem first, and raises a ticket only if it can't.</p>
             <p class="cs-body">
@@ -643,63 +780,43 @@
 
           </section>
 
-          <!-- ================= SECTION 2: WHAT I INHERITED ================= -->
+          <div class="v2-part"><span><b>PART 1</b> &middot; WHAT I WALKED INTO</span></div>
+
+          <!-- ================= WHAT I INHERITED ================= -->
           <section class="cs-section" id="inherited">
-            <p class="cs-eyebrow">WHAT I INHERITED</p>
-            <h2 class="cs-heading" data-reveal>The form wasn't broken. It just couldn't tell people apart.</h2>
+            <p class="cs-eyebrow">02 &middot; WHAT I INHERITED</p>
+            <h2 class="cs-heading" data-reveal>Before designing anything, I raised a ticket myself</h2>
+            <p class="cs-body cs-mb-48">I used TMS the way everyone at DPDS does. I raised test tickets, then sat beside colleagues while they raised real ones. This is the page they all start from.</p>
 
-            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1198/547; margin-bottom:0;">
-              <img src="../../assets/images/project-2/02-current-tms-screenshot.webp" alt="Screenshot of the current Tata Motors ticketing system homepage" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
-            </div>
-            <p class="cs-img-caption cs-mb-32">*Current Ticketing Management System Homepage</p>
+            <figure class="tms-annot" data-reveal>
+              <img src="../../assets/images/project-2/02-current-tms-screenshot.webp" alt="The current TMS user page. A row of nine blue navigation links, the DPDS TMS title and Tata Motors logo shown twice, a form asking for a login ID and type, and a summary table where status is shown only by red, yellow and green cells." loading="lazy">
+              <span class="tms-dot" style="left:53%; top:3.4%;">1</span>
+              <span class="tms-dot" style="left:12.6%; top:43.6%;">2</span>
+              <span class="tms-dot" style="left:40.6%; top:21.8%;">3</span>
+              <span class="tms-dot" style="left:76.8%; top:70%;">4</span>
+              <span class="tms-dot" style="left:46.2%; top:3.4%;">5</span>
+            </figure>
+            <p class="cs-img-caption cs-mb-32">The current TMS user page, marked up while I used it.</p>
 
-            <p class="cs-body cs-mb-48">
-              I filed test tickets myself, then sat with staff while they filed real ones. The test tickets showed the
-              obvious friction. The real sessions showed the actual problem: a hardware fault and a forgotten
-              password were going through the same four field form.
-            </p>
+            <ul class="v2-findings tms-notes">
+              <li data-reveal><b>01</b>Nine links in one row, all the same size and colour. Nothing says where to start.</li>
+              <li data-reveal><b>02</b>The title and logo appear twice on one page, so nothing feels like the top.</li>
+              <li data-reveal><b>03</b>You fill in your ID and a type before you see a single ticket.</li>
+              <li data-reveal><b>04</b>Status is red, yellow or green, and nothing else. Colour does all the talking.</li>
+              <li data-reveal><b>05</b>Help is one more link in the row. Nothing tries to answer before you raise a ticket.</li>
+            </ul>
 
-            <div class="cs-found-grid">
-              <div class="cs-solve-card" data-reveal>
-                <p class="cs-solve-label">FOUND</p>
-                <p class="cs-gap-heading">Navigation as dumping ground</p>
-                <p class="cs-solve-body">Too much crammed into the navbar, no hierarchy.</p>
-              </div>
-              <div class="cs-solve-card" data-reveal>
-                <p class="cs-solve-label">FOUND</p>
-                <p class="cs-gap-heading">One form fits none</p>
-                <p class="cs-solve-body">A password reset takes the same fields as a hardware failure.</p>
-              </div>
-            </div>
-            <div class="cs-found-grid">
-              <div class="cs-solve-card" data-reveal>
-                <p class="cs-solve-label">FOUND</p>
-                <p class="cs-gap-heading">No visual hierarchy</p>
-                <p class="cs-solve-body">Blue boxed nav with no distinction between primary and secondary actions.</p>
-              </div>
-              <div class="cs-solve-card" data-reveal>
-                <p class="cs-solve-label">FOUND</p>
-                <p class="cs-gap-heading">Zero self service</p>
-                <p class="cs-solve-body">No knowledge base check before a ticket gets filed, for anything.</p>
-              </div>
-            </div>
-
-            <div class="cs-callout" data-reveal>
-              <p class="cs-callout-label">WHAT I DID ABOUT IT</p>
-              <p class="cs-callout-body">
-                Beyond the redesign itself, I ran a full navigation and information architecture audit: what's
-                grouped where, what sits at the top level, and what's buried. The actual structure is confidential
-                under Tata Motors' NDA.
-              </p>
-            </div>
+            <div class="cs-callout" data-reveal><p>The screens were messy, but that wasn't the real problem. A hardware fault and a forgotten password went through the same four field form.</p></div>
+            <p class="tms-note">I also audited the full navigation and information architecture. The structure itself stays under Tata Motors' NDA.</p>
+            <p class="v2-bridge">so I looked at how bigger tools handle it</p>
           </section>
 
-          <!-- ================= SECTION 3: WHY IT MATTERS ================= -->
+          <!-- ================= WHY IT MATTERS ================= -->
           <section class="cs-section" id="why">
-            <p class="cs-eyebrow">WHY IT MATTERS</p>
+            <p class="cs-eyebrow">03 &middot; WHY IT MATTERS</p>
             <h2 class="cs-heading" data-reveal>The gap isn't an opinion. It's a feature list.</h2>
-
-            <div class="cs-compare-table cs-mb-32" data-reveal style="margin-top:32px;">
+            <p class="cs-body">I compared TMS with ServiceNow and Jira Service Management, two tools large teams use for the same job.</p>
+            <div class="cs-compare-table cs-mb-32" data-reveal style="margin-top:8px;">
               <div class="cs-compare-row cs-compare-head">
                 <div>Capability</div>
                 <div class="cs-compare-vendor-row">
@@ -750,31 +867,22 @@
               </div>
             </div>
 
-            <div class="cs-callout" data-reveal>
-              <p class="cs-callout-label">KEY INSIGHT</p>
-              <p class="cs-callout-body">
-                Enterprise leaders intercept issues with self service before a ticket ever gets filed. TATA TMS had
-                no "before," only a form.
-              </p>
-            </div>
+            <div class="cs-callout" data-reveal><p>The big tools try to answer you before you raise a ticket. TMS had no before, only a form.</p></div>
+            <p class="v2-bridge">but who was filling in that form?</p>
           </section>
 
-          <!-- ================= SECTION 4: TWO PEOPLE, SAME TICKET ================= -->
+          <!-- ================= TWO PEOPLE ================= -->
           <section class="cs-section" id="people">
-            <p class="cs-eyebrow">TWO PEOPLE, SAME TICKET</p>
+            <p class="cs-eyebrow">04 &middot; TWO PEOPLE, SAME TICKET</p>
             <h2 class="cs-heading" data-reveal>The form doesn't know who's talking</h2>
-            <p class="cs-body cs-mb-48">
-              Same submit button, two unrelated problems: one person is reporting a fault that could stall a line,
-              the next just wants their badge reactivated. The form asks both of them for a severity level.
-            </p>
-
+            <p class="cs-body cs-mb-48">Sitting with people while they raised tickets, I kept seeing two very different people at the same submit button. The form asked both of them for a severity level.</p>
             <div class="cs-persona-flank" data-reveal>
               <div class="cs-persona-flank-figure">
                 <img src="../../assets/images/project-2/03-technical-staff-illustration.webp" alt="Illustration of a technical staff member filing a detailed ticket" style="width:100%; height:100%; object-fit:contain; display:block;">
               </div>
               <div class="cs-solve-card" data-reveal style="flex:1; margin-bottom:0;">
                 <p class="cs-solve-label">TECHNICAL STAFF</p>
-                <p class="cs-solve-body">Filing a real fault and wants precision: severity, location, timestamp, and a way to track it closely.</p>
+                <p class="cs-solve-body">Filing a real fault and wants precision. Severity, location, timestamp, and a way to track it closely.</p>
                 <p class="cs-chat-bubble">&ldquo;VPN connection dropping every 30 minutes on home network.&rdquo;</p>
               </div>
             </div>
@@ -790,100 +898,102 @@
               </div>
             </div>
 
-            <div class="cs-callout" data-reveal style="margin-bottom:0;">
-              <p class="cs-callout-label">INSIGHT &rarr; DECISION</p>
-              <p class="cs-callout-body">
-                One form can't serve both without failing one of them. That ruled out a traditional ticket form.
-                Instead, the interaction adapts to what the person says, rather than asking them to interpret a
-                field first.
-              </p>
-            </div>
+            <div class="cs-callout" data-reveal><p>One form can't serve both of them without failing one.</p></div>
+            <p class="v2-bridge">my first answer still missed this</p>
           </section>
 
-          <!-- ================= SECTION 6: THE FIRST ATTEMPT ================= -->
+          <!-- ================= FIRST ATTEMPT ================= -->
           <section class="cs-section" id="first">
-            <p class="cs-eyebrow">THE FIRST ATTEMPT</p>
-            <h2 class="cs-heading" data-reveal>Built for the person who already knew the system</h2>
+            <p class="cs-eyebrow">05 &middot; THE FIRST ATTEMPT</p>
+            <h2 class="cs-heading" data-reveal>My first version was built for me</h2>
 
             <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:2396/1314;">
-              <img src="../../assets/images/project-2/05-it1-screenshot.webp" alt="Screenshot of the first iteration ticket queue dashboard" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+              <img src="../../assets/images/project-2/05-it1-screenshot.webp" loading="lazy" alt="First iteration: a ticket queue with status counts, filters and a list of tickets" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
             </div>
+            <p class="cs-img-caption cs-mb-32">Iteration 1, a cleaner queue.</p>
 
-            <p class="cs-body">
-              A queue, status counts, filters and a table: the version I'd have wanted as a power user. Then I walked
-              it past the same non technical staff from my earlier sessions. They came in wanting to say what was
-              wrong, not scan a queue for it. It was the wrong front door rather than the wrong feature. The queue
-              still mattered for tracking and for technical staff. It just couldn't be the first thing everyone saw.
-            </p>
+            <p class="cs-body">A queue, status counts and filters. It's what I'd want as someone who already knows the system. When I showed it to the same colleagues, they didn't want to scan a queue. They wanted to say what was wrong.</p>
+            <div class="cs-callout" data-reveal><p>It wasn't the wrong feature. It was the wrong front door.</p></div>
+
+            <p class="cs-body cs-mb-32">The queue still mattered for tracking. It just couldn't be the first thing everyone saw. So I went back to the two people and weighed what could serve both.</p>
+            <div class="cs-tried-row">
+              <div class="cs-tried-card" data-reveal>
+                <p class="cs-tried-title">A smarter form</p>
+                <p class="cs-tried-body">Fields that change with the category. But you still have to know your category first.</p>
+              </div>
+              <div class="cs-tried-arrow">&rarr;</div>
+              <div class="cs-tried-card" data-reveal>
+                <p class="cs-tried-title">Two forms</p>
+                <p class="cs-tried-body">One for technical staff, one for everyone else. But then people have to decide which one they are.</p>
+              </div>
+              <div class="cs-tried-arrow">&rarr;</div>
+              <div class="cs-tried-card cs-tried-kept" data-reveal>
+                <p class="cs-tried-title">Ask what's wrong</p>
+                <p class="cs-tried-body">Let people say it in their own words, and let the system do the sorting.</p>
+              </div>
+            </div>
           </section>
 
-          <!-- ================= SECTION 7: THE PIVOT ================= -->
+          <div class="v2-part"><span><b>PART 2</b> &middot; THE DESIGN</span></div>
+
+          <!-- ================= THE QUESTION ================= -->
           <section class="cs-section" id="pivot">
-            <p class="cs-eyebrow">THE PIVOT</p>
-            <h2 class="cs-heading" data-reveal>Ask what's wrong, instead of teaching the system first</h2>
+            <p class="cs-eyebrow">06 &middot; THE PIVOT</p>
+            <h2 class="cs-heading" data-reveal>What if TMS started by <span style="color:#E87B35;">listening?</span></h2>
+            <p class="cs-body cs-mb-48">People already explain problems to a colleague in plain words, not in categories and dropdowns. So the new front door is a question. Follow Priya, whose VPN keeps dropping at the plant. Keep scrolling.</p>
 
-            <div class="cs-callout" data-reveal>
-              <p class="cs-callout-label">WHY A CONVERSATION, NOT A FORM</p>
-              <p class="cs-callout-body">
-                People already describe problems in plain language to a colleague or helpdesk, not in categories
-                and dropdowns. So the interaction was redesigned to match that.
-              </p>
+            <div class="cs-pin tms-pin">
+              <div class="cs-pin-sticky">
+                <div class="cs-pin-screen">
+                  <img class="cs-pin-img is-active" src="../../assets/images/project-2/06-chatfirst.webp" alt="First load: a greeting, Hi Priya, how can I help, one input and four suggested starting points">
+                  <img class="cs-pin-img" src="../../assets/images/project-2/07-chatsecond-describing.webp" loading="lazy" alt="Priya types that her VPN keeps disconnecting on the plant network. The assistant suggests a reset guide with That fixed it and Still not working buttons, then offers a pre filled ticket">
+                  <img class="cs-pin-img" src="../../assets/images/project-2/08-chatsecond-lands.webp" loading="lazy" alt="My Tickets: a confirmation that TKT-4822 was raised from chat, and the new ticket at the top of the list showing what Priya already tried">
+                </div>
+                <div class="cs-pin-info">
+                  <div class="cs-pin-caps">
+                    <div class="cs-pin-cap is-active">
+                      <p class="cs-pin-name"><span>01</span>First load</p>
+                      <p class="cs-pin-desc">No form, no category picker. One question and a few likely starting points.</p>
+                      <p class="cs-pin-why">Why? The old page asked for an ID before it showed anything. This one asks what's wrong.</p>
+                    </div>
+                    <div class="cs-pin-cap">
+                      <p class="cs-pin-name"><span>02</span>Describing the issue</p>
+                      <p class="cs-pin-desc">She types it in her own words. A known fix comes first, the ticket second.</p>
+                      <p class="cs-pin-why">Why? If a two minute guide fixes it, the best ticket is the one never raised.</p>
+                    </div>
+                    <div class="cs-pin-cap">
+                      <p class="cs-pin-name"><span>03</span>Where it lands</p>
+                      <p class="cs-pin-desc">The ticket arrives already filled in, with what she tried and what happened.</p>
+                      <p class="cs-pin-why">Why? Support staff still get the detail they need. It comes from the chat, not from Priya filling in fields.</p>
+                    </div>
+                  </div>
+                  <div class="cs-pin-steps">
+                    <button type="button" class="cs-pin-step is-active" data-step="0" aria-label="Show screen 01, First load"><span></span></button>
+                    <button type="button" class="cs-pin-step" data-step="1" aria-label="Show screen 02, Describing the issue"><span></span></button>
+                    <button type="button" class="cs-pin-step" data-step="2" aria-label="Show screen 03, Where it lands"><span></span></button>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <p class="cs-eyebrow">FIRST LOAD</p>
-            <p class="cs-body cs-mb-24">
-              No form and no category picker, just a prompt and a few likely starting points. The first thing anyone
-              sees is a question instead of a queue.
-            </p>
-            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:2394/1654;">
-              <img src="../../assets/images/project-2/06-chatfirst.webp" alt="Screenshot of the chat-first landing screen with a prompt and starting points" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            <div class="v2-logic" data-reveal>
+              <div class="cs-solve-card">
+                <p class="cs-solve-label">IF THE ASSISTANT KNOWS THE FIX</p>
+                <p class="cs-solve-body">The guide shows up in the chat with two buttons, That fixed it or Still not working. Nothing is raised unless she says so.</p>
+              </div>
+              <div class="cs-solve-card">
+                <p class="cs-solve-label">IF IT DOESN'T, OR GETS STUCK</p>
+                <p class="cs-solve-body">She gets a ticket filled in from the chat, a second search, or a direct route to a person. Never a dead end.</p>
+              </div>
             </div>
-
-            <p class="cs-eyebrow">DESCRIBING THE ISSUE</p>
-            <p class="cs-body cs-mb-24">
-              The user types their VPN problem in their own words. The assistant offers a knowledge base guide first,
-              and only surfaces a ticket once that hasn't worked, pre filled with a category and description
-              pulled from the conversation.
-            </p>
-            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:2396/1654;">
-              <img src="../../assets/images/project-2/07-chatsecond-describing.webp" alt="Screenshot of the assistant chat helping a user describe their VPN issue" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
-            </div>
-
-            <div class="cs-callout" data-reveal style="margin-bottom:24px;">
-              <p class="cs-callout-label">WHERE MY SCOPE ENDS</p>
-              <p class="cs-callout-body">
-                Matching the query against the knowledge base and deciding when it's a match is engineering's
-                logic. I designed what happens on either side of that decision: a resolved answer in chat if
-                there's a match, an escalation with a pre filled ticket if there isn't.
-              </p>
-            </div>
-
-            <p class="cs-body cs-mb-32">
-              Technical staff still get full precision when they need it. Everyone else gets one question instead
-              of a form.
-            </p>
-
-            <p class="cs-eyebrow">WHERE IT LANDS</p>
-            <p class="cs-body cs-mb-24">
-              Once raised, the ticket lands in the same queue from iteration 1. It now shows TKT-4821, the VPN issue
-              Priya just described, with its real category and urgency instead of a blank submission.
-            </p>
-            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:2396/1654;">
-              <img src="../../assets/images/project-2/08-chatsecond-lands.webp" alt="Screenshot of the ticket queue showing the newly raised VPN ticket" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
-            </div>
-
-            <div class="cs-callout" data-reveal>
-              <p class="cs-callout-label">FAILURE STATE, NOT JUST THE HAPPY PATH</p>
-              <p class="cs-callout-body">
-                Every input has a defined error state, not only a default and focus state. When the assistant can't
-                help, it offers a second knowledge base search or a direct route to a person instead of a dead end.
-              </p>
-            </div>
+            <p class="tms-note">Deciding whether something counts as a match is engineering's logic. I designed what happens on either side of it.</p>
           </section>
+
+          <div class="v2-part"><span><b>PART 3</b> &middot; THE SYSTEM UNDERNEATH</span></div>
 
           <!-- ================= THE SYSTEM UNDERNEATH (interactive) ================= -->
           <section class="cs-section" id="system">
-            <p class="cs-eyebrow">THE SYSTEM UNDERNEATH</p>
+            <p class="cs-eyebrow">07 &middot; THE SYSTEM UNDERNEATH</p>
             <h2 class="cs-heading" data-reveal>Built once, reused everywhere DPDS ships</h2>
             <p class="cs-body cs-mb-32">
               Tata Motors' brand team gave me the brand guidelines and colours. I built the token system and the
@@ -928,7 +1038,7 @@
                 <p class="ds-why">Why keep status colours apart? If red can be decoration, an urgent ticket stops looking urgent.</p>
 
                 <div class="ds-swatch-group">
-                  <p class="ds-swatch-group-label">Brand: Tata Motors palette</p>
+                  <p class="ds-swatch-group-label">Brand &middot; Tata Motors palette</p>
                   <div class="ds-swatch-row">
                     <button class="ds-swatch" type="button" data-name="brand/deep-blue" data-hex="#0A0A5F">
                       <span class="ds-swatch-color" style="background:#0A0A5F;"></span>
@@ -982,7 +1092,7 @@
                 </div>
 
                 <div class="ds-swatch-group">
-                  <p class="ds-swatch-group-label">Status: functional colors, not brand colors</p>
+                  <p class="ds-swatch-group-label">Status &middot; functional colours, not brand colours</p>
                   <div class="ds-swatch-row">
                     <button class="ds-swatch" type="button" data-name="status/red" data-hex="#C4342A">
                       <span class="ds-swatch-color" style="background:#C4342A;"></span>
@@ -1096,7 +1206,7 @@
               <div class="ds-block">
                 <p class="cs-eyebrow">COMPONENT BINDINGS</p>
                 <h3 class="cs-gap-heading">Core components, every real state</h3>
-                <p class="cs-body">Click a state to see the component change: default, hover, focus, error and
+                <p class="cs-body">Click a state to see the component change between default, hover, focus, error and
                   disabled, the way it behaves in the actual product.</p>
                 <p class="ds-why">Why design every state? A state I don't design is one a developer has to guess, and guesses are where bugs come from.</p>
 
@@ -1200,7 +1310,7 @@
               <div class="ds-block">
                 <p class="cs-eyebrow">COMPONENT BINDINGS</p>
                 <h3 class="cs-gap-heading">Assistant components</h3>
-                <p class="cs-body">The pieces the conversation is built from. Try it: pick a starting point, then
+                <p class="cs-body">The pieces the conversation is built from. Try it. Pick a starting point, then
                   tell the assistant whether the guide worked.</p>
                 <div class="ds-chat" id="ds-chat">
                   <div class="ds-chat-chips" role="group" aria-label="Suggested starting points">
@@ -1249,7 +1359,7 @@
               <div class="ds-block">
                 <p class="cs-eyebrow">COMPONENT BINDINGS</p>
                 <h3 class="cs-gap-heading">Stat card</h3>
-                <p class="cs-body">The queue summary row from the ticket dashboard: total, open, in progress and
+                <p class="cs-body">The queue summary row from the ticket dashboard. Total, open, in progress and
                   urgent counts, each in its own status color so the shape of the queue reads at a glance.</p>
                 <div class="ds-statcard-row">
                   <div class="ds-statcard">
@@ -1366,7 +1476,7 @@
 
           <!-- ================= SECTION 8: WHAT I DIDN'T SOLVE ================= -->
           <section class="cs-section" id="unsolved">
-            <p class="cs-eyebrow">WHAT I DIDN'T SOLVE</p>
+            <p class="cs-eyebrow">08 &middot; WHAT I DIDN'T SOLVE</p>
             <h2 class="cs-heading" data-reveal>Not everything here is settled</h2>
 
             <div class="cs-found-grid">
@@ -1385,7 +1495,7 @@
 
           <!-- ================= SECTION 8b: WHERE IT STANDS ================= -->
           <section class="cs-section" id="stands">
-            <p class="cs-eyebrow">WHERE IT STANDS</p>
+            <p class="cs-eyebrow">09 &middot; WHERE IT STANDS</p>
             <h2 class="cs-heading" data-reveal>In review, ahead of the next build pass</h2>
             <p class="cs-body cs-mb-32">
               Month 3 of 4. I presented it at the mid internship review, where the GM's feedback centered on clarity,
@@ -1405,8 +1515,8 @@
               <div class="cs-check-card" data-reveal>
                 <p class="cs-check-label cs-check-pending">&#9675; NOT YET</p>
                 <ul>
-                  <li>Assistant flow: no structured usability sessions yet</li>
-                  <li>Ticket deflection impact: a hypothesis, not yet measured</li>
+                  <li>No structured usability sessions on the assistant flow yet</li>
+                  <li>Fewer tickets is still a hypothesis, not yet measured</li>
                 </ul>
               </div>
             </div>
@@ -1414,7 +1524,7 @@
 
           <!-- ================= SECTION 9: WHAT I'D TRACK ================= -->
           <section class="cs-section" id="track">
-            <p class="cs-eyebrow">WHAT I'D TRACK</p>
+            <p class="cs-eyebrow">10 &middot; WHAT I'D TRACK</p>
             <h2 class="cs-heading" data-reveal>Hypotheses, not results. Nothing below has real numbers yet</h2>
 
             <div class="cs-reflection-item" data-reveal>
@@ -1459,6 +1569,55 @@
           </section>
 
         </article>
+        <script>
+          /* Pinned screens: the panel is held with position:fixed while you scroll through the section,
+             and each third of the scroll shows the next screen. */
+          (function () {
+            var pin = document.querySelector('.cs-pin');
+            if (!pin) return;
+            var panel = pin.querySelector('.cs-pin-sticky');
+            var imgs = pin.querySelectorAll('.cs-pin-img');
+            var caps = pin.querySelectorAll('.cs-pin-cap');
+            var steps = pin.querySelectorAll('.cs-pin-step');
+            var n = caps.length, current = -1, mode = '';
+            function show(i) {
+              if (i === current) return;
+              current = i;
+              [caps, steps, imgs].forEach(function (list) {
+                list.forEach(function (el, k) { el.classList.toggle('is-active', k === i); });
+              });
+            }
+            function setMode(m, r) {
+              if (m === 'fixed') { panel.style.left = r.left + 'px'; panel.style.width = r.width + 'px'; }
+              if (m === mode) return;
+              mode = m;
+              panel.classList.toggle('is-fixed', m === 'fixed');
+              panel.classList.toggle('is-after', m === 'after');
+              if (m !== 'fixed') { panel.style.left = ''; panel.style.width = ''; }
+            }
+            function update() {
+              var r = pin.getBoundingClientRect(), vh = window.innerHeight, total = pin.offsetHeight - vh;
+              if (r.top > 0) setMode('before', r);
+              else if (r.bottom <= vh) setMode('after', r);
+              else setMode('fixed', r);
+              var p = total > 0 ? Math.min(Math.max(-r.top / total, 0), 0.9999) : 0;
+              show(Math.floor(p * n));
+            }
+            var ticking = false;
+            window.addEventListener('scroll', function () {
+              if (!ticking) { ticking = true; requestAnimationFrame(function () { update(); ticking = false; }); }
+            }, { passive: true });
+            window.addEventListener('resize', update);
+            steps.forEach(function (btn) {
+              btn.addEventListener('click', function () {
+                var i = +btn.getAttribute('data-step'), total = pin.offsetHeight - window.innerHeight;
+                var top = pin.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({ top: top + total * (i + 0.5) / n, behavior: 'smooth' });
+              });
+            });
+            update();
+          })();
+        </script>
         <script>
           /* Scroll reveal: elements marked data-reveal fade and rise into view once.
              Skipped for people who prefer reduced motion; content stays visible if JS fails. */
