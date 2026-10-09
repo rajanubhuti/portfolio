@@ -148,4 +148,18 @@
       function () { running = true; run(); },
       function () { running = false; clear(); reset(); });
   })();
+
+  /* LumiTrack card: the "common feedback noticed" prompt drops in, waits, and repeats while the card is on screen. */
+  (function () {
+    var card = document.querySelector('.pc-lumi');
+    if (!card) return;
+    var t = [];
+    function clear() { t.forEach(clearTimeout); t = []; }
+    function cycle() {
+      t.push(setTimeout(function () { card.classList.add('pc-in'); }, 700));
+      t.push(setTimeout(function () { card.classList.remove('pc-in'); }, 4700));
+      t.push(setTimeout(cycle, 5600));
+    }
+    whenVisible(card, function () { clear(); cycle(); }, function () { clear(); card.classList.remove('pc-in'); });
+  })();
 })();

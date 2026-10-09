@@ -168,3 +168,13 @@
 @media (prefers-reduced-motion: reduce) {
   .pc-card *, .pc-card *::before, .pc-card *::after { transition: none !important; animation: none !important; }
 }
+
+/* ---- LumiTrack card: the repeated feedback nudge drops in ---- */
+.pc-lumi { background: #fff; }
+.pc-lumi-base { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s cubic-bezier(.22,1,.36,1); }
+.pc-lumi-nudge { position: absolute; left: 61.1%; top: 9.3%; width: 32.2%; height: auto; display: block; border-radius: 6px;
+  box-shadow: 0 14px 30px -10px rgba(24,25,31,.35); opacity: 0; transform: translateY(-14px) scale(.96); transform-origin: 70% 0;
+  transition: opacity .35s ease, transform .55s cubic-bezier(.34,1.56,.64,1); }
+.pc-lumi.pc-in .pc-lumi-nudge { opacity: 1; transform: none; }
+.pc-lumi:hover .pc-lumi-base { transform: scale(1.02); }
+@media (prefers-reduced-motion: reduce) { .pc-lumi-nudge { transition: none; opacity: 1; transform: none; } }
