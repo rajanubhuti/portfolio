@@ -789,7 +789,7 @@
 .lt-map i { font-style: normal; font-size: 22px; color: #E87B35; text-align: center; }
 .lt-map span { justify-self: start; padding: 6px 14px; border-radius: 999px; background: #FEF7EE; border: 1px solid #F6C9A8; font-size: 15px; font-weight: 600; color: #18191F; }
 @media (max-width: 700px) { .lt-map li { grid-template-columns: 1fr; gap: 8px; } .lt-map i { display: none; } }
-.lt-chat { background: #fff; border: 1px solid #E5E7EB; border-radius: 20px; padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 14px; }
+.lt-chat { display: flex; flex-direction: column; gap: 16px; }
 .lt-chat-head { margin: 0 0 6px; padding-bottom: 14px; border-bottom: 1px solid #F0F1F3; text-align: center; font-size: 14px; font-weight: 600; color: #6C727F; }
 .lt-msg { align-self: flex-start; max-width: 70%; }
 @media (max-width: 700px) { .lt-msg { max-width: 92%; } }
@@ -849,15 +849,23 @@
             <p class="cs-eyebrow">01 &middot; OVERVIEW</p>
             <h1 class="cs-heading">LumiTrack</h1>
             <p class="lt-oneliner">A teaching dashboard that gives design faculty their time back, so mentoring is about the student, not the spreadsheet.</p>
-            <p class="cs-body">Grading design is subjective, feedback is qualitative and progress isn't a straight line. Yet the faculty at our college were running all of it on tools built for something else. LumiTrack is a learning management system made for design colleges, starting with the people who teach in them.</p>
+            <p class="cs-body">A learning management system for design colleges, where grading is subjective and progress isn't a straight line.</p>
           </section>
 
           <!-- ================= THE QUESTION ================= -->
           <section class="cs-section" id="question">
             <p class="cs-eyebrow">02 &middot; WHERE IT STARTED</p>
             <h2 class="cs-heading" data-reveal>It started with a group project where we all got <span style="color:#E87B35;">the same marks</span></h2>
-            <p class="cs-body">Since our second semester, almost everything we've made as UX students has been group work. In nearly every group, someone didn't pull their weight, and everyone still walked away with the same grade. It never felt fair.</p>
-            <p class="cs-body cs-mb-32">So we looked at how our college handles feedback. Classroom for submissions, Excel for grading, WhatsApp for mentoring, Teams for schedules, TCS iON for attendance. So many platforms, and still,</p>
+            <p class="cs-body cs-mb-32">Almost everything we've made since our second semester has been group work. Someone always slacked off, and everyone got the same grade. So we looked at how our college handles feedback.</p>
+            <ul class="lt-tools" data-reveal>
+              <li><b>Google Classroom</b><span>submissions</span></li>
+              <li><b>Excel</b><span>grading</span></li>
+              <li><b>WhatsApp</b><span>mentoring</span></li>
+              <li><b>Teams</b><span>schedules</span></li>
+              <li><b>TCS iON</b><span>attendance</span></li>
+              <li><b>Outlook</b><span>admin mail</span></li>
+            </ul>
+            <p class="cs-body cs-mb-24">Six platforms, and still</p>
             <p class="lt-problem" data-reveal>Feedback is <mark>inconsistent</mark>, expectations are <mark>unclear</mark>, guidance is <mark>rarely personal</mark>, group work <mark>hides individual effort</mark>, and faculty are <mark>drowning in admin</mark>.</p>
             <p class="v2-bridge">so we went and asked</p>
           </section>
@@ -873,8 +881,7 @@
               <div class="lt-method"><span>SEMI STRUCTURED INTERVIEWS</span>Open questions, then follow the thread</div>
               <div class="lt-method"><span>SENTENCE COMPLETION</span>Half finished sentences, finished in their own words</div>
             </div>
-            <p class="v2-bridge">and this kept coming up</p>
-          </section>
+                      </section>
 
           <!-- ================= WHAT THEY TOLD US ================= -->
           <section class="cs-section" id="heard">
@@ -883,16 +890,15 @@
 
             <ul class="lt-findings">
               <li data-reveal><b>100 to 300</b>students each, tracked from memory</li>
-              <li data-reveal><b>40 to 50</b>submissions to review every week</li>
-              <li data-reveal><b>20 times</b>the same comment, typed again</li>
+              <li data-reveal><b>40 to 50</b>submissions a week</li>
+              <li data-reveal><b>20 times</b>the same comment</li>
               <li data-reveal><b>Weeks</b>before marks come back</li>
-              <li data-reveal><b>Who did what?</b>Group work buries each person's part</li>
-              <li data-reveal><b>No faces</b>Work can't be matched to the student who asked</li>
+              <li data-reveal><b>Who did what?</b>buried in group work</li>
+              <li data-reveal><b>No faces</b>on any submission</li>
             </ul>
 
-            <div class="cs-callout" data-reveal><p>We came in to make grading fairer for students. The interviews showed us where unfairness starts. One faculty member simply has too many of us to see who did what. So we designed for faculty first.</p></div>
-            <p class="v2-bridge">then we followed one through a semester</p>
-          </section>
+            <div class="cs-callout" data-reveal><p>We came to fix fairness for students. The cause was one faculty member with too many of us to see who did what. So we designed for faculty first.</p></div>
+                      </section>
 
           <!-- ================= JOURNEY ================= -->
           <section class="cs-section" id="journey">
@@ -907,7 +913,7 @@
               <li class="is-low"><span class="lt-tl-stage">Jury</span><i></i><q>There is no way to track their progress across courses.</q></li>
             </ol>
 
-            <div class="cs-callout" data-reveal><p>They were about repeating, remembering and tracking. That's the part a system can take off their hands.</p></div>
+            <div class="cs-callout" data-reveal><p>Repeating, remembering, tracking. That's what a system can take off their hands.</p></div>
           </section>
 
           <!-- ================= BORROWING ================= -->
@@ -1039,7 +1045,6 @@
             <p class="cs-eyebrow">08 &middot; WHAT FACULTY SAID</p>
             <h2 class="cs-heading" data-reveal>We put it in front of faculty again</h2>
             <div class="lt-chat" data-reveal>
-              <p class="lt-chat-head">Testing session &middot; faculty</p>
               <div class="lt-msg"><span>On simplicity</span><p>TCS iON is very complex. This is not complex at all, it's very easy to use.</p></div>
               <div class="lt-msg"><span>On visibility</span><p>Solves a major Google Classroom problem. Right now, we don't know if people are even opening the classroom unless they submit something.</p></div>
               <div class="lt-msg"><span>On time</span><p>It is at least streamlining everything into one place. This is good, it saves time.</p></div>

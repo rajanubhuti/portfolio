@@ -16,6 +16,52 @@
   <script>window.SITE_ROOT = "../";</script>
   <link rel="stylesheet" href="../partials/whimsy.css?v=20261005u" />
   <link rel="stylesheet" href="../partials/mobile-menu.css?v=20261005w" />
+
+  <style>
+  /* ---------- Skills as a storyboard ---------- */
+  .sb-sub { margin: -28px 0 48px !important; }
+  .sb { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; align-items: start; }
+  .sb-frame { position: relative; background: #fff; border: 1px solid #E5E7EB; border-radius: 6px; padding: 18px 18px 22px; box-shadow: 0 10px 24px -14px rgba(24,25,31,.25); transform: rotate(var(--r, -1.2deg)); transition: transform .45s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease; }
+  .sb-frame:nth-child(2) { --r: 1deg; margin-top: 26px; }
+  .sb-frame:nth-child(3) { --r: -.6deg; }
+  .sb-frame:nth-child(4) { --r: 1.4deg; margin-top: 18px; }
+  .sb-frame:hover { transform: rotate(0) translateY(-4px); box-shadow: 0 18px 30px -16px rgba(24,25,31,.35); z-index: 2; }
+  .motion .sb-frame[data-rv] { transform: translateY(28px) rotate(var(--r, -1.2deg)); }
+  .motion .sb-frame[data-rv].rv-in { transform: rotate(var(--r, -1.2deg)); }
+  .motion .sb-frame[data-rv].rv-in:hover { transform: rotate(0) translateY(-4px); }
+  .motion .sb-frame:nth-child(2)[data-rv] { transition-delay: .08s; } .motion .sb-frame:nth-child(3)[data-rv] { transition-delay: .16s; } .motion .sb-frame:nth-child(4)[data-rv] { transition-delay: .24s; }
+  .sb-tape { position: absolute; top: -12px; left: 50%; width: 84px; height: 24px; margin-left: -42px; background: rgba(255,207,150,.75); transform: rotate(-3deg); border-radius: 2px; }
+  .sb-scene { aspect-ratio: 5 / 3; border: 1.5px solid #18191F; border-radius: 4px; background: #FFFCF7; display: grid; place-items: center; overflow: hidden; }
+  .sb-scene svg { width: 86%; height: auto; fill: none; stroke: #18191F; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .sb-scene svg .o { fill: #FF8F71; stroke: #18191F; }
+  .sb-cap { margin: 14px 0 2px; font-size: 20px; font-weight: 800; color: #18191F; }
+  .sb-cap b { color: #E87B35; margin-right: 6px; }
+  .sb-line { margin: 0 0 14px; font-size: 15px; line-height: 1.45; font-weight: 500; color: #4B505C; }
+  .sb-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .sb-chips li { padding: 5px 10px; font-size: 13px; font-weight: 600; line-height: 1.2; color: #18191F; background: #F3F3F3; border-radius: 999px; transition: background .2s ease, transform .3s cubic-bezier(.34,1.56,.64,1); }
+  .sb-chips li:hover { background: #FF8F71; transform: translateY(-2px) rotate(-2deg); }
+  .sb-tools { margin-top: 10px; padding-top: 10px; border-top: 1px dashed #DADCE0; }
+  .sb-tools li { background: #FEF1E6; }
+  .sb-lang { margin-top: 72px; text-align: center; }
+  .sb-lang-title { margin: 0 0 20px; font-size: 18px; font-weight: 700; color: #4B505C; }
+  .sb-lang ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 18px; }
+  .sb-lang li { position: relative; background: #fff; border: 1.5px solid #18191F; border-radius: 22px 22px 22px 6px; padding: 12px 20px; text-align: left; transition: transform .35s cubic-bezier(.34,1.56,.64,1), background .2s; }
+  .sb-lang li:nth-child(even) { border-radius: 22px 22px 6px 22px; }
+  .sb-lang li:hover { background: #FF8F71; transform: translateY(-4px) rotate(-2deg); }
+  .sb-lang b { display: block; font-size: 24px; font-weight: 800; color: #18191F; }
+  .sb-lang span { font-size: 13px; font-weight: 600; color: #6C727F; }
+  .sb-lang li:hover span { color: #18191F; }
+  @media (max-width: 1100px) { .sb { grid-template-columns: repeat(2, 1fr); gap: 36px 28px; } .sb-frame:nth-child(n) { margin-top: 0; } }
+  @media (max-width: 640px) { .sb { grid-template-columns: 1fr; } }
+  .sb-desk { margin-top: 64px; background: #fff; border: 1px solid #E5E7EB; border-radius: 16px; padding: 30px 32px 34px; }
+  .sb-desk .sb-chips { gap: 8px; }
+  .sb-desk .sb-chips li { padding: 8px 14px; font-size: 16px; }
+  .sb-desk-title, .sb-lang-title { margin: 0 0 20px; font-size: 20px; font-weight: 700; color: #4B505C; }
+  .sb-desk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 40px; }
+  .sb-desk-grid p { margin: 0 0 12px; font-size: 15px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #E87B35; }
+  @media (max-width: 1000px) { .sb-desk-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .sb-desk-grid { grid-template-columns: 1fr; } }
+  </style>
 </head>
 
 <body>
@@ -50,13 +96,12 @@
 
           <!-- Right: who I am -->
           <div class="ab-info">
-            <p class="ab-lead">Allow me to re-introduce myself.</p>
+            <p class="ab-lead">Allow me to reintroduce myself.</p>
             <h1 class="big-title ab-hi">NAMASTE, I'M ANUBHUTI</h1>
 
             <div class="ab-text">
-              <p>I grew up on the southern banks of the Ganga, in a city where stories live in street markets, political posters weathered by monsoons and hand painted shop signs. I didn't have a word for it then, but those were my first lessons in design: visuals as conversations between people, culture and time.</p>
-              <p>Most of my work starts with research: talking to people, reading everything I can find, and only then opening Figma. But solving the problem is only half of it. The other half is the story around the solution, so it stays with people long after they've used it.</p>
-              <p>When I'm not designing, I'm usually out with a camera, trying a new art technique, or planning the next trip.</p>
+              <p>I grew up on the southern banks of the Ganga, where stories live in street markets, monsoon worn posters and hand painted shop signs. Those were my first lessons in design, long before I had a word for it.</p>
+              <p>Today I start with research and end with a story, so the solution stays with people. Off screen, I'm out with a camera, trying a new art technique, or planning the next trip.</p>
             </div>
           </div>
         </section>
@@ -101,69 +146,65 @@
           </ol>
         </section>
 
-        <!-- ================= HOW I WORK ================= -->
-        <section class="ab-sec" aria-labelledby="ab-work">
-          <h2 class="big-title ab-sec-title" id="ab-work" data-rv>HOW I WORK</h2>
-          <div class="ab-tabs" role="tablist" aria-label="My design process" data-rv>
-            <button role="tab" id="t1" aria-controls="p1" aria-selected="true" type="button"><b>01</b> Listen</button>
-            <button role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1" type="button"><b>02</b> Make sense</button>
-            <button role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1" type="button"><b>03</b> Make</button>
-            <button role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1" type="button"><b>04</b> Test and tell</button>
-          </div>
-          <div class="ab-panels" data-rv>
-            <div class="ab-panel" role="tabpanel" id="p1" aria-labelledby="t1">
-              <h3>Start with people, not screens.</h3>
-              <p>I talk to the people I'm designing for and read everything I can find: interviews, sitting in with real users, studies and papers.</p>
-            </div>
-            <div class="ab-panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
-              <h3>Find the one problem worth solving.</h3>
-              <p>I sort what I hear into patterns with affinity mapping and thematic analysis, then write the problem down in one sentence. Most of my time goes here, because a clear problem makes everything after it easier.</p>
-            </div>
-            <div class="ab-panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
-              <h3>Sketch, then flows, then screens.</h3>
-              <p>I move from rough sketches to flows to Figma. When timing or motion matters, I prototype in code so it can be felt instead of imagined.</p>
-            </div>
-            <div class="ab-panel" role="tabpanel" id="p4" aria-labelledby="t4" hidden>
-              <h3>Check it with people, then tell its story.</h3>
-              <p>I test with real users and change what doesn't work. Then I shape the story around the solution, so the people who use it and the people who build it both understand why it matters.</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= TOOLBOX ================= -->
+        <!-- ================= SKILLS AS A STORYBOARD ================= -->
         <section class="ab-sec" aria-labelledby="ab-tools">
-          <h2 class="big-title ab-sec-title" id="ab-tools" data-rv>SKILLS &amp; TOOLS</h2>
-          <div class="ab-rows">
-            <div class="ab-row" data-rv>
-              <h3 class="ab-row-label">Core</h3>
-              <ul class="ab-chips"><li>User Experience Design</li><li>Enterprise Architecture</li><li>Design Systems</li><li>Information Architecture</li><li>Interaction Design</li><li>Wireframing</li><li>High Fidelity Prototyping</li><li>Responsive Web Design</li><li>User Flows</li><li>Visual and Graphic Design</li><li>Branding</li><li>Accessibility</li></ul>
+          <h2 class="big-title ab-sec-title" id="ab-tools" data-rv>SKILLS AND TOOLS</h2>
+          <p class="ab-split-sub sb-sub" data-rv>A project of mine, in four frames.</p>
+          <ol class="sb">
+            <li class="sb-frame" data-rv>
+              <span class="sb-tape" aria-hidden="true"></span>
+              <div class="sb-scene"><svg viewBox="0 0 200 120" aria-hidden="true"><circle cx="58" cy="62" r="18"/><path d="M30 112c2-20 14-30 28-30s26 10 28 30"/><circle cx="142" cy="62" r="18"/><path d="M114 112c2-20 14-30 28-30s26 10 28 30"/><path class="o" d="M70 20h44a8 8 0 0 1 8 8v14a8 8 0 0 1-8 8H96l-10 9v-9H70a8 8 0 0 1-8-8V28a8 8 0 0 1 8-8z"/><path d="M76 33h32M76 40h20"/></svg></div>
+              <p class="sb-cap"><b>01</b> Listen</p>
+              <p class="sb-line">Start with people, not screens.</p>
+              <ul class="sb-chips"><li>User Interviews</li><li>Contextual Inquiry</li><li>Surveys</li><li>Competitive Analysis</li></ul>
+            </li>
+            <li class="sb-frame" data-rv>
+              <span class="sb-tape" aria-hidden="true"></span>
+              <div class="sb-scene"><svg viewBox="0 0 200 120" aria-hidden="true"><rect x="22" y="14" width="34" height="30" rx="3"/><rect x="66" y="10" width="34" height="30" rx="3"/><rect x="22" y="58" width="34" height="30" rx="3"/><rect x="66" y="54" width="34" height="30" rx="3"/><rect class="o" x="138" y="40" width="44" height="40" rx="4"/><path d="M104 30c16 0 22 14 32 22M104 70c16 0 22-8 32-12"/><path d="M146 54h28M146 62h20"/></svg></div>
+              <p class="sb-cap"><b>02</b> Make sense</p>
+              <p class="sb-line">Find the one problem worth solving.</p>
+              <ul class="sb-chips"><li>Thematic Analysis</li><li>Journey Mapping</li><li>Personas</li><li>Information Architecture</li><li>Heuristic Evaluation</li><li>Enterprise Architecture</li></ul>
+            </li>
+            <li class="sb-frame" data-rv>
+              <span class="sb-tape" aria-hidden="true"></span>
+              <div class="sb-scene"><svg viewBox="0 0 200 120" aria-hidden="true"><rect x="58" y="14" width="124" height="88" rx="8"/><path d="M58 32h124"/><circle cx="68" cy="23" r="2.5"/><circle cx="77" cy="23" r="2.5"/><rect class="o" x="72" y="44" width="40" height="44" rx="4"/><path d="M124 46h44M124 58h34M124 70h40"/><path d="M18 104l30-62 10 5-30 62-12 6z"/><path d="M44 46l10 5"/></svg></div>
+              <p class="sb-cap"><b>03</b> Make</p>
+              <p class="sb-line">Sketch, then flows, then screens.</p>
+              <ul class="sb-chips"><li>Wireframing</li><li>User Flows</li><li>Interaction Design</li><li>High Fidelity Prototyping</li><li>Design Systems</li><li>Visual and Graphic Design</li><li>Branding</li><li>Responsive Web Design</li></ul>
+            </li>
+            <li class="sb-frame" data-rv>
+              <span class="sb-tape" aria-hidden="true"></span>
+              <div class="sb-scene"><svg viewBox="0 0 200 120" aria-hidden="true"><rect x="30" y="10" width="56" height="100" rx="10"/><path d="M50 18h16"/><path class="o" d="M44 62l10 10 20-24"/><path d="M118 52v24l14 2 30 18V34l-30 18z"/><path d="M118 52h-6a6 6 0 0 0-6 6v12a6 6 0 0 0 6 6h6M124 78l4 18"/><path d="M172 50c6 4 6 20 0 24"/></svg></div>
+              <p class="sb-cap"><b>04</b> Test and tell</p>
+              <p class="sb-line">Check it with people, then tell its story.</p>
+              <ul class="sb-chips"><li>Usability Testing</li><li>A/B Testing</li><li>Accessibility</li></ul>
+            </li>
+          </ol>
+
+          <div class="sb-desk" data-rv>
+            <p class="sb-desk-title">And on my desk</p>
+            <div class="sb-desk-grid">
+              <div><p>Design</p><ul class="sb-chips"><li>Figma</li><li>Framer</li><li>Photoshop</li><li>Illustrator</li><li>After Effects</li><li>Blender</li><li>Adobe XD</li></ul></div>
+              <div><p>Code</p><ul class="sb-chips"><li>Claude Code</li><li>VS Code</li><li>Antigravity</li><li>Android Studio</li><li>Xcode</li><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Python (basic)</li></ul></div>
+              <div><p>AI</p><ul class="sb-chips"><li>AI Assisted Design Workflows</li><li>Generative Prototyping</li><li>Conversational UI</li><li>Agentic AI Interfaces</li></ul></div>
+              <div><p>Team</p><ul class="sb-chips"><li>Notion</li><li>Jira</li><li>Slack</li></ul></div>
             </div>
-            <div class="ab-row" data-rv>
-              <h3 class="ab-row-label">Research</h3>
-              <ul class="ab-chips"><li>Usability Testing</li><li>User Interviews</li><li>Personas</li><li>Journey Mapping</li><li>Heuristic Evaluation</li><li>A/B Testing</li><li>Surveys</li><li>Competitive Analysis</li><li>Contextual Inquiry</li><li>Thematic Analysis</li></ul>
-            </div>
-            <div class="ab-row" data-rv>
-              <h3 class="ab-row-label">AI</h3>
-              <ul class="ab-chips"><li>AI Assisted Design Workflows</li><li>Generative Prototyping</li><li>Conversational UI</li><li>Agentic AI Interfaces</li></ul>
-            </div>
-            <div class="ab-row" data-rv>
-              <h3 class="ab-row-label">Tools</h3>
-              <ul class="ab-chips"><li>Figma</li><li>Framer</li><li>Claude Code</li><li>VS Code</li><li>Antigravity</li><li>Jira</li><li>Notion</li><li>Slack</li><li>Adobe XD</li><li>Photoshop</li><li>Illustrator</li><li>After Effects</li><li>Blender</li><li>Android Studio</li><li>Xcode</li></ul>
-            </div>
-            <div class="ab-row" data-rv>
-              <h3 class="ab-row-label">Code</h3>
-              <ul class="ab-chips"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Python (basic)</li></ul>
-            </div>
-            <div class="ab-row" data-rv>
-              <h3 class="ab-row-label">Languages</h3>
-              <ul class="ab-chips"><li>Hindi (native)</li><li>English (fluent)</li><li>French (beginner)</li><li>German (beginner)</li></ul>
-            </div>
+          </div>
+
+          <div class="sb-lang" data-rv>
+            <p class="sb-lang-title">And I can say hello in</p>
+            <ul>
+              <li><b lang="hi">नमस्ते</b><span>Hindi, native</span></li>
+              <li><b>Hello</b><span>English, fluent</span></li>
+              <li><b lang="fr">Bonjour</b><span>French, beginner</span></li>
+              <li><b lang="de">Hallo</b><span>German, beginner</span></li>
+            </ul>
           </div>
         </section>
 
         <!-- ================= QUOTE ================= -->
         <section class="ab-quote" data-rv>
-          <p>For me, design has always been about translation: turning lived experiences into visuals, strategies and interactions that help people feel seen and understood.</p>
+          <p>For me, design has always been about translation. Turning lived experiences into visuals, strategies and interactions that help people feel seen and understood.</p>
         </section>
 
         <!-- ================= SIGN OFF ================= -->
