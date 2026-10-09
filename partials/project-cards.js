@@ -94,12 +94,12 @@
     var cam = { x: W / 2, y: H / 2, z: 1 };
     var timers = [], typing = null, running = false;
 
-    function place(ms) {
+    function place(ms, ease) {
       var w = card.clientWidth, h = card.clientHeight;
       var k = (w / W) * cam.z;
       var tx = Math.min(0, Math.max(w - W * k, w / 2 - cam.x * k));
       var ty = Math.min(0, Math.max(h - H * k, h / 2 - cam.y * k));
-      stage.style.transition = ms ? 'transform ' + ms + 'ms cubic-bezier(.65,0,.35,1)' : 'none';
+      stage.style.transition = ms ? 'transform ' + ms + 'ms ' + (ease || 'cubic-bezier(.65,0,.35,1)') : 'none';
       stage.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + k + ')';
     }
     function look(x, y, z, ms) { cam = { x: x, y: y, z: z }; place(ms); }
@@ -117,11 +117,13 @@
       at(900,   function () { look(TYPE_START, 1578, ZT, 1200); });
       at(2100,  function () {
         cover.classList.add('pc-on'); typed.classList.add('pc-on');
+        typed.textContent = MSG; var full = typed.scrollWidth; typed.textContent = '';
+        var xEnd = Math.max(TYPE_START, 669 + full - (W / ZT) * 0.17);
+        // one smooth pan for the whole message, instead of a nudge per letter (that was the jitter)
+        cam = { x: xEnd, y: 1578, z: ZT }; place(MSG.length * 48 + 200, 'linear');
         var i = 0;
         typing = setInterval(function () {
           typed.textContent = MSG.slice(0, ++i);
-          var x = Math.max(TYPE_START, 669 + typed.scrollWidth - (W / ZT) * 0.17);
-          if (x !== cam.x) look(x, 1578, ZT, 260);
           if (i >= MSG.length) clearInterval(typing);
         }, 48);
       });
@@ -149,17 +151,43 @@
       function () { running = false; clear(); reset(); });
   })();
 
-  /* LumiTrack card: the "common feedback noticed" prompt drops in, waits, and repeats while the card is on screen. */
+  /* ---------- LumiTrack: a repeated comment is spotted, sent once, and lands for the whole class ---------- */
   (function () {
     var card = document.querySelector('.pc-lumi');
     if (!card) return;
-    var t = [];
-    function clear() { t.forEach(clearTimeout); t = []; }
-    function cycle() {
-      t.push(setTimeout(function () { card.classList.add('pc-in'); }, 700));
-      t.push(setTimeout(function () { card.classList.remove('pc-in'); }, 4700));
-      t.push(setTimeout(cycle, 5600));
+    var stage = card.querySelector('.pc-stage');
+    var W = 1564, H = 1080;
+    var q = function (c) { return card.querySelector(c); };
+    var nudge = q('.pc-l-nudge'), tap = q('.pc-l-tap'), base2 = q('.pc-l-base2'), comment = q('.pc-l-comment');
+    var cam = { x: W / 2, y: H / 2, z: 1 }, timers = [], running = false;
+    function place(ms) {
+      var w = card.clientWidth, h = card.clientHeight, k = (w / W) * cam.z;
+      var tx = Math.min(0, Math.max(w - W * k, w / 2 - cam.x * k));
+      var ty = Math.min(0, Math.max(h - H * k, h / 2 - cam.y * k));
+      stage.style.transition = ms ? 'transform ' + ms + 'ms cubic-bezier(.65,0,.35,1)' : 'none';
+      stage.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + k + ')';
     }
-    whenVisible(card, function () { clear(); cycle(); }, function () { clear(); card.classList.remove('pc-in'); });
+    function look(x, y, z, ms) { cam = { x: x, y: y, z: z }; place(ms); }
+    function at(t, fn) { timers.push(setTimeout(fn, t)); }
+    function clear() { timers.forEach(clearTimeout); timers = []; }
+    function reset() {
+      nudge.classList.remove('pc-in'); comment.classList.remove('pc-in');
+      base2.classList.remove('pc-on'); tap.classList.remove('pc-on');
+      look(W / 2, H / 2, 1, 0);
+    }
+    function run() {
+      clear(); reset();
+      at(700,  function () { nudge.classList.add('pc-in'); });
+      at(1500, function () { look(1208, 170, 2.3, 1100); });
+      at(3000, function () { tap.classList.add('pc-on'); });
+      at(3700, function () { nudge.classList.remove('pc-in'); base2.classList.add('pc-on'); look(640, 400, 1.5, 1000); });
+      at(4500, function () { comment.classList.add('pc-in'); });
+      at(7000, function () { look(W / 2, H / 2, 1, 1100); });
+      at(9800, function () { if (running) run(); });
+    }
+    if (window.ResizeObserver) new ResizeObserver(function () { place(0); }).observe(card);
+    if (still) { base2.classList.add('pc-on'); comment.style.transition = 'none'; comment.classList.add('pc-in'); look(W / 2, H / 2, 1, 0); return; }
+    reset();
+    whenVisible(card, function () { running = true; run(); }, function () { running = false; clear(); reset(); });
   })();
 })();

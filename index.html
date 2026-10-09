@@ -127,7 +127,7 @@
   </style>
   <link rel="stylesheet" href="partials/whimsy.css?v=20261005g" />
   <link rel="stylesheet" href="partials/mobile-menu.css?v=20261005w" />
-  <link rel="stylesheet" href="partials/project-cards.css?v=20261009a" />
+  <link rel="stylesheet" href="partials/project-cards.css?v=20261009b" />
   <link rel="stylesheet" href="partials/home.css?v=20261005u" />
 </head>
 
@@ -361,8 +361,13 @@
           <!-- ---- PROJECT 3: LumiTrack ---- -->
           <article class="pc-card" id="pc-p3">
             <a data-rv class="pc-media pc-lumi" href="my-work/project-3/" aria-label="Read LumiTrack">
-              <img class="pc-lumi-base" src="assets/images/project-3/card/base.webp" alt="" decoding="async" loading="lazy">
-              <img class="pc-lumi-nudge" src="assets/images/project-3/card/nudge.webp" alt="" decoding="async" loading="lazy">
+              <div class="pc-stage" aria-hidden="true">
+                <img class="pc-l-base" src="assets/images/project-3/card/base.webp" alt="" decoding="async" loading="lazy">
+                <img class="pc-l-base2" src="assets/images/project-3/card/comments.webp" alt="" decoding="async" loading="lazy">
+                <img class="pc-piece pc-l-comment" src="assets/images/project-3/card/comment.webp" alt="" decoding="async" loading="lazy">
+                <img class="pc-piece pc-l-nudge" src="assets/images/project-3/card/nudge.webp" alt="" decoding="async" loading="lazy">
+                <div class="pc-l-tap"></div>
+              </div>
             </a>
             <div data-rv style="--rv-d:.12s" class="pc-body">
               <div class="pc-meta"><span class="pc-tag">#INTERACTIONDESIGN</span><span>2025</span></div>
@@ -464,7 +469,7 @@
 
   <script src="partials/whimsy.js?v=20261005g"></script>
   <script src="partials/mobile-menu.js?v=20261005g"></script>
-  <script src="partials/project-cards.js?v=20261009a"></script>
+  <script src="partials/project-cards.js?v=20261009b"></script>
   <script src="partials/home.js?v=20261005g"></script>
 </body>
 </html>
