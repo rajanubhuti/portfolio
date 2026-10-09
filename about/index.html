@@ -42,7 +42,7 @@
   .sb-chips li:hover { background: #FF8F71; transform: translateY(-2px) rotate(-2deg); }
   .sb-tools { margin-top: 10px; padding-top: 10px; border-top: 1px dashed #DADCE0; }
   .sb-tools li { background: #FEF1E6; }
-  .sb-lang { margin-top: 72px; text-align: center; }
+  .sb-lang { margin-top: var(--gap); text-align: center; }
   .sb-lang-title { margin: 0 0 20px; font-size: 18px; font-weight: 700; color: #4B505C; }
   .sb-lang ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 18px; }
   .sb-lang li { position: relative; background: #fff; border: 1.5px solid #18191F; border-radius: 22px 22px 22px 6px; padding: 12px 20px; text-align: left; transition: transform .35s cubic-bezier(.34,1.56,.64,1), background .2s; }
@@ -51,16 +51,60 @@
   .sb-lang b { display: block; font-size: 24px; font-weight: 800; color: #18191F; }
   .sb-lang span { font-size: 13px; font-weight: 600; color: #6C727F; }
   .sb-lang li:hover span { color: #18191F; }
+  .sb-desk-title, .sb-lang-title { margin: 0 0 24px; font-size: 20px; font-weight: 700; color: #4B505C; text-align: center; }
+  /* desk scene */
+  .dk { margin-top: var(--gap); }
+  .dk-scene { position: relative; max-width: 1040px; margin: 0 auto; }
+  .dk-wall { display: flex; justify-content: flex-start; align-items: flex-start; gap: 14px; padding: 26px 0 30px 60px; position: relative; }
+  .dk-wall .dk-label { position: absolute; left: 60px; top: -6px; margin: 0; }
+  .dk-note { width: 92px; height: 82px; display: grid; place-items: center; font-size: 17px; font-weight: 700; color: #18191F; box-shadow: 0 6px 12px -8px rgba(24,25,31,.4); transition: transform .35s cubic-bezier(.34,1.56,.64,1); }
+  .dk-note.n1 { background: #FFE7A3; transform: rotate(-5deg); } .dk-note.n2 { background: #FFD3C2; transform: rotate(3deg) translateY(10px); } .dk-note.n3 { background: #D8EFD9; transform: rotate(-2deg); }
+  .dk-note:hover { transform: rotate(0) translateY(-4px); }
+  .dk-top { display: grid; grid-template-columns: 1.05fr 1.35fr .8fr; gap: 28px; align-items: end; padding: 0 28px; }
+  .dk-item { position: relative; display: flex; flex-direction: column; align-items: center; }
+  .dk-label { display: block; margin-top: 12px; font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #E87B35; }
+  .dk-item .dk-label { position: absolute; bottom: -44px; }
+  .dk .sb-chips { gap: 8px; justify-content: center; }
+  .dk .sb-chips li { padding: 7px 13px; font-size: 15px; }
+  /* sketchbook */
+  .dk-book-page { position: relative; width: 100%; background: #fff; border: 2px solid #18191F; border-radius: 6px; padding: 30px 16px 18px; transform: rotate(-2deg); box-shadow: 4px 4px 0 #18191F; }
+  .dk-book-page::before { content: ""; position: absolute; left: 14px; right: 14px; top: -9px; height: 18px; background: radial-gradient(circle, #fff 4px, #18191F 4.5px, #18191F 6px, transparent 6.5px) 0 0 / 22px 18px repeat-x; }
+  /* laptop */
+  .dk-screen { width: 100%; background: #FFFCF7; border: 2px solid #18191F; border-radius: 12px 12px 4px 4px; padding: 22px 16px; box-shadow: inset 0 0 0 8px #18191F; }
+  .dk-screen .sb-chips { padding: 6px; }
+  .dk-base { width: 116%; height: 14px; background: #fff; border: 2px solid #18191F; border-radius: 2px 2px 12px 12px; margin-top: -2px; }
+  /* mug with AI steam */
+  .dk-steam { list-style: none; margin: 0 0 10px; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .dk-steam li { padding: 7px 13px; font-size: 14px; font-weight: 600; line-height: 1.2; color: #18191F; background: #fff; border: 1.5px dashed #C9CBD0; border-radius: 999px; text-align: center; }
+  .dk-steam li:nth-child(odd) { transform: translateX(-10px) rotate(-2deg); } .dk-steam li:nth-child(even) { transform: translateX(10px) rotate(2deg); }
+  .motion .dk.rv-in .dk-steam li { animation: dk-float 3.6s ease-in-out infinite; } .motion .dk.rv-in .dk-steam li:nth-child(2) { animation-delay: -.9s; } .motion .dk.rv-in .dk-steam li:nth-child(3) { animation-delay: -1.8s; } .motion .dk.rv-in .dk-steam li:nth-child(4) { animation-delay: -2.7s; }
+  @keyframes dk-float { 50% { translate: 0 -5px; } }
+  .dk-cup { position: relative; width: 96px; height: 92px; background: #FF8F71; border: 2px solid #18191F; border-radius: 4px 4px 22px 22px; }
+  .dk-cup::after { content: ""; position: absolute; right: -30px; top: 18px; width: 26px; height: 36px; border: 2px solid #18191F; border-left: 0; border-radius: 0 18px 18px 0; }
+  /* the desk itself */
+  .dk-plank { position: relative; height: 22px; margin-top: -2px; background: #F2E3CF; border: 2px solid #18191F; border-radius: 6px; }
+  .dk-plank i { position: absolute; top: 20px; width: 14px; height: 70px; background: #F2E3CF; border: 2px solid #18191F; border-top: 0; }
+  .dk-plank i:first-child { left: 8%; } .dk-plank i:last-child { right: 8%; }
+  .dk-top { padding-bottom: 0; }
+  .dk-item { margin-bottom: 0; }
+  .dk-top + .dk-plank { margin-top: 0; }
+  .dk { padding-bottom: 70px; }
+  @media (max-width: 900px) {
+    .dk-top { grid-template-columns: 1fr; gap: 64px; padding: 0; }
+    .dk-wall { justify-content: center; padding: 26px 0 30px; }
+    .dk-wall { padding-left: 0; } .dk-wall .dk-label { left: 50%; transform: translateX(-50%); top: -6px; }
+    .dk-base { width: 100%; }
+    .dk-plank i { display: none; } .dk { padding-bottom: 0; }
+  }
   @media (max-width: 1100px) { .sb { grid-template-columns: repeat(2, 1fr); gap: 36px 28px; } .sb-frame:nth-child(n) { margin-top: 0; } }
   @media (max-width: 640px) { .sb { grid-template-columns: 1fr; } }
-  .sb-desk { margin-top: 64px; background: #fff; border: 1px solid #E5E7EB; border-radius: 16px; padding: 30px 32px 34px; }
-  .sb-desk .sb-chips { gap: 8px; }
-  .sb-desk .sb-chips li { padding: 8px 14px; font-size: 16px; }
-  .sb-desk-title, .sb-lang-title { margin: 0 0 20px; font-size: 20px; font-weight: 700; color: #4B505C; }
-  .sb-desk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 40px; }
-  .sb-desk-grid p { margin: 0 0 12px; font-size: 15px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #E87B35; }
   @media (max-width: 1000px) { .sb-desk-grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 560px) { .sb-desk-grid { grid-template-columns: 1fr; } }
+  :root { --gap: 120px; }
+  @media (max-width: 900px) { :root { --gap: 88px; } }
+  .ab-quote { margin: var(--gap) auto var(--gap) !important; }
+  .ab-bye { margin: 0 auto calc(var(--gap) - 80px) !important; }
+  @media (max-width: 900px) { .ab-bye { margin-bottom: 0 !important; } }
   </style>
 </head>
 
@@ -181,13 +225,30 @@
             </li>
           </ol>
 
-          <div class="sb-desk" data-rv>
+          <div class="dk" data-rv>
             <p class="sb-desk-title">And on my desk</p>
-            <div class="sb-desk-grid">
-              <div><p>Design</p><ul class="sb-chips"><li>Figma</li><li>Framer</li><li>Photoshop</li><li>Illustrator</li><li>After Effects</li><li>Blender</li><li>Adobe XD</li></ul></div>
-              <div><p>Code</p><ul class="sb-chips"><li>Claude Code</li><li>VS Code</li><li>Antigravity</li><li>Android Studio</li><li>Xcode</li><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Python (basic)</li></ul></div>
-              <div><p>AI</p><ul class="sb-chips"><li>AI Assisted Design Workflows</li><li>Generative Prototyping</li><li>Conversational UI</li><li>Agentic AI Interfaces</li></ul></div>
-              <div><p>Team</p><ul class="sb-chips"><li>Notion</li><li>Jira</li><li>Slack</li></ul></div>
+            <div class="dk-scene">
+              <div class="dk-wall">
+                <span class="dk-note n1">Notion</span><span class="dk-note n2">Jira</span><span class="dk-note n3">Slack</span>
+                <small class="dk-label">Team</small>
+              </div>
+              <div class="dk-top">
+                <div class="dk-item dk-book">
+                  <div class="dk-book-page"><ul class="sb-chips"><li>Figma</li><li>Framer</li><li>Photoshop</li><li>Illustrator</li><li>After Effects</li><li>Blender</li><li>Adobe XD</li></ul></div>
+                  <small class="dk-label">Design</small>
+                </div>
+                <div class="dk-item dk-laptop">
+                  <div class="dk-screen"><ul class="sb-chips"><li>Claude Code</li><li>VS Code</li><li>Antigravity</li><li>Android Studio</li><li>Xcode</li><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Python (basic)</li></ul></div>
+                  <div class="dk-base"></div>
+                  <small class="dk-label">Code</small>
+                </div>
+                <div class="dk-item dk-mug">
+                  <ul class="dk-steam"><li>Agentic AI Interfaces</li><li>Conversational UI</li><li>Generative Prototyping</li><li>AI Assisted Design Workflows</li></ul>
+                  <div class="dk-cup"></div>
+                  <small class="dk-label">AI</small>
+                </div>
+              </div>
+              <div class="dk-plank"><i></i><i></i></div>
             </div>
           </div>
 
