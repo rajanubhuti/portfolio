@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Redesigning DPDS TMS | Anubhuti Raj</title>
+  <link rel="icon" type="image/png" href="../../assets/images/browsericon.png" />
+
+  <!-- Site-wide styles (same file the homepage uses) -->
+  <link rel="preload" href="../../assets/fonts/f9c47219ac0af4ab.p.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="../../css/style.css?v=20261005g" />
+  <!-- Shared header/footer styles -->
+  <link rel="stylesheet" href="../../partials/shared.css?v=20261005g" />
+  <!-- Case-study layout styles (plain CSS, reusable across future case studies) -->
+  <link rel="stylesheet" href="../../assets/css/case-study.css?v=20261005g" />
+  <!-- Inter, the product's own typeface, for the design system samples -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+
+
+  <style>
+/* Case study 2 layout: spacing, headings, scroll reveal, section rail. Scoped to .cs-v2. */
+/* ============================================================
+   Spacing, heading size and scroll animations.
+   Scoped to .cs-v2 so other case studies are unaffected.
+============================================================ */
+
+/* Space between sections */
+.cs-v2 .cs-section { margin-bottom: 150px; }
+.cs-v2 .cs-section:last-of-type { margin-bottom: 0; }
+.cs-v2 .cs-meta-grid { margin-bottom: 120px; }
+
+/* Bigger headings */
+.cs-v2 .cs-heading { font-size: 40px; line-height: 1.1; margin-bottom: 32px; }
+
+/* Even spacing between the pieces inside a section */
+.cs-v2 .cs-mb-32 { margin-bottom: 40px !important; }
+.cs-v2 .cs-mb-48 { margin-bottom: 56px !important; }
+.cs-v2 .cs-body { margin-bottom: 24px; }
+.cs-v2 .cs-storyboard { gap: 40px 24px; }
+.cs-v2 .cs-ai-credit { margin-top: 20px; margin-bottom: 64px; }
+.cs-v2 .cs-timeline-labels { margin-bottom: 56px; }
+.cs-v2 .cs-callout { margin: 0 0 40px 0; }
+.cs-v2 .cs-illustration { margin-bottom: 56px; }
+.cs-v2 .cs-numbers { margin-bottom: 56px; }
+.cs-v2 .cs-section .cs-numbers:last-child { margin-bottom: 0; }
+.cs-v2 .cs-stat-row { margin-bottom: 20px; }
+.cs-v2 .cs-stat-row:last-of-type { margin-bottom: 40px; }
+.cs-v2 .cs-table { margin-bottom: 56px; }
+.cs-v2 .cs-gap-card { margin-bottom: 24px; }
+.cs-v2 .cs-state-block { margin-bottom: 16px; }
+.cs-v2 .cs-state-desc { margin-bottom: 28px; }
+.cs-v2 .cs-state-image { margin-bottom: 56px; }
+.cs-v2 .cs-trigger { margin-bottom: 56px; }
+.cs-v2 .cs-solve-card { margin-bottom: 24px; }
+.cs-v2 .cs-reflection-item { margin-bottom: 36px; }
+.cs-v2 .cs-sources { margin-top: 56px; }
+.cs-v2 h1.cs-heading { font-size: 64px; line-height: 1; margin-bottom: 32px; }
+.cs-v2 .cs-eyebrow { margin-bottom: 14px; }
+
+/* ---- Scroll reveal ---- */
+.cs-reveal-on .cs-v2 [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
+  will-change: opacity, transform;
+}
+.cs-reveal-on .cs-v2 [data-reveal].is-in { opacity: 1; transform: none; }
+/* Items side by side appear one after another */
+.cs-reveal-on .cs-v2 .cs-storyboard > :nth-child(2),
+.cs-reveal-on .cs-v2 .cs-storyboard > :nth-child(4),
+.cs-reveal-on .cs-v2 .cs-numbers > :nth-child(2),
+.cs-reveal-on .cs-v2 .cs-tried-row > :nth-child(3) { transition-delay: .1s; }
+.cs-reveal-on .cs-v2 .cs-numbers > :nth-child(3),
+.cs-reveal-on .cs-v2 .cs-tried-row > :nth-child(5) { transition-delay: .2s; }
+.cs-reveal-on .cs-v2 .cs-numbers > :nth-child(4) { transition-delay: .3s; }
+/* Bars draw in from the left */
+.cs-reveal-on .cs-v2 .cs-stat-fill { transform: scaleX(0); transform-origin: left; transition: transform 1.1s cubic-bezier(.22,1,.36,1) .25s; }
+.cs-reveal-on .cs-v2 .cs-stat-row.is-in .cs-stat-fill { transform: none; }
+.cs-reveal-on .cs-v2 .cs-trigger-bar { clip-path: inset(0 100% 0 0 round 8px); transition: clip-path 1.1s cubic-bezier(.22,1,.36,1) .2s; }
+.cs-reveal-on .cs-v2 .cs-trigger-row.is-in .cs-trigger-bar { clip-path: inset(0 0 0 0 round 8px); }
+/* Problem timeline wipes in */
+.cs-v2 .cs-timeline { position: relative; }
+.cs-reveal-on .cs-v2 .cs-timeline { transform: none; }
+.cs-reveal-on .cs-v2 .cs-timeline::after {
+  content: ""; position: absolute; inset: 0; background: #F8F8F8;
+  transform-origin: right; transition: transform 1.2s cubic-bezier(.22,1,.36,1) .15s;
+}
+.cs-reveal-on .cs-v2 .cs-timeline.is-in::after { transform: scaleX(0); }
+
+@media (max-width: 900px) {
+  .cs-v2 .cs-section { margin-bottom: 110px; }
+  .cs-v2 .cs-meta-grid { margin-bottom: 80px; }
+  .cs-v2 .cs-heading { font-size: 30px; }
+  .cs-v2 h1.cs-heading { font-size: 44px; }
+}
+@media (max-width: 560px) {
+  .cs-v2 .cs-section { margin-bottom: 88px; }
+  .cs-v2 .cs-heading { font-size: 26px; }
+  .cs-v2 h1.cs-heading { font-size: 36px; }
+}
+
+/* ---- Section rail (left side, wide screens only) ---- */
+.cs-v2 > .cs-section[id] { scroll-margin-top: 48px; }
+.cs-toc { display: none; }
+@media (min-width: 1340px) {
+  .cs-toc {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: max(24px, calc((100vw - 1196px) / 2 - 200px));
+    transform: translateY(-50%);
+    z-index: 40;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .4s ease;
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  }
+  .cs-toc.is-visible { opacity: 1; pointer-events: auto; }
+  .cs-toc ol {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  /* thin connecting line */
+  .cs-toc ol::before {
+    content: "";
+    position: absolute;
+    left: 13px;
+    top: 14px;
+    bottom: 14px;
+    width: 0;
+    border-left: 2px dotted rgba(232, 123, 53, 0.55);
+  }
+  .cs-toc a {
+    position: relative;
+    display: block;
+    width: 28px;
+    height: 28px;
+    text-decoration: none;
+  }
+  .cs-toc a::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #E87B35;
+    background: #F8F8F8;
+    transform: translate(-50%, -50%);
+    transition: width .25s ease, height .25s ease, background .25s ease;
+  }
+  .cs-toc a:hover::before { background: #F6C9A8; }
+  .cs-toc a.is-active::before { width: 16px; height: 16px; background: #E87B35; }
+  .cs-toc a:focus-visible { outline: 2px solid #E87B35; outline-offset: 2px; border-radius: 50%; }
+  /* label shows only on hover or keyboard focus */
+  .cs-toc-label {
+    position: absolute;
+    left: 36px;
+    top: 50%;
+    transform: translate(-4px, -50%);
+    white-space: nowrap;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: #18191F;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .cs-toc a:hover .cs-toc-label,
+  .cs-toc a:focus-visible .cs-toc-label { opacity: 1; transform: translate(0, -50%); }
+}
+
+
+/* ---- Section rail (left side, wide screens only) ---- */
+.cs-v2 > .cs-section[id] { scroll-margin-top: 48px; }
+.cs-toc { display: none; }
+@media (min-width: 1340px) {
+  .cs-toc {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: max(24px, calc((100vw - 1196px) / 2 - 200px));
+    transform: translateY(-50%);
+    z-index: 40;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .4s ease;
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  }
+  .cs-toc.is-visible { opacity: 1; pointer-events: auto; }
+  .cs-toc ol {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  /* thin connecting line */
+  .cs-toc ol::before {
+    content: "";
+    position: absolute;
+    left: 13px;
+    top: 14px;
+    bottom: 14px;
+    width: 0;
+    border-left: 2px dotted rgba(232, 123, 53, 0.55);
+  }
+  .cs-toc a {
+    position: relative;
+    display: block;
+    width: 28px;
+    height: 28px;
+    text-decoration: none;
+  }
+  .cs-toc a::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #E87B35;
+    background: #F8F8F8;
+    transform: translate(-50%, -50%);
+    transition: width .25s ease, height .25s ease, background .25s ease;
+  }
+  .cs-toc a:hover::before { background: #F6C9A8; }
+  .cs-toc a.is-active::before { width: 16px; height: 16px; background: #E87B35; }
+  .cs-toc a:focus-visible { outline: 2px solid #E87B35; outline-offset: 2px; border-radius: 50%; }
+  /* label shows only on hover or keyboard focus */
+  .cs-toc-label {
+    position: absolute;
+    left: 36px;
+    top: 50%;
+    transform: translate(-4px, -50%);
+    white-space: nowrap;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: #18191F;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .cs-toc a:hover .cs-toc-label,
+  .cs-toc a:focus-visible .cs-toc-label { opacity: 1; transform: translate(0, -50%); }
+}
+
+/* ---- Pinned five-state screens ---- */
+.cs-pin { position: relative; height: 380vh; margin-bottom: 24px; }
+.cs-pin-sticky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.cs-pin-screen {
+  position: relative;
+  width: min(100%, 1100px, calc((100vh - 240px) * 1300 / 760));
+  aspect-ratio: 1300 / 760;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #07080f;
+  box-shadow: 0 30px 80px -20px var(--pin-glow, rgba(24,25,31,.35)), 0 2px 6px rgba(24,25,31,.08);
+  transition: box-shadow .8s ease;
+}
+.cs-pin-sticky.is-fixed { position: fixed; top: 0; right: auto; z-index: 30; }
+.cs-pin-sticky.is-after { top: auto; bottom: 0; }
+.cs-pin-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; pointer-events: none; background: transparent; }
+.cs-pin[data-state="neutral"]  { --pin-glow: rgba(60, 70, 90, .45); }
+.cs-pin[data-state="ramp"]     { --pin-glow: rgba(242, 169, 78, .45); }
+.cs-pin[data-state="reengage"] { --pin-glow: rgba(242, 150, 40, .65); }
+.cs-pin[data-state="alert"]    { --pin-glow: rgba(229, 72, 77, .7); }
+.cs-pin[data-state="calm"]     { --pin-glow: rgba(120, 200, 140, .45); }
+.cs-pin-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity .6s ease, transform .8s cubic-bezier(.22,1,.36,1);
+}
+.cs-pin-img.is-active { opacity: 1; transform: none; }
+.cs-pin-info {
+  width: min(100%, 1100px, calc((100vh - 240px) * 1300 / 760));
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+}
+.cs-pin-caps { position: relative; flex: 1; min-height: 96px; }
+.cs-pin-cap {
+  position: absolute;
+  inset: 0 0 auto 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+.cs-pin-cap.is-active { opacity: 1; transform: none; }
+.cs-pin-time { margin: 0 0 6px 0; font-size: 15px; font-weight: 600; color: #6C727F; }
+.cs-pin-name { margin: 0 0 6px 0; font-size: 26px; font-weight: 700; color: #18191F; }
+.cs-pin-name span { color: #E87B35; margin-right: 10px; }
+.cs-pin-desc { margin: 0; font-size: 18px; line-height: 1.45; color: #2A2B31; max-width: 560px; }
+.cs-pin-steps { display: flex; gap: 8px; flex-shrink: 0; padding-bottom: 8px; }
+.cs-pin-step {
+  width: 44px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.cs-pin-step span {
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background: #D9DBE0;
+  transition: background .4s ease, height .3s ease;
+}
+.cs-pin-step:hover span { height: 6px; }
+.cs-pin-step:focus-visible { outline: 2px solid #E87B35; outline-offset: 2px; border-radius: 4px; }
+.cs-pin-step-neutral.is-active span  { background: #6C727F; }
+.cs-pin-step-ramp.is-active span     { background: #F7C58A; }
+.cs-pin-step-reengage.is-active span { background: #F2A94E; }
+.cs-pin-step-alert.is-active span    { background: #E5484D; }
+.cs-pin-step-calm.is-active span     { background: #6FBF73; }
+
+@media (max-width: 900px) {
+  .cs-pin { height: 320vh; }
+  .cs-pin-info { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .cs-pin-screen { border-radius: 16px; }
+  .cs-pin-name { font-size: 22px; }
+  .cs-pin-desc { font-size: 16px; }
+  .cs-pin-caps { width: 100%; min-height: 110px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-pin-img, .cs-pin-cap, .cs-pin-screen { transition: none; }
+}
+
+/* ---- Micro interactions ---- */
+/* Cards lift on hover. Uses the separate `translate` property so it never fights the scroll reveal. */
+.cs-v2 .cs-solve-card,
+.cs-v2 .cs-check-card,
+.cs-v2 .ds-component-card,
+.cs-v2 .ds-statcard,
+.cs-v2 .ds-flow-stage,
+.cs-v2 .ds-live-ticket {
+  transition: translate .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, border-color .35s ease;
+}
+.cs-reveal-on .cs-v2 .cs-solve-card[data-reveal],
+.cs-reveal-on .cs-v2 .cs-check-card[data-reveal] {
+  transition: opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1),
+              translate .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, border-color .35s ease;
+}
+.cs-v2 .cs-solve-card:hover,
+.cs-v2 .cs-check-card:hover,
+.cs-v2 .ds-component-card:hover,
+.cs-v2 .ds-statcard:hover,
+.cs-v2 .ds-flow-stage:hover,
+.cs-v2 .ds-live-ticket:hover {
+  translate: 0 -4px;
+  box-shadow: 0 2px 4px rgba(24,25,31,.04), 0 16px 32px rgba(24,25,31,.09);
+  border-color: #F3C9A9;
+}
+
+/* Callout: orange bar draws down when it scrolls in */
+.cs-reveal-on .cs-v2 .cs-callout[data-reveal] {
+  border-left-color: transparent;
+  background-image: linear-gradient(#E87B35, #E87B35);
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-position: left top;
+  background-size: 8px 0%;
+  transition: opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1),
+              background-size .9s cubic-bezier(.22,1,.36,1) .25s;
+}
+.cs-reveal-on .cs-v2 .cs-callout[data-reveal].is-in { background-size: 8px 100%; }
+
+/* Comparison table: ticks and crosses pop in, row by row */
+.cs-reveal-on .cs-v2 .cs-compare-table .cs-compare-mark {
+  opacity: 0;
+  transform: scale(.4);
+  transition: opacity .35s ease, transform .45s cubic-bezier(.34,1.56,.64,1);
+}
+.cs-reveal-on .cs-v2 .cs-compare-table.is-in .cs-compare-mark { opacity: 1; transform: none; }
+.cs-reveal-on .cs-v2 .cs-compare-row:nth-child(2) .cs-compare-mark { transition-delay: .25s; }
+.cs-reveal-on .cs-v2 .cs-compare-row:nth-child(3) .cs-compare-mark { transition-delay: .35s; }
+.cs-reveal-on .cs-v2 .cs-compare-row:nth-child(4) .cs-compare-mark { transition-delay: .45s; }
+.cs-reveal-on .cs-v2 .cs-compare-row:nth-child(5) .cs-compare-mark { transition-delay: .55s; }
+.cs-reveal-on .cs-v2 .cs-compare-row:nth-child(6) .cs-compare-mark { transition-delay: .65s; }
+.cs-reveal-on .cs-v2 .cs-compare-row:nth-child(7) .cs-compare-mark { transition-delay: .75s; }
+.cs-v2 .cs-compare-row { transition: background .25s ease; }
+.cs-v2 .cs-compare-row:not(.cs-compare-head):hover { background: #FEF7EE; }
+
+/* Personas: illustration slides in from its side, chat bubble pops up after the card */
+.cs-reveal-on .cs-v2 .cs-persona-flank[data-reveal] .cs-persona-flank-figure {
+  opacity: 0; transform: translateX(-28px);
+  transition: opacity .7s ease .15s, transform .8s cubic-bezier(.22,1,.36,1) .15s;
+}
+.cs-reveal-on .cs-v2 .cs-persona-flank[data-reveal] .cs-persona-flank-figure.cs-flip { transform: translateX(28px); }
+.cs-reveal-on .cs-v2 .cs-persona-flank[data-reveal].is-in .cs-persona-flank-figure { opacity: 1; transform: none; }
+.cs-reveal-on .cs-v2 .cs-persona-flank[data-reveal] .cs-chat-bubble {
+  opacity: 0; transform: translateY(8px) scale(.96); transform-origin: left bottom;
+  transition: opacity .45s ease .55s, transform .5s cubic-bezier(.34,1.56,.64,1) .55s;
+}
+.cs-reveal-on .cs-v2 .cs-persona-flank[data-reveal].is-in .cs-chat-bubble { opacity: 1; transform: none; }
+
+/* Screenshots: gentle zoom on hover */
+.cs-v2 .cs-hero-image[data-reveal] { overflow: hidden; border-radius: 4px; }
+.cs-v2 .cs-hero-image[data-reveal] img { transition: transform .7s cubic-bezier(.22,1,.36,1); }
+.cs-v2 .cs-hero-image[data-reveal]:hover img { transform: scale(1.015); }
+
+/* Reflection numbers nudge on hover */
+.cs-v2 .cs-reflection-num { display: inline-block; transition: transform .3s ease; }
+.cs-v2 .cs-reflection-item:hover .cs-reflection-num { transform: translateX(4px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-v2 * { transition-duration: .01ms !important; }
+}
+
+/* ---- Design system additions: type, spacing, radius, assistant, accessibility ---- */
+.cs-v2 .ds-type, .cs-v2 .ds-chat, .cs-v2 .ds-a11y, .cs-v2 .ds-scale-card { font-family: 'Inter', system-ui, sans-serif; }
+.cs-v2 .ds-type { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; }
+.cs-v2 .ds-type-row { display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: center; padding: 16px 24px; border-bottom: 1px solid #F0F1F3; transition: background .25s ease; }
+.cs-v2 .ds-type-row:last-child { border-bottom: none; }
+.cs-v2 .ds-type-row:hover { background: #F7FAFE; }
+.cs-v2 .ds-type-name { display: block; font-size: 13px; font-weight: 600; color: #18191F; }
+.cs-v2 .ds-type-spec { display: block; font-size: 12px; color: #6C727F; margin-top: 2px; }
+.cs-v2 .ds-type-sample { margin: 0; color: #0B1220; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.cs-v2 .ds-scale-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.cs-v2 .ds-scale-card { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 24px; }
+.cs-v2 .ds-space-row { display: grid; grid-template-columns: 64px 1fr auto; align-items: center; gap: 16px; padding: 7px 0; }
+.cs-v2 .ds-space-bar { display: block; height: 20px; width: var(--w); background: #307FE1; border-radius: 2px; transition: width .9s cubic-bezier(.22,1,.36,1); }
+.cs-reveal-on .cs-v2 .ds-block:not(.ds-in) .ds-space-bar { width: 0; }
+.cs-v2 .ds-space-name { font-size: 13px; font-weight: 500; color: #18191F; }
+.cs-v2 .ds-space-val { font-size: 12px; color: #6C727F; font-variant-numeric: tabular-nums; }
+.cs-v2 .ds-radius-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 8px; }
+.cs-v2 .ds-radius-item { display: flex; flex-direction: column; gap: 4px; }
+.cs-v2 .ds-radius-box { display: block; width: 100%; aspect-ratio: 1; max-width: 80px; background: #307FE1; margin-bottom: 6px; transition: transform .3s ease; }
+.cs-v2 .ds-radius-item:hover .ds-radius-box { transform: scale(1.06); }
+
+/* Assistant components, values from the Figma file */
+.cs-v2 .ds-chat { background: #F5F7FA; border: 1px solid #E6E9EE; border-radius: 16px; padding: 28px; }
+.cs-v2 .ds-chat-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.cs-v2 .ds-chip { font-family: inherit; font-size: 13px; font-weight: 600; line-height: 19.5px; color: #55606E; background: #fff; border: 1.5px solid #E6E9EE; border-radius: 100px; padding: 6px 14px; cursor: pointer; transition: border-color .2s ease, color .2s ease, background .2s ease, translate .2s ease; }
+.cs-v2 .ds-chip:hover { border-color: #307FE1; color: #0A0A5F; translate: 0 -1px; }
+.cs-v2 .ds-chip.is-on { background: #0A0A5F; border-color: #0A0A5F; color: #fff; }
+.cs-v2 .ds-chip:focus-visible, .cs-v2 .ds-resolve-btn:focus-visible, .cs-v2 .ds-ticket-card-btn:focus-visible { outline: 2px solid #307FE1; outline-offset: 2px; }
+.cs-v2 .ds-chat-thread { display: flex; flex-direction: column; gap: 12px; }
+.cs-v2 .ds-msg-user { display: flex; justify-content: flex-end; align-items: flex-end; gap: 10px; }
+.cs-v2 .ds-bubble-user { background: #0A0A5F; color: #fff; font-size: 14px; font-weight: 500; line-height: 21.7px; padding: 11px 16px; border-radius: 16px 16px 5px 16px; max-width: 520px; }
+.cs-v2 .ds-avatar { flex: none; width: 28px; height: 28px; border-radius: 14px; background: #307FE1; color: rgba(255,255,255,.7); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.cs-v2 .ds-msg-bot { display: flex; align-items: flex-start; gap: 10px; }
+.cs-v2 .ds-orb { flex: none; width: 24px; height: 24px; margin-top: 4px; border-radius: 50%; border: 2px solid #395BC0; background: radial-gradient(circle at 35% 30%, #fff, #C8E6FF 60%, #DEF0FF); box-shadow: 0 0 16px rgba(0,94,184,.2); }
+.cs-v2 .ds-bubble-bot { background: #fff; border: 1.5px solid #E6E9EE; border-radius: 5px 16px 16px 16px; padding: 12px 16px 14px; max-width: 542px; width: 100%; box-sizing: border-box; box-shadow: 0 1px 1px rgba(10,38,71,.04), 0 8px 12px rgba(10,38,71,.06); }
+.cs-v2 .ds-bot-text { margin: 0; font-size: 14px; font-weight: 500; line-height: 22.4px; color: #0B1220; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.cs-v2 .ds-guide { display: flex; align-items: center; gap: 10px; margin-top: 10px; padding: 12px; background: #FAFBFD; border: 1px solid #E7E9EF; border-radius: 10px; transition: border-color .2s ease; }
+.cs-v2 .ds-guide:hover { border-color: #C0D9F8; }
+.cs-v2 .ds-guide-icon { flex: none; width: 39px; height: 39px; border-radius: 6px; background: #C0D9F8; color: #0A0A5F; font-size: 28px; font-weight: 300; display: flex; align-items: center; justify-content: center; line-height: 1; }
+.cs-v2 .ds-guide-title { display: block; font-size: 14px; font-weight: 600; color: #000; line-height: 20px; }
+.cs-v2 .ds-guide-meta { display: block; font-size: 12px; color: #8A93A0; line-height: 18px; }
+.cs-v2 .ds-resolve { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.cs-v2 .ds-resolve-btn { font-family: inherit; font-size: 12px; font-weight: 600; line-height: 22.4px; padding: 5px 14px; border-radius: 9px; background: #fff; border: 1px solid #E7E9EF; color: #55606E; cursor: pointer; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+.cs-v2 .ds-resolve-btn:hover { border-color: #A1A9AC; color: #0B1220; }
+.cs-v2 .ds-resolve-alt { border-color: #395BC0; color: #395BC0; }
+.cs-v2 .ds-resolve-alt:hover { background: #F2F6FD; color: #395BC0; border-color: #395BC0; }
+.cs-v2 .ds-resolve-btn[aria-pressed="true"] { background: #0A0A5F; border-color: #0A0A5F; color: #fff; }
+.cs-v2 .ds-reveal-slot { display: none; }
+.cs-v2 .ds-reveal-slot.is-shown { display: flex; animation: dsSlotIn .5s cubic-bezier(.22,1,.36,1); }
+@keyframes dsSlotIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.cs-v2 .ds-ticket-card { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 21px; border-radius: 13px; background: linear-gradient(127deg, #395BC0 65.7%, #0A0A5F 110%); }
+.cs-v2 .ds-ticket-card-title { margin: 0 0 4px 0; font-size: 14px; font-weight: 600; line-height: 22.4px; color: #fff; }
+.cs-v2 .ds-ticket-card-meta { margin: 0; font-size: 12px; font-weight: 500; line-height: 17px; color: #ACB7C6; }
+.cs-v2 .ds-ticket-card-btn { flex: none; font-family: inherit; font-size: 14px; font-weight: 600; padding: 7px 16px; border-radius: 10px; border: none; background: #C0D9F8; color: #000; cursor: pointer; transition: background .2s ease, translate .2s ease; }
+.cs-v2 .ds-ticket-card-btn:hover { background: #fff; translate: 0 -1px; }
+
+/* Accessibility audit table */
+.cs-v2 .ds-a11y { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; }
+.cs-v2 .ds-a11y-row { display: grid; grid-template-columns: 1fr 90px 80px 90px; gap: 16px; align-items: center; padding: 12px 20px; border-bottom: 1px solid #F0F1F3; font-size: 13px; color: #18191F; transition: background .25s ease; }
+.cs-v2 .ds-a11y-row:last-child { border-bottom: none; }
+.cs-v2 .ds-a11y-row:not(.ds-a11y-head):hover { background: #FAFBFD; }
+.cs-v2 .ds-a11y-head { background: #FAFAFA; font-size: 12px; font-weight: 600; color: #6C727F; }
+.cs-v2 .ds-a11y-pair code { font-family: "SFMono-Regular", Consolas, Menlo, monospace; font-size: 12px; color: #0B1220; }
+.cs-v2 .ds-a11y-note { display: block; margin-top: 4px; font-size: 12px; color: #6C727F; line-height: 1.45; }
+.cs-v2 .ds-a11y-ratio { font-weight: 600; font-variant-numeric: tabular-nums; }
+.cs-v2 .ds-a11y-needs { color: #6C727F; font-variant-numeric: tabular-nums; }
+.cs-v2 .ds-a11y-pill { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; }
+.cs-v2 .ds-a11y-pass .ds-a11y-pill { background: #E9F5EC; color: #1F6B45; }
+.cs-v2 .ds-a11y-fixed .ds-a11y-pill { background: #FEF0DC; color: #8A5300; }
+.cs-v2 .ds-a11y-fixed { background: #FFFCF7; }
+.cs-v2 .ds-a11y-na .ds-a11y-pill { background: #F0F1F2; color: #6C727F; }
+
+@media (max-width: 900px) {
+  .cs-v2 .ds-scale-grid { grid-template-columns: 1fr; }
+  .cs-v2 .ds-type-row { grid-template-columns: 1fr; gap: 6px; }
+  .cs-v2 .ds-type-sample { white-space: normal; }
+  .cs-v2 .ds-a11y-row { grid-template-columns: 1fr 70px 70px; }
+  .cs-v2 .ds-a11y-row > :nth-child(3) { display: none; }
+  .cs-v2 .ds-a11y-row > :nth-child(4) { grid-column: 3; }
+  .cs-v2 .ds-ticket-card { flex-direction: column; align-items: flex-start; }
+  .cs-v2 .ds-chat { padding: 18px; }
+}
+
+/* Comparison table: vendor names and logos centered in their header cells */
+.cs-v2 .cs-compare-head > .cs-compare-vendor-row { justify-content: center; }
+.cs-v2 .cs-compare-head > .cs-compare-vendor { align-items: center; text-align: center; }
+
+/* Case study 2 specifics */
+.cs-v2 .cs-found-grid { gap: 24px; margin-bottom: 24px; }
+.cs-v2 .cs-found-grid + .cs-found-grid { margin-bottom: 56px; }
+.cs-v2 .cs-persona-flank { margin-bottom: 40px; }
+.cs-v2 .cs-compare-table { margin-top: 40px !important; margin-bottom: 56px !important; }
+.cs-v2 .cs-hero-image[data-reveal] { margin-bottom: 24px; }
+.cs-v2 .cs-img-caption { margin-top: 0; }
+.cs-v2 .cs-check-grid { margin-bottom: 0; }
+.cs-v2 .ds-block { margin-bottom: 96px; }
+.cs-v2 .cs-compare-mark.cs-mark-dash { font-size: 15px; color: #8A8F99; }
+.cs-reveal-on .cs-v2 .cs-found-grid > :nth-child(2),
+.cs-reveal-on .cs-v2 .cs-check-grid > :nth-child(2) { transition-delay: .1s; }
+/* ---- Next project (end of case study) ---- */
+.cs-next {
+  display: flex; align-items: center; justify-content: space-between; gap: 32px;
+  margin: 40px 0 16px 0; padding: 32px 36px;
+  background: #fff; border: 1px solid #18191F; border-radius: 24px;
+  box-shadow: 0 6px 0 #240C05;
+  text-decoration: none; color: #18191F;
+  transition: translate .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
+}
+.cs-next:hover { translate: 0 -3px; box-shadow: 0 9px 0 #240C05; }
+.cs-next-label { margin: 0 0 8px 0; font-size: 14px; font-weight: 600; letter-spacing: .12em; color: #E87B35; }
+.cs-next-title { margin: 0 0 8px 0; font-size: 28px; font-weight: 700; line-height: 1.15; text-transform: uppercase; }
+.cs-next-desc { margin: 0; font-size: 18px; line-height: 1.45; color: #4B505C; max-width: 560px; }
+.cs-next-desc span { color: #E87B35; font-weight: 700; }
+.cs-next-btn {
+  flex: none; display: inline-flex; align-items: center;
+  padding: 16px 32px; border-radius: 999px; border: 1px solid #18191F;
+  background: #FF8F71; color: #000; font-size: 18px; font-weight: 700;
+  box-shadow: 0 4px 0 #240C05; transition: background .2s ease;
+}
+.cs-next:hover .cs-next-btn { background: #FF5A00; }
+@media (max-width: 760px) {
+  .cs-next { flex-direction: column; align-items: flex-start; padding: 24px; }
+  .cs-next-title { font-size: 22px; }
+  .cs-next-btn { width: 100%; justify-content: center; box-sizing: border-box; }
+}
+
+  
+.tms-oneliner { margin: -12px 0 28px; font-size: clamp(21px, 2.3vw, 28px); line-height: 1.35; font-weight: 600; color: #E87B35; }
+.ds-why { margin: 10px 0 24px; font-size: 16px; font-weight: 600; line-height: 1.5; color: #E87B35; }
+.ds-a11y-sum { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0 8px; }
+.ds-a11y-sum > div { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px 22px; }
+.ds-a11y-sum b { display: block; font-size: 36px; font-weight: 700; color: #E87B35; line-height: 1.1; }
+.ds-a11y-sum span { font-size: 16px; color: #18191F; }
+.ds-a11y-more summary { cursor: pointer; margin: 8px 0 16px; font-size: 16px; font-weight: 600; color: #E87B35; }
+@media (max-width: 640px) { .ds-a11y-sum { grid-template-columns: 1fr; } }
+</style>
+
+  <!-- Tells the shared header/footer partials how far back up to the project root -->
+  <script>window.SITE_ROOT = "../../";</script>
+  <link rel="stylesheet" href="../../partials/whimsy.css?v=20261005g" />
+  <link rel="stylesheet" href="../../partials/mobile-menu.css?v=20261005w" />
+</head>
+
+<body>
+  <div id="__next">
+    <main class="min-h-screen bg-[#F8F8F8] pb-10 __className_9b492f">
+
+      <!-- ===================== NAV (shared partial) ===================== -->
+      <script src="../../partials/header.js?v=20261005g"></script>
+      <!-- =================== END NAV =================== -->
+
+      <div class="x-padding">
+        <article class="cs-article cs-v2">
+
+          <!-- ================= SECTION 1: HERO / OVERVIEW ================= -->
+          <section class="cs-section" id="overview">
+
+            <div class="cs-hero-image" style="aspect-ratio:2396/876;">
+              <img src="../../assets/images/project-2/01-hero-bg.webp" fetchpriority="high" alt="Hero image for the Redesigning DPDS TMS case study" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            </div>
+
+            <div class="cs-meta-grid">
+              <div>
+                <p class="cs-meta-label">Role</p>
+                <p class="cs-meta-value">UX Designer</p>
+              </div>
+              <div>
+                <p class="cs-meta-label">Timeline</p>
+                <p class="cs-meta-value">3 months (Ongoing)</p>
+              </div>
+              <div>
+                <p class="cs-meta-label">Tools</p>
+                <p class="cs-meta-value">Figma</p>
+                <p class="cs-meta-value">Claude</p>
+                <p class="cs-meta-value">Visual Studio Code</p>
+              </div>
+              <div>
+                <p class="cs-meta-label">Team</p>
+                <p class="cs-meta-value">DPDS, Tata Motors CV</p>
+              </div>
+            </div>
+
+            <p class="cs-eyebrow">OVERVIEW</p>
+            <h1 class="cs-heading">Redesigning DPDS TMS</h1>
+            <p class="tms-oneliner">An internal helpdesk that answers your problem first, and raises a ticket only if it can't.</p>
+            <p class="cs-body">
+              TMS, the Ticket Management System, is where people in Tata Motors' Digital Product Development System
+              (DPDS) team report anything that's broken, from a VPN that keeps dropping to a password that expired.
+              It hasn't kept pace with how the team has grown. My brief was to redesign it, and add an AI layer that
+              helps people find answers before they need to file anything at all.
+            </p>
+
+          </section>
+
+          <!-- ================= SECTION 2: WHAT I INHERITED ================= -->
+          <section class="cs-section" id="inherited">
+            <p class="cs-eyebrow">WHAT I INHERITED</p>
+            <h2 class="cs-heading" data-reveal>The form wasn't broken. It just couldn't tell people apart.</h2>
+
+            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1198/547; margin-bottom:0;">
+              <img src="../../assets/images/project-2/02-current-tms-screenshot.webp" alt="Screenshot of the current Tata Motors ticketing system homepage" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            </div>
+            <p class="cs-img-caption cs-mb-32">*Current Ticketing Management System Homepage</p>
+
+            <p class="cs-body cs-mb-48">
+              I filed test tickets myself, then sat with staff while they filed real ones. The test tickets showed the
+              obvious friction. The real sessions showed the actual problem: a hardware fault and a forgotten
+              password were going through the same four field form.
+            </p>
+
+            <div class="cs-found-grid">
+              <div class="cs-solve-card" data-reveal>
+                <p class="cs-solve-label">FOUND</p>
+                <p class="cs-gap-heading">Navigation as dumping ground</p>
+                <p class="cs-solve-body">Too much crammed into the navbar, no hierarchy.</p>
+              </div>
+              <div class="cs-solve-card" data-reveal>
+                <p class="cs-solve-label">FOUND</p>
+                <p class="cs-gap-heading">One form fits none</p>
+                <p class="cs-solve-body">A password reset takes the same fields as a hardware failure.</p>
+              </div>
+            </div>
+            <div class="cs-found-grid">
+              <div class="cs-solve-card" data-reveal>
+                <p class="cs-solve-label">FOUND</p>
+                <p class="cs-gap-heading">No visual hierarchy</p>
+                <p class="cs-solve-body">Blue boxed nav with no distinction between primary and secondary actions.</p>
+              </div>
+              <div class="cs-solve-card" data-reveal>
+                <p class="cs-solve-label">FOUND</p>
+                <p class="cs-gap-heading">Zero self service</p>
+                <p class="cs-solve-body">No knowledge base check before a ticket gets filed, for anything.</p>
+              </div>
+            </div>
+
+            <div class="cs-callout" data-reveal>
+              <p class="cs-callout-label">WHAT I DID ABOUT IT</p>
+              <p class="cs-callout-body">
+                Beyond the redesign itself, I ran a full navigation and information architecture audit: what's
+                grouped where, what sits at the top level, and what's buried. The actual structure is confidential
+                under Tata Motors' NDA.
+              </p>
+            </div>
+          </section>
+
+          <!-- ================= SECTION 3: WHY IT MATTERS ================= -->
+          <section class="cs-section" id="why">
+            <p class="cs-eyebrow">WHY IT MATTERS</p>
+            <h2 class="cs-heading" data-reveal>The gap isn't an opinion. It's a feature list.</h2>
+
+            <div class="cs-compare-table cs-mb-32" data-reveal style="margin-top:32px;">
+              <div class="cs-compare-row cs-compare-head">
+                <div>Capability</div>
+                <div class="cs-compare-vendor-row">
+                  <div class="cs-compare-logo"><img src="../../assets/images/project-2/servicenow-logo.png" alt="ServiceNow logo" style="width:100%; height:100%; object-fit:contain; display:block;"></div>
+                  <div class="cs-compare-vendor"><strong>ServiceNow</strong><span>Enterprise</span></div>
+                </div>
+                <div class="cs-compare-vendor-row">
+                  <div class="cs-compare-logo"><img src="../../assets/images/project-2/jirasm-logo.png" alt="JiraSM logo" style="width:100%; height:100%; object-fit:contain; display:block;"></div>
+                  <div class="cs-compare-vendor"><strong>JiraSM</strong><span>Mid market</span></div>
+                </div>
+                <div class="cs-compare-vendor"><strong>TATA TMS</strong><span>Legacy</span></div>
+              </div>
+              <div class="cs-compare-row">
+                <div>Self service interception</div>
+                <div class="cs-compare-mark cs-mark-yes">&#10003;</div>
+                <div class="cs-compare-mark cs-mark-yes">&#10003;</div>
+                <div class="cs-compare-mark cs-mark-no">&#10007;</div>
+              </div>
+              <div class="cs-compare-row">
+                <div>AI / NLP query parsing</div>
+                <div class="cs-compare-mark cs-mark-yes">&#10003;</div>
+                <div class="cs-compare-mark cs-mark-dash">Partial</div>
+                <div class="cs-compare-mark cs-mark-no">&#10007;</div>
+              </div>
+              <div class="cs-compare-row">
+                <div>Knowledge base integration</div>
+                <div class="cs-compare-mark cs-mark-yes">&#10003;</div>
+                <div class="cs-compare-mark cs-mark-yes">&#10003;</div>
+                <div class="cs-compare-mark cs-mark-no">&#10007;</div>
+              </div>
+              <div class="cs-compare-row">
+                <div>Automated ticket deflection</div>
+                <div class="cs-compare-mark cs-mark-yes">&#10003;</div>
+                <div class="cs-compare-mark cs-mark-dash">Partial</div>
+                <div class="cs-compare-mark cs-mark-no">&#10007;</div>
+              </div>
+              <div class="cs-compare-row">
+                <div>SLA tracking</div>
+                <div class="cs-compare-mark cs-mark-yes">&#10003;</div>
+                <div class="cs-compare-mark cs-mark-yes">&#10003;</div>
+                <div class="cs-compare-mark cs-mark-yes">&#10003;</div>
+              </div>
+              <div class="cs-compare-row">
+                <div>Conversational interface</div>
+                <div class="cs-compare-mark cs-mark-yes">&#10003;</div>
+                <div class="cs-compare-mark cs-mark-dash">Partial</div>
+                <div class="cs-compare-mark cs-mark-no">&#10007;</div>
+              </div>
+            </div>
+
+            <div class="cs-callout" data-reveal>
+              <p class="cs-callout-label">KEY INSIGHT</p>
+              <p class="cs-callout-body">
+                Enterprise leaders intercept issues with self service before a ticket ever gets filed. TATA TMS had
+                no "before," only a form.
+              </p>
+            </div>
+          </section>
+
+          <!-- ================= SECTION 4: TWO PEOPLE, SAME TICKET ================= -->
+          <section class="cs-section" id="people">
+            <p class="cs-eyebrow">TWO PEOPLE, SAME TICKET</p>
+            <h2 class="cs-heading" data-reveal>The form doesn't know who's talking</h2>
+            <p class="cs-body cs-mb-48">
+              Same submit button, two unrelated problems: one person is reporting a fault that could stall a line,
+              the next just wants their badge reactivated. The form asks both of them for a severity level.
+            </p>
+
+            <div class="cs-persona-flank" data-reveal>
+              <div class="cs-persona-flank-figure">
+                <img src="../../assets/images/project-2/03-technical-staff-illustration.webp" alt="Illustration of a technical staff member filing a detailed ticket" style="width:100%; height:100%; object-fit:contain; display:block;">
+              </div>
+              <div class="cs-solve-card" data-reveal style="flex:1; margin-bottom:0;">
+                <p class="cs-solve-label">TECHNICAL STAFF</p>
+                <p class="cs-solve-body">Filing a real fault and wants precision: severity, location, timestamp, and a way to track it closely.</p>
+                <p class="cs-chat-bubble">&ldquo;VPN connection dropping every 30 minutes on home network.&rdquo;</p>
+              </div>
+            </div>
+
+            <div class="cs-persona-flank" data-reveal>
+              <div class="cs-solve-card" data-reveal style="flex:1; margin-bottom:0;">
+                <p class="cs-solve-label">EVERYONE ELSE</p>
+                <p class="cs-solve-body">Wants one thing fixed, like a password or a badge, and has no patience for an engineer's form.</p>
+                <p class="cs-chat-bubble">&ldquo;Can't log in, think my password expired.&rdquo;</p>
+              </div>
+              <div class="cs-persona-flank-figure cs-flip">
+                <img src="../../assets/images/project-2/04-everyone-else-illustration.webp" alt="Illustration of a non-technical employee needing quick help" style="width:100%; height:100%; object-fit:contain; display:block;">
+              </div>
+            </div>
+
+            <div class="cs-callout" data-reveal style="margin-bottom:0;">
+              <p class="cs-callout-label">INSIGHT &rarr; DECISION</p>
+              <p class="cs-callout-body">
+                One form can't serve both without failing one of them. That ruled out a traditional ticket form.
+                Instead, the interaction adapts to what the person says, rather than asking them to interpret a
+                field first.
+              </p>
+            </div>
+          </section>
+
+          <!-- ================= SECTION 6: THE FIRST ATTEMPT ================= -->
+          <section class="cs-section" id="first">
+            <p class="cs-eyebrow">THE FIRST ATTEMPT</p>
+            <h2 class="cs-heading" data-reveal>Built for the person who already knew the system</h2>
+
+            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:2396/1314;">
+              <img src="../../assets/images/project-2/05-it1-screenshot.webp" alt="Screenshot of the first iteration ticket queue dashboard" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            </div>
+
+            <p class="cs-body">
+              A queue, status counts, filters and a table: the version I'd have wanted as a power user. Then I walked
+              it past the same non technical staff from my earlier sessions. They came in wanting to say what was
+              wrong, not scan a queue for it. It was the wrong front door rather than the wrong feature. The queue
+              still mattered for tracking and for technical staff. It just couldn't be the first thing everyone saw.
+            </p>
+          </section>
+
+          <!-- ================= SECTION 7: THE PIVOT ================= -->
+          <section class="cs-section" id="pivot">
+            <p class="cs-eyebrow">THE PIVOT</p>
+            <h2 class="cs-heading" data-reveal>Ask what's wrong, instead of teaching the system first</h2>
+
+            <div class="cs-callout" data-reveal>
+              <p class="cs-callout-label">WHY A CONVERSATION, NOT A FORM</p>
+              <p class="cs-callout-body">
+                People already describe problems in plain language to a colleague or helpdesk, not in categories
+                and dropdowns. So the interaction was redesigned to match that.
+              </p>
+            </div>
+
+            <p class="cs-eyebrow">FIRST LOAD</p>
+            <p class="cs-body cs-mb-24">
+              No form and no category picker, just a prompt and a few likely starting points. The first thing anyone
+              sees is a question instead of a queue.
+            </p>
+            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:2394/1654;">
+              <img src="../../assets/images/project-2/06-chatfirst.webp" alt="Screenshot of the chat-first landing screen with a prompt and starting points" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            </div>
+
+            <p class="cs-eyebrow">DESCRIBING THE ISSUE</p>
+            <p class="cs-body cs-mb-24">
+              The user types their VPN problem in their own words. The assistant offers a knowledge base guide first,
+              and only surfaces a ticket once that hasn't worked, pre filled with a category and description
+              pulled from the conversation.
+            </p>
+            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:2396/1654;">
+              <img src="../../assets/images/project-2/07-chatsecond-describing.webp" alt="Screenshot of the assistant chat helping a user describe their VPN issue" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            </div>
+
+            <div class="cs-callout" data-reveal style="margin-bottom:24px;">
+              <p class="cs-callout-label">WHERE MY SCOPE ENDS</p>
+              <p class="cs-callout-body">
+                Matching the query against the knowledge base and deciding when it's a match is engineering's
+                logic. I designed what happens on either side of that decision: a resolved answer in chat if
+                there's a match, an escalation with a pre filled ticket if there isn't.
+              </p>
+            </div>
+
+            <p class="cs-body cs-mb-32">
+              Technical staff still get full precision when they need it. Everyone else gets one question instead
+              of a form.
+            </p>
+
+            <p class="cs-eyebrow">WHERE IT LANDS</p>
+            <p class="cs-body cs-mb-24">
+              Once raised, the ticket lands in the same queue from iteration 1. It now shows TKT-4821, the VPN issue
+              Priya just described, with its real category and urgency instead of a blank submission.
+            </p>
+            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:2396/1654;">
+              <img src="../../assets/images/project-2/08-chatsecond-lands.webp" alt="Screenshot of the ticket queue showing the newly raised VPN ticket" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            </div>
+
+            <div class="cs-callout" data-reveal>
+              <p class="cs-callout-label">FAILURE STATE, NOT JUST THE HAPPY PATH</p>
+              <p class="cs-callout-body">
+                Every input has a defined error state, not only a default and focus state. When the assistant can't
+                help, it offers a second knowledge base search or a direct route to a person instead of a dead end.
+              </p>
+            </div>
+          </section>
+
+          <!-- ================= THE SYSTEM UNDERNEATH (interactive) ================= -->
+          <section class="cs-section" id="system">
+            <p class="cs-eyebrow">THE SYSTEM UNDERNEATH</p>
+            <h2 class="cs-heading" data-reveal>Built once, reused everywhere DPDS ships</h2>
+            <p class="cs-body cs-mb-32">
+              Tata Motors' brand team gave me the brand guidelines and colours. I built the token system and the
+              components, and audited every interactive state against WCAG AA.
+            </p>
+
+            <div class="ds-section" id="ds-root">
+
+              <!-- ---- Architecture flow ---- -->
+              <div class="ds-block">
+                <p class="cs-eyebrow">TOKEN ARCHITECTURE</p>
+                <h3 class="cs-gap-heading">Primitives &rarr; semantic tokens &rarr; component bindings</h3>
+                <p class="cs-body">Every color, space and radius below traces from a raw primitive, through a named
+                  semantic role, into the components that use it. A fix at any layer carries through everywhere
+                  that layer is used.</p>
+                <p class="ds-why">Why three layers? DPDS builds more than one tool. If the brand blue changes, I change one value, not every screen.</p>
+                <div class="ds-flow">
+                  <div class="ds-flow-stage">
+                    <h4>Primitives</h4>
+                    <p>Raw values: brand/blue, status/red, spacing/md&hellip;</p>
+                  </div>
+                  <div class="ds-flow-arrow">&rarr;</div>
+                  <div class="ds-flow-stage">
+                    <h4>Semantic tokens</h4>
+                    <p>Roles: accent/default, text/secondary, bg/inverse&hellip;</p>
+                  </div>
+                  <div class="ds-flow-arrow">&rarr;</div>
+                  <div class="ds-flow-stage">
+                    <h4>Component bindings</h4>
+                    <p>Button, Input, Badge, Card, Ticket Item&hellip;</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ---- Color tokens ---- -->
+              <div class="ds-block">
+                <p class="cs-eyebrow">PRIMITIVES</p>
+                <h3 class="cs-gap-heading">Color tokens</h3>
+                <p class="cs-body">Two separate groups. Brand primitives carry Tata Motors' own palette. Status
+                  colors are kept apart and used only for urgent, warning and success states. Click a swatch to
+                  copy its token name and hex.</p>
+                <p class="ds-why">Why keep status colours apart? If red can be decoration, an urgent ticket stops looking urgent.</p>
+
+                <div class="ds-swatch-group">
+                  <p class="ds-swatch-group-label">Brand: Tata Motors palette</p>
+                  <div class="ds-swatch-row">
+                    <button class="ds-swatch" type="button" data-name="brand/deep-blue" data-hex="#0A0A5F">
+                      <span class="ds-swatch-color" style="background:#0A0A5F;"></span>
+                      <span class="ds-swatch-name">deep-blue</span>
+                      <span class="ds-swatch-hex">#0A0A5F</span>
+                      <span class="ds-swatch-copied">Copied</span>
+                    </button>
+                    <button class="ds-swatch" type="button" data-name="brand/blue" data-hex="#307FE1">
+                      <span class="ds-swatch-color" style="background:#307FE1;"></span>
+                      <span class="ds-swatch-name">blue</span>
+                      <span class="ds-swatch-hex">#307FE1</span>
+                      <span class="ds-swatch-copied">Copied</span>
+                    </button>
+                    <button class="ds-swatch" type="button" data-name="brand/light-blue" data-hex="#C0D9F8">
+                      <span class="ds-swatch-color" style="background:#C0D9F8;"></span>
+                      <span class="ds-swatch-name">light-blue</span>
+                      <span class="ds-swatch-hex">#C0D9F8</span>
+                      <span class="ds-swatch-copied">Copied</span>
+                    </button>
+                    <button class="ds-swatch" type="button" data-name="brand/royal-blue" data-hex="#395BC0">
+                      <span class="ds-swatch-color" style="background:#395BC0;"></span>
+                      <span class="ds-swatch-name">royal-blue</span>
+                      <span class="ds-swatch-hex">#395BC0</span>
+                      <span class="ds-swatch-copied">Copied</span>
+                    </button>
+                    <button class="ds-swatch" type="button" data-name="brand/dark-gray" data-hex="#A1A9AC">
+                      <span class="ds-swatch-color" style="background:#A1A9AC;"></span>
+                      <span class="ds-swatch-name">dark-gray</span>
+                      <span class="ds-swatch-hex">#A1A9AC</span>
+                      <span class="ds-swatch-copied">Copied</span>
+                    </button>
+                    <button class="ds-swatch" type="button" data-name="brand/light-gray" data-hex="#C0C5C7">
+                      <span class="ds-swatch-color" style="background:#C0C5C7;"></span>
+                      <span class="ds-swatch-name">light-gray</span>
+                      <span class="ds-swatch-hex">#C0C5C7</span>
+                      <span class="ds-swatch-copied">Copied</span>
+                    </button>
+                    <button class="ds-swatch" type="button" data-name="brand/black" data-hex="#000000">
+                      <span class="ds-swatch-color" style="background:#000000;"></span>
+                      <span class="ds-swatch-name">black</span>
+                      <span class="ds-swatch-hex">#000000</span>
+                      <span class="ds-swatch-copied">Copied</span>
+                    </button>
+                    <button class="ds-swatch" type="button" data-name="brand/white" data-hex="#FFFFFF">
+                      <span class="ds-swatch-color" style="background:#FFFFFF; border-color:rgba(255,255,255,0.3);"></span>
+                      <span class="ds-swatch-name">white</span>
+                      <span class="ds-swatch-hex">#FFFFFF</span>
+                      <span class="ds-swatch-copied">Copied</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="ds-swatch-group">
+                  <p class="ds-swatch-group-label">Status: functional colors, not brand colors</p>
+                  <div class="ds-swatch-row">
+                    <button class="ds-swatch" type="button" data-name="status/red" data-hex="#C4342A">
+                      <span class="ds-swatch-color" style="background:#C4342A;"></span>
+                      <span class="ds-swatch-name">red &middot; error</span>
+                      <span class="ds-swatch-hex">#C4342A</span>
+                      <span class="ds-swatch-copied">Copied</span>
+                    </button>
+                    <button class="ds-swatch" type="button" data-name="status/red-bg" data-hex="#FBEAE8">
+                      <span class="ds-swatch-color" style="background:#FBEAE8;"></span>
+                      <span class="ds-swatch-name">red-bg</span>
+                      <span class="ds-swatch-hex">#FBEAE8</span>
+                      <span class="ds-swatch-copied">Copied</span>
+                    </button>
+                    <button class="ds-swatch" type="button" data-name="status/amber" data-hex="#D0982F">
+                      <span class="ds-swatch-color" style="background:#D0982F;"></span>
+                      <span class="ds-swatch-name">amber &middot; warning</span>
+                      <span class="ds-swatch-hex">#D0982F</span>
+                      <span class="ds-swatch-copied">Copied</span>
+                    </button>
+                    <button class="ds-swatch" type="button" data-name="status/amber-bg" data-hex="#FBF1E1">
+                      <span class="ds-swatch-color" style="background:#FBF1E1;"></span>
+                      <span class="ds-swatch-name">amber-bg</span>
+                      <span class="ds-swatch-hex">#FBF1E1</span>
+                      <span class="ds-swatch-copied">Copied</span>
+                    </button>
+                    <button class="ds-swatch" type="button" data-name="status/green" data-hex="#40AD81">
+                      <span class="ds-swatch-color" style="background:#40AD81;"></span>
+                      <span class="ds-swatch-name">green &middot; success</span>
+                      <span class="ds-swatch-hex">#40AD81</span>
+                      <span class="ds-swatch-copied">Copied</span>
+                    </button>
+                    <button class="ds-swatch" type="button" data-name="status/green-bg" data-hex="#E9F5EC">
+                      <span class="ds-swatch-color" style="background:#E9F5EC;"></span>
+                      <span class="ds-swatch-name">green-bg</span>
+                      <span class="ds-swatch-hex">#E9F5EC</span>
+                      <span class="ds-swatch-copied">Copied</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ---- Type scale ---- -->
+              <div class="ds-block">
+                <p class="cs-eyebrow">PRIMITIVES</p>
+                <h3 class="cs-gap-heading">Type scale</h3>
+                <p class="cs-body">Seven styles in Inter. Headings for structure, body for reading, labels for the
+                  small print on chips, pills and tickets.</p>
+                <p class="ds-why">Why seven? Enough for a dense ticket queue, few enough that nobody has to guess which one to use.</p>
+                <div class="ds-type">
+                  <div class="ds-type-row">
+                    <div class="ds-type-meta"><span class="ds-type-name">Heading/H1</span><span class="ds-type-spec">32 / 40 &middot; Bold 700</span></div>
+                    <p class="ds-type-sample" style="font-size:32px;line-height:40px;font-weight:700;letter-spacing:-0.2px">Raise a ticket in plain language</p>
+                  </div>
+                  <div class="ds-type-row">
+                    <div class="ds-type-meta"><span class="ds-type-name">Heading/H2</span><span class="ds-type-spec">22 / 28 &middot; Semibold 600</span></div>
+                    <p class="ds-type-sample" style="font-size:22px;line-height:28px;font-weight:600">Raise a ticket in plain language</p>
+                  </div>
+                  <div class="ds-type-row">
+                    <div class="ds-type-meta"><span class="ds-type-name">Heading/H3</span><span class="ds-type-spec">17 / 24 &middot; Semibold 600</span></div>
+                    <p class="ds-type-sample" style="font-size:17px;line-height:24px;font-weight:600">Raise a ticket in plain language</p>
+                  </div>
+                  <div class="ds-type-row">
+                    <div class="ds-type-meta"><span class="ds-type-name">Body/Large</span><span class="ds-type-spec">16 / 24 &middot; Regular 400</span></div>
+                    <p class="ds-type-sample" style="font-size:16px;line-height:24px;font-weight:400">Raise a ticket in plain language</p>
+                  </div>
+                  <div class="ds-type-row">
+                    <div class="ds-type-meta"><span class="ds-type-name">Body/Medium</span><span class="ds-type-spec">14 / 20 &middot; Regular 400</span></div>
+                    <p class="ds-type-sample" style="font-size:14px;line-height:20px;font-weight:400">Raise a ticket in plain language</p>
+                  </div>
+                  <div class="ds-type-row">
+                    <div class="ds-type-meta"><span class="ds-type-name">Label/Medium</span><span class="ds-type-spec">13 / 18 &middot; Medium 500</span></div>
+                    <p class="ds-type-sample" style="font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.1px">Raise a ticket in plain language</p>
+                  </div>
+                  <div class="ds-type-row">
+                    <div class="ds-type-meta"><span class="ds-type-name">Label/Small</span><span class="ds-type-spec">11 / 16 &middot; Medium 500</span></div>
+                    <p class="ds-type-sample" style="font-size:11px;line-height:16px;font-weight:500;letter-spacing:0.3px">Raise a ticket in plain language</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ---- Spacing and radius ---- -->
+              <div class="ds-block">
+                <p class="cs-eyebrow">PRIMITIVES</p>
+                <h3 class="cs-gap-heading">Spacing and radius</h3>
+                <p class="cs-body">A six step spacing scale and four radii. Chips and pills use full, cards use lg,
+                  inputs and buttons use md.</p>
+                <p class="ds-why">Why a fixed scale? Every gap becomes a decision made once, not a new one on every screen.</p>
+                <div class="ds-scale-grid">
+                  <div class="ds-scale-card">
+                    <p class="ds-swatch-group-label">Spacing</p>
+                    <div class="ds-space-row"><span class="ds-space-bar" style="--w:4px"></span><span class="ds-space-name">spacing/xs</span><span class="ds-space-val">4px</span></div>
+                    <div class="ds-space-row"><span class="ds-space-bar" style="--w:8px"></span><span class="ds-space-name">spacing/sm</span><span class="ds-space-val">8px</span></div>
+                    <div class="ds-space-row"><span class="ds-space-bar" style="--w:16px"></span><span class="ds-space-name">spacing/md</span><span class="ds-space-val">16px</span></div>
+                    <div class="ds-space-row"><span class="ds-space-bar" style="--w:24px"></span><span class="ds-space-name">spacing/lg</span><span class="ds-space-val">24px</span></div>
+                    <div class="ds-space-row"><span class="ds-space-bar" style="--w:32px"></span><span class="ds-space-name">spacing/xl</span><span class="ds-space-val">32px</span></div>
+                    <div class="ds-space-row"><span class="ds-space-bar" style="--w:48px"></span><span class="ds-space-name">spacing/2xl</span><span class="ds-space-val">48px</span></div>
+                  </div>
+                  <div class="ds-scale-card">
+                    <p class="ds-swatch-group-label">Radius</p>
+                    <div class="ds-radius-row">
+                    <div class="ds-radius-item"><span class="ds-radius-box" style="border-radius:6px"></span><span class="ds-space-name">radius/sm</span><span class="ds-space-val">6px</span></div>
+                    <div class="ds-radius-item"><span class="ds-radius-box" style="border-radius:10px"></span><span class="ds-space-name">radius/md</span><span class="ds-space-val">10px</span></div>
+                    <div class="ds-radius-item"><span class="ds-radius-box" style="border-radius:16px"></span><span class="ds-space-name">radius/lg</span><span class="ds-space-val">16px</span></div>
+                    <div class="ds-radius-item"><span class="ds-radius-box" style="border-radius:999px"></span><span class="ds-space-name">radius/full</span><span class="ds-space-val">999px</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ---- Components, live states ---- -->
+              <div class="ds-block">
+                <p class="cs-eyebrow">COMPONENT BINDINGS</p>
+                <h3 class="cs-gap-heading">Core components, every real state</h3>
+                <p class="cs-body">Click a state to see the component change: default, hover, focus, error and
+                  disabled, the way it behaves in the actual product.</p>
+                <p class="ds-why">Why design every state? A state I don't design is one a developer has to guess, and guesses are where bugs come from.</p>
+
+                <div class="ds-component-grid">
+
+                  <div class="ds-component-card" data-component="button">
+                    <p class="ds-component-name">Button</p>
+                    <p class="ds-component-hint">accent/default &rarr; text/inverse</p>
+                    <div class="ds-component-stage">
+                      <button class="ds-live-button" type="button" data-state="default">Submit ticket</button>
+                    </div>
+                    <div class="ds-component-states">
+                      <button class="ds-state-btn ds-active" type="button" data-state="default">Default</button>
+                      <button class="ds-state-btn" type="button" data-state="hover">Hover</button>
+                      <button class="ds-state-btn" type="button" data-state="focus">Focus</button>
+                      <button class="ds-state-btn" type="button" data-state="error">Error</button>
+                      <button class="ds-state-btn" type="button" data-state="disabled">Disabled</button>
+                    </div>
+                  </div>
+
+                  <div class="ds-component-card" data-component="input">
+                    <p class="ds-component-name">Input</p>
+                    <p class="ds-component-hint">border/default &rarr; border/focus</p>
+                    <div class="ds-component-stage">
+                      <div class="ds-live-input-wrap">
+                        <input class="ds-live-input" data-state="default" type="text" value="TKT-4821" readonly />
+                        <p class="ds-live-input-msg"></p>
+                      </div>
+                    </div>
+                    <div class="ds-component-states">
+                      <button class="ds-state-btn ds-active" type="button" data-state="default">Default</button>
+                      <button class="ds-state-btn" type="button" data-state="hover">Hover</button>
+                      <button class="ds-state-btn" type="button" data-state="focus">Focus</button>
+                      <button class="ds-state-btn" type="button" data-state="error">Error</button>
+                      <button class="ds-state-btn" type="button" data-state="disabled">Disabled</button>
+                    </div>
+                  </div>
+
+                  <div class="ds-component-card" data-component="badge">
+                    <p class="ds-component-name">Badge / Status Chip</p>
+                    <p class="ds-component-hint">status/green &rarr; status/green-bg</p>
+                    <div class="ds-component-stage">
+                      <span class="ds-live-badge" data-state="default">&#9679; Resolved</span>
+                    </div>
+                    <div class="ds-component-states">
+                      <button class="ds-state-btn ds-active" type="button" data-state="default">Default</button>
+                      <button class="ds-state-btn" type="button" data-state="hover">Hover</button>
+                      <button class="ds-state-btn" type="button" data-state="focus">Focus</button>
+                      <button class="ds-state-btn" type="button" data-state="error">Error</button>
+                      <button class="ds-state-btn" type="button" data-state="disabled">Disabled</button>
+                    </div>
+                  </div>
+
+                  <div class="ds-component-card" data-component="card">
+                    <p class="ds-component-name">Card</p>
+                    <p class="ds-component-hint">surface/default &rarr; surface/accent</p>
+                    <div class="ds-component-stage">
+                      <div class="ds-live-card" data-state="default">
+                        <p class="ds-live-card-title">VPN dropping on home network</p>
+                        <p class="ds-live-card-body">Filed by Priya S. &middot; 12 min ago</p>
+                      </div>
+                    </div>
+                    <div class="ds-component-states">
+                      <button class="ds-state-btn ds-active" type="button" data-state="default">Default</button>
+                      <button class="ds-state-btn" type="button" data-state="hover">Hover</button>
+                      <button class="ds-state-btn" type="button" data-state="focus">Accent</button>
+                      <button class="ds-state-btn" type="button" data-state="error">Error</button>
+                      <button class="ds-state-btn" type="button" data-state="disabled">Disabled</button>
+                    </div>
+                  </div>
+
+                  <div class="ds-component-card" data-component="ticket">
+                    <p class="ds-component-name">Ticket List Item</p>
+                    <p class="ds-component-hint">status stripe, meta row, avatar, timestamp</p>
+                    <div class="ds-component-stage">
+                      <div class="ds-live-ticket">
+                        <span class="ds-live-ticket-stripe"></span>
+                        <span class="ds-live-ticket-main">
+                          <span class="ds-live-ticket-meta">
+                            <span class="ds-live-ticket-no">TKT-4821</span>
+                            <span class="ds-live-ticket-dot">&middot;</span>
+                            <span>Network</span>
+                            <span class="ds-live-ticket-dot">&middot;</span>
+                            <span>Pune Plant</span>
+                          </span>
+                          <p class="ds-live-ticket-title">VPN dropping on home network</p>
+                        </span>
+                        <span class="ds-live-ticket-side">
+                          <span class="ds-live-ticket-pill"><span class="ds-live-ticket-pill-dot"></span>In Progress</span>
+                          <span class="ds-live-ticket-avatar">PS</span>
+                          <span class="ds-live-ticket-time">12m ago</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- ---- Assistant components (live) ---- -->
+              <div class="ds-block">
+                <p class="cs-eyebrow">COMPONENT BINDINGS</p>
+                <h3 class="cs-gap-heading">Assistant components</h3>
+                <p class="cs-body">The pieces the conversation is built from. Try it: pick a starting point, then
+                  tell the assistant whether the guide worked.</p>
+                <div class="ds-chat" id="ds-chat">
+                  <div class="ds-chat-chips" role="group" aria-label="Suggested starting points">
+                    <button type="button" class="ds-chip is-on">VPN issue</button>
+                    <button type="button" class="ds-chip">Track TKT-4821</button>
+                    <button type="button" class="ds-chip">Reset password</button>
+                    <button type="button" class="ds-chip">Raise a ticket</button>
+                  </div>
+                  <div class="ds-chat-thread">
+                    <div class="ds-msg-user"><span class="ds-bubble-user">My VPN keeps disconnecting on the plant network</span><span class="ds-avatar">PM</span></div>
+                    <div class="ds-msg-bot">
+                      <span class="ds-orb" aria-hidden="true"></span>
+                      <div class="ds-bubble-bot">
+                        <p class="ds-bot-text">Plant network VPN drops are usually caused by a stale profile. Try this first:</p>
+                        <div class="ds-guide">
+                          <span class="ds-guide-icon">+</span>
+                          <span><span class="ds-guide-title">Reset VPN: Plant Network SOP</span><span class="ds-guide-meta">Guide &middot; 2 min read</span></span>
+                        </div>
+                        <div class="ds-resolve">
+                          <button type="button" class="ds-resolve-btn" data-answer="fixed">That fixed it</button>
+                          <button type="button" class="ds-resolve-btn ds-resolve-alt" data-answer="still">Still not working</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ds-msg-bot ds-reveal-slot" data-slot="fixed">
+                      <span class="ds-orb" aria-hidden="true"></span>
+                      <div class="ds-bubble-bot"><p class="ds-bot-text"><span class="ds-live-badge">&#9679; Resolved</span> Glad that worked. No ticket needed.</p></div>
+                    </div>
+                    <div class="ds-msg-bot ds-reveal-slot" data-slot="still">
+                      <span class="ds-orb" aria-hidden="true"></span>
+                      <div class="ds-bubble-bot">
+                        <div class="ds-ticket-card">
+                          <div>
+                            <p class="ds-ticket-card-title">Ready to raise this as a ticket</p>
+                            <p class="ds-ticket-card-meta">Category: Technical, VPN connectivity &middot; Pre filled from this chat</p>
+                          </div>
+                          <button type="button" class="ds-ticket-card-btn">Create ticket</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ---- Stat card, real summary row ---- -->
+              <div class="ds-block">
+                <p class="cs-eyebrow">COMPONENT BINDINGS</p>
+                <h3 class="cs-gap-heading">Stat card</h3>
+                <p class="cs-body">The queue summary row from the ticket dashboard: total, open, in progress and
+                  urgent counts, each in its own status color so the shape of the queue reads at a glance.</p>
+                <div class="ds-statcard-row">
+                  <div class="ds-statcard">
+                    <p class="ds-statcard-label">Total</p>
+                    <p class="ds-statcard-value">128</p>
+                  </div>
+                  <div class="ds-statcard">
+                    <p class="ds-statcard-label">Open</p>
+                    <p class="ds-statcard-value ds-stat-open">46</p>
+                  </div>
+                  <div class="ds-statcard">
+                    <p class="ds-statcard-label">In Progress</p>
+                    <p class="ds-statcard-value ds-stat-progress">57</p>
+                  </div>
+                  <div class="ds-statcard">
+                    <p class="ds-statcard-label">Urgent</p>
+                    <p class="ds-statcard-value ds-stat-urgent">9</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ---- Accessibility audit ---- -->
+              <div class="ds-block">
+                <p class="cs-eyebrow">ACCESSIBILITY</p>
+                <h3 class="cs-gap-heading">WCAG AA contrast audit</h3>
+                <p class="cs-body">Every text and background pair, checked against WCAG AA.</p>
+                <div class="ds-a11y-sum">
+                  <div><b>12</b><span>token pairs checked</span></div>
+                  <div><b>4</b><span>failed at first</span></div>
+                  <div><b>4</b><span>fixed at the token level</span></div>
+                </div>
+                <p class="ds-why">Why fix tokens, not screens? One change to a token fixed every place it was used.</p>
+                <details class="ds-a11y-more"><summary>See all 12 pairs</summary>
+                <div class="ds-a11y">
+                  <div class="ds-a11y-row ds-a11y-head"><div>Pair</div><div>Ratio</div><div>Needs</div><div>Result</div></div>
+                  <div class="ds-a11y-row ds-a11y-pass">
+                    <div class="ds-a11y-pair"><code>text/primary on bg/primary</code></div>
+                    <div class="ds-a11y-ratio">21.0:1</div>
+                    <div class="ds-a11y-needs">4.5:1</div>
+                    <div><span class="ds-a11y-pill">Pass</span></div>
+                  </div>
+                  <div class="ds-a11y-row ds-a11y-pass">
+                    <div class="ds-a11y-pair"><code>text/primary on bg/secondary</code></div>
+                    <div class="ds-a11y-ratio">12.05:1</div>
+                    <div class="ds-a11y-needs">4.5:1</div>
+                    <div><span class="ds-a11y-pill">Pass</span></div>
+                  </div>
+                  <div class="ds-a11y-row ds-a11y-fixed">
+                    <div class="ds-a11y-pair"><code>text/secondary on bg/primary</code><span class="ds-a11y-note">Was 2.39. Darkened text/secondary from raw dark gray to a deeper shade.</span></div>
+                    <div class="ds-a11y-ratio">8.35:1</div>
+                    <div class="ds-a11y-needs">4.5:1</div>
+                    <div><span class="ds-a11y-pill">Fixed</span></div>
+                  </div>
+                  <div class="ds-a11y-row ds-a11y-fixed">
+                    <div class="ds-a11y-pair"><code>text/secondary on bg/secondary</code><span class="ds-a11y-note">Was 1.37. Same shade change as above.</span></div>
+                    <div class="ds-a11y-ratio">4.79:1</div>
+                    <div class="ds-a11y-needs">4.5:1</div>
+                    <div><span class="ds-a11y-pill">Fixed</span></div>
+                  </div>
+                  <div class="ds-a11y-row ds-a11y-pass">
+                    <div class="ds-a11y-pair"><code>text/inverse on accent/default (button)</code></div>
+                    <div class="ds-a11y-ratio">4.0:1</div>
+                    <div class="ds-a11y-needs">3.0:1</div>
+                    <div><span class="ds-a11y-pill">Pass</span></div>
+                  </div>
+                  <div class="ds-a11y-row ds-a11y-pass">
+                    <div class="ds-a11y-pair"><code>text/inverse on bg/inverse (sidebar)</code></div>
+                    <div class="ds-a11y-ratio">17.19:1</div>
+                    <div class="ds-a11y-needs">4.5:1</div>
+                    <div><span class="ds-a11y-pill">Pass</span></div>
+                  </div>
+                  <div class="ds-a11y-row ds-a11y-fixed">
+                    <div class="ds-a11y-pair"><code>accent/on-subtle-bg on bg/accent-subtle</code><span class="ds-a11y-note">Was 2.77 with the default blue. The new token uses royal blue instead.</span></div>
+                    <div class="ds-a11y-ratio">4.23:1</div>
+                    <div class="ds-a11y-needs">3.0:1</div>
+                    <div><span class="ds-a11y-pill">Fixed</span></div>
+                  </div>
+                  <div class="ds-a11y-row ds-a11y-pass">
+                    <div class="ds-a11y-pair"><code>status/error on status/error-bg</code></div>
+                    <div class="ds-a11y-ratio">4.66:1</div>
+                    <div class="ds-a11y-needs">4.5:1</div>
+                    <div><span class="ds-a11y-pill">Pass</span></div>
+                  </div>
+                  <div class="ds-a11y-row ds-a11y-fixed">
+                    <div class="ds-a11y-pair"><code>status/warning on status/warning-bg</code><span class="ds-a11y-note">Was 3.25. Darkened the warning text primitive.</span></div>
+                    <div class="ds-a11y-ratio">5.19:1</div>
+                    <div class="ds-a11y-needs">4.5:1</div>
+                    <div><span class="ds-a11y-pill">Fixed</span></div>
+                  </div>
+                  <div class="ds-a11y-row ds-a11y-pass">
+                    <div class="ds-a11y-pair"><code>status/success on status/success-bg</code></div>
+                    <div class="ds-a11y-ratio">4.53:1</div>
+                    <div class="ds-a11y-needs">4.5:1</div>
+                    <div><span class="ds-a11y-pill">Pass</span></div>
+                  </div>
+                  <div class="ds-a11y-row ds-a11y-pass">
+                    <div class="ds-a11y-pair"><code>border/focus on bg/primary</code></div>
+                    <div class="ds-a11y-ratio">4.0:1</div>
+                    <div class="ds-a11y-needs">3.0:1</div>
+                    <div><span class="ds-a11y-pill">Pass</span></div>
+                  </div>
+                  <div class="ds-a11y-row ds-a11y-na">
+                    <div class="ds-a11y-pair"><code>disabled/text on disabled/bg</code><span class="ds-a11y-note">Disabled controls are exempt from AA. Low contrast is the correct signal here, so it is flagged rather than changed.</span></div>
+                    <div class="ds-a11y-ratio">1.37:1</div>
+                    <div class="ds-a11y-needs">Exempt</div>
+                    <div><span class="ds-a11y-pill">Exempt</span></div>
+                  </div>
+                </div>
+                </details>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ================= SECTION 8: WHAT I DIDN'T SOLVE ================= -->
+          <section class="cs-section" id="unsolved">
+            <p class="cs-eyebrow">WHAT I DIDN'T SOLVE</p>
+            <h2 class="cs-heading" data-reveal>Not everything here is settled</h2>
+
+            <div class="cs-found-grid">
+              <div class="cs-solve-card" data-reveal>
+                <p class="cs-solve-label">JUDGMENT CALL</p>
+                <p class="cs-gap-heading">A segmentation I read, not measured</p>
+                <p class="cs-solve-body">Technical staff versus everyone else is a pattern I observed. It held up under stakeholder review, but it isn't based on a real sample.</p>
+              </div>
+              <div class="cs-solve-card" data-reveal>
+                <p class="cs-solve-label">UNRESOLVED</p>
+                <p class="cs-gap-heading">Less human review, by design</p>
+                <p class="cs-solve-body">Pre filling a ticket from chat speeds things up, but it skips the moment where a person thinks the request through.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ================= SECTION 8b: WHERE IT STANDS ================= -->
+          <section class="cs-section" id="stands">
+            <p class="cs-eyebrow">WHERE IT STANDS</p>
+            <h2 class="cs-heading" data-reveal>In review, ahead of the next build pass</h2>
+            <p class="cs-body cs-mb-32">
+              Month 3 of 4. I presented it at the mid internship review, where the GM's feedback centered on clarity,
+              and two or three colleagues responded well to how easy it was to use. That's early signal, not a
+              structured usability study.
+            </p>
+
+            <div class="cs-check-grid">
+              <div class="cs-check-card" data-reveal>
+                <p class="cs-check-label cs-check-yes">&#10003; VALIDATED</p>
+                <ul>
+                  <li>Audit, competitive analysis, two iterations</li>
+                  <li>Pivot decision, grounded in the audit</li>
+                  <li>Informal stakeholder review</li>
+                </ul>
+              </div>
+              <div class="cs-check-card" data-reveal>
+                <p class="cs-check-label cs-check-pending">&#9675; NOT YET</p>
+                <ul>
+                  <li>Assistant flow: no structured usability sessions yet</li>
+                  <li>Ticket deflection impact: a hypothesis, not yet measured</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- ================= SECTION 9: WHAT I'D TRACK ================= -->
+          <section class="cs-section" id="track">
+            <p class="cs-eyebrow">WHAT I'D TRACK</p>
+            <h2 class="cs-heading" data-reveal>Hypotheses, not results. Nothing below has real numbers yet</h2>
+
+            <div class="cs-reflection-item" data-reveal>
+              <span class="cs-reflection-num">01</span>
+              <div class="cs-reflection-text">
+                <p class="cs-reflection-title">Ticket deflection rate</p>
+                <p class="cs-reflection-body">Issues resolved by the assistant before becoming a ticket.</p>
+              </div>
+            </div>
+            <div class="cs-reflection-item" data-reveal>
+              <span class="cs-reflection-num">02</span>
+              <div class="cs-reflection-text">
+                <p class="cs-reflection-title">Self service resolution rate</p>
+                <p class="cs-reflection-body">Of attempted resolutions, how many actually stick.</p>
+              </div>
+            </div>
+            <div class="cs-reflection-item" data-reveal>
+              <span class="cs-reflection-num">03</span>
+              <div class="cs-reflection-text">
+                <p class="cs-reflection-title">Time to resolution</p>
+                <p class="cs-reflection-body">Whether pre filled ticket context speeds up handling.</p>
+              </div>
+            </div>
+
+            <p class="cs-body">
+              A system built to cut down tickets should be judged by whether it actually does. Measuring that is the
+              next step.
+            </p>
+
+
+            <p class="cs-thanks">&#2343;&#2344;&#2381;&#2351;&#2357;&#2366;&#2342;&hellip;</p>
+
+            <!-- Next project -->
+            <a class="cs-next" href="../project-1/">
+              <div>
+                <p class="cs-next-label">NEXT PROJECT</p>
+                <p class="cs-next-title">Designing the Return</p>
+                <p class="cs-next-desc">An in car display for the sixty seconds before a Level 3 car hands control back to its driver<span>&hellip;</span></p>
+              </div>
+              <span class="cs-next-btn">Read Case Study</span>
+            </a>
+          </section>
+
+        </article>
+        <script>
+          /* Scroll reveal: elements marked data-reveal fade and rise into view once.
+             Skipped for people who prefer reduced motion; content stays visible if JS fails. */
+          (function () {
+            var els = document.querySelectorAll('.cs-v2 [data-reveal]');
+            if (!('IntersectionObserver' in window)) return;
+            if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            document.documentElement.classList.add('cs-reveal-on');
+            var io = new IntersectionObserver(function (entries) {
+              entries.forEach(function (e) {
+                if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+              });
+            }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+            els.forEach(function (el) { io.observe(el); });
+          })();
+        </script>
+        <script>
+          /* Stat cards count up from zero the first time they scroll into view. */
+          (function () {
+            var row = document.querySelector('.cs-v2 .ds-statcard-row');
+            if (!row || !('IntersectionObserver' in window)) return;
+            if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            var vals = row.querySelectorAll('.ds-statcard-value');
+            var targets = [];
+            vals.forEach(function (v) { targets.push(parseInt(v.textContent, 10) || 0); v.textContent = '0'; });
+            var io = new IntersectionObserver(function (entries) {
+              if (!entries[0].isIntersecting) return;
+              io.disconnect();
+              var t0 = performance.now(), dur = 1100;
+              (function tick(now) {
+                var p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+                vals.forEach(function (v, i) { v.textContent = Math.round(targets[i] * e); });
+                if (p < 1) requestAnimationFrame(tick);
+              })(t0);
+            }, { threshold: 0.4 });
+            io.observe(row);
+          })();
+        </script>
+        <script>
+          /* Assistant components demo: chips select, resolve buttons reveal the matching reply. */
+          (function () {
+            var chat = document.getElementById('ds-chat');
+            if (!chat) return;
+            chat.querySelectorAll('.ds-chip').forEach(function (chip, i, all) {
+              chip.addEventListener('click', function () {
+                all.forEach(function (c) { c.classList.toggle('is-on', c === chip); });
+              });
+            });
+            var btns = chat.querySelectorAll('.ds-resolve-btn');
+            var slots = chat.querySelectorAll('.ds-reveal-slot');
+            btns.forEach(function (b) {
+              b.setAttribute('aria-pressed', 'false');
+              b.addEventListener('click', function () {
+                var a = b.getAttribute('data-answer');
+                btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+                slots.forEach(function (s) { s.classList.toggle('is-shown', s.getAttribute('data-slot') === a); });
+              });
+            });
+          })();
+        </script>
+        <!-- Section navigation: small dot rail on the left, wide screens only -->
+        <nav class="cs-toc" aria-label="Case study sections">
+          <ol>
+            <li><a href="#overview" data-target="overview"><span class="cs-toc-label">Overview</span></a></li>
+            <li><a href="#inherited" data-target="inherited"><span class="cs-toc-label">What I Inherited</span></a></li>
+            <li><a href="#why" data-target="why"><span class="cs-toc-label">Why It Matters</span></a></li>
+            <li><a href="#people" data-target="people"><span class="cs-toc-label">Two People</span></a></li>
+            <li><a href="#first" data-target="first"><span class="cs-toc-label">First Attempt</span></a></li>
+            <li><a href="#pivot" data-target="pivot"><span class="cs-toc-label">The Pivot</span></a></li>
+            <li><a href="#system" data-target="system"><span class="cs-toc-label">The System</span></a></li>
+            <li><a href="#unsolved" data-target="unsolved"><span class="cs-toc-label">What I Didn't Solve</span></a></li>
+            <li><a href="#stands" data-target="stands"><span class="cs-toc-label">Where It Stands</span></a></li>
+            <li><a href="#track" data-target="track"><span class="cs-toc-label">What I'd Track</span></a></li>
+          </ol>
+        </nav>
+        <script>
+          /* Section rail: highlights the current section, appears after the hero, smooth scrolls on click. */
+          (function () {
+            var toc = document.querySelector('.cs-toc');
+            if (!toc) return;
+            var links = toc.querySelectorAll('a');
+            var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            function setActive(id) {
+              links.forEach(function (a) {
+                var on = a.getAttribute('data-target') === id;
+                a.classList.toggle('is-active', on);
+                if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+              });
+            }
+            links.forEach(function (a) {
+              a.addEventListener('click', function (ev) {
+                var el = document.getElementById(a.getAttribute('data-target'));
+                if (!el) return;
+                ev.preventDefault();
+                el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+                history.replaceState(null, '', '#' + el.id);
+              });
+            });
+            if (!('IntersectionObserver' in window)) { toc.classList.add('is-visible'); return; }
+            var secIO = new IntersectionObserver(function (entries) {
+              entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
+            }, { rootMargin: '-45% 0px -50% 0px' });
+            document.querySelectorAll('.cs-v2 > .cs-section[id]').forEach(function (s) { secIO.observe(s); });
+            var hero = document.querySelector('.cs-hero-image');
+            if (hero) {
+              new IntersectionObserver(function (entries) {
+                toc.classList.toggle('is-visible', !entries[0].isIntersecting);
+              }).observe(hero);
+            } else { toc.classList.add('is-visible'); }
+          })();
+        </script>
+      </div>
+
+      <!-- =================== FOOTER (shared partial) =================== -->
+      <div class="x-padding">
+        <script src="../../partials/footer.js?v=20261005g"></script>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- =================== Interactive design-system section logic =================== -->
+  <script>
+    (function () {
+      var dsRoot = document.getElementById('ds-root');
+      if (!dsRoot) return;
+
+      /* ---- Scroll-triggered reveal ---- */
+      var blocks = dsRoot.querySelectorAll('.ds-block');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('ds-in');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        blocks.forEach(function (b) { io.observe(b); });
+      } else {
+        blocks.forEach(function (b) { b.classList.add('ds-in'); });
+      }
+
+      /* ---- Click-to-copy color swatches ---- */
+      var swatches = dsRoot.querySelectorAll('.ds-swatch');
+      swatches.forEach(function (sw) {
+        sw.addEventListener('click', function () {
+          var name = sw.getAttribute('data-name');
+          var hex = sw.getAttribute('data-hex');
+          var text = name + ' - ' + hex;
+          var done = function () {
+            sw.classList.add('ds-copied');
+            window.clearTimeout(sw._copyTimer);
+            sw._copyTimer = window.setTimeout(function () {
+              sw.classList.remove('ds-copied');
+            }, 1400);
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done, done);
+          } else {
+            done();
+          }
+        });
+      });
+
+      /* ---- Live component state transitions ---- */
+      var cards = dsRoot.querySelectorAll('.ds-component-card');
+      cards.forEach(function (card) {
+        var stage = card.querySelector('.ds-component-stage');
+        var live = stage ? stage.querySelector('[data-state]') : null;
+        var msg = stage ? stage.querySelector('.ds-live-input-msg') : null;
+        var buttons = card.querySelectorAll('.ds-state-btn');
+        var selected = 'default';
+
+        function applyState(state) {
+          if (!live) return;
+          live.setAttribute('data-state', state);
+          if (msg) {
+            msg.textContent = state === 'error' ? 'Ticket ID not recognized.' : '';
+          }
+          if (live.tagName === 'BUTTON' || live.tagName === 'INPUT') {
+            live.disabled = state === 'disabled';
+          }
+        }
+
+        buttons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            selected = btn.getAttribute('data-state');
+            buttons.forEach(function (b) { b.classList.toggle('ds-active', b === btn); });
+            applyState(selected);
+          });
+        });
+
+        if (live) {
+          live.addEventListener('mouseenter', function () {
+            if (selected === 'default') applyState('hover');
+          });
+          live.addEventListener('mouseleave', function () {
+            if (selected === 'default') applyState('default');
+          });
+        }
+      });
+    })();
+  </script>
+  <script src="../../partials/whimsy.js?v=20261005g"></script>
+  <script src="../../partials/mobile-menu.js?v=20261005g"></script>
+</body>
+</html>
