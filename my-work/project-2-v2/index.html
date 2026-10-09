@@ -701,24 +701,24 @@
 .v2-part::after { content: ""; flex: 1; height: 1px; background: #18191F; opacity: .2; }
 .v2-part span { font-size: 15px; font-weight: 700; letter-spacing: .16em; color: #18191F; }
 .v2-part b { color: #E87B35; font-weight: 700; }
-.v2-findings { list-style: none; margin: 0 0 48px; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.v2-findings li { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px 22px; font-size: 17px; line-height: 1.45; color: #18191F; }
-.v2-findings b { display: block; margin-bottom: 4px; font-size: 26px; font-weight: 700; color: #E87B35; line-height: 1.1; }
-.tms-notes { grid-template-columns: repeat(5, 1fr); gap: 12px; }
-.tms-notes li { font-size: 16px; padding: 18px; }
-@media (max-width: 1100px) { .tms-notes { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .tms-notes, .v2-findings { grid-template-columns: 1fr; } }
-.tms-annot { position: relative; margin: 0; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 0 #E5E7EB, 0 20px 50px -24px rgba(24,25,31,.25); }
-.tms-annot img { display: block; width: 100%; height: auto; }
-.tms-dot { position: absolute; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; background: #E87B35; color: #fff; font-size: 15px; font-weight: 700; display: grid; place-items: center; box-shadow: 0 0 0 4px rgba(255,255,255,.9), 0 4px 12px rgba(24,25,31,.25); }
-.cs-reveal-on .tms-annot.is-in .tms-dot { animation: tms-pop .5s cubic-bezier(.22,1.6,.36,1) both; }
-.cs-reveal-on .tms-annot.is-in .tms-dot:nth-of-type(2) { animation-delay: .15s; }
-.cs-reveal-on .tms-annot.is-in .tms-dot:nth-of-type(3) { animation-delay: .3s; }
-.cs-reveal-on .tms-annot.is-in .tms-dot:nth-of-type(4) { animation-delay: .45s; }
-.cs-reveal-on .tms-annot.is-in .tms-dot:nth-of-type(5) { animation-delay: .6s; }
-.cs-reveal-on .tms-annot.is-in .tms-dot:nth-of-type(6) { animation-delay: .75s; }
-@keyframes tms-pop { from { transform: scale(0); } to { transform: none; } }
-@media (max-width: 700px) { .tms-dot { width: 20px; height: 20px; margin: -10px 0 0 -10px; font-size: 11px; box-shadow: 0 0 0 2px rgba(255,255,255,.9); } }
+.tms-annot { position: relative; margin: 0; }
+.tms-annot img { display: block; width: 100%; height: auto; border-radius: 6px; box-shadow: 0 1px 0 #E5E7EB, 0 20px 50px -24px rgba(24,25,31,.25); }
+.tms-dot { position: absolute; width: 32px; height: 32px; margin: -16px 0 0 -16px; padding: 0; border: 0; border-radius: 50%; background: #E87B35; color: #fff; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; box-shadow: 0 0 0 4px rgba(255,255,255,.9), 0 4px 12px rgba(24,25,31,.25); z-index: 2; }
+.tms-num { display: grid; place-items: center; width: 100%; height: 100%; border-radius: 50%; }
+.tms-dot::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #E87B35; opacity: .45; animation: tms-ping 2.4s ease-out infinite; z-index: -1; }
+.tms-dot:hover, .tms-dot:focus-visible, .tms-dot.is-open { z-index: 5; background: #18191F; outline: none; }
+.tms-dot:hover::before, .tms-dot:focus-visible::before, .tms-dot.is-open::before { animation: none; opacity: 0; }
+@keyframes tms-ping { 0% { transform: scale(1); opacity: .45; } 70%, 100% { transform: scale(2); opacity: 0; } }
+.tms-tip { position: absolute; left: 50%; bottom: calc(100% + 14px); width: 260px; padding: 14px 16px; background: #18191F; color: #E9EAED; border-radius: 12px; font-size: 15px; font-weight: 400; line-height: 1.45; text-align: left; box-shadow: 0 16px 40px -12px rgba(24,25,31,.5); opacity: 0; visibility: hidden; transform: translate(-50%, 6px); transition: opacity .2s ease, transform .2s ease, visibility .2s; pointer-events: none; }
+.tms-tip b { display: block; margin-bottom: 4px; font-size: 16px; font-weight: 700; color: #FF8F71; }
+.tms-dot:hover .tms-tip, .tms-dot:focus-visible .tms-tip, .tms-dot.is-open .tms-tip { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.tms-dot.tip-down .tms-tip { bottom: auto; top: calc(100% + 14px); }
+.tms-dot.tip-left .tms-tip { left: -6px; transform: translate(0, 6px); }
+.tms-dot.tip-left:hover .tms-tip, .tms-dot.tip-left:focus-visible .tms-tip, .tms-dot.tip-left.is-open .tms-tip { transform: none; }
+.tms-dot.tip-right .tms-tip { left: auto; right: -6px; transform: translate(0, 6px); }
+.tms-dot.tip-right:hover .tms-tip, .tms-dot.tip-right:focus-visible .tms-tip, .tms-dot.tip-right.is-open .tms-tip { transform: none; }
+@media (max-width: 700px) { .tms-dot { width: 22px; height: 22px; margin: -11px 0 0 -11px; font-size: 12px; box-shadow: 0 0 0 2px rgba(255,255,255,.9); } .tms-tip { width: 200px; font-size: 14px; padding: 12px 14px; } .tms-tip b { font-size: 15px; } }
+@media (prefers-reduced-motion: reduce) { .tms-dot::before { animation: none; } }
 .tms-note { margin: 0; font-size: 15px; line-height: 1.5; color: #6C727F; max-width: 640px; }
 .v2-logic + .tms-note { margin-top: 20px; }
 </style>
@@ -790,21 +790,13 @@
 
             <figure class="tms-annot" data-reveal>
               <img src="../../assets/images/project-2/02-current-tms-screenshot.webp" alt="The current TMS user page. A row of nine blue navigation links, the DPDS TMS title and Tata Motors logo shown twice, a form asking for a login ID and type, and a summary table where status is shown only by red, yellow and green cells." loading="lazy">
-              <span class="tms-dot" style="left:53%; top:3.4%;">1</span>
-              <span class="tms-dot" style="left:12.6%; top:43.6%;">2</span>
-              <span class="tms-dot" style="left:40.6%; top:21.8%;">3</span>
-              <span class="tms-dot" style="left:76.8%; top:70%;">4</span>
-              <span class="tms-dot" style="left:46.2%; top:3.4%;">5</span>
+              <button type="button" class="tms-dot tip-down" style="left:53%; top:3.4%;" aria-label="Finding 1, Nine links, one weight"><span class="tms-num">1</span><span class="tms-tip" role="tooltip"><b>Nine links, one weight</b>All in one row, the same size and colour. Nothing says where to start.</span></button>
+              <button type="button" class="tms-dot tip-left" style="left:12.6%; top:43.6%;" aria-label="Finding 2, Said twice"><span class="tms-num">2</span><span class="tms-tip" role="tooltip"><b>Said twice</b>The title and logo appear twice on one page, so nothing feels like the top.</span></button>
+              <button type="button" class="tms-dot " style="left:40.6%; top:21.8%;" aria-label="Finding 3, A form before anything"><span class="tms-num">3</span><span class="tms-tip" role="tooltip"><b>A form before anything</b>You fill in your ID and a type before you see a single ticket.</span></button>
+              <button type="button" class="tms-dot tip-right" style="left:76.8%; top:70%;" aria-label="Finding 4, Colour does all the talking"><span class="tms-num">4</span><span class="tms-tip" role="tooltip"><b>Colour does all the talking</b>Status is red, yellow or green, and nothing else. Hard to read if you can't tell them apart.</span></button>
+              <button type="button" class="tms-dot tip-down" style="left:46.2%; top:3.4%;" aria-label="Finding 5, Nothing tries to help first"><span class="tms-num">5</span><span class="tms-tip" role="tooltip"><b>Nothing tries to help first</b>Help is one more link in the row. The only way forward is raising a ticket.</span></button>
             </figure>
-            <p class="cs-img-caption cs-mb-32">The current TMS user page, marked up while I used it.</p>
-
-            <ul class="v2-findings tms-notes">
-              <li data-reveal><b>01</b>Nine links in one row, all the same size and colour. Nothing says where to start.</li>
-              <li data-reveal><b>02</b>The title and logo appear twice on one page, so nothing feels like the top.</li>
-              <li data-reveal><b>03</b>You fill in your ID and a type before you see a single ticket.</li>
-              <li data-reveal><b>04</b>Status is red, yellow or green, and nothing else. Colour does all the talking.</li>
-              <li data-reveal><b>05</b>Help is one more link in the row. Nothing tries to answer before you raise a ticket.</li>
-            </ul>
+            <p class="cs-img-caption cs-mb-48">The current TMS user page. Hover or tap a number to see what I found.</p>
 
             <div class="cs-callout" data-reveal><p>The screens were messy, but that wasn't the real problem. A hardware fault and a forgotten password went through the same four field form.</p></div>
             <p class="tms-note">I also audited the full navigation and information architecture. The structure itself stays under Tata Motors' NDA.</p>
@@ -947,7 +939,7 @@
                 <div class="cs-pin-screen">
                   <img class="cs-pin-img is-active" src="../../assets/images/project-2/06-chatfirst.webp" alt="First load: a greeting, Hi Priya, how can I help, one input and four suggested starting points">
                   <img class="cs-pin-img" src="../../assets/images/project-2/07-chatsecond-describing.webp" loading="lazy" alt="Priya types that her VPN keeps disconnecting on the plant network. The assistant suggests a reset guide with That fixed it and Still not working buttons, then offers a pre filled ticket">
-                  <img class="cs-pin-img" src="../../assets/images/project-2/08-chatsecond-lands.webp" loading="lazy" alt="My Tickets: a confirmation that TKT-4822 was raised from chat, and the new ticket at the top of the list showing what Priya already tried">
+                  <img class="cs-pin-img" src="../../assets/images/project-2/08-chatsecond-lands.webp" loading="lazy" alt="My Tickets: the queue with Priya's VPN ticket, TKT-4821, at the top, marked urgent, with its category and location already set">
                 </div>
                 <div class="cs-pin-info">
                   <div class="cs-pin-caps">
@@ -963,7 +955,7 @@
                     </div>
                     <div class="cs-pin-cap">
                       <p class="cs-pin-name"><span>03</span>Where it lands</p>
-                      <p class="cs-pin-desc">The ticket arrives already filled in, with what she tried and what happened.</p>
+                      <p class="cs-pin-desc">Her ticket lands at the top of the queue, with its category, location and urgency already set.</p>
                       <p class="cs-pin-why">Why? Support staff still get the detail they need. It comes from the chat, not from Priya filling in fields.</p>
                     </div>
                   </div>
@@ -1569,6 +1561,21 @@
           </section>
 
         </article>
+        <script>
+          /* Annotated screenshot: tap a number to open its note on touch screens, tap elsewhere to close. */
+          (function () {
+            var dots = document.querySelectorAll('.tms-dot');
+            dots.forEach(function (d) {
+              d.addEventListener('click', function (e) {
+                e.stopPropagation();
+                var open = d.classList.contains('is-open');
+                dots.forEach(function (x) { x.classList.remove('is-open'); });
+                if (!open) d.classList.add('is-open');
+              });
+            });
+            document.addEventListener('click', function () { dots.forEach(function (x) { x.classList.remove('is-open'); }); });
+          })();
+        </script>
         <script>
           /* Pinned screens: the panel is held with position:fixed while you scroll through the section,
              and each third of the scroll shows the next screen. */
