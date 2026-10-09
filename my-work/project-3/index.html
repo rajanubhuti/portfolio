@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>LumiTrack | Anubhuti Raj</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="../../assets/images/browsericon.png" />
+
+  <!-- Site-wide styles (same file the homepage uses) -->
+  <link rel="preload" href="../../assets/fonts/f9c47219ac0af4ab.p.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="../../css/style.css?v=20261005g" />
+  <!-- Shared header/footer styles -->
+  <link rel="stylesheet" href="../../partials/shared.css?v=20261005g" />
+  <!-- Case-study layout styles (plain CSS, reusable across future case studies) -->
+  <link rel="stylesheet" href="../../assets/css/case-study.css?v=20261005g" />
+  <!-- Inter, the product's own typeface, for the design system samples -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+
+
+  <style>
+/* Case study 2 layout: spacing, headings, scroll reveal, section rail. Scoped to .cs-v2. */
+/* ============================================================
+   Spacing, heading size and scroll animations.
+   Scoped to .cs-v2 so other case studies are unaffected.
+============================================================ */
+
+/* Space between sections */
+.cs-v2 .cs-section { margin-bottom: 150px; }
+.cs-v2 .cs-section:last-of-type { margin-bottom: 0; }
+.cs-v2 .cs-meta-grid { margin-bottom: 120px; }
+
+/* Bigger headings */
+.cs-v2 .cs-heading { font-size: 40px; line-height: 1.1; margin-bottom: 32px; }
+
+/* Even spacing between the pieces inside a section */
+.cs-v2 .cs-mb-32 { margin-bottom: 40px !important; }
+.cs-v2 .cs-mb-48 { margin-bottom: 56px !important; }
+.cs-v2 .cs-body { margin-bottom: 24px; }
+.cs-v2 .cs-storyboard { gap: 40px 24px; }
+.cs-v2 .cs-ai-credit { margin-top: 20px; margin-bottom: 64px; }
+.cs-v2 .cs-timeline-labels { margin-bottom: 56px; }
+.cs-v2 .cs-callout { margin: 0 0 40px 0; }
+.cs-v2 .cs-illustration { margin-bottom: 56px; }
+.cs-v2 .cs-numbers { margin-bottom: 56px; }
+.cs-v2 .cs-section .cs-numbers:last-child { margin-bottom: 0; }
+.cs-v2 .cs-stat-row { margin-bottom: 20px; }
+.cs-v2 .cs-stat-row:last-of-type { margin-bottom: 40px; }
+.cs-v2 .cs-table { margin-bottom: 56px; }
+.cs-v2 .cs-gap-card { margin-bottom: 24px; }
+.cs-v2 .cs-state-block { margin-bottom: 16px; }
+.cs-v2 .cs-state-desc { margin-bottom: 28px; }
+.cs-v2 .cs-state-image { margin-bottom: 56px; }
+.cs-v2 .cs-trigger { margin-bottom: 56px; }
+.cs-v2 .cs-solve-card { margin-bottom: 24px; }
+.cs-v2 .cs-reflection-item { margin-bottom: 36px; }
+.cs-v2 .cs-sources { margin-top: 56px; }
+.cs-v2 h1.cs-heading { font-size: 64px; line-height: 1; margin-bottom: 32px; }
+.cs-v2 .cs-eyebrow { margin-bottom: 14px; }
+
+/* ---- Scroll reveal ---- */
+.cs-reveal-on .cs-v2 [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
+  will-change: opacity, transform;
+}
+.cs-reveal-on .cs-v2 [data-reveal].is-in { opacity: 1; transform: none; }
+/* Items side by side appear one after another */
+.cs-reveal-on .cs-v2 .cs-storyboard > :nth-child(2),
+.cs-reveal-on .cs-v2 .cs-storyboard > :nth-child(4),
+.cs-reveal-on .cs-v2 .cs-numbers > :nth-child(2),
+.cs-reveal-on .cs-v2 .cs-tried-row > :nth-child(3) { transition-delay: .1s; }
+.cs-reveal-on .cs-v2 .cs-numbers > :nth-child(3),
+.cs-reveal-on .cs-v2 .cs-tried-row > :nth-child(5) { transition-delay: .2s; }
+.cs-reveal-on .cs-v2 .cs-numbers > :nth-child(4) { transition-delay: .3s; }
+/* Bars draw in from the left */
+.cs-reveal-on .cs-v2 .cs-stat-fill { transform: scaleX(0); transform-origin: left; transition: transform 1.1s cubic-bezier(.22,1,.36,1) .25s; }
+.cs-reveal-on .cs-v2 .cs-stat-row.is-in .cs-stat-fill { transform: none; }
+.cs-reveal-on .cs-v2 .cs-trigger-bar { clip-path: inset(0 100% 0 0 round 8px); transition: clip-path 1.1s cubic-bezier(.22,1,.36,1) .2s; }
+.cs-reveal-on .cs-v2 .cs-trigger-row.is-in .cs-trigger-bar { clip-path: inset(0 0 0 0 round 8px); }
+/* Problem timeline wipes in */
+.cs-v2 .cs-timeline { position: relative; }
+.cs-reveal-on .cs-v2 .cs-timeline { transform: none; }
+.cs-reveal-on .cs-v2 .cs-timeline::after {
+  content: ""; position: absolute; inset: 0; background: #F8F8F8;
+  transform-origin: right; transition: transform 1.2s cubic-bezier(.22,1,.36,1) .15s;
+}
+.cs-reveal-on .cs-v2 .cs-timeline.is-in::after { transform: scaleX(0); }
+
+@media (max-width: 900px) {
+  .cs-v2 .cs-section { margin-bottom: 110px; }
+  .cs-v2 .cs-meta-grid { margin-bottom: 80px; }
+  .cs-v2 .cs-heading { font-size: 30px; }
+  .cs-v2 h1.cs-heading { font-size: 44px; }
+}
+@media (max-width: 560px) {
+  .cs-v2 .cs-section { margin-bottom: 88px; }
+  .cs-v2 .cs-heading { font-size: 26px; }
+  .cs-v2 h1.cs-heading { font-size: 36px; }
+}
+
+/* ---- Section rail (left side, wide screens only) ---- */
+.cs-v2 > .cs-section[id] { scroll-margin-top: 48px; }
+.cs-toc { display: none; }
+@media (min-width: 1340px) {
+  .cs-toc {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: max(24px, calc((100vw - 1196px) / 2 - 200px));
+    transform: translateY(-50%);
+    z-index: 40;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .4s ease;
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  }
+  .cs-toc.is-visible { opacity: 1; pointer-events: auto; }
+  .cs-toc ol {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  /* thin connecting line */
+  .cs-toc ol::before {
+    content: "";
+    position: absolute;
+    left: 13px;
+    top: 14px;
+    bottom: 14px;
+    width: 0;
+    border-left: 2px dotted rgba(232, 123, 53, 0.55);
+  }
+  .cs-toc a {
+    position: relative;
+    display: block;
+    width: 28px;
+    height: 28px;
+    text-decoration: none;
+  }
+  .cs-toc a::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #E87B35;
+    background: #F8F8F8;
+    transform: translate(-50%, -50%);
+    transition: width .25s ease, height .25s ease, background .25s ease;
+  }
+  .cs-toc a:hover::before { background: #F6C9A8; }
+  .cs-toc a.is-active::before { width: 16px; height: 16px; background: #E87B35; }
+  .cs-toc a:focus-visible { outline: 2px solid #E87B35; outline-offset: 2px; border-radius: 50%; }
+  /* label shows only on hover or keyboard focus */
+  .cs-toc-label {
+    position: absolute;
+    left: 36px;
+    top: 50%;
+    transform: translate(-4px, -50%);
+    white-space: nowrap;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: #18191F;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .cs-toc a:hover .cs-toc-label,
+  .cs-toc a:focus-visible .cs-toc-label { opacity: 1; transform: translate(0, -50%); }
+}
+
+
+/* ---- Section rail (left side, wide screens only) ---- */
+.cs-v2 > .cs-section[id] { scroll-margin-top: 48px; }
+.cs-toc { display: none; }
+@media (min-width: 1340px) {
+  .cs-toc {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: max(24px, calc((100vw - 1196px) / 2 - 200px));
+    transform: translateY(-50%);
+    z-index: 40;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .4s ease;
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  }
+  .cs-toc.is-visible { opacity: 1; pointer-events: auto; }
+  .cs-toc ol {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  /* thin connecting line */
+  .cs-toc ol::before {
+    content: "";
+    position: absolute;
+    left: 13px;
+    top: 14px;
+    bottom: 14px;
+    width: 0;
+    border-left: 2px dotted rgba(232, 123, 53, 0.55);
+  }
+  .cs-toc a {
+    position: relative;
+    display: block;
+    width: 28px;
+    height: 28px;
+    text-decoration: none;
+  }
+  .cs-toc a::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #E87B35;
+    background: #F8F8F8;
+    transform: translate(-50%, -50%);
+    transition: width .25s ease, height .25s ease, background .25s ease;
+  }
+  .cs-toc a:hover::before { background: #F6C9A8; }
+  .cs-toc a.is-active::before { width: 16px; height: 16px; background: #E87B35; }
+  .cs-toc a:focus-visible { outline: 2px solid #E87B35; outline-offset: 2px; border-radius: 50%; }
+  /* label shows only on hover or keyboard focus */
+  .cs-toc-label {
+    position: absolute;
+    left: 36px;
+    top: 50%;
+    transform: translate(-4px, -50%);
+    white-space: nowrap;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: #18191F;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .cs-toc a:hover .cs-toc-label,
+  .cs-toc a:focus-visible .cs-toc-label { opacity: 1; transform: translate(0, -50%); }
+}
+
+/* ---- Pinned five-state screens ---- */
+.cs-pin { position: relative; height: 380vh; margin-bottom: 24px; }
+.cs-pin-sticky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.cs-pin-screen {
+  position: relative;
+  width: min(100%, 1100px, calc((100vh - 240px) * 1300 / 760));
+  aspect-ratio: 1300 / 760;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #07080f;
+  box-shadow: 0 30px 80px -20px var(--pin-glow, rgba(24,25,31,.35)), 0 2px 6px rgba(24,25,31,.08);
+  transition: box-shadow .8s ease;
+}
+.cs-pin-sticky.is-fixed { position: fixed; top: 0; right: auto; z-index: 30; }
+.cs-pin-sticky.is-after { top: auto; bottom: 0; }
+.cs-pin-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; pointer-events: none; background: transparent; }
+.cs-pin[data-state="neutral"]  { --pin-glow: rgba(60, 70, 90, .45); }
+.cs-pin[data-state="ramp"]     { --pin-glow: rgba(242, 169, 78, .45); }
+.cs-pin[data-state="reengage"] { --pin-glow: rgba(242, 150, 40, .65); }
+.cs-pin[data-state="alert"]    { --pin-glow: rgba(229, 72, 77, .7); }
+.cs-pin[data-state="calm"]     { --pin-glow: rgba(120, 200, 140, .45); }
+.cs-pin-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity .6s ease, transform .8s cubic-bezier(.22,1,.36,1);
+}
+.cs-pin-img.is-active { opacity: 1; transform: none; }
+.cs-pin-info {
+  width: min(100%, 1100px, calc((100vh - 240px) * 1300 / 760));
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+}
+.cs-pin-caps { position: relative; flex: 1; min-height: 96px; }
+.cs-pin-cap {
+  position: absolute;
+  inset: 0 0 auto 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+.cs-pin-cap.is-active { opacity: 1; transform: none; }
+.cs-pin-time { margin: 0 0 6px 0; font-size: 15px; font-weight: 600; color: #6C727F; }
+.cs-pin-name { margin: 0 0 6px 0; font-size: 26px; font-weight: 700; color: #18191F; }
+.cs-pin-name span { color: #E87B35; margin-right: 10px; }
+.cs-pin-desc { margin: 0; font-size: 18px; line-height: 1.45; color: #2A2B31; max-width: 560px; }
+.cs-pin-steps { display: flex; gap: 8px; flex-shrink: 0; padding-bottom: 8px; }
+.cs-pin-step {
+  width: 44px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.cs-pin-step span {
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background: #D9DBE0;
+  transition: background .4s ease, height .3s ease;
+}
+.cs-pin-step:hover span { height: 6px; }
+.cs-pin-step:focus-visible { outline: 2px solid #E87B35; outline-offset: 2px; border-radius: 4px; }
+.cs-pin-step-neutral.is-active span  { background: #6C727F; }
+.cs-pin-step-ramp.is-active span     { background: #F7C58A; }
+.cs-pin-step-reengage.is-active span { background: #F2A94E; }
+.cs-pin-step-alert.is-active span    { background: #E5484D; }
+.cs-pin-step-calm.is-active span     { background: #6FBF73; }
+
+@media (max-width: 900px) {
+  .cs-pin { height: 320vh; }
+  .cs-pin-info { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .cs-pin-screen { border-radius: 16px; }
+  .cs-pin-name { font-size: 22px; }
+  .cs-pin-desc { font-size: 16px; }
+  .cs-pin-caps { width: 100%; min-height: 110px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-pin-img, .cs-pin-cap, .cs-pin-screen { transition: none; }
+}
+
+/* ---- Micro interactions ---- */
+/* Cards lift on hover. Uses the separate `translate` property so it never fights the scroll reveal. */
+.cs-v2 .cs-solve-card,
+.cs-v2 .cs-check-card,
+.cs-v2 .ds-component-card,
+.cs-v2 .ds-statcard,
+.cs-v2 .ds-flow-stage,
+.cs-v2 .ds-live-ticket {
+  transition: translate .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, border-color .35s ease;
+}
+.cs-reveal-on .cs-v2 .cs-solve-card[data-reveal],
+.cs-reveal-on .cs-v2 .cs-check-card[data-reveal] {
+  transition: opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1),
+              translate .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, border-color .35s ease;
+}
+.cs-v2 .cs-solve-card:hover,
+.cs-v2 .cs-check-card:hover,
+.cs-v2 .ds-component-card:hover,
+.cs-v2 .ds-statcard:hover,
+.cs-v2 .ds-flow-stage:hover,
+.cs-v2 .ds-live-ticket:hover {
+  translate: 0 -4px;
+  box-shadow: 0 2px 4px rgba(24,25,31,.04), 0 16px 32px rgba(24,25,31,.09);
+  border-color: #F3C9A9;
+}
+
+/* Callout: orange bar draws down when it scrolls in */
+.cs-reveal-on .cs-v2 .cs-callout[data-reveal] {
+  border-left-color: transparent;
+  background-image: linear-gradient(#E87B35, #E87B35);
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-position: left top;
+  background-size: 8px 0%;
+  transition: opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1),
+              background-size .9s cubic-bezier(.22,1,.36,1) .25s;
+}
+.cs-reveal-on .cs-v2 .cs-callout[data-reveal].is-in { background-size: 8px 100%; }
+
+/* Comparison table: ticks and crosses pop in, row by row */
+.cs-reveal-on .cs-v2 .cs-compare-table .cs-compare-mark {
+  opacity: 0;
+  transform: scale(.4);
+  transition: opacity .35s ease, transform .45s cubic-bezier(.34,1.56,.64,1);
+}
+.cs-reveal-on .cs-v2 .cs-compare-table.is-in .cs-compare-mark { opacity: 1; transform: none; }
+.cs-reveal-on .cs-v2 .cs-compare-row:nth-child(2) .cs-compare-mark { transition-delay: .25s; }
+.cs-reveal-on .cs-v2 .cs-compare-row:nth-child(3) .cs-compare-mark { transition-delay: .35s; }
+.cs-reveal-on .cs-v2 .cs-compare-row:nth-child(4) .cs-compare-mark { transition-delay: .45s; }
+.cs-reveal-on .cs-v2 .cs-compare-row:nth-child(5) .cs-compare-mark { transition-delay: .55s; }
+.cs-reveal-on .cs-v2 .cs-compare-row:nth-child(6) .cs-compare-mark { transition-delay: .65s; }
+.cs-reveal-on .cs-v2 .cs-compare-row:nth-child(7) .cs-compare-mark { transition-delay: .75s; }
+.cs-v2 .cs-compare-row { transition: background .25s ease; }
+.cs-v2 .cs-compare-row:not(.cs-compare-head):hover { background: #FEF7EE; }
+
+/* Personas: illustration slides in from its side, chat bubble pops up after the card */
+.cs-reveal-on .cs-v2 .cs-persona-flank[data-reveal] .cs-persona-flank-figure {
+  opacity: 0; transform: translateX(-28px);
+  transition: opacity .7s ease .15s, transform .8s cubic-bezier(.22,1,.36,1) .15s;
+}
+.cs-reveal-on .cs-v2 .cs-persona-flank[data-reveal] .cs-persona-flank-figure.cs-flip { transform: translateX(28px); }
+.cs-reveal-on .cs-v2 .cs-persona-flank[data-reveal].is-in .cs-persona-flank-figure { opacity: 1; transform: none; }
+.cs-reveal-on .cs-v2 .cs-persona-flank[data-reveal] .cs-chat-bubble {
+  opacity: 0; transform: translateY(8px) scale(.96); transform-origin: left bottom;
+  transition: opacity .45s ease .55s, transform .5s cubic-bezier(.34,1.56,.64,1) .55s;
+}
+.cs-reveal-on .cs-v2 .cs-persona-flank[data-reveal].is-in .cs-chat-bubble { opacity: 1; transform: none; }
+
+/* Screenshots: gentle zoom on hover */
+.cs-v2 .cs-hero-image[data-reveal] { overflow: hidden; border-radius: 4px; }
+.cs-v2 .cs-hero-image[data-reveal] img { transition: transform .7s cubic-bezier(.22,1,.36,1); }
+.cs-v2 .cs-hero-image[data-reveal]:hover img { transform: scale(1.015); }
+
+/* Reflection numbers nudge on hover */
+.cs-v2 .cs-reflection-num { display: inline-block; transition: transform .3s ease; }
+.cs-v2 .cs-reflection-item:hover .cs-reflection-num { transform: translateX(4px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-v2 * { transition-duration: .01ms !important; }
+}
+
+/* ---- Design system additions: type, spacing, radius, assistant, accessibility ---- */
+.cs-v2 .ds-type, .cs-v2 .ds-chat, .cs-v2 .ds-a11y, .cs-v2 .ds-scale-card { font-family: 'Inter', system-ui, sans-serif; }
+.cs-v2 .ds-type { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; }
+.cs-v2 .ds-type-row { display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: center; padding: 16px 24px; border-bottom: 1px solid #F0F1F3; transition: background .25s ease; }
+.cs-v2 .ds-type-row:last-child { border-bottom: none; }
+.cs-v2 .ds-type-row:hover { background: #F7FAFE; }
+.cs-v2 .ds-type-name { display: block; font-size: 13px; font-weight: 600; color: #18191F; }
+.cs-v2 .ds-type-spec { display: block; font-size: 12px; color: #6C727F; margin-top: 2px; }
+.cs-v2 .ds-type-sample { margin: 0; color: #0B1220; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.cs-v2 .ds-scale-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.cs-v2 .ds-scale-card { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 24px; }
+.cs-v2 .ds-space-row { display: grid; grid-template-columns: 64px 1fr auto; align-items: center; gap: 16px; padding: 7px 0; }
+.cs-v2 .ds-space-bar { display: block; height: 20px; width: var(--w); background: #307FE1; border-radius: 2px; transition: width .9s cubic-bezier(.22,1,.36,1); }
+.cs-reveal-on .cs-v2 .ds-block:not(.ds-in) .ds-space-bar { width: 0; }
+.cs-v2 .ds-space-name { font-size: 13px; font-weight: 500; color: #18191F; }
+.cs-v2 .ds-space-val { font-size: 12px; color: #6C727F; font-variant-numeric: tabular-nums; }
+.cs-v2 .ds-radius-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 8px; }
+.cs-v2 .ds-radius-item { display: flex; flex-direction: column; gap: 4px; }
+.cs-v2 .ds-radius-box { display: block; width: 100%; aspect-ratio: 1; max-width: 80px; background: #307FE1; margin-bottom: 6px; transition: transform .3s ease; }
+.cs-v2 .ds-radius-item:hover .ds-radius-box { transform: scale(1.06); }
+
+/* Assistant components, values from the Figma file */
+.cs-v2 .ds-chat { background: #F5F7FA; border: 1px solid #E6E9EE; border-radius: 16px; padding: 28px; }
+.cs-v2 .ds-chat-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.cs-v2 .ds-chip { font-family: inherit; font-size: 13px; font-weight: 600; line-height: 19.5px; color: #55606E; background: #fff; border: 1.5px solid #E6E9EE; border-radius: 100px; padding: 6px 14px; cursor: pointer; transition: border-color .2s ease, color .2s ease, background .2s ease, translate .2s ease; }
+.cs-v2 .ds-chip:hover { border-color: #307FE1; color: #0A0A5F; translate: 0 -1px; }
+.cs-v2 .ds-chip.is-on { background: #0A0A5F; border-color: #0A0A5F; color: #fff; }
+.cs-v2 .ds-chip:focus-visible, .cs-v2 .ds-resolve-btn:focus-visible, .cs-v2 .ds-ticket-card-btn:focus-visible { outline: 2px solid #307FE1; outline-offset: 2px; }
+.cs-v2 .ds-chat-thread { display: flex; flex-direction: column; gap: 12px; }
+.cs-v2 .ds-msg-user { display: flex; justify-content: flex-end; align-items: flex-end; gap: 10px; }
+.cs-v2 .ds-bubble-user { background: #0A0A5F; color: #fff; font-size: 14px; font-weight: 500; line-height: 21.7px; padding: 11px 16px; border-radius: 16px 16px 5px 16px; max-width: 520px; }
+.cs-v2 .ds-avatar { flex: none; width: 28px; height: 28px; border-radius: 14px; background: #307FE1; color: rgba(255,255,255,.7); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.cs-v2 .ds-msg-bot { display: flex; align-items: flex-start; gap: 10px; }
+.cs-v2 .ds-orb { flex: none; width: 24px; height: 24px; margin-top: 4px; border-radius: 50%; border: 2px solid #395BC0; background: radial-gradient(circle at 35% 30%, #fff, #C8E6FF 60%, #DEF0FF); box-shadow: 0 0 16px rgba(0,94,184,.2); }
+.cs-v2 .ds-bubble-bot { background: #fff; border: 1.5px solid #E6E9EE; border-radius: 5px 16px 16px 16px; padding: 12px 16px 14px; max-width: 542px; width: 100%; box-sizing: border-box; box-shadow: 0 1px 1px rgba(10,38,71,.04), 0 8px 12px rgba(10,38,71,.06); }
+.cs-v2 .ds-bot-text { margin: 0; font-size: 14px; font-weight: 500; line-height: 22.4px; color: #0B1220; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.cs-v2 .ds-guide { display: flex; align-items: center; gap: 10px; margin-top: 10px; padding: 12px; background: #FAFBFD; border: 1px solid #E7E9EF; border-radius: 10px; transition: border-color .2s ease; }
+.cs-v2 .ds-guide:hover { border-color: #C0D9F8; }
+.cs-v2 .ds-guide-icon { flex: none; width: 39px; height: 39px; border-radius: 6px; background: #C0D9F8; color: #0A0A5F; font-size: 28px; font-weight: 300; display: flex; align-items: center; justify-content: center; line-height: 1; }
+.cs-v2 .ds-guide-title { display: block; font-size: 14px; font-weight: 600; color: #000; line-height: 20px; }
+.cs-v2 .ds-guide-meta { display: block; font-size: 12px; color: #8A93A0; line-height: 18px; }
+.cs-v2 .ds-resolve { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.cs-v2 .ds-resolve-btn { font-family: inherit; font-size: 12px; font-weight: 600; line-height: 22.4px; padding: 5px 14px; border-radius: 9px; background: #fff; border: 1px solid #E7E9EF; color: #55606E; cursor: pointer; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+.cs-v2 .ds-resolve-btn:hover { border-color: #A1A9AC; color: #0B1220; }
+.cs-v2 .ds-resolve-alt { border-color: #395BC0; color: #395BC0; }
+.cs-v2 .ds-resolve-alt:hover { background: #F2F6FD; color: #395BC0; border-color: #395BC0; }
+.cs-v2 .ds-resolve-btn[aria-pressed="true"] { background: #0A0A5F; border-color: #0A0A5F; color: #fff; }
+.cs-v2 .ds-reveal-slot { display: none; }
+.cs-v2 .ds-reveal-slot.is-shown { display: flex; animation: dsSlotIn .5s cubic-bezier(.22,1,.36,1); }
+@keyframes dsSlotIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.cs-v2 .ds-ticket-card { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 21px; border-radius: 13px; background: linear-gradient(127deg, #395BC0 65.7%, #0A0A5F 110%); }
+.cs-v2 .ds-ticket-card-title { margin: 0 0 4px 0; font-size: 14px; font-weight: 600; line-height: 22.4px; color: #fff; }
+.cs-v2 .ds-ticket-card-meta { margin: 0; font-size: 12px; font-weight: 500; line-height: 17px; color: #ACB7C6; }
+.cs-v2 .ds-ticket-card-btn { flex: none; font-family: inherit; font-size: 14px; font-weight: 600; padding: 7px 16px; border-radius: 10px; border: none; background: #C0D9F8; color: #000; cursor: pointer; transition: background .2s ease, translate .2s ease; }
+.cs-v2 .ds-ticket-card-btn:hover { background: #fff; translate: 0 -1px; }
+
+/* Accessibility audit table */
+.cs-v2 .ds-a11y { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; }
+.cs-v2 .ds-a11y-row { display: grid; grid-template-columns: 1fr 90px 80px 90px; gap: 16px; align-items: center; padding: 12px 20px; border-bottom: 1px solid #F0F1F3; font-size: 13px; color: #18191F; transition: background .25s ease; }
+.cs-v2 .ds-a11y-row:last-child { border-bottom: none; }
+.cs-v2 .ds-a11y-row:not(.ds-a11y-head):hover { background: #FAFBFD; }
+.cs-v2 .ds-a11y-head { background: #FAFAFA; font-size: 12px; font-weight: 600; color: #6C727F; }
+.cs-v2 .ds-a11y-pair code { font-family: "SFMono-Regular", Consolas, Menlo, monospace; font-size: 12px; color: #0B1220; }
+.cs-v2 .ds-a11y-note { display: block; margin-top: 4px; font-size: 12px; color: #6C727F; line-height: 1.45; }
+.cs-v2 .ds-a11y-ratio { font-weight: 600; font-variant-numeric: tabular-nums; }
+.cs-v2 .ds-a11y-needs { color: #6C727F; font-variant-numeric: tabular-nums; }
+.cs-v2 .ds-a11y-pill { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; }
+.cs-v2 .ds-a11y-pass .ds-a11y-pill { background: #E9F5EC; color: #1F6B45; }
+.cs-v2 .ds-a11y-fixed .ds-a11y-pill { background: #FEF0DC; color: #8A5300; }
+.cs-v2 .ds-a11y-fixed { background: #FFFCF7; }
+.cs-v2 .ds-a11y-na .ds-a11y-pill { background: #F0F1F2; color: #6C727F; }
+
+@media (max-width: 900px) {
+  .cs-v2 .ds-scale-grid { grid-template-columns: 1fr; }
+  .cs-v2 .ds-type-row { grid-template-columns: 1fr; gap: 6px; }
+  .cs-v2 .ds-type-sample { white-space: normal; }
+  .cs-v2 .ds-a11y-row { grid-template-columns: 1fr 70px 70px; }
+  .cs-v2 .ds-a11y-row > :nth-child(3) { display: none; }
+  .cs-v2 .ds-a11y-row > :nth-child(4) { grid-column: 3; }
+  .cs-v2 .ds-ticket-card { flex-direction: column; align-items: flex-start; }
+  .cs-v2 .ds-chat { padding: 18px; }
+}
+
+/* Comparison table: vendor names and logos centered in their header cells */
+.cs-v2 .cs-compare-head > .cs-compare-vendor-row { justify-content: center; }
+.cs-v2 .cs-compare-head > .cs-compare-vendor { align-items: center; text-align: center; }
+
+/* Case study 2 specifics */
+.cs-v2 .cs-found-grid { gap: 24px; margin-bottom: 24px; }
+.cs-v2 .cs-found-grid + .cs-found-grid { margin-bottom: 56px; }
+.cs-v2 .cs-persona-flank { margin-bottom: 40px; }
+.cs-v2 .cs-compare-table { margin-top: 40px !important; margin-bottom: 56px !important; }
+.cs-v2 .cs-hero-image[data-reveal] { margin-bottom: 24px; }
+.cs-v2 .cs-img-caption { margin-top: 0; }
+.cs-v2 .cs-check-grid { margin-bottom: 0; }
+.cs-v2 .ds-block { margin-bottom: 96px; }
+.cs-v2 .cs-compare-mark.cs-mark-dash { font-size: 15px; color: #8A8F99; }
+.cs-reveal-on .cs-v2 .cs-found-grid > :nth-child(2),
+.cs-reveal-on .cs-v2 .cs-check-grid > :nth-child(2) { transition-delay: .1s; }
+/* ---- Next project (end of case study) ---- */
+.cs-next {
+  display: flex; align-items: center; justify-content: space-between; gap: 32px;
+  margin: 40px 0 16px 0; padding: 32px 36px;
+  background: #fff; border: 1px solid #18191F; border-radius: 24px;
+  box-shadow: 0 6px 0 #240C05;
+  text-decoration: none; color: #18191F;
+  transition: translate .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
+}
+.cs-next:hover { translate: 0 -3px; box-shadow: 0 9px 0 #240C05; }
+.cs-next-label { margin: 0 0 8px 0; font-size: 14px; font-weight: 600; letter-spacing: .12em; color: #E87B35; }
+.cs-next-title { margin: 0 0 8px 0; font-size: 28px; font-weight: 700; line-height: 1.15; text-transform: uppercase; }
+.cs-next-desc { margin: 0; font-size: 18px; line-height: 1.45; color: #4B505C; max-width: 560px; }
+.cs-next-desc span { color: #E87B35; font-weight: 700; }
+.cs-next-btn {
+  flex: none; display: inline-flex; align-items: center;
+  padding: 16px 32px; border-radius: 999px; border: 1px solid #18191F;
+  background: #FF8F71; color: #000; font-size: 18px; font-weight: 700;
+  box-shadow: 0 4px 0 #240C05; transition: background .2s ease;
+}
+.cs-next:hover .cs-next-btn { background: #FF5A00; }
+@media (max-width: 760px) {
+  .cs-next { flex-direction: column; align-items: flex-start; padding: 24px; }
+  .cs-next-title { font-size: 22px; }
+  .cs-next-btn { width: 100%; justify-content: center; box-sizing: border-box; }
+}
+
+  
+.tms-oneliner { margin: -12px 0 28px; font-size: clamp(21px, 2.3vw, 28px); line-height: 1.35; font-weight: 600; color: #E87B35; }
+.ds-why { margin: 10px 0 24px; font-size: 16px; font-weight: 600; line-height: 1.5; color: #E87B35; }
+.ds-a11y-sum { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0 8px; }
+.ds-a11y-sum > div { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px 22px; }
+.ds-a11y-sum b { display: block; font-size: 36px; font-weight: 700; color: #E87B35; line-height: 1.1; }
+.ds-a11y-sum span { font-size: 16px; color: #18191F; }
+.ds-a11y-more summary { cursor: pointer; margin: 8px 0 16px; font-size: 16px; font-weight: 600; color: #E87B35; }
+@media (max-width: 640px) { .ds-a11y-sum { grid-template-columns: 1fr; } }
+.cs-pin-why { margin: 0; font-size: 15px; font-weight: 600; color: #E87B35; max-width: 640px; }
+.tms-pin .cs-pin-caps { min-height: 118px; }
+@media (max-width: 900px) { .cs-pin-why { font-size: 14px; } }
+.v2-logic { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
+.v2-logic .cs-solve-card { margin: 0 !important; }
+@media (max-width: 900px) { .v2-logic { grid-template-columns: 1fr; } }
+.cs-v2 .cs-callout p { color: #18191F; }
+.v2-bridge { display: inline-flex; align-items: center; gap: 10px; margin: 56px 0 0; font-size: 17px; font-weight: 600; color: #E87B35; }
+.v2-bridge::before { content: "\2193"; font-size: 20px; }
+.cs-reveal-on .v2-bridge::before { animation: v2-nudge 1.8s ease-in-out infinite; }
+@keyframes v2-nudge { 0%,100% { transform: none; } 50% { transform: translateY(4px); } }
+.v2-part { display: flex; align-items: center; gap: 20px; margin: 0 0 90px; }
+.v2-part::after { content: ""; flex: 1; height: 1px; background: #18191F; opacity: .2; }
+.v2-part span { font-size: 15px; font-weight: 700; letter-spacing: .16em; color: #18191F; }
+.v2-part b { color: #E87B35; font-weight: 700; }
+.tms-annot { position: relative; margin: 0 0 24px; }
+.tms-annot img { display: block; width: 100%; height: auto; border-radius: 4px; }
+.tms-dot { position: absolute; width: 32px; height: 32px; margin: -16px 0 0 -16px; padding: 0; border: 0; border-radius: 50%; background: #E87B35; color: #fff; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; box-shadow: 0 0 0 3px #fff; z-index: 2; transition: transform .2s ease; }
+.tms-num { display: grid; place-items: center; width: 100%; height: 100%; border-radius: 50%; }
+.tms-dot::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #E87B35; opacity: .4; animation: tms-ping 2.4s ease-out infinite; z-index: -1; }
+.tms-dot:hover, .tms-dot:focus-visible, .tms-dot.is-open { z-index: 5; transform: scale(1.1); outline: none; }
+.tms-dot:hover::before, .tms-dot:focus-visible::before, .tms-dot.is-open::before { animation: none; opacity: 0; }
+@keyframes tms-ping { 0% { transform: scale(1); opacity: .4; } 70%, 100% { transform: scale(1.9); opacity: 0; } }
+.tms-tip { position: absolute; left: 50%; bottom: calc(100% + 12px); width: 260px; padding: 16px 18px; background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; color: #2A2B31; font-size: 15px; font-weight: 400; line-height: 1.45; text-align: left; box-shadow: 0 10px 30px -12px rgba(24,25,31,.2); opacity: 0; visibility: hidden; transform: translate(-50%, 6px) scale(.909); transform-origin: center bottom; transition: opacity .2s ease, transform .2s ease, visibility .2s; pointer-events: none; }
+.tms-tip b { display: block; margin-bottom: 4px; font-size: 16px; font-weight: 700; color: #18191F; }
+.tms-dot:hover .tms-tip, .tms-dot:focus-visible .tms-tip, .tms-dot.is-open .tms-tip { opacity: 1; visibility: visible; transform: translate(-50%, 0) scale(.909); }
+.tms-dot.tip-down .tms-tip { bottom: auto; top: calc(100% + 12px); transform-origin: center top; }
+.tms-dot.tip-left .tms-tip { left: -6px; transform: translate(0, 6px) scale(.909); transform-origin: left bottom; }
+.tms-dot.tip-left:hover .tms-tip, .tms-dot.tip-left:focus-visible .tms-tip, .tms-dot.tip-left.is-open .tms-tip { transform: scale(.909); }
+.tms-dot.tip-right .tms-tip { left: auto; right: -6px; transform: translate(0, 6px) scale(.909); transform-origin: right bottom; }
+.tms-dot.tip-right:hover .tms-tip, .tms-dot.tip-right:focus-visible .tms-tip, .tms-dot.tip-right.is-open .tms-tip { transform: scale(.909); }
+@media (max-width: 700px) { .tms-dot { width: 22px; height: 22px; margin: -11px 0 0 -11px; font-size: 12px; box-shadow: 0 0 0 2px #fff; } .tms-tip { width: 200px; font-size: 14px; padding: 12px 14px; } .tms-tip b { font-size: 15px; } }
+@media (prefers-reduced-motion: reduce) { .tms-dot::before { animation: none; } }
+.tms-note { margin: 0; font-size: 15px; line-height: 1.5; color: #6C727F; max-width: 640px; }
+.v2-logic + .tms-note { margin-top: 20px; }
+.v2-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0 0; align-items: start; }
+.v2-photos a { display: block; border-radius: 12px; overflow: hidden; border: 1px solid #E5E7EB; background: #fff; cursor: zoom-in; }
+.v2-photos img { display: block; width: 100%; height: auto; transition: transform .6s cubic-bezier(.22,1,.36,1); }
+.v2-photos a { aspect-ratio: 5 / 4; }
+.v2-photos img { height: 100%; object-fit: cover; }
+.v2-photos a:not(.v2-zoom):hover img { transform: scale(1.02); }
+/* hover magnifier on the full wall */
+.v2-zoom { position: relative; }
+.v2-lens { position: absolute; z-index: 2; width: 190px; height: 190px; border-radius: 50%; pointer-events: none;
+  border: 3px solid #fff; box-shadow: 0 10px 30px rgba(24,25,31,.35), 0 0 0 1px rgba(24,25,31,.15);
+  background-repeat: no-repeat; background-color: #d9cdb8; opacity: 0; transform: scale(.8); transition: opacity .2s ease, transform .2s ease; }
+.v2-zoom.is-zooming { cursor: none; }
+.v2-zoom.is-zooming .v2-lens { opacity: 1; transform: none; }
+@media (hover: none) { .v2-lens { display: none; } }
+.v2-photos-one { grid-template-columns: 1fr; margin: 0; }
+.v2-photos-one a { aspect-ratio: auto; }
+@media (max-width: 900px) { .v2-photos { grid-template-columns: 1fr; } }
+.lt-oneliner { margin: -12px 0 28px; font-size: clamp(21px, 2.3vw, 28px); line-height: 1.35; font-weight: 600; color: #E87B35; }
+.lt-tools { list-style: none; margin: 0 0 48px; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.lt-tools li { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 16px 18px; }
+.lt-tools b { display: block; font-size: 17px; font-weight: 700; color: #18191F; }
+.lt-tools span { display: block; margin-top: 4px; font-size: 15px; color: #6C727F; }
+@media (max-width: 1100px) { .lt-tools { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) { .lt-tools { grid-template-columns: repeat(2, 1fr); } }
+.lt-problem { margin: 0 0 48px; font-size: clamp(24px, 2.8vw, 34px); line-height: 1.4; font-weight: 600; color: #18191F; max-width: 30ch; }
+.lt-problem mark { background: linear-gradient(transparent 58%, rgba(255,143,113,.45) 58%); color: inherit; padding: 0 2px; }
+.lt-people { display: flex; gap: 16px; margin: 0 0 24px; }
+.lt-people div { flex: 1; background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 22px 24px; display: flex; align-items: baseline; gap: 14px; }
+.lt-people b { font-size: 56px; line-height: 1; font-weight: 700; color: #E87B35; }
+.lt-people span { font-size: 19px; color: #18191F; }
+.lt-findings { list-style: none; margin: 0 0 48px; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.lt-findings li { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px 22px; font-size: 17px; line-height: 1.45; color: #4B505C; }
+.lt-findings b { display: block; margin-bottom: 6px; font-size: 28px; font-weight: 700; color: #E87B35; line-height: 1.1; }
+@media (max-width: 1000px) { .lt-findings { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .lt-findings, .lt-people { grid-template-columns: 1fr; flex-direction: column; } }
+.lt-journey { list-style: none; margin: 0 0 48px; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; counter-reset: j; }
+.lt-journey li { position: relative; background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 18px 18px 20px; }
+.lt-journey li::before { content: ""; display: block; height: 6px; border-radius: 6px; margin-bottom: 14px; background: #D9DBE0; }
+.lt-journey li.is-low::before { background: #FF8F71; }
+.lt-journey span { display: block; font-size: 13px; font-weight: 700; letter-spacing: .1em; color: #6C727F; margin-bottom: 10px; }
+.lt-journey q { display: block; font-size: 17px; line-height: 1.45; font-weight: 600; color: #18191F; quotes: "\201C" "\201D"; }
+@media (max-width: 1100px) { .lt-journey { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .lt-journey { grid-template-columns: 1fr; } }
+.lt-borrow { display: flex; align-items: stretch; gap: 12px; margin: 0 0 24px; }
+.lt-borrow div { flex: 1; background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 18px 20px; }
+.lt-borrow div.is-new { background: #FEF7EE; border-color: #F6C9A8; }
+.lt-borrow b { display: block; font-size: 18px; font-weight: 700; color: #18191F; }
+.lt-borrow div.is-new b { color: #E87B35; }
+.lt-borrow span { display: block; margin-top: 4px; font-size: 15px; color: #6C727F; }
+.lt-borrow i { align-self: center; font-style: normal; font-size: 22px; font-weight: 700; color: #E87B35; }
+@media (max-width: 800px) { .lt-borrow { flex-direction: column; } .lt-borrow i { align-self: flex-start; padding-left: 20px; } }
+.lt-more { margin: 8px 0 0; }
+.lt-more summary { cursor: pointer; font-size: 16px; font-weight: 600; color: #E87B35; list-style: none; }
+.lt-more summary::-webkit-details-marker { display: none; }
+.lt-more summary::before { content: "\25B8"; display: inline-block; margin-right: 8px; transition: transform .2s; }
+.lt-more[open] summary::before { transform: rotate(90deg); }
+.lt-table-wrap { margin-top: 20px; overflow-x: auto; border: 1px solid #E5E7EB; border-radius: 12px; background: #fff; }
+.lt-table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 760px; }
+.lt-table th, .lt-table td { padding: 12px 14px; text-align: left; border-bottom: 1px solid #F0F1F3; color: #4B505C; }
+.lt-table th { font-weight: 700; color: #18191F; }
+.lt-table td:first-child { color: #18191F; font-weight: 600; }
+.lt-table .is-us { background: #FEF7EE; color: #18191F; }
+.lt-split { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+@media (max-width: 900px) { .lt-split { grid-template-columns: 1fr; } }
+.lt-whatifs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.lt-whatifs li { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 16px 20px; }
+.lt-whatifs b { display: block; font-size: 17px; font-weight: 700; color: #18191F; }
+.lt-whatifs span { display: block; margin-top: 4px; font-size: 15px; line-height: 1.45; color: #6C727F; }
+.lt-proto { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin: 0 0 64px; }
+.lt-proto-btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 28px; border-radius: 999px; background: #E87B35; color: #fff !important; font-size: 18px; font-weight: 700; text-decoration: none; box-shadow: 0 6px 0 #240C05; transition: translate .2s, box-shadow .2s, background .2s; }
+.lt-proto-btn:hover { background: #FF5A00; translate: 0 -2px; box-shadow: 0 8px 0 #240C05; }
+.lt-proto p { margin: 0; font-size: 17px; color: #6C727F; }
+.lt-quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.lt-quotes figure { margin: 0 !important; }
+.lt-quotes blockquote { margin: 8px 0 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #18191F; }
+@media (max-width: 900px) { .lt-quotes { grid-template-columns: 1fr; } }
+.lt-chips { list-style: none; margin: 0 0 32px; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.lt-chips li { padding: 10px 16px; border-radius: 999px; background: #fff; border: 1px solid #E5E7EB; font-size: 16px; color: #18191F; }
+</style>
+
+  <!-- Tells the shared header/footer partials how far back up to the project root -->
+  <script>window.SITE_ROOT = "../../";</script>
+  <link rel="stylesheet" href="../../partials/whimsy.css?v=20261005g" />
+  <link rel="stylesheet" href="../../partials/mobile-menu.css?v=20261005w" />
+</head>
+
+<body>
+  <div id="__next">
+    <main class="min-h-screen bg-[#F8F8F8] pb-10 __className_9b492f">
+
+      <!-- ===================== NAV (shared partial) ===================== -->
+      <script src="../../partials/header.js?v=20261005g"></script>
+      <!-- =================== END NAV =================== -->
+
+      <div class="x-padding">
+        <article class="cs-article cs-v2">
+
+          <!-- ================= OVERVIEW ================= -->
+          <section class="cs-section" id="overview">
+            <div class="cs-hero-image" style="aspect-ratio:2400/1350;">
+              <img src="../../assets/images/project-3/hero.webp" srcset="../../assets/images/project-3/hero-s.webp 960w, ../../assets/images/project-3/hero.webp 2400w" sizes="(max-width: 900px) 100vw, 1200px" fetchpriority="high" alt="LumiTrack cover: tilted screens of the faculty dashboard, courses, calendar and assignments" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            </div>
+
+            <div class="cs-meta-grid">
+              <div>
+                <p class="cs-meta-label">Role</p>
+                <p class="cs-meta-value">UX Designer</p>
+              </div>
+              <div>
+                <p class="cs-meta-label">Project</p>
+                <p class="cs-meta-value">Interaction Design course</p>
+              </div>
+              <div>
+                <p class="cs-meta-label">Tools</p>
+                <p class="cs-meta-value">Figma</p>
+              </div>
+              <div>
+                <p class="cs-meta-label">Team</p>
+                <p class="cs-meta-value">Anubhuti Raj</p>
+                <p class="cs-meta-value">Gayatri Bhide</p>
+                <p class="cs-meta-value">Latika Satapathi</p>
+                <p class="cs-meta-value">Utkarsh Kale</p>
+              </div>
+            </div>
+
+            <p class="cs-eyebrow">01 &middot; OVERVIEW</p>
+            <h1 class="cs-heading">LumiTrack</h1>
+            <p class="lt-oneliner">A teaching dashboard that gives design faculty their time back, so mentoring is about the student, not the spreadsheet.</p>
+            <p class="cs-body">Grading design is subjective, feedback is qualitative and progress isn't a straight line. Yet the faculty at our college were running all of it on tools built for something else. LumiTrack is a learning management system made for design colleges, starting with the people who teach in them.</p>
+          </section>
+
+          <div class="v2-part"><span><b>PART 1</b> &middot; THE PROBLEM AND THE RESEARCH</span></div>
+
+          <!-- ================= THE QUESTION ================= -->
+          <section class="cs-section" id="question">
+            <p class="cs-eyebrow">02 &middot; WHERE IT STARTED</p>
+            <h2 class="cs-heading" data-reveal>Our college already uses so many platforms. <span style="color:#E87B35;">Does any of it help?</span></h2>
+            <p class="cs-body cs-mb-32">Count what one faculty member opens in a week.</p>
+
+            <ul class="lt-tools" data-reveal>
+              <li><b>Google Classroom</b><span>submissions</span></li>
+              <li><b>Excel</b><span>grading</span></li>
+              <li><b>WhatsApp</b><span>mentoring</span></li>
+              <li><b>Teams</b><span>schedules</span></li>
+              <li><b>TCS iON</b><span>attendance</span></li>
+              <li><b>Outlook</b><span>admin mail</span></li>
+            </ul>
+
+            <p class="lt-problem" data-reveal>Feedback is <mark>inconsistent</mark>, expectations are <mark>unclear</mark>, guidance is <mark>rarely personal</mark>, group work <mark>hides individual effort</mark>, and faculty are <mark>drowning in admin</mark>.</p>
+
+            <div class="cs-callout" data-reveal><p>Six tools, and still no one place to see how a student is growing.</p></div>
+            <p class="v2-bridge">so we went and asked</p>
+          </section>
+
+          <!-- ================= HOW WE LISTENED ================= -->
+          <section class="cs-section" id="listened">
+            <p class="cs-eyebrow">03 &middot; HOW WE LISTENED</p>
+            <h2 class="cs-heading" data-reveal>We talked to the people on both sides of the feedback</h2>
+
+            <div class="lt-people" data-reveal>
+              <div><b>12</b><span>faculty members</span></div>
+              <div><b>9</b><span>students</span></div>
+            </div>
+
+            <div class="v2-logic" data-reveal>
+              <div class="cs-solve-card">
+                <p class="cs-solve-label">SEMI STRUCTURED INTERVIEWS</p>
+                <p class="cs-solve-body">The same few open questions for everyone, about giving feedback, grading and keeping track of students. Then we followed wherever the conversation went.</p>
+              </div>
+              <div class="cs-solve-card">
+                <p class="cs-solve-label">SENTENCE COMPLETION</p>
+                <p class="cs-solve-body">People finished half written sentences in their own words. It brought out feelings that a direct question usually doesn't.</p>
+              </div>
+            </div>
+            <p class="v2-bridge">and this is what kept coming up</p>
+          </section>
+
+          <!-- ================= WHAT THEY TOLD US ================= -->
+          <section class="cs-section" id="heard">
+            <p class="cs-eyebrow">04 &middot; WHAT THEY TOLD US</p>
+            <h2 class="cs-heading" data-reveal>Most of what hurt students started on the faculty side</h2>
+
+            <ul class="lt-findings">
+              <li data-reveal><b>100 to 300</b>students per faculty member, with progress tracked from memory.</li>
+              <li data-reveal><b>40 to 50</b>submissions a week. By the end, tired eyes write vague feedback.</li>
+              <li data-reveal><b>20 times</b>the same comment, typed out for every group.</li>
+              <li data-reveal><b>Weeks</b>before marks come back, against criteria students never saw.</li>
+              <li data-reveal><b>Who did what?</b>Group work hides each person's part, so grading runs on observation.</li>
+              <li data-reveal><b>Mixed signals</b>Mentors give conflicting instructions, and approvals get reversed or forgotten.</li>
+            </ul>
+
+            <div class="cs-callout" data-reveal><p>So we chose to design for faculty first. Fix their week, and students get clearer, faster feedback too.</p></div>
+            <p class="v2-bridge">then we followed one through a semester</p>
+          </section>
+
+          <!-- ================= JOURNEY ================= -->
+          <section class="cs-section" id="journey">
+            <p class="cs-eyebrow">05 &middot; A SEMESTER THROUGH THEIR EYES</p>
+            <h2 class="cs-heading" data-reveal>The low points weren't about teaching</h2>
+            <p class="cs-body cs-mb-32">We mapped a faculty member's semester from the brief to the jury, using their own words at each stage.</p>
+
+            <ol class="lt-journey">
+              <li data-reveal><span>PRE COURSE</span><q>Okay, let me organise this course.</q></li>
+              <li class="is-low" data-reveal><span>WHILE TEACHING</span><q>Why do I have to repeat the same thing 20 times?</q></li>
+              <li class="is-low" data-reveal><span>MIDCOURSE</span><q>I don't remember what the student had done before!</q></li>
+              <li class="is-low" data-reveal><span>FINAL SUBMISSION</span><q>The process isn't shown, this is difficult for me.</q></li>
+              <li class="is-low" data-reveal><span>JURY</span><q>There is no way to track their progress across courses, sadly.</q></li>
+            </ol>
+
+            <div class="cs-callout" data-reveal><p>They were about repeating, remembering and tracking. That's the part a system can take off their hands.</p></div>
+          </section>
+
+          <!-- ================= BORROWING ================= -->
+          <section class="cs-section" id="borrow">
+            <p class="cs-eyebrow">06 &middot; WHAT ALREADY WORKED</p>
+            <h2 class="cs-heading" data-reveal>Every tool did one thing well</h2>
+            <p class="cs-body cs-mb-32">We compared Google Classroom, Microsoft Teams, TCS iON and Excel feature by feature. Instead of starting from zero, we kept what each did best.</p>
+
+            <div class="lt-borrow" data-reveal>
+              <div><b>Google Classroom</b><span>its evaluation flow</span></div>
+              <i>+</i>
+              <div><b>Teams</b><span>its calendar clarity</span></div>
+              <i>+</i>
+              <div><b>Excel</b><span>its tracking</span></div>
+              <i>+</i>
+              <div class="is-new"><b>Worth</b><span>transparency, consistency, mentoring</span></div>
+            </div>
+
+            <details class="lt-more">
+              <summary>See the full comparison</summary>
+              <div class="lt-table-wrap">
+                <table class="lt-table">
+                  <thead><tr><th></th><th class="is-us">LumiTrack</th><th>Google Classroom</th><th>Microsoft Teams</th><th>TCS iON</th><th>Excel</th></tr></thead>
+                  <tbody>
+                    <tr><td>Rubric creation</td><td class="is-us">Simple, standardised</td><td>Basic</td><td>Hidden in workflow</td><td>Complex</td><td>No</td></tr>
+                    <tr><td>Rubric visible to students</td><td class="is-us">Always</td><td>Yes</td><td>Buried</td><td>Not clearly</td><td>No</td></tr>
+                    <tr><td>Inline PDF annotation</td><td class="is-us">Built in</td><td>Yes</td><td>Yes</td><td>No</td><td>Manual</td></tr>
+                    <tr><td>Consistent feedback across faculty</td><td class="is-us">Shared rubric</td><td>No</td><td>No</td><td>No</td><td>No</td></tr>
+                    <tr><td>Student progress</td><td class="is-us">Flags and visual progress</td><td>Limited</td><td>Limited</td><td>Yes</td><td>Manual</td></tr>
+                    <tr><td>Attendance</td><td class="is-us">Integrated</td><td>No</td><td>Yes</td><td>Yes, but laggy</td><td>Manual</td></tr>
+                    <tr><td>Dashboard clarity</td><td class="is-us">One screen</td><td>Clean</td><td>Overloaded</td><td>Very cluttered</td><td>None</td></tr>
+                    <tr><td>One on one mentoring</td><td class="is-us">Built in chat</td><td>Basic comments</td><td>Chat</td><td>Not smooth</td><td>WhatsApp</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+          </section>
+
+          <!-- ================= IDEATION ================= -->
+          <section class="cs-section" id="ideas">
+            <p class="cs-eyebrow">07 &middot; FROM QUESTIONS TO SKETCHES</p>
+            <h2 class="cs-heading" data-reveal>A prettier LMS wouldn't fix this</h2>
+            <p class="cs-body cs-mb-48">If the problem is inconsistency, overload and nothing being visible, the answer has to change how feedback feels for both sides. We started with what ifs, and sketched each one.</p>
+
+            <div class="lt-split">
+              <ol class="lt-whatifs">
+                <li data-reveal><b>What if faculty could see progress at a glance?</b><span>A timeline and progress cards for every student, across subjects.</span></li>
+                <li data-reveal><b>What if process mattered as much as output?</b><span>Students upload their steps, not just the final work.</span></li>
+                <li data-reveal><b>What if submission, feedback and review lived in one place?</b><span>One review space, with each person's part marked.</span></li>
+                <li data-reveal><b>What if faculty had a helper?</b><span>Pending evaluations, submission alerts and a clean calendar, handled.</span></li>
+                <li data-reveal><b>What if grading was transparent?</b><span>Visible criteria, so everyone knows why a score is a score.</span></li>
+              </ol>
+              <div class="v2-photos v2-photos-one" data-reveal>
+                <a class="v2-zoom" data-z="2.2" data-zoom="../../assets/images/project-3/sketches.webp" href="../../assets/images/project-3/sketches.webp" target="_blank" rel="noopener"><span class="v2-lens" aria-hidden="true"></span><img src="../../assets/images/project-3/sketches.webp" loading="lazy" alt="Pen sketches on dotted paper: the faculty home, a course page, the students section by semester, and a list of everything a course holds"></a>
+              </div>
+            </div>
+
+            <p class="cs-body cs-mb-32" style="margin-top:56px;">Then we mapped where everything lives, so every course, student and deadline has one obvious home.</p>
+            <div class="v2-photos v2-photos-one" data-reveal>
+              <a class="v2-zoom" data-z="2" data-zoom="../../assets/images/project-3/ia.webp" href="../../assets/images/project-3/ia.webp" target="_blank" rel="noopener"><span class="v2-lens" aria-hidden="true"></span><img src="../../assets/images/project-3/ia.webp" srcset="../../assets/images/project-3/ia-s.webp 960w, ../../assets/images/project-3/ia.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Faculty information architecture: the landing page splits into main area, left panel and right panel, with courses, calendar, students, messages, admin and settings branching out"></a>
+            </div>
+            <p class="cs-img-caption">Faculty information architecture. Hover to zoom.</p>
+          </section>
+
+          <div class="v2-part"><span><b>PART 2</b> &middot; THE DESIGN</span></div>
+
+          <!-- ================= SCREENS ================= -->
+          <section class="cs-section" id="screens">
+            <p class="cs-eyebrow">08 &middot; A WEEK WITH LUMITRACK</p>
+            <h2 class="cs-heading" data-reveal>Every screen answers something we heard</h2>
+            <div class="lt-proto" data-reveal>
+              <a class="lt-proto-btn" href="https://www.figma.com/proto/iod24jrfhtsG9TocVFtr1L/Interaction-design?page-id=807%3A19854&amp;node-id=807-27928&amp;p=f&amp;viewport=-1352%2C286%2C0.04&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=807%3A27928&amp;hide-ui=1" target="_blank" rel="noopener">View the prototype <span aria-hidden="true">&#8599;</span></a>
+              <p>Or follow one faculty member through her week below.</p>
+            </div>
+
+            <p class="cs-eyebrow">01 &middot; HOME</p>
+            <p class="cs-body" style="margin-bottom:6px;">Today's classes, the day's schedule and what needs attention, on one screen.</p>
+            <p class="cs-pin-why cs-mb-24">Why? Faculty were piecing their day together from Teams, Excel and WhatsApp.</p>
+            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1080;">
+              <img src="../../assets/images/project-3/s01-home.webp" srcset="../../assets/images/project-3/s01-home-s.webp 960w, ../../assets/images/project-3/s01-home.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Faculty home: ongoing courses as coloured cards with progress, a month calendar and the day's schedule" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            </div>
+            <div style="height:56px;"></div>
+
+            <p class="cs-eyebrow">02 &middot; CALENDAR</p>
+            <p class="cs-body" style="margin-bottom:6px;">Lectures, juries and events, colour coded by type. Students see it too.</p>
+            <p class="cs-pin-why cs-mb-24">Why? Students were guessing when faculty were free.</p>
+            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1080;">
+              <img src="../../assets/images/project-3/s02-calendar.webp" srcset="../../assets/images/project-3/s02-calendar-s.webp 960w, ../../assets/images/project-3/s02-calendar.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Month calendar with colour coded lectures, events and a jury break" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            </div>
+            <div style="height:56px;"></div>
+
+            <p class="cs-eyebrow">03 &middot; THE ASSIGNMENT</p>
+            <p class="cs-body" style="margin-bottom:6px;">Deliverables and evaluation criteria sit on the assignment itself.</p>
+            <p class="cs-pin-why cs-mb-24">Why? Criteria were unclear, or invisible to students, until the marks came back.</p>
+            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1080;">
+              <img src="../../assets/images/project-3/s03-assignment.webp" srcset="../../assets/images/project-3/s03-assignment-s.webp 960w, ../../assets/images/project-3/s03-assignment.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Assignment page with deliverables as tags and an evaluation criteria table" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            </div>
+            <div style="height:56px;"></div>
+
+            <p class="cs-eyebrow">04 &middot; REVIEWING A SUBMISSION</p>
+            <p class="cs-body" style="margin-bottom:6px;">Draw on the work, keep the rubric beside it, and see who in the group did what.</p>
+            <p class="cs-pin-why cs-mb-24">Why? Group work hid each person's part, and faculty had to hold every criterion in their head.</p>
+            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1817;">
+              <img src="../../assets/images/project-3/s04-evaluation.webp" srcset="../../assets/images/project-3/s04-evaluation-s.webp 960w, ../../assets/images/project-3/s04-evaluation.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Review screen: a group's PDF with drawing tools, member chips showing contribution, AI suggested feedback and a rubric panel adding up marks" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            </div>
+            <div style="height:56px;"></div>
+
+            <p class="cs-eyebrow">05 &middot; THE COMMENT YOU'D TYPE TWENTY TIMES</p>
+            <p class="cs-body" style="margin-bottom:6px;">LumiTrack notices the same feedback across groups and offers to send it once.</p>
+            <p class="cs-pin-why cs-mb-24">Why? &ldquo;Why do I have to repeat the same thing 20 times?&rdquo;</p>
+            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1080;">
+              <img src="../../assets/images/project-3/s05-nudge.webp" srcset="../../assets/images/project-3/s05-nudge-s.webp 960w, ../../assets/images/project-3/s05-nudge.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Submissions grid with a prompt: a common feedback was noticed regarding clarity in ergonomic sketches, send class comment?" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            </div>
+            <div style="height:56px;"></div>
+
+            <p class="cs-eyebrow">06 &middot; ONE CLASS COMMENT</p>
+            <p class="cs-body" style="margin-bottom:6px;">One message to the whole class instead of twenty private ones, and replies stay in one thread.</p>
+            <p class="cs-pin-why cs-mb-24">Why? Repeated questions were eating the time meant for real mentoring.</p>
+            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1080;">
+              <img src="../../assets/images/project-3/s06-classcomment.webp" srcset="../../assets/images/project-3/s06-classcomment-s.webp 960w, ../../assets/images/project-3/s06-classcomment.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Class comments with the faculty member's note to all students and a student reply" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            </div>
+            <div style="height:56px;"></div>
+
+            <p class="cs-eyebrow">07 &middot; A STUDENT, ACROSS SEMESTERS</p>
+            <p class="cs-body" style="margin-bottom:6px;">Attendance, a progress graph and every project, semester by semester.</p>
+            <p class="cs-pin-why cs-mb-24">Why? With 100 to 300 students, progress lived in memory.</p>
+            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1080;">
+              <img src="../../assets/images/project-3/s07-student.webp" srcset="../../assets/images/project-3/s07-student-s.webp 960w, ../../assets/images/project-3/s07-student.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Student profile with attendance bar, progress graph and projects filtered by semester" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            </div>
+            <div style="height:56px;"></div>
+
+            <p class="cs-eyebrow">08 &middot; COURSE STATISTICS</p>
+            <p class="cs-body" style="margin-bottom:6px;">Attendance, marks and the questions students keep asking.</p>
+            <p class="cs-pin-why cs-mb-24">Why? A repeated question becomes a topic for the next lecture, not twenty replies.</p>
+            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1080;">
+              <img src="../../assets/images/project-3/s08-stats.webp" srcset="../../assets/images/project-3/s08-stats-s.webp 960w, ../../assets/images/project-3/s08-stats.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Course statistics: weekly attendance gauges, average marks graph, repeated queries and feedback quality" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            </div>
+            <div style="height:56px;"></div>
+
+            <p class="cs-eyebrow">09 &middot; ATTENDANCE</p>
+            <p class="cs-body" style="margin-bottom:6px;">Mark everyone at once, link TCS iON or Sheets, or snap the paper register.</p>
+            <p class="cs-pin-why cs-mb-24">Why? Attendance was a daily manual chore, done twice.</p>
+            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1080;">
+              <img src="../../assets/images/project-3/s09-attendance.webp" srcset="../../assets/images/project-3/s09-attendance-s.webp 960w, ../../assets/images/project-3/s09-attendance.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Attendance list with mark all, links to TCS iON and Sheets, a camera upload and low attendance nudges" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            </div>
+            <div style="height:56px;"></div>
+
+            <p class="cs-eyebrow">10 &middot; ADMIN</p>
+            <p class="cs-body" style="margin-bottom:6px;">NAAC and monthly reports built from data already in the system.</p>
+            <p class="cs-pin-why cs-mb-24">Why? Admin work was eating into mentoring time.</p>
+            <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:1920/1080;">
+              <img src="../../assets/images/project-3/s10-admin.webp" srcset="../../assets/images/project-3/s10-admin-s.webp 960w, ../../assets/images/project-3/s10-admin.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" loading="lazy" alt="Admin page with NAAC and monthly report cards and jury details" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+            </div>
+            <div style="height:56px;"></div>
+
+          </section>
+
+          <!-- ================= VALIDATED ================= -->
+          <section class="cs-section" id="validated">
+            <p class="cs-eyebrow">09 &middot; WHAT FACULTY SAID</p>
+            <h2 class="cs-heading" data-reveal>We put it in front of faculty again</h2>
+            <div class="lt-quotes">
+              <figure class="cs-solve-card" data-reveal><p class="cs-solve-label">ON SIMPLICITY</p><blockquote>&ldquo;TCS iON is very complex. This is not complex at all, it's very easy to use.&rdquo;</blockquote></figure>
+              <figure class="cs-solve-card" data-reveal><p class="cs-solve-label">ON VISIBILITY</p><blockquote>&ldquo;Solves a major Google Classroom problem. Right now, we don't know if people are even opening the classroom unless they submit something.&rdquo;</blockquote></figure>
+              <figure class="cs-solve-card" data-reveal><p class="cs-solve-label">ON TIME</p><blockquote>&ldquo;It is at least streamlining everything into one place. This is good, it saves time.&rdquo;</blockquote></figure>
+            </div>
+          </section>
+
+          <!-- ================= FUTURE ================= -->
+          <section class="cs-section" id="future">
+            <p class="cs-eyebrow">10 &middot; FUTURE SCOPE</p>
+            <h2 class="cs-heading" data-reveal>Today a focused LMS. <span style="color:#E87B35;">Tomorrow the whole institute.</span></h2>
+            <p class="cs-body cs-mb-32">LumiTrack starts with feedback, evaluation and mentoring. It could grow into an education resource management system for a whole institute, a modern alternative to tools like TCS iON.</p>
+            <ul class="lt-chips" data-reveal>
+              <li>NAAC documentation</li>
+              <li>Faculty workload and time</li>
+              <li>Payroll, HR and leave</li>
+              <li>Event approvals and room booking</li>
+              <li>Central student records</li>
+              <li>Department insights for curriculum planning</li>
+              <li>Analytics for accreditation</li>
+            </ul>
+            <p class="cs-body">We built it with design colleges in mind, and we'd like to take it to other courses next.</p>
+
+            <p class="cs-thanks">&#2343;&#2344;&#2381;&#2351;&#2357;&#2366;&#2342;&hellip;</p>
+
+            <a class="cs-next" href="../project-1/">
+              <div>
+                <p class="cs-next-label">NEXT PROJECT</p>
+                <p class="cs-next-title">Designing the Return</p>
+                <p class="cs-next-desc">An in car display for the sixty seconds before a Level 3 car hands control back to its driver<span>&hellip;</span></p>
+              </div>
+              <span class="cs-next-btn">Read Case Study</span>
+            </a>
+          </section>
+
+        </article>
+        <script>
+          /* Hover magnifier: a round lens follows the cursor over the sticky note wall. */
+          (function () {
+            if (!window.matchMedia('(hover: hover)').matches) return;
+            document.querySelectorAll('.v2-zoom').forEach(function (box) {
+              var lens = box.querySelector('.v2-lens'), img = box.querySelector('img'), Z = +(box.getAttribute('data-z') || 3);
+              var src = box.getAttribute('data-zoom');
+              // load the large image only when someone first reaches for the photo
+              box.addEventListener('mouseenter', function () {
+                if (!lens.style.backgroundImage) lens.style.backgroundImage = 'url(' + src + ')';
+              });
+              box.addEventListener('mousemove', function (e) {
+                var r = img.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+                if (x < 0 || y < 0 || x > r.width || y > r.height) { box.classList.remove('is-zooming'); return; }
+                box.classList.add('is-zooming');
+                var L = lens.offsetWidth / 2;
+                lens.style.left = (x - L) + 'px'; lens.style.top = (y - L) + 'px';
+                lens.style.backgroundSize = (r.width * Z) + 'px ' + (r.height * Z) + 'px';
+                lens.style.backgroundPosition = (L - x * Z) + 'px ' + (L - y * Z) + 'px';
+              });
+              box.addEventListener('mouseleave', function () { box.classList.remove('is-zooming'); });
+            });
+          })();
+        </script>
+        <script>
+          /* Scroll reveal: elements marked data-reveal fade and rise into view once.
+             Skipped for people who prefer reduced motion; content stays visible if JS fails. */
+          (function () {
+            var els = document.querySelectorAll('.cs-v2 [data-reveal]');
+            if (!('IntersectionObserver' in window)) return;
+            if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            document.documentElement.classList.add('cs-reveal-on');
+            var io = new IntersectionObserver(function (entries) {
+              entries.forEach(function (e) {
+                if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+              });
+            }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+            els.forEach(function (el) { io.observe(el); });
+          })();
+        </script>
+        <!-- Section navigation: small dot rail on the left, wide screens only -->
+        <nav class="cs-toc" aria-label="Case study sections">
+          <ol>
+            <li><a href="#overview" data-target="overview"><span class="cs-toc-label">Overview</span></a></li>
+            <li><a href="#question" data-target="question"><span class="cs-toc-label">Where It Started</span></a></li>
+            <li><a href="#listened" data-target="listened"><span class="cs-toc-label">How We Listened</span></a></li>
+            <li><a href="#heard" data-target="heard"><span class="cs-toc-label">What They Told Us</span></a></li>
+            <li><a href="#journey" data-target="journey"><span class="cs-toc-label">A Semester</span></a></li>
+            <li><a href="#borrow" data-target="borrow"><span class="cs-toc-label">What Already Worked</span></a></li>
+            <li><a href="#ideas" data-target="ideas"><span class="cs-toc-label">Sketches</span></a></li>
+            <li><a href="#screens" data-target="screens"><span class="cs-toc-label">The Screens</span></a></li>
+            <li><a href="#validated" data-target="validated"><span class="cs-toc-label">What Faculty Said</span></a></li>
+            <li><a href="#future" data-target="future"><span class="cs-toc-label">Future Scope</span></a></li>
+          </ol>
+        </nav>
+        <script>
+          /* Section rail: highlights the current section, appears after the hero, smooth scrolls on click. */
+          (function () {
+            var toc = document.querySelector('.cs-toc');
+            if (!toc) return;
+            var links = toc.querySelectorAll('a');
+            var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            function setActive(id) {
+              links.forEach(function (a) {
+                var on = a.getAttribute('data-target') === id;
+                a.classList.toggle('is-active', on);
+                if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+              });
+            }
+            links.forEach(function (a) {
+              a.addEventListener('click', function (ev) {
+                var el = document.getElementById(a.getAttribute('data-target'));
+                if (!el) return;
+                ev.preventDefault();
+                el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+                history.replaceState(null, '', '#' + el.id);
+              });
+            });
+            if (!('IntersectionObserver' in window)) { toc.classList.add('is-visible'); return; }
+            var secIO = new IntersectionObserver(function (entries) {
+              entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
+            }, { rootMargin: '-45% 0px -50% 0px' });
+            document.querySelectorAll('.cs-v2 > .cs-section[id]').forEach(function (s) { secIO.observe(s); });
+            var hero = document.querySelector('.cs-hero-image');
+            if (hero) {
+              new IntersectionObserver(function (entries) {
+                toc.classList.toggle('is-visible', !entries[0].isIntersecting);
+              }).observe(hero);
+            } else { toc.classList.add('is-visible'); }
+          })();
+        </script>
+      </div>
+
+      <!-- =================== FOOTER (shared partial) =================== -->
+      <div class="x-padding">
+        <script src="../../partials/footer.js?v=20261005g"></script>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- =================== Interactive design-system section logic =================== -->
+  <script>
+    (function () {
+      var dsRoot = document.getElementById('ds-root');
+      if (!dsRoot) return;
+
+      /* ---- Scroll-triggered reveal ---- */
+      var blocks = dsRoot.querySelectorAll('.ds-block');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('ds-in');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        blocks.forEach(function (b) { io.observe(b); });
+      } else {
+        blocks.forEach(function (b) { b.classList.add('ds-in'); });
+      }
+
+      /* ---- Click-to-copy color swatches ---- */
+      var swatches = dsRoot.querySelectorAll('.ds-swatch');
+      swatches.forEach(function (sw) {
+        sw.addEventListener('click', function () {
+          var name = sw.getAttribute('data-name');
+          var hex = sw.getAttribute('data-hex');
+          var text = name + ' - ' + hex;
+          var done = function () {
+            sw.classList.add('ds-copied');
+            window.clearTimeout(sw._copyTimer);
+            sw._copyTimer = window.setTimeout(function () {
+              sw.classList.remove('ds-copied');
+            }, 1400);
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done, done);
+          } else {
+            done();
+          }
+        });
+      });
+
+      /* ---- Live component state transitions ---- */
+      var cards = dsRoot.querySelectorAll('.ds-component-card');
+      cards.forEach(function (card) {
+        var stage = card.querySelector('.ds-component-stage');
+        var live = stage ? stage.querySelector('[data-state]') : null;
+        var msg = stage ? stage.querySelector('.ds-live-input-msg') : null;
+        var buttons = card.querySelectorAll('.ds-state-btn');
+        var selected = 'default';
+
+        function applyState(state) {
+          if (!live) return;
+          live.setAttribute('data-state', state);
+          if (msg) {
+            msg.textContent = state === 'error' ? 'Ticket ID not recognized.' : '';
+          }
+          if (live.tagName === 'BUTTON' || live.tagName === 'INPUT') {
+            live.disabled = state === 'disabled';
+          }
+        }
+
+        buttons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            selected = btn.getAttribute('data-state');
+            buttons.forEach(function (b) { b.classList.toggle('ds-active', b === btn); });
+            applyState(selected);
+          });
+        });
+
+        if (live) {
+          live.addEventListener('mouseenter', function () {
+            if (selected === 'default') applyState('hover');
+          });
+          live.addEventListener('mouseleave', function () {
+            if (selected === 'default') applyState('default');
+          });
+        }
+      });
+    })();
+  </script>
+  <script src="../../partials/whimsy.js?v=20261005g"></script>
+  <script src="../../partials/mobile-menu.js?v=20261005g"></script>
+</body>
+</html>
