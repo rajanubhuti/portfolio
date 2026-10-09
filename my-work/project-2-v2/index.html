@@ -785,12 +785,13 @@
           <!-- ================= WHAT I INHERITED ================= -->
           <section class="cs-section" id="inherited">
             <p class="cs-eyebrow">02 &middot; WHAT I INHERITED</p>
-            <h2 class="cs-heading" data-reveal>Before designing anything, I raised a ticket myself</h2>
-            <p class="cs-body cs-mb-48">I used TMS the way everyone at DPDS does. I raised test tickets, then sat beside colleagues while they raised real ones. This is the page they all start from.</p>
+            <h2 class="cs-heading" data-reveal>A ticketing system where you can't find how to raise a ticket</h2>
+            <p class="cs-body">I raised test tickets myself, then sat beside colleagues while they raised real ones. One had been at Tata Motors for years and moved through TMS without thinking. The other was an intern who had just joined.</p>
+            <p class="cs-body cs-mb-48">The intern got stuck on the very first page. It wasn't a dashboard, and nothing on it said how to raise a ticket. They had to spot the right link in the nav, open the ticket dashboard, and only then find Raise Ticket.</p>
 
             <figure class="tms-annot" data-reveal>
               <img src="../../assets/images/project-2/02-current-tms-screenshot.webp" alt="The current TMS user page. A row of nine blue navigation links, the DPDS TMS title and Tata Motors logo shown twice, a form asking for a login ID and type, and a summary table where status is shown only by red, yellow and green cells." loading="lazy">
-              <button type="button" class="tms-dot tip-down" style="left:53%; top:3.4%;" aria-label="Finding 1, Nine links, one weight"><span class="tms-num">1</span><span class="tms-tip" role="tooltip"><b>Nine links, one weight</b>All in one row, the same size and colour. Nothing says where to start.</span></button>
+              <button type="button" class="tms-dot tip-down" style="left:53%; top:3.4%;" aria-label="Finding 1, Nine links, one weight"><span class="tms-num">1</span><span class="tms-tip" role="tooltip"><b>Nine links, one weight</b>Raise New Ticket is one of nine links, all the same size and colour. The intern didn't spot it.</span></button>
               <button type="button" class="tms-dot tip-left" style="left:12.6%; top:43.6%;" aria-label="Finding 2, Said twice"><span class="tms-num">2</span><span class="tms-tip" role="tooltip"><b>Said twice</b>The title and logo appear twice on one page, so nothing feels like the top.</span></button>
               <button type="button" class="tms-dot " style="left:40.6%; top:21.8%;" aria-label="Finding 3, A form before anything"><span class="tms-num">3</span><span class="tms-tip" role="tooltip"><b>A form before anything</b>You fill in your ID and a type before you see a single ticket.</span></button>
               <button type="button" class="tms-dot tip-right" style="left:76.8%; top:70%;" aria-label="Finding 4, Colour does all the talking"><span class="tms-num">4</span><span class="tms-tip" role="tooltip"><b>Colour does all the talking</b>Status is red, yellow or green, and nothing else. Hard to read if you can't tell them apart.</span></button>
@@ -798,7 +799,7 @@
             </figure>
             <p class="cs-img-caption cs-mb-48">The current TMS user page. Hover or tap a number to see what I found.</p>
 
-            <div class="cs-callout" data-reveal><p>The screens were messy, but that wasn't the real problem. A hardware fault and a forgotten password went through the same four field form.</p></div>
+            <div class="cs-callout" data-reveal><p>The veteran knew where to click. The intern had nothing on the page to tell them.</p></div>
             <p class="tms-note">I also audited the full navigation and information architecture. The structure itself stays under Tata Motors' NDA.</p>
             <p class="v2-bridge">so I looked at how bigger tools handle it</p>
           </section>
@@ -891,23 +892,24 @@
             </div>
 
             <div class="cs-callout" data-reveal><p>One form can't serve both of them without failing one.</p></div>
-            <p class="v2-bridge">my first answer still missed this</p>
+            <p class="v2-bridge">so I started with the dashboard</p>
           </section>
 
           <!-- ================= FIRST ATTEMPT ================= -->
           <section class="cs-section" id="first">
             <p class="cs-eyebrow">05 &middot; THE FIRST ATTEMPT</p>
-            <h2 class="cs-heading" data-reveal>My first version was built for me</h2>
+            <h2 class="cs-heading" data-reveal>Everyone liked my first version. That was the problem.</h2>
 
             <div class="cs-hero-image" data-reveal style="margin-top:0; aspect-ratio:2396/1314;">
               <img src="../../assets/images/project-2/05-it1-screenshot.webp" loading="lazy" alt="First iteration: a ticket queue with status counts, filters and a list of tickets" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
             </div>
             <p class="cs-img-caption cs-mb-32">Iteration 1, a cleaner queue.</p>
 
-            <p class="cs-body">A queue, status counts and filters. It's what I'd want as someone who already knows the system. When I showed it to the same colleagues, they didn't want to scan a queue. They wanted to say what was wrong.</p>
-            <div class="cs-callout" data-reveal><p>It wasn't the wrong feature. It was the wrong front door.</p></div>
+            <p class="cs-body">A cleaner queue with status counts and filters, and a clear New Ticket button. My colleagues loved it. &ldquo;This is so much better.&rdquo;</p>
+            <p class="cs-body">Then I showed my GM. He liked it too, and added that to raise a ticket he'd still click New Ticket and fill out the form. He didn't mean it as a problem. Everyone was so used to the form that nobody questioned it.</p>
+            <div class="cs-callout" data-reveal><p>Nobody asked why you have to fill in a form at all. So I did.</p></div>
 
-            <p class="cs-body cs-mb-32">The queue still mattered for tracking. It just couldn't be the first thing everyone saw. So I went back to the two people and weighed what could serve both.</p>
+            <p class="cs-body cs-mb-32">The queue still mattered for tracking. It just couldn't be the front door. I weighed two other ways to fix the form before letting go of it.</p>
             <div class="cs-tried-row">
               <div class="cs-tried-card" data-reveal>
                 <p class="cs-tried-title">A smarter form</p>
@@ -932,7 +934,8 @@
           <section class="cs-section" id="pivot">
             <p class="cs-eyebrow">06 &middot; THE PIVOT</p>
             <h2 class="cs-heading" data-reveal>What if TMS started by <span style="color:#E87B35;">listening?</span></h2>
-            <p class="cs-body cs-mb-48">People already explain problems to a colleague in plain words, not in categories and dropdowns. So the new front door is a question. Follow Priya, whose VPN keeps dropping at the plant. Keep scrolling.</p>
+            <p class="cs-body">People already explain problems to a colleague in plain words, not in categories and dropdowns. So the new front door is a question.</p>
+            <p class="cs-body cs-mb-48">Engineering asked me to keep it simple enough to build. And someone who has been at Tata Motors for thirty years shouldn't have to relearn anything. So every screen has as few elements as I could get away with. Follow Priya, whose VPN keeps dropping at the plant. Keep scrolling.</p>
 
             <div class="cs-pin tms-pin">
               <div class="cs-pin-sticky">
