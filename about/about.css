@@ -141,15 +141,15 @@
 .motion .ab-row.rv-in .ab-chips li:hover { transform: translateY(-3px) rotate(var(--tilt, -2deg)); transition-delay: 0s; }
 
 /* ---------- Quote ---------- */
-.ab-quote { max-width: 900px; margin: 140px auto 140px; text-align: center; }
+.ab-quote { max-width: 1120px; margin: 140px auto 140px; text-align: left; background: #FEF7EE; border-left: 8px solid #E87B35; padding: 24px 32px; }
 .ab-quote p {
-  margin: 0; font-size: clamp(24px, 3vw, 36px); font-weight: 700; line-height: 1.3; letter-spacing: -.01em; color: #18191F;
-  text-wrap: balance;
+  margin: 0; font-size: 24px; font-weight: 700; font-style: italic; line-height: 1.42; color: #6C727F;
 }
+@media (max-width: 640px) { .ab-quote { padding: 20px 22px; } .ab-quote p { font-size: 19px; } }
 
 /* ---------- Sign off ---------- */
 .ab-bye { max-width: 900px; margin: 0 auto 140px; text-align: center; }
-.ab-bye-img { display: block; width: min(520px, 78%); height: auto; margin: 0 auto; }
+.ab-bye-img { display: block; width: min(380px, 62%); height: auto; margin: 0 auto; }
 
 /* ---------- Entrance ---------- */
 .motion .ab-pol    { animation: ab-pol .8s cubic-bezier(.22,1,.36,1) .15s both; }
