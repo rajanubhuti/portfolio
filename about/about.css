@@ -147,6 +147,12 @@
 }
 @media (max-width: 640px) { .ab-quote p { font-size: 20px; } }
 
+.ab-quote .ab-ch { opacity: 0; }
+.ab-quote .ab-ch.on { opacity: 1; }
+.ab-caret { display: inline-block; width: 3px; height: 1.05em; margin: 0 1px -0.15em; background: #E87B35; animation: ab-blink 1s steps(1) infinite; }
+.ab-caret.done { opacity: 0; animation: none; transition: opacity .3s; }
+@keyframes ab-blink { 50% { opacity: 0; } }
+
 /* ---------- Sign off ---------- */
 .ab-bye { max-width: 900px; margin: 0 auto 140px; text-align: center; }
 .ab-bye-img { display: block; width: min(380px, 62%); height: auto; margin: 0 auto; }

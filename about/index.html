@@ -14,7 +14,7 @@
   <link rel="preload" href="../assets/fonts/f9c47219ac0af4ab.p.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="../css/style.css?v=20261009a" />
   <link rel="stylesheet" href="../partials/shared.css?v=20261009a" />
-  <link rel="stylesheet" href="about.css?v=20261010b" />
+  <link rel="stylesheet" href="about.css?v=20261010c" />
 
   <script>window.SITE_ROOT = "../";</script>
   <link rel="stylesheet" href="../partials/whimsy.css?v=20261005u" />
@@ -297,5 +297,37 @@
   <script src="../partials/whimsy.js?v=20261005u"></script>
   <script src="../partials/mobile-menu.js?v=20261005u"></script>
   <script src="../partials/sticky-nav.js?v=20261009a"></script>
+  <script>
+  /* Quote types itself out when it scrolls into view. Every letter is laid out from the start (just hidden), so nothing jumps. */
+  (function () {
+    var p = document.querySelector('.ab-quote p');
+    if (!p || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var text = p.textContent;
+    p.setAttribute('aria-label', text);
+    p.textContent = '';
+    var chars = [], caret = document.createElement('span');
+    caret.className = 'ab-caret'; caret.setAttribute('aria-hidden', 'true');
+    for (var i = 0; i < text.length; i++) {
+      var c = document.createElement('span');
+      c.className = 'ab-ch'; c.setAttribute('aria-hidden', 'true');
+      c.textContent = text[i]; p.appendChild(c); chars.push(c);
+    }
+    p.insertBefore(caret, chars[0]);
+    var io = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return;
+      io.disconnect();
+      var n = 0;
+      (function step() {
+        if (n >= chars.length) { setTimeout(function () { caret.classList.add('done'); }, 2400); return; }
+        chars[n].classList.add('on');
+        p.insertBefore(caret, chars[n].nextSibling);
+        var ch = text[n++];
+        setTimeout(step, ch === '.' || ch === ',' ? 260 : 32);
+      })();
+    }, { threshold: 0.6 });
+    io.observe(p);
+  })();
+  </script>
 </body>
 </html>
