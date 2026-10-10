@@ -203,5 +203,3 @@
 }
 @media (prefers-reduced-motion: reduce) { .ab-pol { transition: none; } }
 
-/* the page already says फिर मिलेंगे, so skip the footer's extra goodbye here */
-.footer-thanks { display: none; }
