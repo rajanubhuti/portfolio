@@ -141,11 +141,11 @@
 .motion .ab-row.rv-in .ab-chips li:hover { transform: translateY(-3px) rotate(var(--tilt, -2deg)); transition-delay: 0s; }
 
 /* ---------- Quote ---------- */
-.ab-quote { max-width: 1120px; margin: 140px auto 140px; text-align: left; background: #FEF7EE; border-left: 8px solid #E87B35; padding: 24px 32px; }
+.ab-quote { max-width: 1120px; margin: 140px auto 140px; text-align: center; }
 .ab-quote p {
-  margin: 0; font-size: 24px; font-weight: 700; font-style: italic; line-height: 1.42; color: #6C727F;
+  margin: 0; font-size: 28px; font-weight: 700; font-style: italic; line-height: 1.4; color: #18191F;
 }
-@media (max-width: 640px) { .ab-quote { padding: 20px 22px; } .ab-quote p { font-size: 19px; } }
+@media (max-width: 640px) { .ab-quote p { font-size: 20px; } }
 
 /* ---------- Sign off ---------- */
 .ab-bye { max-width: 900px; margin: 0 auto 140px; text-align: center; }
