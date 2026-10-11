@@ -129,11 +129,20 @@
     .nav-social-btn,
     .see-all-btn,
     .footer-social-buttons button {
-      transition: transform 0.2s ease;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
     }
+    /* Press down like a real button: the shadow shrinks as it sinks */
     .nav-social-btn:hover,
-    .see-all-btn:hover,
     .footer-social-buttons button:hover {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 0 #240C05 !important;
+    }
+    .nav-social-btn:active,
+    .footer-social-buttons button:active {
+      transform: translateY(4px);
+      box-shadow: 0 0 0 0 #240C05 !important;
+    }
+    .see-all-btn:hover {
       transform: scale(1.08);
     }
 
@@ -351,7 +360,7 @@
 
           <!-- ---- PROJECT 2: Redesigning DPDS TMS ---- -->
           <article class="pc-card pc-flip" id="pc-p2">
-            <a data-rv class="pc-media pc-tms" href="my-work/project-2/" aria-label="Read Redesigning DPDS TMS">
+            <a data-rv class="pc-media pc-tms" href="my-work/project-2/" aria-label="Read Tata Motors Ticketing Assistant">
               <div class="pc-stage" aria-hidden="true">
                 <img class="pc-base" src="assets/images/project-2/card/base.webp" alt="" decoding="async">
                 <div class="pc-cover"></div>
@@ -365,7 +374,7 @@
             </a>
             <div data-rv style="--rv-d:.12s" class="pc-body">
               <div class="pc-meta"><span class="pc-tag">#UIDESIGN</span><span>2026</span></div>
-              <h3 class="pc-title"><a href="my-work/project-2/">Redesigning DPDS TMS</a></h3>
+              <h3 class="pc-title"><a href="my-work/project-2/">Tata Motors Ticketing Assistant</a></h3>
               <p class="pc-lede">Turning Tata Motors' internal ticketing form into an assistant that helps people find an answer before they need to raise a ticket.</p>
               <div class="pc-actions">
                 <a class="pc-btn pc-read" href="my-work/project-2/">Read Case Study</a>

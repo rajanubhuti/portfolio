@@ -64,13 +64,20 @@
 }
 
 /* Hover grow: nav social buttons, footer social buttons */
+/* Press down like a real button: the shadow shrinks as it sinks */
 .nav-social-btn,
 .footer-social-buttons button {
-  transition: transform 0.2s ease;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 .nav-social-btn:hover,
 .footer-social-buttons button:hover {
-  transform: scale(1.08);
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 0 #240C05 !important;
+}
+.nav-social-btn:active,
+.footer-social-buttons button:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 0 #240C05 !important;
 }
 
 .footer-email-link {

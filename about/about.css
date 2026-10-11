@@ -170,7 +170,7 @@
 @keyframes ab-draw { to { stroke-dashoffset: 0; } }
 @keyframes ab-pol  { from { opacity: 0; transform: translateY(22px) rotate(2.5deg); } to { opacity: 1; transform: rotate(2.5deg); } }
 
-.motion [data-rv] { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .9s cubic-bezier(.22,1,.36,1); }
+.motion [data-rv] { opacity: 0; transform: translateY(20px); transition: opacity .45s ease, transform .6s cubic-bezier(.22,1,.36,1); }
 .motion [data-rv].rv-in { opacity: 1; transform: none; }
 .motion .ab-row[data-rv] { opacity: 1; transform: none; }
 

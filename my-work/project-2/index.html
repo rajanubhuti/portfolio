@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
-  <title>Redesigning DPDS TMS | Anubhuti Raj</title>
+  <title>Tata Motors Ticketing Assistant | Anubhuti Raj</title>
   <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32.png?v=2" />
   <link rel="icon" type="image/png" href="../../assets/images/browsericon.png?v=2" />
   <link rel="shortcut icon" href="../../favicon.ico?v=2" />
@@ -14,7 +14,7 @@
   <link rel="preload" href="../../assets/fonts/f9c47219ac0af4ab.p.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="../../css/style.css?v=20261009a" />
   <!-- Shared header/footer styles -->
-  <link rel="stylesheet" href="../../partials/shared.css?v=20261009a" />
+  <link rel="stylesheet" href="../../partials/shared.css?v=20261011a" />
   <!-- Case-study layout styles (plain CSS, reusable across future case studies) -->
   <link rel="stylesheet" href="../../assets/css/case-study.css?v=20261005g" />
   <!-- Inter, the product's own typeface, for the design system samples -->
@@ -579,7 +579,12 @@
 
   
 .tms-oneliner { margin: -12px 0 28px; font-size: clamp(21px, 2.3vw, 28px); line-height: 1.35; font-weight: 600; color: #E87B35; }
-.ds-why { margin: 10px 0 24px; font-size: 16px; font-weight: 600; line-height: 1.5; color: #E87B35; }
+.ds-why { margin: 12px 0 24px; padding: 14px 18px; background: #FEF7EE; border-left: 4px solid #E87B35; font-size: 16px; font-weight: 500; line-height: 1.5; color: #18191F; }
+.ds-why b { color: #E87B35; font-weight: 700; }
+.ds-try { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 28px; padding: 8px 14px; border-radius: 999px; border: 1.5px dashed #E87B35; background: #fff; font-size: 14px; font-weight: 700; color: #18191F; }
+.ds-try i { width: 8px; height: 8px; border-radius: 50%; background: #E87B35; box-shadow: 0 0 0 0 rgba(232,123,53,.5); animation: ds-try-pulse 1.8s ease-out infinite; }
+@keyframes ds-try-pulse { 0% { box-shadow: 0 0 0 0 rgba(232,123,53,.5); } 80%,100% { box-shadow: 0 0 0 8px rgba(232,123,53,0); } }
+@media (prefers-reduced-motion: reduce) { .ds-try i { animation: none; } }
 .ds-a11y-sum { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0 8px; }
 .ds-a11y-sum > div { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px 22px; }
 .ds-a11y-sum b { display: block; font-size: 36px; font-weight: 700; color: #E87B35; line-height: 1.1; }
@@ -644,7 +649,7 @@
           <section class="cs-section" id="overview">
 
             <div class="cs-hero-image" style="aspect-ratio:2396/876;">
-              <img src="../../assets/images/project-2/01-hero-bg.webp" fetchpriority="high" alt="Hero image for the Redesigning DPDS TMS case study" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
+              <img src="../../assets/images/project-2/01-hero-bg.webp" fetchpriority="high" alt="Hero image for the Tata Motors Ticketing Assistant case study" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:4px;">
             </div>
 
             <div class="cs-meta-grid">
@@ -669,7 +674,7 @@
             </div>
 
             <p class="cs-eyebrow">01 &middot; OVERVIEW</p>
-            <h1 class="cs-heading">Redesigning DPDS TMS</h1>
+            <h1 class="cs-heading">Tata Motors Ticketing Assistant</h1>
             <p class="tms-oneliner">An internal helpdesk that answers your problem first, and raises a ticket only if it can't.</p>
             <p class="cs-body">
               TMS, the Ticket Management System, is where people in Tata Motors' Digital Product Development System
@@ -885,6 +890,7 @@
               components, and audited every interactive state against WCAG AA.
             </p>
 
+            <p class="ds-try"><i aria-hidden="true"></i>This part is interactive. Click the swatches and the states to try them.</p>
             <div class="ds-section" id="ds-root">
 
               <!-- ---- Architecture flow ---- -->
@@ -894,7 +900,7 @@
                 <p class="cs-body">Every color, space and radius below traces from a raw primitive, through a named
                   semantic role, into the components that use it. A fix at any layer carries through everywhere
                   that layer is used.</p>
-                <p class="ds-why">Why three layers? DPDS builds more than one tool. If the brand blue changes, I change one value, not every screen.</p>
+                <p class="ds-why"><b>Why three layers?</b> DPDS builds more than one tool. If the brand blue changes, I change one value, not every screen.</p>
                 <div class="ds-flow">
                   <div class="ds-flow-stage">
                     <h4>Primitives</h4>
@@ -917,10 +923,10 @@
               <div class="ds-block">
                 <p class="cs-eyebrow">PRIMITIVES</p>
                 <h3 class="cs-gap-heading">Color tokens</h3>
-                <p class="cs-body">Two separate groups. Brand primitives carry Tata Motors' own palette. Status
+                <p class="cs-body">Two separate groups. <strong>Brand primitives carry Tata Motors' own palette</strong>, which is why the accent is their blue. Status
                   colors are kept apart and used only for urgent, warning and success states. Click a swatch to
                   copy its token name and hex.</p>
-                <p class="ds-why">Why keep status colours apart? If red can be decoration, an urgent ticket stops looking urgent.</p>
+                <p class="ds-why"><b>Why keep status colours apart?</b> If red can be decoration, an urgent ticket stops looking urgent.</p>
 
                 <div class="ds-swatch-group">
                   <p class="ds-swatch-group-label">Brand &middot; Tata Motors palette</p>
@@ -1025,7 +1031,7 @@
                 <h3 class="cs-gap-heading">Type scale</h3>
                 <p class="cs-body">Seven styles in Inter. Headings for structure, body for reading, labels for the
                   small print on chips, pills and tickets.</p>
-                <p class="ds-why">Why seven? Enough for a dense ticket queue, few enough that nobody has to guess which one to use.</p>
+                <p class="ds-why"><b>Why seven?</b> Enough for a dense ticket queue, few enough that nobody has to guess which one to use.</p>
                 <div class="ds-type">
                   <div class="ds-type-row">
                     <div class="ds-type-meta"><span class="ds-type-name">Heading/H1</span><span class="ds-type-spec">32 / 40 &middot; Bold 700</span></div>
@@ -1064,7 +1070,7 @@
                 <h3 class="cs-gap-heading">Spacing and radius</h3>
                 <p class="cs-body">A six step spacing scale and four radii. Chips and pills use full, cards use lg,
                   inputs and buttons use md.</p>
-                <p class="ds-why">Why a fixed scale? Every gap becomes a decision made once, not a new one on every screen.</p>
+                <p class="ds-why"><b>Why a fixed scale?</b> Every gap becomes a decision made once, not a new one on every screen.</p>
                 <div class="ds-scale-grid">
                   <div class="ds-scale-card">
                     <p class="ds-swatch-group-label">Spacing</p>
@@ -1093,7 +1099,7 @@
                 <h3 class="cs-gap-heading">Core components, every real state</h3>
                 <p class="cs-body">Click a state to see the component change between default, hover, focus, error and
                   disabled, the way it behaves in the actual product.</p>
-                <p class="ds-why">Why design every state? A state I don't design is one a developer has to guess, and guesses are where bugs come from.</p>
+                <p class="ds-why"><b>Why design every state?</b> A state I don't design is one a developer has to guess, and guesses are where bugs come from.</p>
 
                 <div class="ds-component-grid">
 
@@ -1276,7 +1282,7 @@
                   <div><b>4</b><span>failed at first</span></div>
                   <div><b>4</b><span>fixed at the token level</span></div>
                 </div>
-                <p class="ds-why">Why fix tokens, not screens? One change to a token fixed every place it was used.</p>
+                <p class="ds-why"><b>Why fix tokens, not screens?</b> One change to a token fixed every place it was used.</p>
                 <details class="ds-a11y-more"><summary>See all 12 pairs</summary>
                 <div class="ds-a11y">
                   <div class="ds-a11y-row ds-a11y-head"><div>Pair</div><div>Ratio</div><div>Needs</div><div>Result</div></div>

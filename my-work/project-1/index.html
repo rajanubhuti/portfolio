@@ -14,7 +14,7 @@
   <link rel="preload" href="../../assets/fonts/f9c47219ac0af4ab.p.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="../../css/style.css?v=20261009a" />
   <!-- Shared header/footer styles -->
-  <link rel="stylesheet" href="../../partials/shared.css?v=20261009a" />
+  <link rel="stylesheet" href="../../partials/shared.css?v=20261011a" />
   <!-- Shared case-study styles (used by every case study, unchanged) -->
   <link rel="stylesheet" href="../../assets/css/case-study.css?v=20261005g" />
   <!-- Extra styles for this case study only (storyboard, trigger timing, sources).
@@ -622,6 +622,7 @@
 .v2-findings li { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px 22px; font-size: 17px; line-height: 1.45; color: #18191F; }
 .v2-findings b { display: block; margin-bottom: 4px; font-size: 26px; font-weight: 700; color: #E87B35; line-height: 1.1; }
 .v2-findings-4 { grid-template-columns: repeat(4, 1fr); }
+.v2-f-lab { display: block; margin-bottom: 6px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #6C727F; }
 .v2-findings em { display: block; margin-top: 10px; font-style: normal; font-weight: 700; color: #18191F; }
 @media (max-width: 1100px) { .v2-findings-4 { grid-template-columns: repeat(2, 1fr); } }
 .v2-findings small { display: block; margin-top: 10px; font-size: 13px; color: #6C727F; }
@@ -645,6 +646,12 @@
 .v2-zoom.is-zooming { cursor: none; }
 .v2-zoom.is-zooming .v2-lens { opacity: 1; transform: none; }
 @media (hover: none) { .v2-lens { display: none; } }
+/* Always-visible hint so people know the images can be zoomed */
+.v2-zoom::after { content: "Hover to zoom"; position: absolute; right: 14px; bottom: 14px; z-index: 3; display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px 7px 30px; border-radius: 999px; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2318191F' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M15.5 15.5 21 21'/%3E%3C/svg%3E") no-repeat 11px center / 14px; border: 1px solid #E5E7EB;
+  box-shadow: 0 4px 12px -6px rgba(0,0,0,.25); font-size: 13px; font-weight: 700; color: #18191F; pointer-events: none; transition: opacity .2s; }
+.v2-zoom.is-zooming::after { opacity: 0; }
+@media (hover: none) { .v2-zoom::after { content: "Tap to open"; } }
 .v2-photos-one { grid-template-columns: 1fr; margin: 0; }
 .v2-gaps-split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 24px; align-items: start; margin: 24px 0 0; }
 .v2-gaps-split > .v2-photos { will-change: transform; }
@@ -894,10 +901,10 @@
 
             <h3 class="cs-heading" style="font-size:30px; margin:96px 0 28px;" data-reveal>Here's what surprised me</h3>
             <ul class="v2-findings v2-findings-4">
-              <li data-reveal><b>6%</b> of the time on the road, with a film on the screen.<em>So her eyes need a reason to look up.</em><small>van der Heiden et al., 2017</small></li>
-              <li data-reveal><b>27s</b> is how long distraction lingers after the task ends.<em>So her mind needs more than ten seconds.</em><small>Strayer et al., 2015</small></li>
-              <li data-reveal><b>Feet</b> off the pedals slowed braking the most.<em>So her body needs time too.</em><small>Zhao et al., 2024</small></li>
-              <li data-reveal><b>Longer</b> in autonomy meant a worse takeover.<em>So minute forty is harder than minute two.</em><small>Heliyon, 2024</small></li>
+              <li data-reveal><span class="v2-f-lab">Eyes on the road</span><b>6%</b> of the time on the road, with a film on the screen.<em>So her eyes need a reason to look up.</em><small>van der Heiden et al., 2017</small></li>
+              <li data-reveal><span class="v2-f-lab">Distraction lingers</span><b>27s</b> is how long distraction lingers after the task ends.<em>So her mind needs more than ten seconds.</em><small>Strayer et al., 2015</small></li>
+              <li data-reveal><span class="v2-f-lab">Slowest braking</span><b>Feet off</b> the pedals slowed braking the most.<em>So her body needs time too.</em><small>Zhao et al., 2024</small></li>
+              <li data-reveal><span class="v2-f-lab">Time in autonomy</span><b>Longer</b> in autonomy meant a worse takeover.<em>So minute forty is harder than minute two.</em><small>Heliyon, 2024</small></li>
             </ul>
 
             <h3 class="cs-heading" style="font-size:26px; margin:0 0 10px;" data-reveal>The finding that changed the project</h3>
@@ -1250,7 +1257,7 @@
             <a class="cs-next" href="../project-2/">
               <div>
                 <p class="cs-next-label">NEXT PROJECT</p>
-                <p class="cs-next-title">Redesigning DPDS TMS</p>
+                <p class="cs-next-title">Tata Motors Ticketing Assistant</p>
                 <p class="cs-next-desc">Turning Tata Motors' internal ticketing form into an assistant that helps people find an answer before they raise a ticket<span>&hellip;</span></p>
               </div>
               <span class="cs-next-btn">Read Case Study</span>

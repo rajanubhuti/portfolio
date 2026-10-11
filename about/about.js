@@ -7,7 +7,7 @@
   }
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('rv-in'); io.unobserve(e.target); } });
-  }, { threshold: 0.15 });
+  }, { threshold: 0, rootMargin: '0px 0px 10% 0px' }); /* start just before it scrolls in, so big blocks like the desk never wait */
   els.forEach(function (el) { io.observe(el); });
 })();
 
