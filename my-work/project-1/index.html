@@ -622,6 +622,16 @@
 .v2-findings li { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px 22px; font-size: 17px; line-height: 1.45; color: #18191F; }
 .v2-findings b { display: block; margin-bottom: 4px; font-size: 26px; font-weight: 700; color: #E87B35; line-height: 1.1; }
 .v2-findings-4 { grid-template-columns: repeat(4, 1fr); }
+.v2-rules3 { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.v2-rules3 li { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 18px 20px; font-size: 17px; line-height: 1.45; color: #18191F; }
+.v2-rules3 b { display: block; margin-bottom: 6px; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: #E87B35; }
+.v2-open { border-top: 1.5px solid #18191F; margin: 0 0 48px; }
+.v2-open-row { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; padding: 18px 0; border-bottom: 1px solid #E5E7EB; }
+.v2-open-row p { margin: 0; font-size: 18px; line-height: 1.45; color: #18191F; }
+.v2-open-row p:first-child { font-weight: 700; }
+.v2-open-row p:last-child { color: #4B505C; }
+.v2-open-head span { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #E87B35; }
+@media (max-width: 760px) { .v2-rules3 { grid-template-columns: 1fr; } .v2-open-row { grid-template-columns: 1fr; gap: 6px; } .v2-open-head span:last-child { display: none; } }
 .v2-qa { list-style: none; margin: 0 0 48px; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 .v2-qa li { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 22px 24px; }
 .v2-qa p { margin: 0; }
@@ -864,27 +874,6 @@
               </div>
             </div>
 
-            <div class="cs-insight-line" data-reveal>
-              <div class="cs-insight-icon"><img src="../../assets/images/project-1/bell.png" loading="lazy" alt="" style="width:100%; height:100%; object-fit:contain; display:block;"></div>
-              <p class="cs-insight-text">Today the alert is the same at minute two or minute forty. The research says those are very different drivers to bring back.</p>
-            </div>
-          </section>
-
-          <!-- ================= THE RESEARCH ================= -->
-          <section class="cs-section" id="found">
-            <p class="cs-eyebrow">4 &middot; HOW I RESEARCHED IT</p>
-            <h2 class="cs-heading" data-reveal>I didn't have a car or a simulator. So I read everything.</h2>
-
-            <div class="v2-steps">
-              <div class="v2-step" data-reveal>
-                <p class="v2-step-num">STEP 1</p>
-                <div>
-                  <h3>Reading 37 papers and sources</h3>
-                  <p class="cs-body">Human factors, HCI and psychology, sorted by what each said about the driver.</p>
-                  <div class="v2-photos">
-                    <a class="v2-zoom" data-zoom="../../assets/images/project-1/v2-litmap-wide-xl.webp" href="../../assets/images/project-1/v2-litmap-wide-xl.webp" target="_blank" rel="noopener"><span class="v2-lens" aria-hidden="true"></span><img src="../../assets/images/project-1/v2-litmap-wide.webp" srcset="../../assets/images/project-1/v2-litmap-wide-s.webp 800w, ../../assets/images/project-1/v2-litmap-wide.webp 1600w" sizes="(max-width: 900px) 100vw, 540px" loading="lazy" alt="Literature map on sticky notes: eight orange theme headers, findings in yellow and green below each, starred key findings and pink question notes."></a>
-                    <a class="v2-zoom" data-z="2" data-zoom="../../assets/images/project-1/v2-litmap-close-xl.webp" href="../../assets/images/project-1/v2-litmap-close-xl.webp" target="_blank" rel="noopener"><span class="v2-lens" aria-hidden="true"></span><img src="../../assets/images/project-1/v2-litmap-close.webp" srcset="../../assets/images/project-1/v2-litmap-close-s.webp 800w, ../../assets/images/project-1/v2-litmap-close.webp 1600w" sizes="(max-width: 900px) 100vw, 540px" loading="lazy" alt="Close up of the starred findings: feet off pedals means slowest braking, distraction stays 27 seconds, only 6% eyes on the road, and a 20 second warning raised road looks from 23% to 49 to 54%, next to a pink note asking what happens before the alarm."></a>
-                  </div>
                 </div>
               </div>
 
@@ -902,7 +891,7 @@
                 <p class="v2-step-num">STEP 3</p>
                 <div>
                   <h3>Checking it with people who build cars</h3>
-                  <p class="cs-body">My mentors kept pulling me back to what a car can actually do. One question changed the design. Would a driver really trust a car that keeps telling her it's "less sure"? That is why I dropped the permanent confidence dashboard.</p>
+                  <p class="cs-body">My mentors kept me grounded in what a car can actually do. One question changed the design. Would a driver trust a car that keeps saying it's "less sure"? So I dropped the permanent confidence dashboard.</p>
                 </div>
               </div>
             </div>
@@ -916,7 +905,7 @@
             </ul>
 
             <h3 class="cs-heading" style="font-size:26px; margin:0 0 10px;" data-reveal>The finding that changed the project</h3>
-            <p class="cs-body cs-mb-32">Share of time drivers looked at the road in the 20 seconds before a handover, while busy with a screen task. Simulator study, 24 drivers<span class="cs-cite">van der Heiden et al., CHI 2017</span></p>
+            <p class="cs-body cs-mb-32">Eyes on the road in the 20 seconds before a handover, during a screen task. 24 drivers in a simulator.<span class="cs-cite">van der Heiden et al., CHI 2017</span></p>
             <div class="cs-stat-row" data-reveal>
               <div class="cs-stat-label">Without a pre alert</div>
               <div class="cs-stat-track"><div class="cs-stat-fill cs-stat-fill-pink"></div></div>
@@ -1022,11 +1011,11 @@
             <div class="cs-storyboard">
               <figure class="cs-sb-panel" data-reveal>
                 <div class="cs-sb-image"><img src="../../assets/images/project-1/14-storyboard-b2.webp" loading="lazy" alt="Driver still reclined. A thin amber glow appears along the bottom of the center screen."></div>
-                <figcaption><span class="cs-sb-num">2</span><span><strong>Awareness Ramp.</strong> T-60s. The film dims and an amber glow rises. Not yet a warning.</span></figcaption>
+                <figcaption><span class="cs-sb-num">2</span><span><strong>Awareness Ramp.</strong> T-60s. Amber rises, not yet a warning.</span></figcaption>
               </figure>
               <figure class="cs-sb-panel" data-reveal>
                 <div class="cs-sb-image"><img src="../../assets/images/project-1/15-storyboard-b3.webp" loading="lazy" alt="The whole screen is amber and the film has faded. She sits upright with feet on the pedals, looking at the road."></div>
-                <figcaption><span class="cs-sb-num">3</span><span><strong>Reengagement.</strong> T-30s. The film fades. She sits up and finds the road.</span></figcaption>
+                <figcaption><span class="cs-sb-num">3</span><span><strong>Reengagement.</strong> T-30s. She sits up and finds the road.</span></figcaption>
               </figure>
               <figure class="cs-sb-panel" data-reveal>
                 <div class="cs-sb-image"><img src="../../assets/images/project-1/16-storyboard-b4.webp" loading="lazy" alt="The screen turns red, but she is already upright with hands on the wheel, calm."></div>
@@ -1034,12 +1023,12 @@
               </figure>
               <figure class="cs-sb-panel" data-reveal>
                 <div class="cs-sb-image"><img src="../../assets/images/project-1/17-storyboard-b5.webp" loading="lazy" alt="Calm cabin light. She drives steadily with the road map on screen."></div>
-                <figcaption><span class="cs-sb-num">5</span><span><strong>Takeover Confirm.</strong> T+0. Calm returns. The loop closes.</span></figcaption>
+                <figcaption><span class="cs-sb-num">5</span><span><strong>Takeover Confirm.</strong> T+0. Calm returns.</span></figcaption>
               </figure>
             </div>
             <p class="cs-ai-credit cs-mb-48">Illustrations generated with ChatGPT, then edited by me.</p>
 
-            <p class="cs-body cs-mb-48">My first version of screen 1 was a dashboard. It didn't show how lost she is in the film, so I made it the film. Each screen below answers one of the findings. Keep scrolling.</p>
+            <p class="cs-body cs-mb-48">My first version of screen 1 was a dashboard. It didn't show how lost she is in the film, so I made it the film. Scroll to step through.</p>
 
             <!-- Pinned screens: the page holds here while scrolling steps through states 01 to 05 -->
             <div class="cs-pin" data-state="neutral">
@@ -1064,25 +1053,25 @@
                     <p class="cs-pin-time">T-60s to T-30s</p>
                     <p class="cs-pin-name"><span>2</span>Awareness Ramp</p>
                     <p class="cs-pin-desc">The film dims, amber rises, one gentle line.</p>
-                    <p class="cs-pin-why">Why: drivers glance at the road only 6% of the time, and a quiet early cue doubled that.</p>
+                    <p class="cs-pin-why">Why: eyes on the road only 6% of the time. An early cue doubles it.</p>
                   </div>
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T-30s to T-10s</p>
                     <p class="cs-pin-name"><span>3</span>Reengagement</p>
                     <p class="cs-pin-desc">The road replaces the film. Sit up, feet on the pedals.</p>
-                    <p class="cs-pin-why">Why: distraction lingers about 27 seconds, and feet off the pedals slow braking the most.</p>
+                    <p class="cs-pin-why">Why: distraction lingers 27 seconds, and feet off the pedals slow braking most.</p>
                   </div>
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T-10s to T0</p>
                     <p class="cs-pin-name"><span>4</span>Handover Alert</p>
                     <p class="cs-pin-desc">Red, big and high. The seconds left, and why.</p>
-                    <p class="cs-pin-why">Why: the final alert works best when it is loud, visual and felt at once.</p>
+                    <p class="cs-pin-why">Why: an alert works best when it is seen, heard and felt.</p>
                   </div>
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T+0 onward</p>
                     <p class="cs-pin-name"><span>5</span>Takeover Confirm</p>
                     <p class="cs-pin-desc">Teal. "You have control." The film waits.</p>
-                    <p class="cs-pin-why">Why: a calm confirmation helps her settle once she is driving.</p>
+                    <p class="cs-pin-why">Why: a calm confirmation helps her settle.</p>
                   </div>
                   </div>
                   <div class="cs-pin-steps">
@@ -1101,7 +1090,7 @@
           <section class="cs-section" id="system">
             <p class="cs-eyebrow">9 &middot; THE DESIGN SYSTEM</p>
             <h2 class="cs-heading" data-reveal>Three colours, each with one job</h2>
-            <p class="cs-body cs-mb-48">Drivers already know these colours from their dashboards. State 1 has none, because that screen belongs to the film.</p>
+            <p class="cs-body cs-mb-48">Colours drivers already know. Screen 1 has none, because it belongs to the film.</p>
 
             <div class="v2-swatches">
               <div class="v2-sw" data-reveal>
@@ -1109,7 +1098,7 @@
                 <div class="v2-sw-body">
                   <p class="v2-sw-name">You have control</p>
                   <p class="v2-sw-when">State 5 only</p>
-                  <p class="v2-sw-why">Calm returns once she's driving. Not green, which already means "go".</p>
+                  <p class="v2-sw-why">Calm, and not green, which already means "go".</p>
                 </div>
               </div>
               <div class="v2-sw" data-reveal>
@@ -1117,7 +1106,7 @@
                 <div class="v2-sw-body">
                   <p class="v2-sw-name">Start coming back</p>
                   <p class="v2-sw-when">States 2 and 3</p>
-                  <p class="v2-sw-why">Already means "pay attention". Clearer than yellow in daylight.</p>
+                  <p class="v2-sw-why">Means "pay attention". Clearer than yellow in daylight.</p>
                 </div>
               </div>
               <div class="v2-sw" data-reveal>
@@ -1125,24 +1114,17 @@
                 <div class="v2-sw-body">
                   <p class="v2-sw-name">Take over now</p>
                   <p class="v2-sw-when">State 4 only</p>
-                  <p class="v2-sw-why">Saved for the last ten seconds, so it still feels urgent.</p>
+                  <p class="v2-sw-why">Saved for the last ten seconds so it stays urgent.</p>
                 </div>
               </div>
             </div>
 
-            <div class="cs-callout" data-reveal><p>Amber is my answer to gap 02. Not a confidence number, just a word between calm and danger.</p></div>
-            <div class="cs-solve-card" data-reveal>
-              <p class="cs-solve-label">MOTION</p>
-              <p class="cs-solve-body">Slow fades, never a flash. The film dims instead of cutting out.</p>
-            </div>
-            <div class="cs-solve-card" data-reveal>
-              <p class="cs-solve-label">TYPE</p>
-              <p class="cs-solve-body">One instruction per state, readable at a glance from a reclined seat.</p>
-            </div>
-            <div class="cs-solve-card" data-reveal>
-              <p class="cs-solve-label">CONTRAST</p>
-              <p class="cs-solve-body">Every text and colour pair on all five screens meets WCAG AA.</p>
-            </div>
+            <div class="cs-callout" data-reveal><p>Amber is my answer to gap 2. Not a confidence number, just a word between calm and danger.</p></div>
+            <ul class="v2-rules3">
+              <li data-reveal><b>Motion</b>Slow fades, never a flash.</li>
+              <li data-reveal><b>Type</b>One instruction per screen, readable from a reclined seat.</li>
+              <li data-reveal><b>Contrast</b>Every pair passes WCAG AA.</li>
+            </ul>
 
           </section>
 
@@ -1156,7 +1138,7 @@
               <div class="cs-trigger-row" data-reveal>
                 <div class="cs-trigger-meta">
                   <p class="cs-trigger-name">Planned &middot; 30-60s</p>
-                  <p class="cs-trigger-eg">End of a certified highway, a toll, a tunnel. Known in advance from the HD map.</p>
+                  <p class="cs-trigger-eg">Highway ends, a toll, a tunnel. Known from the map.</p>
                 </div>
                 <div class="cs-trigger-bar">
                   <div class="cs-seg cs-seg-ramp" style="width:50%;">Ramp</div>
@@ -1167,7 +1149,7 @@
               <div class="cs-trigger-row" data-reveal>
                 <div class="cs-trigger-meta">
                   <p class="cs-trigger-name">Partly predictable &middot; 10-30s</p>
-                  <p class="cs-trigger-eg">Fading lane lines, bad weather, construction, an emergency vehicle.</p>
+                  <p class="cs-trigger-eg">Fading lanes, bad weather, roadworks.</p>
                 </div>
                 <div class="cs-trigger-bar">
                   <div class="cs-seg cs-seg-empty" style="width:50%;"></div>
@@ -1178,7 +1160,7 @@
               <div class="cs-trigger-row" data-reveal>
                 <div class="cs-trigger-meta">
                   <p class="cs-trigger-name">Abrupt &middot; under 10s</p>
-                  <p class="cs-trigger-eg">A sensor blocked or failing, or system confidence dropping suddenly.</p>
+                  <p class="cs-trigger-eg">A sensor fails or confidence drops suddenly.</p>
                 </div>
                 <div class="cs-trigger-bar">
                   <div class="cs-seg cs-seg-empty" style="width:83.333%;"></div>
@@ -1190,58 +1172,23 @@
               </div>
             </div>
 
-            <p class="cs-body">Sixty is the most warning a planned exit can give. It still needs testing with real drivers.</p>
+            <p class="cs-body">Sixty is the most warning a planned exit can give.</p>
           </section>
 
           <!-- ================= SECTION 9: WHAT I DIDN'T SOLVE ================= -->
           <section class="cs-section" id="unsolved">
-            <p class="cs-eyebrow">11 &middot; WHAT I DIDN'T SOLVE</p>
+            <p class="cs-eyebrow">11 &middot; WHAT'S STILL OPEN</p>
             <h2 class="cs-heading" data-reveal>A clean win would be a lie</h2>
-
-            <div class="cs-solve-card" data-reveal>
-              <p class="cs-solve-label">MOST EFFECTIVE &ne; MOST LIKED</p>
-              <p class="cs-solve-body">The faster pre alert worked nearly twice as well, yet half the people preferred the slower one because it let them finish their task<span class="cs-cite">van der Heiden et al., CHI 2017</span>. My timing has to be tested for both.</p>
-            </div>
-            <div class="cs-solve-card" data-reveal>
-              <p class="cs-solve-label">STILL A NUDGE WITHOUT CONSENT</p>
-              <p class="cs-solve-body">Dimming someone's film without asking isn't neutral. Drivers deserve a say in the pacing.</p>
-            </div>
-            <div class="cs-solve-card" data-reveal>
-              <p class="cs-solve-label">WILL SHE LEARN TO IGNORE IT?</p>
-              <p class="cs-solve-body">If the amber glow appears on every commute, it could become background noise. That needs testing over weeks, not one session.</p>
-            </div>
-            <div class="cs-solve-card" data-reveal>
-              <p class="cs-solve-label">READING SOMEONE'S STATE IS NOT SMALL</p>
-              <p class="cs-solve-body">Sensing her heart rate would make this smarter, but that's biometric data under GDPR.</p>
-            </div>
-          </section>
-
-          <!-- ================= SECTION 10: REFLECTION & NEXT ================= -->
-          <section class="cs-section" id="reflection">
-            <p class="cs-eyebrow">12 &middot; REFLECTION &amp; NEXT</p>
-            <h2 class="cs-heading" data-reveal>Where this stands</h2>
             <p class="cs-body cs-mb-32">Built on published research, mostly from simulators. Not yet tested with drivers.</p>
 
-            <div class="cs-reflection-item" data-reveal>
-              <span class="cs-reflection-num">1</span>
-              <div class="cs-reflection-text">
-                <p class="cs-reflection-title">Validate the sixty second window</p>
-                <p class="cs-reflection-body">Test 30, 45, 60 and 90 seconds in a simulator.</p>
-              </div>
-            </div>
-            <div class="cs-reflection-item" data-reveal>
-              <span class="cs-reflection-num">2</span>
-              <div class="cs-reflection-text">
-                <p class="cs-reflection-title">Pressure test the color language</p>
-                <p class="cs-reflection-body">Check amber and red in bright daylight.</p>
-              </div>
-            </div>
-            <div class="cs-reflection-item" data-reveal>
-              <span class="cs-reflection-num">3</span>
-              <div class="cs-reflection-text">
-                <p class="cs-reflection-title">User test the sequence</p>
-                <p class="cs-reflection-body">Does the ramp feel like a nudge or an interruption?</p>
-              </div>
+            <div class="v2-open" data-reveal>
+              <div class="v2-open-row v2-open-head"><span>Open question</span><span>How I'd find out</span></div>
+              <div class="v2-open-row"><p>Is sixty seconds right?</p><p>Simulator tests at 30, 45, 60 and 90 seconds.</p></div>
+              <div class="v2-open-row"><p>The faster pre alert worked twice as well, yet half the drivers preferred the slower one<span class="cs-cite">van der Heiden et al., CHI 2017</span></p><p>Test my timing for both, not just the one that scores better.</p></div>
+              <div class="v2-open-row"><p>Will she learn to ignore the amber glow?</p><p>Weeks of real commutes, not one session.</p></div>
+              <div class="v2-open-row"><p>Can she read amber and red in bright sun?</p><p>Daylight tests on a real centre screen.</p></div>
+              <div class="v2-open-row"><p>Is dimming her film without asking fair?</p><p>Let drivers choose the pacing.</p></div>
+              <div class="v2-open-row"><p>Her heart rate would make this smarter.</p><p>Left out. That's biometric data under GDPR.</p></div>
             </div>
 
             <p class="cs-body">Working with people who actually build cars taught me that constraints don't make design less creative. They make it matter more.</p>
@@ -1399,8 +1346,7 @@
             <li><a href="#states" data-target="states"><span class="cs-toc-label">The Five States</span></a></li>
             <li><a href="#system" data-target="system"><span class="cs-toc-label">Design System</span></a></li>
             <li><a href="#why-these-numbers" data-target="why-these-numbers"><span class="cs-toc-label">Why These Numbers</span></a></li>
-            <li><a href="#unsolved" data-target="unsolved"><span class="cs-toc-label">What I Didn't Solve</span></a></li>
-            <li><a href="#reflection" data-target="reflection"><span class="cs-toc-label">Reflection</span></a></li>
+            <li><a href="#unsolved" data-target="unsolved"><span class="cs-toc-label">What's Still Open</span></a></li>
           </ol>
         </nav>
 
