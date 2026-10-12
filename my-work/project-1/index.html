@@ -646,16 +646,6 @@
 .v2-findings small { display: block; margin-top: 10px; font-size: 13px; color: #6C727F; }
 
 /* photo still to come */
-.v2-ph { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin: 24px 0 0; min-height: 260px; padding: 24px; border: 2px dashed #E87B35; border-radius: 16px; background: rgba(255,143,113,.06); text-align: center; }
-.v2-ph b { font-size: 13px; font-weight: 700; letter-spacing: .14em; color: #E87B35; }
-.v2-ph span { max-width: 52ch; font-size: 16px; line-height: 1.5; color: #4B505C; }
-.v2-ph + .cs-callout, .v2-ph + .cs-tried-row { margin-top: 48px !important; }
-.v2-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0 0; align-items: start; }
-.v2-photos a { display: block; border-radius: 12px; overflow: hidden; border: 1px solid #E5E7EB; background: #fff; cursor: zoom-in; }
-.v2-photos img { display: block; width: 100%; height: auto; transition: transform .6s cubic-bezier(.22,1,.36,1); }
-.v2-photos a { aspect-ratio: 5 / 4; }
-.v2-photos img { height: 100%; object-fit: cover; }
-.v2-photos a:not(.v2-zoom):hover img { transform: scale(1.02); }
 /* hover magnifier on the full wall */
 .v2-zoom { position: relative; }
 .v2-lens { position: absolute; z-index: 2; width: 190px; height: 190px; border-radius: 50%; pointer-events: none;
@@ -670,7 +660,6 @@
   box-shadow: 0 4px 12px -6px rgba(0,0,0,.25); font-size: 13px; font-weight: 700; color: #18191F; pointer-events: none; transition: opacity .2s; }
 .v2-zoom.is-zooming::after { opacity: 0; }
 @media (hover: none) { .v2-zoom::after { content: "Tap to open"; } }
-.v2-photos-one { grid-template-columns: 1fr; margin: 0; }
 .v2-gaps-split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 24px; align-items: start; margin: 24px 0 0; }
 .v2-gaps-split > .v2-photos { will-change: transform; }
 .v2-gaps-cards { display: flex; flex-direction: column; gap: 16px; }
@@ -682,10 +671,8 @@
 .v2-gaps-cards .cs-gap-visual { flex: none; height: auto; justify-content: flex-start; }
 .v2-gaps-cards .cs-gap-visual img { width: 100%; height: auto !important; max-height: none !important; }
 @media (max-width: 900px) { .v2-gaps-split { grid-template-columns: 1fr; } .v2-gaps-split > .v2-photos { transform: none !important; } }
-.v2-photos-one a { aspect-ratio: auto; }
 @media (max-width: 900px) { .v2-photos { grid-template-columns: 1fr; } }
 #driver .cs-illustration-image { aspect-ratio: 1672 / 941; }
-.v2-ph[hidden] { display: none !important; }
 .cs-v2 .cs-callout p { color: #18191F; }
 .v2-chain { display: grid; grid-template-columns: 1.2fr 1fr 1fr; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; background: #fff; margin: 0 0 56px; }
 .v2-chain > div { padding: 16px 20px; border-top: 1px solid #E5E7EB; font-size: 16px; line-height: 1.45; color: #18191F; }
@@ -694,7 +681,9 @@
 .v2-chain b { color: #E87B35; }
 .v2-chain small { display: block; margin-top: 6px; font-size: 13px; color: #6C727F; }
 @media (max-width: 760px) { .v2-chain { grid-template-columns: 1fr; } .v2-chain > div.h { display: none; } .v2-chain > div:nth-child(3n+1) { border-top: 2px solid #E87B35; } .v2-chain > div:not(:nth-child(3n+1)) { border-top: 0; padding-top: 4px; } }
-.cs-pin-why { margin: 8px 0 0; font-size: 15px; font-weight: 600; color: #E87B35; }
+.cs-pin-why { margin: 10px 0 0; font-size: 15px; font-weight: 600; color: #E87B35; }
+.cs-pin-why .pin-ev { display: inline-flex; align-items: baseline; gap: 6px; margin: 0 8px 6px 0; padding: 5px 12px; border-radius: 999px; background: #fff; border: 1px solid #F3C9A9; font-size: 14px; font-weight: 600; color: #4B505C; }
+.cs-pin-why .pin-ev b { color: #E87B35; font-weight: 800; }
 .cs-pin-caps { min-height: 130px !important; }
 @media (max-width: 900px) { .cs-pin-caps { min-height: 175px !important; } .cs-pin-why { font-size: 14px; } }
 .v2-logic { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
@@ -802,10 +791,9 @@
           <section class="cs-section" id="spark">
             <p class="cs-eyebrow">1 &middot; THE SPARK</p>
             <h2 class="cs-heading" data-reveal>When I'm deep in a film, I don't hear my mom.</h2>
-            <p class="cs-body">I grew up loving cars. So when my exchange at ESAD Orl&eacute;ans let me pick a personal project, with engineers at Valeo and Renault as mentors, I chose this one.</p>
+            <p class="cs-body">I grew up loving cars, so on my exchange at ESAD Orl&eacute;ans I picked this, with engineers at Valeo and Renault as mentors.</p>
             <p class="cs-body cs-mb-32">Demo videos show a calm, ready driver taking over. But when I'm into a film, my mom can talk right next to me and I won't hear her.</p>
             <div class="cs-callout" data-reveal><p>If a car pulled me out of that and gave me ten seconds, I'd panic.</p></div>
-            <p class="v2-bridge">so I looked at how it works today</p>
           </section>
 
           <!-- ================= THE GAP ================= -->
@@ -819,7 +807,7 @@
             <div class="cs-storyboard">
               <figure class="cs-sb-panel" data-reveal>
                 <div class="cs-sb-image"><img src="../../assets/images/project-1/10-storyboard-a1.webp" loading="lazy" alt="Driver reclined in her seat, chin on hand, watching a film on the center screen. Empty highway ahead."></div>
-                <figcaption><span class="cs-sb-num">1</span>Forty minutes in. The car said she didn't have to watch.</figcaption>
+                <figcaption><span class="cs-sb-num">1</span>Forty minutes in, watching a film.</figcaption>
               </figure>
               <figure class="cs-sb-panel" data-reveal>
                 <div class="cs-sb-image"><img src="../../assets/images/project-1/11-storyboard-a2.webp" loading="lazy" alt="Same scene. Construction barriers appear ahead, but she is still watching the screen."></div>
@@ -827,11 +815,11 @@
               </figure>
               <figure class="cs-sb-panel" data-reveal>
                 <div class="cs-sb-image"><img src="../../assets/images/project-1/12-storyboard-a3.webp" loading="lazy" alt="The screen and cabin flash red. She jolts upright, hands raised, startled."></div>
-                <figcaption><span class="cs-sb-num">3</span>T-10s. The first signal of the whole trip is the alarm.</figcaption>
+                <figcaption><span class="cs-sb-num">3</span>T-10s. The first signal is the alarm.</figcaption>
               </figure>
               <figure class="cs-sb-panel" data-reveal>
                 <div class="cs-sb-image"><img src="../../assets/images/project-1/13-storyboard-a4.webp" loading="lazy" alt="Cabin still red. She grabs the wheel awkwardly while her feet search for the pedals."></div>
-                <figcaption><span class="cs-sb-num">4</span>Feet off the pedals, eyes off the road. Ten seconds to fix both.</figcaption>
+                <figcaption><span class="cs-sb-num">4</span>Feet off, eyes off. Ten seconds to fix both.</figcaption>
               </figure>
             </div>
             <p class="cs-ai-credit">Illustrations generated with ChatGPT, then edited by me.</p>
@@ -981,7 +969,6 @@
             </div>
               </div>
             </div>
-            <p class="v2-bridge">which left one question</p>
           </section>
 
           <!-- ================= THE QUESTION ================= -->
@@ -1012,7 +999,6 @@
                 <p class="cs-tried-body">Each state has one job, from an ambient cue to confirming the takeover.</p>
               </div>
             </div>
-            <div class="v2-ph" hidden><b>PHOTO TO ADD</b><span>Rough traced sketches of the two killed ideas and the five state sequence, crossed out where they died.</span></div>
 
             <div class="cs-callout" data-reveal><p>Every idea I killed taught me the same thing. The driver needed time, not volume.</p></div>
           </section>
@@ -1070,25 +1056,25 @@
                     <p class="cs-pin-time">T-60s to T-30s</p>
                     <p class="cs-pin-name"><span>2</span>Awareness Ramp</p>
                     <p class="cs-pin-desc">The film dims, amber rises, one gentle line.</p>
-                    <p class="cs-pin-why">Why: eyes on the road only 6% of the time. An early cue doubles it.</p>
+                    <p class="cs-pin-why"><span class="pin-ev"><b>6%</b> eyes on the road</span><span class="pin-ev"><b>2&times;</b> with an early cue</span></p>
                   </div>
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T-30s to T-10s</p>
                     <p class="cs-pin-name"><span>3</span>Reengagement</p>
                     <p class="cs-pin-desc">The road replaces the film. Sit up, feet on the pedals.</p>
-                    <p class="cs-pin-why">Why: distraction lingers 27 seconds, and feet off the pedals slow braking most.</p>
+                    <p class="cs-pin-why"><span class="pin-ev"><b>27s</b> distraction lingers</span><span class="pin-ev"><b>Feet off</b> slowest braking</span></p>
                   </div>
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T-10s to T0</p>
                     <p class="cs-pin-name"><span>4</span>Handover Alert</p>
-                    <p class="cs-pin-desc">Red, big and high. The seconds left, and why.</p>
-                    <p class="cs-pin-why">Why: an alert works best when it is seen, heard and felt.</p>
+                    <p class="cs-pin-desc">Red, big and high. The seconds left, and why. <b>Not back by T0?</b> The car slows to a safe stop in its lane, hazards on.</p>
+                    <p class="cs-pin-why"><span class="pin-ev"><b>3 senses</b> seen, heard and felt</span></p>
                   </div>
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T+0 onward</p>
                     <p class="cs-pin-name"><span>5</span>Takeover Confirm</p>
                     <p class="cs-pin-desc">Teal. "You have control." The film waits.</p>
-                    <p class="cs-pin-why">Why: a calm confirmation helps her settle.</p>
+                    <p class="cs-pin-why"><span class="pin-ev"><b>Calm</b> helps her settle</span></p>
                   </div>
                   </div>
                   <div class="cs-pin-steps">
