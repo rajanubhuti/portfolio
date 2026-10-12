@@ -639,6 +639,11 @@
 .v2-findings li { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px 22px; font-size: 17px; line-height: 1.45; color: #18191F; }
 .v2-findings b { display: block; margin-bottom: 4px; font-size: 26px; font-weight: 700; color: #E87B35; line-height: 1.1; }
 .v2-findings-4 { grid-template-columns: repeat(4, 1fr); }
+.v2-subhead { margin-top: 96px; }
+.v2-sub-h { margin: 0 0 16px; font-size: 30px; line-height: 1.2; font-weight: 700; color: #18191F; text-wrap: balance; }
+#why-these-numbers { margin-top: 96px; }
+.v2-q-close { margin-top: 112px !important; }
+@media (max-width: 760px) { .v2-sub-h { font-size: 24px; } .v2-subhead, #why-these-numbers { margin-top: 72px; } }
 .v2-rules3 { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .v2-rules3 li { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 18px 20px; font-size: 17px; line-height: 1.45; color: #18191F; }
 .v2-rules3 b { display: block; margin-bottom: 6px; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: #E87B35; }
@@ -862,12 +867,9 @@
 
 
             <div class="cs-callout" data-reveal><p>The alarm isn't the problem. The silence before it is.</p></div>
-          </section>
 
-          <!-- ================= SECTION 3: MEET THE DRIVER ================= -->
-          <section class="cs-section" id="driver">
-            <p class="cs-eyebrow">3 &middot; MEET THE DRIVER</p>
-            <h2 class="cs-heading" data-reveal>She isn't careless. The system is working as designed.</h2>
+            <div id="driver" class="v2-subhead">
+            <h3 class="v2-sub-h" data-reveal>She isn't careless. The system is working as designed.</h3>
             <p class="cs-body cs-mb-32">Reclined, feet off the pedals, lost in the screen. Each of these has a measurable cost at takeover.</p>
 
             <div class="cs-illustration" data-reveal>
@@ -876,11 +878,12 @@
               </div>
             </div>
 
+            </div>
           </section>
 
           <!-- ================= THE RESEARCH ================= -->
           <section class="cs-section" id="found">
-            <p class="cs-eyebrow">4 &middot; HOW I RESEARCHED IT</p>
+            <p class="cs-eyebrow">3 &middot; HOW I RESEARCHED IT</p>
             <h2 class="cs-heading" data-reveal>I didn't have a car or a simulator. So I read everything.</h2>
 
             <div class="v2-steps">
@@ -941,7 +944,7 @@
 
           <!-- ================= SECTION 5: THREE GAPS ================= -->
           <section class="cs-section" id="gaps">
-            <p class="cs-eyebrow">5 &middot; MAKING SENSE OF IT</p>
+            <p class="cs-eyebrow">4 &middot; MAKING SENSE OF IT</p>
             <h2 class="cs-heading" data-reveal>Not a broken component. A broken assumption.</h2>
             <p class="cs-body">Every finding on a note, moved until three clusters kept coming back.</p>
             <div class="v2-gaps-split">
@@ -983,18 +986,14 @@
             </div>
               </div>
             </div>
-          </section>
 
-          <!-- ================= THE QUESTION ================= -->
-          <section class="cs-section" id="question">
-            <p class="cs-eyebrow">6 &middot; THE QUESTION</p>
-            <h2 class="cs-heading" data-reveal>How do you design <span style="color:#E87B35;">sixty seconds?</span></h2>
+            <h2 class="cs-heading v2-q-close" id="question" data-reveal>How do you design <span style="color:#E87B35;">sixty seconds?</span></h2>
             <p class="cs-body">So the driver arrives ready instead of startled. <a href="#why-these-numbers" style="color:#18191F;">Why sixty?</a></p>
           </section>
 
           <!-- ================= WHAT I TRIED ================= -->
           <section class="cs-section" id="tried">
-            <p class="cs-eyebrow">7 &middot; FROM INSIGHT TO SYSTEM</p>
+            <p class="cs-eyebrow">5 &middot; FROM INSIGHT TO SYSTEM</p>
             <h2 class="cs-heading" data-reveal>What I tried first, and killed</h2>
 
             <div class="cs-tried-row">
@@ -1021,7 +1020,7 @@
 
           <!-- ================= SECTION 7: THE FIVE STATES ================= -->
           <section class="cs-section" id="states">
-            <p class="cs-eyebrow">8 &middot; THE FIVE STATES</p>
+            <p class="cs-eyebrow">6 &middot; THE FIVE STATES</p>
             <h2 class="cs-heading" data-reveal>A sequence, not a switch</h2>
             <p class="cs-body cs-mb-32">The same drive, but now the car starts talking sixty seconds early.</p>
 
@@ -1107,7 +1106,7 @@
 
           <!-- ================= DESIGN SYSTEM ================= -->
           <section class="cs-section" id="system">
-            <p class="cs-eyebrow">9 &middot; THE DESIGN SYSTEM</p>
+            <p class="cs-eyebrow">7 &middot; THE SYSTEM</p>
             <h2 class="cs-heading" data-reveal>Three colours, each with one job</h2>
             <p class="cs-body cs-mb-48">Colours drivers already know. Screen 1 has none, because it belongs to the film.</p>
 
@@ -1145,12 +1144,8 @@
               <li data-reveal><b>Contrast</b>Every pair passes WCAG AA.</li>
             </ul>
 
-          </section>
 
-          <!-- ================= SECTION 8: WHY THESE NUMBERS ================= -->
-          <section class="cs-section" id="why-these-numbers">
-            <p class="cs-eyebrow">10 &middot; WHY THESE NUMBERS</p>
-            <h2 class="cs-heading" data-reveal>Sixty seconds is a ceiling, not a rule</h2>
+            <h3 class="v2-sub-h" id="why-these-numbers" data-reveal>Sixty seconds is a ceiling, not a rule</h3>
             <p class="cs-body cs-mb-32">The warning depends on why the car is handing back, so the sequence adapts.</p>
 
             <div class="cs-trigger">
@@ -1196,7 +1191,7 @@
 
           <!-- ================= SECTION 9: WHAT I DIDN'T SOLVE ================= -->
           <section class="cs-section" id="unsolved">
-            <p class="cs-eyebrow">11 &middot; WHAT'S STILL OPEN</p>
+            <p class="cs-eyebrow">8 &middot; WHAT'S STILL OPEN</p>
             <h2 class="cs-heading" data-reveal>A clean win would be a lie</h2>
             <p class="cs-body cs-mb-32">Built on published research, mostly from simulators. Not yet tested with drivers.</p>
 
@@ -1368,14 +1363,11 @@
             <li><a href="#overview" data-target="overview"><span class="cs-toc-label">Opening</span></a></li>
             <li><a href="#spark" data-target="spark"><span class="cs-toc-label">The Spark</span></a></li>
             <li><a href="#problem" data-target="problem"><span class="cs-toc-label">The Gap</span></a></li>
-            <li><a href="#driver" data-target="driver"><span class="cs-toc-label">Meet the Driver</span></a></li>
             <li><a href="#found" data-target="found"><span class="cs-toc-label">How I Researched It</span></a></li>
             <li><a href="#gaps" data-target="gaps"><span class="cs-toc-label">Making Sense of It</span></a></li>
-            <li><a href="#question" data-target="question"><span class="cs-toc-label">The Question</span></a></li>
             <li><a href="#tried" data-target="tried"><span class="cs-toc-label">What I Tried</span></a></li>
             <li><a href="#states" data-target="states"><span class="cs-toc-label">The Five States</span></a></li>
-            <li><a href="#system" data-target="system"><span class="cs-toc-label">Design System</span></a></li>
-            <li><a href="#why-these-numbers" data-target="why-these-numbers"><span class="cs-toc-label">Why These Numbers</span></a></li>
+            <li><a href="#system" data-target="system"><span class="cs-toc-label">The System</span></a></li>
             <li><a href="#unsolved" data-target="unsolved"><span class="cs-toc-label">What's Still Open</span></a></li>
           </ol>
         </nav>
