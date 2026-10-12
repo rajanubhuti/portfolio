@@ -387,6 +387,7 @@
 .cs-v2 .cs-check-card:hover,
 .cs-v2 .ds-component-card:hover,
 .cs-v2 .ds-statcard:hover,
+.cs-v2 .ds-a11y-sum > div:hover,
 .cs-v2 .ds-flow-stage:hover,
 .cs-v2 .ds-live-ticket:hover {
   translate: 0 -4px;
@@ -581,12 +582,9 @@
 .tms-oneliner { margin: -12px 0 28px; font-size: clamp(21px, 2.3vw, 28px); line-height: 1.35; font-weight: 600; color: #E87B35; }
 .ds-why { margin: 12px 0 24px; padding: 14px 18px; background: #FEF7EE; border-left: 4px solid #E87B35; font-size: 16px; font-weight: 500; line-height: 1.5; color: #18191F; }
 .ds-why b { color: #E87B35; font-weight: 700; }
-.ds-try { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 28px; padding: 8px 14px; border-radius: 999px; border: 1.5px dashed #E87B35; background: #fff; font-size: 14px; font-weight: 700; color: #18191F; }
-.ds-try i { width: 8px; height: 8px; border-radius: 50%; background: #E87B35; box-shadow: 0 0 0 0 rgba(232,123,53,.5); animation: ds-try-pulse 1.8s ease-out infinite; }
-@keyframes ds-try-pulse { 0% { box-shadow: 0 0 0 0 rgba(232,123,53,.5); } 80%,100% { box-shadow: 0 0 0 8px rgba(232,123,53,0); } }
-@media (prefers-reduced-motion: reduce) { .ds-try i { animation: none; } }
+.ds-do { color: #E87B35; font-weight: 700; }
 .ds-a11y-sum { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0 8px; }
-.ds-a11y-sum > div { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px 22px; }
+.ds-a11y-sum > div { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px 22px; transition: translate .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, border-color .35s ease; }
 .ds-a11y-sum b { display: block; font-size: 36px; font-weight: 700; color: #E87B35; line-height: 1.1; }
 .ds-a11y-sum span { font-size: 16px; color: #18191F; }
 .ds-a11y-more summary { cursor: pointer; margin: 8px 0 16px; font-size: 16px; font-weight: 600; color: #E87B35; }
@@ -890,7 +888,6 @@
               components, and audited every interactive state against WCAG AA.
             </p>
 
-            <p class="ds-try"><i aria-hidden="true"></i>This part is interactive. Click the swatches and the states to try them.</p>
             <div class="ds-section" id="ds-root">
 
               <!-- ---- Architecture flow ---- -->
@@ -924,7 +921,7 @@
                 <p class="cs-eyebrow">PRIMITIVES</p>
                 <h3 class="cs-gap-heading">Color tokens</h3>
                 <p class="cs-body">Two separate groups. <strong>Brand primitives carry Tata Motors' own palette</strong>, which is why the accent is their blue. Status
-                  colors are kept apart and used only for urgent, warning and success states. Click a swatch to
+                  colors are kept apart and used only for urgent, warning and success states. <b class="ds-do">Click a swatch</b> to
                   copy its token name and hex.</p>
                 <p class="ds-why"><b>Why keep status colours apart?</b> If red can be decoration, an urgent ticket stops looking urgent.</p>
 
@@ -1097,7 +1094,7 @@
               <div class="ds-block">
                 <p class="cs-eyebrow">COMPONENT BINDINGS</p>
                 <h3 class="cs-gap-heading">Core components, every real state</h3>
-                <p class="cs-body">Click a state to see the component change between default, hover, focus, error and
+                <p class="cs-body"><b class="ds-do">Click a state</b> to see the component change between default, hover, focus, error and
                   disabled, the way it behaves in the actual product.</p>
                 <p class="ds-why"><b>Why design every state?</b> A state I don't design is one a developer has to guess, and guesses are where bugs come from.</p>
 
@@ -1246,10 +1243,10 @@
                 </div>
               </div>
 
-              <!-- ---- Stat card, real summary row ---- -->
+              <!-- ---- Queue summary, real summary row ---- -->
               <div class="ds-block">
                 <p class="cs-eyebrow">COMPONENT BINDINGS</p>
-                <h3 class="cs-gap-heading">Stat card</h3>
+                <h3 class="cs-gap-heading">Queue summary</h3>
                 <p class="cs-body">The queue summary row from the ticket dashboard. Total, open, in progress and
                   urgent counts, each in its own status color so the shape of the queue reads at a glance.</p>
                 <div class="ds-statcard-row">

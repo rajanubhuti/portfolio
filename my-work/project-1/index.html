@@ -622,7 +622,15 @@
 .v2-findings li { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px 22px; font-size: 17px; line-height: 1.45; color: #18191F; }
 .v2-findings b { display: block; margin-bottom: 4px; font-size: 26px; font-weight: 700; color: #E87B35; line-height: 1.1; }
 .v2-findings-4 { grid-template-columns: repeat(4, 1fr); }
-.v2-f-lab { display: block; margin-bottom: 6px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #6C727F; }
+.v2-qa { list-style: none; margin: 0 0 48px; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.v2-qa li { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 22px 24px; }
+.v2-qa p { margin: 0; }
+.v2-qa-q { margin-bottom: 8px !important; font-size: 17px; line-height: 1.45; color: #4B505C; }
+.v2-qa-a { font-size: 22px; font-weight: 700; line-height: 1.3; color: #18191F; }
+.v2-qa-a b { color: #E87B35; }
+.v2-qa-so { margin-top: 10px !important; font-size: 16px; font-weight: 600; color: #18191F; }
+.v2-qa small { display: block; margin-top: 10px; font-size: 13px; color: #6C727F; }
+@media (max-width: 760px) { .v2-qa { grid-template-columns: 1fr; } }
 .v2-findings em { display: block; margin-top: 10px; font-style: normal; font-weight: 700; color: #18191F; }
 @media (max-width: 1100px) { .v2-findings-4 { grid-template-columns: repeat(2, 1fr); } }
 .v2-findings small { display: block; margin-top: 10px; font-size: 13px; color: #6C727F; }
@@ -900,11 +908,11 @@
             </div>
 
             <h3 class="cs-heading" style="font-size:30px; margin:96px 0 28px;" data-reveal>Here's what surprised me</h3>
-            <ul class="v2-findings v2-findings-4">
-              <li data-reveal><span class="v2-f-lab">Eyes on the road</span><b>6%</b> of the time on the road, with a film on the screen.<em>So her eyes need a reason to look up.</em><small>van der Heiden et al., 2017</small></li>
-              <li data-reveal><span class="v2-f-lab">Distraction lingers</span><b>27s</b> is how long distraction lingers after the task ends.<em>So her mind needs more than ten seconds.</em><small>Strayer et al., 2015</small></li>
-              <li data-reveal><span class="v2-f-lab">Slowest braking</span><b>Feet off</b> the pedals slowed braking the most.<em>So her body needs time too.</em><small>Zhao et al., 2024</small></li>
-              <li data-reveal><span class="v2-f-lab">Time in autonomy</span><b>Longer</b> in autonomy meant a worse takeover.<em>So minute forty is harder than minute two.</em><small>Heliyon, 2024</small></li>
+            <ul class="v2-qa">
+              <li data-reveal><p class="v2-qa-q">How often does she look at the road during a film?</p><p class="v2-qa-a"><b>6%</b> of the time.</p><p class="v2-qa-so">So her eyes need a reason to look up.</p><small>van der Heiden et al., 2017</small></li>
+              <li data-reveal><p class="v2-qa-q">How long does distraction last after the film stops?</p><p class="v2-qa-a">About <b>27 seconds</b>.</p><p class="v2-qa-so">So her mind needs more than ten seconds.</p><small>Strayer et al., 2015</small></li>
+              <li data-reveal><p class="v2-qa-q">What slows braking the most?</p><p class="v2-qa-a"><b>Feet off</b> the pedals.</p><p class="v2-qa-so">So her body needs time too.</p><small>Zhao et al., 2024</small></li>
+              <li data-reveal><p class="v2-qa-q">Does a long drive make it worse?</p><p class="v2-qa-a"><b>Yes.</b> Longer in autonomy, worse takeover.</p><p class="v2-qa-so">So minute forty is harder than minute two.</p><small>Heliyon, 2024</small></li>
             </ul>
 
             <h3 class="cs-heading" style="font-size:26px; margin:0 0 10px;" data-reveal>The finding that changed the project</h3>
