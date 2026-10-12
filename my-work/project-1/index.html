@@ -472,8 +472,23 @@
   gap: 32px;
 }
 .cs-pin-caps { position: relative; flex: 1; min-height: 96px; }
-.cs-pin-info { order: -1; }
-.cs-pin-cap { inset: auto 0 0 0 !important; }
+/* Screen sits in the middle of the window while pinned; its text sits just above it; progress runs vertically beside it */
+.cs-pin-stage { position: relative; width: min(100%, calc((100vh - 400px) * 1920 / 720)); }
+.cs-pin-stage .cs-pin-screen { width: 100%; }
+.cs-pin-stage .cs-pin-info { position: absolute; left: 0; right: 0; bottom: calc(100% + 28px); width: auto; display: block; }
+.cs-pin-stage .cs-pin-cap { inset: auto 0 0 0; }
+.cs-pin-stage .cs-pin-steps { position: absolute; top: 50%; left: calc(100% + 28px); transform: translateY(-50%); flex-direction: column; gap: 8px; padding: 0; }
+.cs-pin-stage .cs-pin-step { width: 20px; height: 44px; justify-content: center; }
+.cs-pin-stage .cs-pin-step span { width: 4px; height: 100%; }
+.cs-pin-stage .cs-pin-step:hover span { width: 6px; height: 100%; }
+.cs-pin-img { transition: opacity .25s linear, transform .8s cubic-bezier(.22,1,.36,1); }
+.cs-pin-cap { transition: opacity .6s ease, transform .6s ease; }
+@media (max-width: 900px) {
+  .cs-pin-stage { width: 100%; }
+  .cs-pin-stage .cs-pin-steps { left: auto; right: 10px; gap: 6px; }
+  .cs-pin-stage .cs-pin-step { width: 12px; height: 22px; }
+  .cs-pin-stage .cs-pin-step span { background: rgba(255,255,255,.35); }
+}
 .cs-pin-cap {
   position: absolute;
   inset: 0 0 auto 0;
@@ -1036,47 +1051,49 @@
             <!-- Pinned screens: the page holds here while scrolling steps through states 01 to 05 -->
             <div class="cs-pin" data-state="neutral">
               <div class="cs-pin-sticky">
-                <div class="cs-pin-screen">
-                  <!-- The five state screens; scrolling crossfades between them -->
-                  
-                  <img class="cs-pin-img is-active" src="../../assets/images/project-1/v2-state-01-autonomous.webp" srcset="../../assets/images/project-1/v2-state-01-autonomous-s.webp 960w, ../../assets/images/project-1/v2-state-01-autonomous.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" alt="State 01, Autonomous Mode: a film plays full screen, with speed and automated driving status in the corner">
-                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-02-ramp.webp" srcset="../../assets/images/project-1/v2-state-02-ramp-s.webp 960w, ../../assets/images/project-1/v2-state-02-ramp.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" alt="State 02, Awareness Ramp: the film blurs and dims, an amber glow rises, and a line says handover in about one minute" loading="lazy">
-                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-03-reengage.webp" srcset="../../assets/images/project-1/v2-state-03-reengage-s.webp 960w, ../../assets/images/project-1/v2-state-03-reengage.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" alt="State 03, Reengagement: the road ahead in amber, a 28 second countdown, and the prompt sit up, feet on the pedals" loading="lazy">
-                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-04-alert.webp" srcset="../../assets/images/project-1/v2-state-04-alert-s.webp 960w, ../../assets/images/project-1/v2-state-04-alert.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" alt="State 04, Handover Alert: red, a 7 second countdown, take over now, lane closed ahead, hands on the wheel" loading="lazy">
-                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-05-confirm.webp" srcset="../../assets/images/project-1/v2-state-05-confirm-s.webp 960w, ../../assets/images/project-1/v2-state-05-confirm.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" alt="State 05, Takeover Confirm: teal, you have control, film paused, navigation to exit 14" loading="lazy">
-                </div>
+                <div class="cs-pin-stage">
                 <div class="cs-pin-info">
                   <div class="cs-pin-caps">
                   <div class="cs-pin-cap is-active">
                     <p class="cs-pin-time">T-&infin; to T-60s</p>
-                    <p class="cs-pin-name"><span>1</span>Autonomous Mode</p>
+                    <p class="cs-pin-name"><span>1.</span>Autonomous Mode</p>
                     <p class="cs-pin-desc">The film, full screen. The car stays quiet.</p>
                   </div>
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T-60s to T-30s</p>
-                    <p class="cs-pin-name"><span>2</span>Awareness Ramp</p>
+                    <p class="cs-pin-name"><span>2.</span>Awareness Ramp</p>
                     <p class="cs-pin-desc">The film dims, amber rises, one gentle line.</p>
                     <p class="cs-pin-why">Why: eyes on the road only 6% of the time. An early cue doubles it.</p>
                   </div>
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T-30s to T-10s</p>
-                    <p class="cs-pin-name"><span>3</span>Reengagement</p>
+                    <p class="cs-pin-name"><span>3.</span>Reengagement</p>
                     <p class="cs-pin-desc">The road replaces the film. Sit up, feet on the pedals.</p>
                     <p class="cs-pin-why">Why: distraction lingers 27 seconds, and feet off the pedals slow braking most.</p>
                   </div>
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T-10s to T0</p>
-                    <p class="cs-pin-name"><span>4</span>Handover Alert</p>
+                    <p class="cs-pin-name"><span>4.</span>Handover Alert</p>
                     <p class="cs-pin-desc">Red, big and high. The seconds left, and why. <b>Not back by T0?</b> The car slows to a safe stop in its lane, hazards on.</p>
                     <p class="cs-pin-why">Why: an alert works best when it is seen, heard and felt.</p>
                   </div>
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T+0 onward</p>
-                    <p class="cs-pin-name"><span>5</span>Takeover Confirm</p>
+                    <p class="cs-pin-name"><span>5.</span>Takeover Confirm</p>
                     <p class="cs-pin-desc">Teal. "You have control." The film waits.</p>
                     <p class="cs-pin-why">Why: a calm confirmation helps her settle.</p>
                   </div>
                   </div>
+                </div>
+                <div class="cs-pin-screen">
+                  <!-- The five state screens; scrolling crossfades between them -->
+                  
+                  <img class="cs-pin-img is-active" src="../../assets/images/project-1/v2-state-01-autonomous.webp" srcset="../../assets/images/project-1/v2-state-01-autonomous-s.webp 960w, ../../assets/images/project-1/v2-state-01-autonomous.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" alt="State 01, Autonomous Mode: a film plays full screen, with speed and automated driving status in the corner">
+                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-02-ramp.webp" srcset="../../assets/images/project-1/v2-state-02-ramp-s.webp 960w, ../../assets/images/project-1/v2-state-02-ramp.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" alt="State 02, Awareness Ramp: the film blurs and dims, an amber glow rises, and a line says handover in about one minute" loading="eager" decoding="async">
+                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-03-reengage.webp" srcset="../../assets/images/project-1/v2-state-03-reengage-s.webp 960w, ../../assets/images/project-1/v2-state-03-reengage.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" alt="State 03, Reengagement: the road ahead in amber, a 28 second countdown, and the prompt sit up, feet on the pedals" loading="eager" decoding="async">
+                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-04-alert.webp" srcset="../../assets/images/project-1/v2-state-04-alert-s.webp 960w, ../../assets/images/project-1/v2-state-04-alert.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" alt="State 04, Handover Alert: red, a 7 second countdown, take over now, lane closed ahead, hands on the wheel" loading="eager" decoding="async">
+                  <img class="cs-pin-img" src="../../assets/images/project-1/v2-state-05-confirm.webp" srcset="../../assets/images/project-1/v2-state-05-confirm-s.webp 960w, ../../assets/images/project-1/v2-state-05-confirm.webp 1920w" sizes="(max-width: 900px) 100vw, 1200px" alt="State 05, Takeover Confirm: teal, you have control, film paused, navigation to exit 14" loading="eager" decoding="async">
+                </div>
                   <div class="cs-pin-steps">
                   <button type="button" class="cs-pin-step cs-pin-step-neutral is-active" data-step="0" aria-label="Show state 01, Autonomous Mode"><span></span></button>
                   <button type="button" class="cs-pin-step cs-pin-step-ramp" data-step="1" aria-label="Show state 02, Awareness Ramp"><span></span></button>
@@ -1237,8 +1254,18 @@
             var names = ['neutral', 'ramp', 'reengage', 'alert', 'calm'];
             var n = caps.length, current = -1, mode = '';
 
+            var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             function send(i, force) {
-              imgs.forEach(function (im, k) { im.classList.toggle('is-active', k === i); });
+              imgs.forEach(function (im, k) { im.classList.toggle('is-active', k === i); im.style.opacity = ''; });
+            }
+            /* In the last third of each step, the next screen fades in over the current one as you scroll */
+            function blend(f) {
+              if (reduce) return;
+              var i = Math.floor(f), t = f - i, a = t > 0.66 && i < n - 1 ? (t - 0.66) / 0.34 : 0;
+              a = a * a * (3 - 2 * a);
+              imgs.forEach(function (im, k) {
+                im.style.opacity = k === i ? 1 : (k === i + 1 ? a : 0);
+              });
             }
             function show(i) {
               if (i === current) return;
@@ -1269,6 +1296,7 @@
               else setMode('fixed', r);
               var p = total > 0 ? Math.min(Math.max(-r.top / total, 0), 0.9999) : 0;
               show(Math.floor(p * n));
+              blend(p * n);
             }
             var ticking = false;
             window.addEventListener('scroll', function () {
