@@ -640,10 +640,9 @@
 .v2-findings b { display: block; margin-bottom: 4px; font-size: 26px; font-weight: 700; color: #E87B35; line-height: 1.1; }
 .v2-findings-4 { grid-template-columns: repeat(4, 1fr); }
 .v2-subhead { margin-top: 96px; }
-.v2-sub-h { margin: 0 0 16px; font-size: 30px; line-height: 1.2; font-weight: 700; color: #18191F; text-wrap: balance; }
-#why-these-numbers { margin-top: 96px; }
-.v2-q-close { margin-top: 112px !important; }
-@media (max-width: 760px) { .v2-sub-h { font-size: 24px; } .v2-subhead, #why-these-numbers { margin-top: 72px; } }
+.cs-v2 .v2-sub-h { font-size: 30px !important; margin: 96px 0 28px !important; }
+.v2-subhead .v2-sub-h { margin-top: 0 !important; }
+@media (max-width: 760px) { .cs-v2 .v2-sub-h { font-size: 24px !important; margin-top: 72px !important; } .v2-subhead { margin-top: 72px; } }
 .v2-rules3 { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .v2-rules3 li { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 18px 20px; font-size: 17px; line-height: 1.45; color: #18191F; }
 .v2-rules3 b { display: block; margin-bottom: 6px; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: #E87B35; }
@@ -869,7 +868,7 @@
             <div class="cs-callout" data-reveal><p>The alarm isn't the problem. The silence before it is.</p></div>
 
             <div id="driver" class="v2-subhead">
-            <h3 class="v2-sub-h" data-reveal>She isn't careless. The system is working as designed.</h3>
+            <h3 class="cs-heading v2-sub-h" data-reveal>She isn't careless. The system is working as designed.</h3>
             <p class="cs-body cs-mb-32">Reclined, feet off the pedals, lost in the screen. Each of these has a measurable cost at takeover.</p>
 
             <div class="cs-illustration" data-reveal>
@@ -987,14 +986,15 @@
               </div>
             </div>
 
-            <h2 class="cs-heading v2-q-close" id="question" data-reveal>How do you design <span style="color:#E87B35;">sixty seconds?</span></h2>
-            <p class="cs-body">So the driver arrives ready instead of startled. <a href="#why-these-numbers" style="color:#18191F;">Why sixty?</a></p>
           </section>
 
           <!-- ================= WHAT I TRIED ================= -->
           <section class="cs-section" id="tried">
             <p class="cs-eyebrow">5 &middot; FROM INSIGHT TO SYSTEM</p>
-            <h2 class="cs-heading" data-reveal>What I tried first, and killed</h2>
+            <h2 class="cs-heading" id="question" data-reveal>How do you design <span style="color:#E87B35;">sixty seconds?</span></h2>
+            <p class="cs-body">So the driver arrives ready instead of startled. <a href="#why-these-numbers" style="color:#18191F;">Why sixty?</a></p>
+
+            <h3 class="cs-heading v2-sub-h" data-reveal>What I tried first, and killed</h3>
 
             <div class="cs-tried-row">
               <div class="cs-tried-card" data-reveal>
@@ -1145,7 +1145,7 @@
             </ul>
 
 
-            <h3 class="v2-sub-h" id="why-these-numbers" data-reveal>Sixty seconds is a ceiling, not a rule</h3>
+            <h3 class="cs-heading v2-sub-h" id="why-these-numbers" data-reveal>Sixty seconds is a ceiling, not a rule</h3>
             <p class="cs-body cs-mb-32">The warning depends on why the car is handing back, so the sequence adapts.</p>
 
             <div class="cs-trigger">
