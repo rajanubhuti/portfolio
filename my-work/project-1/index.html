@@ -802,7 +802,7 @@
             <h1 class="cs-heading">Designing the Return</h1>
             <p class="v2-oneliner">How a self driving car should hand control back to a driver who wasn't watching.</p>
             <p class="cs-body">
-              Today's Level 3 cars give her one alarm and four to ten seconds<span class="cs-cite">Gold et al., 2013</span>. This project designs the minute before it.
+              Today's Level 3 cars give the driver one alarm and four to ten seconds<span class="cs-cite">Gold et al., 2013</span>. This project designs the minute before it.
             </p>
 
             <div class="cs-paper-links">
@@ -910,6 +910,7 @@
                 <p class="v2-step-num">STEP 2</p>
                 <div>
                   <h3>Taking apart four systems</h3>
+                  <p class="cs-body">What does each one tell the driver before a handover, and during it?</p>
                   <div class="v2-photos v2-photos-one">
                     <a class="v2-zoom" data-z="2" data-zoom="../../assets/images/project-1/v2-systems-xl.webp?v=2" href="../../assets/images/project-1/v2-systems-xl.webp?v=2" target="_blank" rel="noopener"><span class="v2-lens" aria-hidden="true"></span><img src="../../assets/images/project-1/v2-systems.webp?v=2" srcset="../../assets/images/project-1/v2-systems-s.webp?v=2 800w, ../../assets/images/project-1/v2-systems.webp?v=2 1600w" sizes="(max-width: 900px) 100vw, 1100px" loading="lazy" alt="Screens from Mercedes, BMW, Tesla and Waymo with sticky notes. Mercedes Level 3, nothing before the alert, alert is lights, sound and vibration. BMW Level 3, only braking before, alert is a beep and screen. Tesla Level 2, eyes on the road always, alert is hold the wheel. Waymo Level 4, no driver so no alert. A pink note asks who designs the minute before the alarm."></a>
                   </div>
@@ -1035,11 +1036,11 @@
             <div class="cs-storyboard">
               <figure class="cs-sb-panel" data-reveal>
                 <div class="cs-sb-image"><img src="../../assets/images/project-1/14-storyboard-b2.webp" loading="lazy" alt="Driver still reclined. A thin amber glow appears along the bottom of the center screen."></div>
-                <figcaption><span class="cs-sb-num">2</span><span><strong>Awareness Ramp.</strong> T-60s. Amber rises, not yet a warning.</span></figcaption>
+                <figcaption><span class="cs-sb-num">2</span><span><strong>Awareness Ramp.</strong> T-60s. Still in the film, starting to notice.</span></figcaption>
               </figure>
               <figure class="cs-sb-panel" data-reveal>
                 <div class="cs-sb-image"><img src="../../assets/images/project-1/15-storyboard-b3.webp" loading="lazy" alt="The whole screen is amber and the film has faded. She sits upright with feet on the pedals, looking at the road."></div>
-                <figcaption><span class="cs-sb-num">3</span><span><strong>Reengagement.</strong> T-30s. She sits up and finds the road.</span></figcaption>
+                <figcaption><span class="cs-sb-num">3</span><span><strong>Reengagement.</strong> T-30s. She sits up, feet back on the pedals.</span></figcaption>
               </figure>
               <figure class="cs-sb-panel" data-reveal>
                 <div class="cs-sb-image"><img src="../../assets/images/project-1/16-storyboard-b4.webp" loading="lazy" alt="The screen turns red, but she is already upright with hands on the wheel, calm."></div>
@@ -1047,7 +1048,7 @@
               </figure>
               <figure class="cs-sb-panel" data-reveal>
                 <div class="cs-sb-image"><img src="../../assets/images/project-1/17-storyboard-b5.webp" loading="lazy" alt="Calm cabin light. She drives steadily with the road map on screen."></div>
-                <figcaption><span class="cs-sb-num">5</span><span><strong>Takeover Confirm.</strong> T+0. Calm returns.</span></figcaption>
+                <figcaption><span class="cs-sb-num">5</span><span><strong>Takeover Confirm.</strong> T+0. Driving, and calm.</span></figcaption>
               </figure>
             </div>
             <p class="cs-ai-credit cs-mb-48">Illustrations generated with ChatGPT, then edited by me.</p>
@@ -1074,13 +1075,13 @@
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T-30s to T-10s</p>
                     <p class="cs-pin-name"><span>3.</span>Reengagement</p>
-                    <p class="cs-pin-desc">The road replaces the film. Sit up, feet on the pedals.</p>
+                    <p class="cs-pin-desc">The road replaces the film, and a countdown asks her to sit up.</p>
                     <p class="cs-pin-why">Why: distraction lingers 27 seconds, and feet off the pedals slow braking most.</p>
                   </div>
                   <div class="cs-pin-cap">
                     <p class="cs-pin-time">T-10s to T0</p>
                     <p class="cs-pin-name"><span>4.</span>Handover Alert</p>
-                    <p class="cs-pin-desc">Red, big and high. The seconds left, and why. <b>Not back by T0?</b> The car slows to a safe stop in its lane, hazards on.</p>
+                    <p class="cs-pin-desc">Red, big and high. The seconds left, and why. <b>Not back by T0?</b> The car's legally required fallback takes over and slows it to a stop. The screen keeps telling her why.</p>
                     <p class="cs-pin-why">Why: an alert works best when it is seen, heard and felt.</p>
                   </div>
                   <div class="cs-pin-cap">
@@ -1206,7 +1207,7 @@
             <div class="v2-open" data-reveal>
               <div class="v2-open-row v2-open-head"><span>Open question</span><span>How I'd find out</span></div>
               <div class="v2-open-row"><p>Is sixty seconds right?</p><p>Simulator tests at 30, 45, 60 and 90 seconds.</p></div>
-              <div class="v2-open-row"><p>The faster pre alert worked twice as well, yet half the drivers preferred the slower one<span class="cs-cite">van der Heiden et al., CHI 2017</span></p><p>Test my timing for both, not just the one that scores better.</p></div>
+              <div class="v2-open-row"><p>The faster pre alert worked nearly twice as well, yet half the drivers preferred the slower one because it let them finish their task<span class="cs-cite">van der Heiden et al., CHI 2017</span></p><p>Test my timing for both, not just the one that scores better.</p></div>
               <div class="v2-open-row"><p>Will she learn to ignore the amber glow?</p><p>Weeks of real commutes, not one session.</p></div>
               <div class="v2-open-row"><p>Can she read amber and red in bright sun?</p><p>Daylight tests on a real centre screen.</p></div>
               <div class="v2-open-row"><p>Is dimming her film without asking fair?</p><p>Let drivers choose the pacing.</p></div>
