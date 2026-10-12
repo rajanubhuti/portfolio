@@ -668,6 +668,14 @@
 
 /* photo still to come */
 /* hover magnifier on the full wall */
+.v2-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0 0; align-items: start; }
+.v2-photos a { display: block; border-radius: 12px; overflow: hidden; border: 1px solid #E5E7EB; background: #fff; cursor: zoom-in; }
+.v2-photos img { display: block; width: 100%; height: auto; transition: transform .6s cubic-bezier(.22,1,.36,1); }
+.v2-photos a { aspect-ratio: 5 / 4; }
+.v2-photos img { height: 100%; object-fit: cover; }
+.v2-photos a:not(.v2-zoom):hover img { transform: scale(1.02); }
+.v2-photos-one { grid-template-columns: 1fr; margin: 0; }
+.v2-photos-one a { aspect-ratio: auto; }
 .v2-zoom { position: relative; }
 .v2-lens { position: absolute; z-index: 2; width: 190px; height: 190px; border-radius: 50%; pointer-events: none;
   border: 3px solid #fff; box-shadow: 0 10px 30px rgba(24,25,31,.35), 0 0 0 1px rgba(24,25,31,.15);
