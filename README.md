@@ -20,7 +20,7 @@
 
 This is the code for my personal portfolio. I wanted it to feel less like a résumé and more like a diary: something that walks you through how I think, with a few small surprises along the way.
 
-I'm a final-year UX student at MIT Institute of Design, Pune, currently a UX design intern at Tata Motors. I spent a semester in France at ESAD Orléans, and most of my work sits somewhere between research, interaction design and cars.
+I'm a final year UX student at MIT Institute of Design, Pune, currently a UX design intern at Tata Motors. I spent a semester in France at ESAD Orléans, and most of my work sits somewhere between research, interaction design and cars.
 
 ## What's inside
 
@@ -28,7 +28,7 @@ I'm a final-year UX student at MIT Institute of Design, Pune, currently a UX des
 
 | Case study | What it's about |
 |---|---|
-| [**Designing the Return**](https://rajanubhuti.github.io/portfolio/my-work/project-1/) | An in-car display for the sixty seconds before a Level 3 car hands control back to its driver. Grounded in takeover research, mentored by engineers at Valeo and Renault. |
+| [**Designing the Return**](https://rajanubhuti.github.io/portfolio/my-work/project-1/) | An in car display for the sixty seconds before a Level 3 car hands control back to its driver. Grounded in takeover research, mentored by engineers at Valeo and Renault. |
 | [**Tata Motors Ticketing Assistant**](https://rajanubhuti.github.io/portfolio/my-work/project-2/) | Turning an internal ticketing form into an assistant that helps people find an answer before they need to raise a ticket. Includes a design system and a WCAG contrast audit. |
 | [**LumiTrack**](https://rajanubhuti.github.io/portfolio/my-work/project-3/) | A teaching dashboard that gives design faculty their time back, so mentoring is about the student, not the spreadsheet. |
 
